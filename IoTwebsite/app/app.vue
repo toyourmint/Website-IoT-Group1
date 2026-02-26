@@ -1,17 +1,21 @@
 <script setup>
+const { locale } = useI18n()
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" },
+    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: locale   // ⭐ เปลี่ยนอัตโนมัติตามภาษา
   }
 })
 
-const title = 'iOTE KMITL'
+const title = 'IoTE KMITL'
 const description = 'Internet of Things Engineering - KMITL'
 
 useSeoMeta({
@@ -24,17 +28,14 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <!-- HEADER -->
     <UHeader class="header">
       
-      <!-- Logo -->
       <template #left>
         <NuxtLink to="/" class="logo-link">
           <AppLogo />
         </NuxtLink>
       </template>
 
-      <!-- Right side -->
       <template #right>
         <Navbar />
 
@@ -52,32 +53,14 @@ useSeoMeta({
 
     </UHeader>
 
-    <!-- CONTENT -->
     <UMain>
       <NuxtPage />
     </UMain>
 
     <USeparator icon="i-simple-icons-nuxtdotjs" />
 
-    <!-- FOOTER -->
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
-
-      <template #right>
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
+    <Footer />
+    
   </UApp>
 </template>
 
@@ -94,4 +77,64 @@ useSeoMeta({
   display: flex;
   align-items: center;
 }
+</style>
+
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ป้องกันการเลื่อนซ้ายขวาถ้ามีอะไรล้น */
+}
+  /* 🌙 Dark mode navbar */
+.dark .header {
+  background-color: #101022;
+  border-bottom: 1px solid #333;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
+.dark .nav-links a:hover {
+  color: #f26522;
+}
+/* 🌙 Dark mode footer */
+.dark .footer {
+  background-color: #101022;   /* เข้มขึ้น */
+  color: #e5e7eb;
+}
+.dark .footer-heading {
+  color: #cbd5e1;
+}
+
+/* สีไอคอน */
+.dark .footer .icon {
+  color: #94a3b8;
+}
+
+/* ลิงก์ */
+.dark .footer-links a {
+  color: #cbd5e1;
+}
+
+.dark .footer-links a:hover {
+  color: #f26522;
+}
+
+/* social icons */
+.dark .social-icons a {
+  color: #e5e7eb;
+}
+
+/* เส้น divider */
+.dark .footer-divider {
+  background-color: #2a2f45;
+}
+
+/* ข้อความล่างสุด */
+.dark .footer-bottom {
+  color: #9ca3af;
+}
+
 </style>
