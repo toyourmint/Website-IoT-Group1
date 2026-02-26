@@ -212,7 +212,7 @@ const quotaPages = ref([
 
 <style scoped>
 .wrapper{
-  background:#f5f5f5;
+  background-color: #fdfbf7;
   font-family:'Segoe UI', sans-serif;
   color:#1e2a38;
 }
@@ -243,7 +243,7 @@ const quotaPages = ref([
 }
 
 .info-box{
-  background:#eaeaea;
+  background-color: #f1f3f5;
   padding:25px;
   border-radius:15px;
   margin:10px 0;
