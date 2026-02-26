@@ -11,32 +11,33 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'iOTE KMITL'
+const description = 'Internet of Things Engineering - KMITL'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
-  ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterCard: 'summary_large_image'
+  ogDescription: description
 })
 </script>
 
 <template>
   <UApp>
-    <UHeader>
+    <!-- HEADER -->
+    <UHeader class="header">
+      
+      <!-- Logo -->
       <template #left>
-        <NuxtLink to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
+        <NuxtLink to="/" class="logo-link">
+          <AppLogo />
         </NuxtLink>
-
-        <TemplateMenu />
       </template>
 
+      <!-- Right side -->
       <template #right>
+        <Navbar />
+
         <UColorModeButton />
 
         <UButton
@@ -48,14 +49,17 @@ useSeoMeta({
           variant="ghost"
         />
       </template>
+
     </UHeader>
 
+    <!-- CONTENT -->
     <UMain>
       <NuxtPage />
     </UMain>
 
     <USeparator icon="i-simple-icons-nuxtdotjs" />
 
+    <!-- FOOTER -->
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
@@ -76,3 +80,18 @@ useSeoMeta({
     </UFooter>
   </UApp>
 </template>
+
+<style scoped>
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eee;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+</style>
