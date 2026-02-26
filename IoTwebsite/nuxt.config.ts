@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/i18n'
   ],
 
   devtools: {
@@ -24,5 +25,14 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+  i18n: {
+    defaultLocale: 'th',
+    locales: [
+      { code: 'th', name: 'ไทย', file: 'th.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+    langDir: 'locales/',
+    strategy: 'prefix'
   }
 })

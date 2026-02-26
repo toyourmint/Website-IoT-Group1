@@ -1,5 +1,5 @@
 <template>
-  <img src="/iote-logo.jpg" alt="iOTE Logo" class="logo-img" />
+  <img src="/iote-logo.png" alt="iOTE Logo" class="logo-img" />
 </template>
 
 <style scoped>
