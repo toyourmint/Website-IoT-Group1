@@ -14,8 +14,8 @@
           <button :class="{ active: activeTab === 'dual' }" @click="selectTab('dual')">
             Dual Degree
           </button>
-          <button :class="{ active: activeTab === 'physics' }" @click="selectTab('physics')">
-            Industry Physics
+          <button :class="{ active: activeTab === 'ceiot' }" @click="selectTab('ceiot')">
+            Computer Engineering and IoT
           </button>
         </div>
       </div>
@@ -100,12 +100,48 @@
               <h2 class="text-navy">Why IoTE KMITL?</h2>
               <p>หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมไอโอทีและสารสนเทศ มุ่งเน้นสร้างบัณฑิต ในการเป็นนวัตกร สร้างสรรค์ผลงานเทคโนโลยีที่ตอบโจทย์ความต้องการของประเทศ โดยบูรณาการความรู้พื้นฐานทางวิศวกรรมคอมพิวเตอร์และเทคโนโลยีสารสนเทศ สำคัญ 4 ด้าน ได้แก่ ระบบสมองกลฝังตัวและอุปกรณ์อัจฉริยะ, การพัฒนาโปรแกรมและซอฟต์แวร์, ระบบเครือข่ายอินเทอร์เน็ต, และการประยุกต์ใช้ข้อมูลเพื่อแก้ปัญหาและบริหารจัดการข้อมูล เพื่อให้ผู้เรียนสามารถออกแบบและสร้างสรรค์นวัตกรรมที่ตอบโจทย์การแก้ปัญหาของภาคอุตสาหกรรมอย่างมีประสิทธิภาพ พร้อมทั้งส่งเสริมทักษะทางภาษาและการเป็นผู้ประกอบการ เพื่อให้ผู้เรียนพร้อมเป็นผู้นำและก้าวสู่การทำงานในระดับสากล</p>
               <div class="action-btn-container">
-                 <a href="/path-to-your-pdf/iote-course.pdf" target="_blank" class="outline-btn">
+                 <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing" target="_blank" class="outline-btn">
                     หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ <span class="arrow-icon">➔</span>
                  </a>
               </div>
             </div>
           </div>
+
+          <div class="content-box">
+            <h2 class="box-title text-navy">วิศวกรรมไอโอทีและสารสนเทศ เรียนอะไรบ้าง ?</h2>
+            <p class="desc-text mb-4">
+              <strong>ภาพรวม:</strong> เน้นเรียน 4 แกนหลัก คือ Hardware (อุปกรณ์/วงจร), Software (เขียนโปรแกรม/แอปพลิเคชัน), Network (เครือข่ายสื่อสาร), และ Data/AI (ข้อมูล/ปัญญาประดิษฐ์)
+            </p>
+            
+            <h3 class="sub-title">เจาะลึกรายชั้นปี (อ้างอิงหลักสูตรปรับปรุง พ.ศ. 2569):</h3>
+            
+            <div class="year-grid">
+              <div class="year-card">
+                <div class="year-badge">ปี 1</div>
+                <h4>ปูพื้นฐานวิศวกรรมและไอโอที</h4>
+                <p>เรียนวิชาพื้นฐานวิทยาศาสตร์-คณิตศาสตร์, การเขียนโปรแกรมคอมพิวเตอร์ (Programming), พื้นฐานทางวิศวกรรมวิชาชีพ และความรู้เบื้องต้นเกี่ยวกับไอโอทีและสารสนเทศ</p>
+              </div>
+              
+              <div class="year-card">
+                <div class="year-badge">ปี 2</div>
+                <h4>เจาะลึกเทคนิคและเครื่องมือ</h4>
+                <p>เรียนรู้ระบบวงจรดิจิทัล, อิเล็กทรอนิกส์, เครือข่ายคอมพิวเตอร์ (Computer Networks), การเขียนโปรแกรมเชิงวัตถุ (OOP), และเครื่องมือทางวิศวกรรมสำหรับวิเคราะห์และออกแบบระบบ</p>
+              </div>
+
+              <div class="year-card">
+                <div class="year-badge">ปี 3</div>
+                <h4>ประยุกต์ใช้และสร้างระบบขั้นสูง</h4>
+                <p>เน้นวิชาระบบสมองกลฝังตัว (Embedded Systems), การจัดการฐานข้อมูล, การสื่อสารข้อมูล, ความปลอดภัยทางไซเบอร์ (Cyber Security), และการวิเคราะห์ข้อมูลขั้นสูง ลงมือทำโปรเจกต์พัฒนาระบบ IoT ทั้งฮาร์ดแวร์และซอฟต์แวร์</p>
+              </div>
+
+              <div class="year-card">
+                <div class="year-badge">ปี 4</div>
+                <h4>เตรียมพร้อมสู่อุตสาหกรรม</h4>
+                <p>ทำโครงงานวิศวกรรม (Capstone Project) หรือ สหกิจศึกษา (Co-operative Education) ปฏิบัติงานจริงในสถานประกอบการ และเรียนรู้หัวข้อเทคโนโลยีสมัยใหม่เพื่อก้าวสู่อาชีพวิศวกรมืออาชีพ</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div v-else-if="activeTab === 'dual'" key="dual" class="tab-content">
@@ -147,81 +183,90 @@
           <div class="course-cards-grid">
             <div class="course-card">
               <div class="card-img">IoTE Logo</div>
-              <a href="/path-to-your-pdf/iote-course.pdf" target="_blank" class="outline-btn small-btn">
+              <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing" target="_blank" class="outline-btn small-btn">
                 หลักสูตรวิศวกรรมระบบไอโอทีและ<br>สารสนเทศ <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
               <div class="card-img">Physics Logo</div>
-              <a href="/path-to-your-pdf/physics-course.pdf" target="_blank" class="outline-btn small-btn">
+              <a href="https://drive.google.com/file/d/1yVlGsT_CW8KtIDL4Gri4ucXSPXc6WEuo/view" target="_blank" class="outline-btn small-btn">
                 หลักสูตรฟิสิกส์อุตสาหกรรม <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
               <div class="card-img">Dual Degree Logo</div>
-              <a href="/path-to-your-pdf/dual-course.pdf" target="_blank" class="outline-btn small-btn">
+              <a href="https://drive.google.com/file/d/1_oKKmIsBsw7_-fnWVwYZeLV81ZufJIJl/view" target="_blank" class="outline-btn small-btn">
                 หลักสูตร 2 ปริญญา <span class="arrow-icon">➔</span>
               </a>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div v-else-if="activeTab === 'physics'" key="physics" class="tab-content">
-          <div class="image-text-box">
-            <div class="img-area">
-              <div class="placeholder-img students-bg">
-                </div>
-            </div>
-            <div class="text-area">
-              <h2 class="text-navy">Why Physics KMITL?</h2>
-              <p>หลักสูตรวิทยาศาสตรบัณฑิต สาขาวิชาฟิสิกส์อุตสาหกรรม มุ่งเน้นสร้างบัณฑิต ในการเป็นนวัตกร องค์กรสร้างสรรค์ผลงานวิจัยและนวัตกรรมทางฟิสิกส์ โดยบูรณาการความรู้พื้นฐานทางวิทยาศาสตร์และประยุกต์ใช้กับทักษะสำคัญ 4 ด้าน ได้แก่ การพัฒนาระบบเครื่องมือวัดและควบคุม, การเขียนโปรแกรมและซอฟต์แวร์, ระบบอิเล็กทรอนิกส์และวงจร, และการประยุกต์ใช้ข้อมูลเพื่อนำไปสู่การเป็นวิศวกรนักประดิษฐ์ เพื่อให้ผู้เรียนสามารถออกแบบและสร้างสรรค์นวัตกรรมที่ตอบโจทย์ความต้องการของภาคอุตสาหกรรมอย่างมีประสิทธิภาพ พร้อมทั้งเสริมสร้างทักษะในการคิดวิเคราะห์และนำไปประยุกต์ใช้สู่การสร้างธุรกิจหรือเป็นผู้ประกอบการเทคโนโลยีด้วยตนเอง</p>
-              <div class="action-btn-container">
-                 <a href="/path-to-your-pdf/physics-course.pdf" target="_blank" class="outline-btn">
-                    หลักสูตรฟิสิกส์อุตสาหกรรม <span class="arrow-icon">➔</span>
-                 </a>
-              </div>
-            </div>
+        <div v-else-if="activeTab === 'ceiot'" key="ceiot" class="tab-content">
+          <div class="text-center-box">
+            <h2>หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <br>(หลักสูตรต่อเนื่อง)</h2>
+            <h3 class="text-navy" style="font-weight: 600; font-size: 1.25rem; margin-top: 15px;">“จาก ปวส. สู่ วิศวกรเต็มตัว ทันสมัยที่สุดด้วย AI, IoT และ Digital Technology”</h3>
+            <p class="desc-text mt-3">หลักสูตรนี้ถูกออกแบบมาเพื่อ Upgrade ผู้ที่มีวุฒิประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) ให้ก้าวขึ้นเป็นวิศวกรที่มีทักษะระดับสูง รองรับยุค Digital Transformation อย่างแท้จริง โดยเน้นการเรียนที่ “ทำได้จริง” และ “พร้อมเข้าสู่อุตสาหกรรม”</p>
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">Career Prospects</h2>
+            <h2 class="box-title text-navy">ชื่อปริญญาและสาขาวิชา</h2>
+            <ul class="custom-list">
+              <li><strong>ชื่อเต็ม (ภาษาไทย):</strong> วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์และไอโอที</li>
+              <li><strong>ชื่อเต็ม (ภาษาอังกฤษ):</strong> Bachelor of Engineering Program in Computer Engineering and IoT</li>
+              <li><strong>ชื่อย่อ (ภาษาไทย):</strong> วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที</li>
+              <li><strong>ชื่อย่อ (ภาษาอังกฤษ):</strong> B.Eng. Computer Engineering and IoT</li>
+              <li><strong>จำนวนหน่วยกิตที่เรียนตลอดหลักสูตร:</strong> 118 หน่วยกิต (หลักสูตรปริญญาตรีต่อเนื่อง 3 ปี)</li>
+            </ul>
+          </div>
+
+          <div class="content-box">
+            <h2 class="box-title text-navy">Career Prospects (ตำแหน่งงานที่สามารถประกอบอาชีพได้)</h2>
             <div class="grid-2-col">
               <div class="col-left">
                 <div class="career-group">
-                  <h4>ด้านการผลิต ควบคุมคุณภาพ และความน่าเชื่อถือ (Manufacturing, Quality & Reliability)</h4>
                   <ul>
-                    <li>วิศวกรอุตสาหการ (Industrial Engineer)</li>
-                    <li>วิศวกรกระบวนการ (Process Engineer)</li>
-                    <li>วิศวกรควบคุมคุณภาพ (QC Engineer)</li>
-                    <li>วิศวกรทดสอบความน่าเชื่อถือและวิเคราะห์ความเสียหาย (Reliability & Test Engineer / Failure Analysis Engineer)</li>
-                  </ul>
-                </div>
-                <div class="career-group">
-                  <h4>ด้านบริหารและธุรกิจ (Business & Management)</h4>
-                  <ul>
-                    <li>ผู้ประกอบการทางธุรกิจเทคโนโลยี (Tech Entrepreneur)</li>
+                    <li>วิศวกรไอโอที (IoT Engineer)</li>
+                    <li>วิศวกรรมระบบสมองกลฝังตัว (Embedded System Engineer / Embedded Software Engineering)</li>
+                    <li>วิศวกรระบบสารสนเทศ (Information Engineer / IT Engineer)</li>
+                    <li>วิศวกรคอมพิวเตอร์ (Computer Engineer)</li>
+                    <li>โปรแกรมเมอร์ (Programmer)</li>
+                    <li>นักพัฒนาแอพพลิเคชัน (Application Developer)</li>
                   </ul>
                 </div>
               </div>
               <div class="col-right">
                 <div class="career-group">
-                  <h4>ด้านวิศวกรรมเฉพาะทางและวัสดุศาสตร์ (Specialized Engineering & Material Science)</h4>
                   <ul>
-                    <li>วิศวกรไฟฟ้า (Electrical Engineer)</li>
-                    <li>วิศวกรแสง (Optical Engineer)</li>
-                    <li>นักวิทยาศาสตร์/วิศวกรวัสดุ (Material Scientist/Engineer)</li>
-                  </ul>
-                </div>
-                <div class="career-group">
-                  <h4>ด้านวิจัย ข้อมูล และการศึกษา (Research, Data & Education)</h4>
-                  <ul>
-                    <li>นักวิจัย (Researcher)</li>
-                    <li>นักวิทยาศาสตร์ข้อมูล (Data Scientist)</li>
-                    <li>นัก STEM ศึกษา (STEM Educator)</li>
+                    <li>วิศวกรข้อมูล (Data Engineer)</li>
+                    <li>นักวิทยาการข้อมูล (Data Scientist)</li>
+                    <li>นักวิจัย/วิศวกรวิจัยและพัฒนา (Researcher / R&D Engineer)</li>
+                    <li>วิศวกรเครือข่าย (Network Engineer)</li>
+                    <li>วิศวกรคลาวด์ (Cloud Engineer)</li>
+                    <li>วิศวกรปัญญาประดิษฐ์ / การเรียนรู้ของเครื่อง (AI / ML Engineer)</li>
                   </ul>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="content-box">
+            <h2 class="box-title text-navy">ผลลัพธ์การเรียนรู้ระดับหลักสูตร (PLOs)</h2>
+            <ul class="custom-list">
+              <li><strong>PLO 1:</strong> ประยุกต์ความรู้ทางวิศวกรรมคอมพิวเตอร์ในด้านฮาร์ดแวร์ เครือข่าย ซอฟต์แวร์ และเทคโนโลยีไอโอทีเพื่อแก้ปัญหาทางวิศวกรรมได้อย่างเหมาะสม</li>
+              <li><strong>PLO 2:</strong> ออกแบบและพัฒนาระบบหรือโซลูชันทางวิศวกรรมคอมพิวเตอร์และไอโอทีที่ตอบสนองความต้องการที่กำหนด โดยคำนึงถึงความมั่นคงปลอดภัยทางไซเบอร์และประสิทธิภาพของระบบ</li>
+              <li><strong>PLO 3:</strong> บูรณาการองค์ความรู้ทางวิศวกรรมคอมพิวเตอร์และไอโอที (ตั้งแต่ระดับอุปกรณ์ การสื่อสาร แพลตฟอร์ม จนถึงส่วนต่อประสานผู้ใช้) เพื่อแก้ปัญหาทางวิศวกรรมของภาคอุตสาหกรรมได้อย่างมีประสิทธิภาพ ปรับตัวและเรียนรู้เทคโนโลยีใหม่ที่เกี่ยวข้องได้อย่างต่อเนื่อง</li>
+              <li><strong>PLO 4:</strong> จัดทำโครงงานเพื่อแก้ปัญหาของภาคอุตสาหกรรมได้อย่างเหมาะสม ผ่านกระบวนการเรียนรู้ด้วยตนเอง</li>
+              <li><strong>PLO 5:</strong> มีทักษะปฏิบัติในการเลือกและใช้งาน รวมถึงการทดสอบเครื่องมือ อุปกรณ์ ซอฟต์แวร์ และวิธีการทางวิศวกรรมในการปฏิบัติงานด้านวิศวกรรมคอมพิวเตอร์และไอโอทีได้อย่างถูกต้อง</li>
+              <li><strong>PLO 6:</strong> ทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ ทั้งในบทบาทผู้นำและผู้ตาม สื่อสารทางเทคนิคและนำเสนอผลงานวิชาชีพเป็นภาษาไทยและภาษาอังกฤษได้อย่างเหมาะสมกับบริบท</li>
+              <li><strong>PLO 7:</strong> ยึดมั่นในหลักคุณธรรม จริยธรรม และความรับผิดชอบต่อสังคมและสิ่งแวดล้อม ในการประกอบวิชาชีพทางวิศวกรรมคอมพิวเตอร์และไอโอที</li>
+            </ul>
+          </div>
+          
+          <div class="action-btn-container" style="text-align: center; margin-top: 30px;">
+             <a href="/path-to-your-pdf/ceiot-course.pdf" target="_blank" class="outline-btn">
+                หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <span class="arrow-icon">➔</span>
+             </a>
           </div>
         </div>
 
@@ -545,15 +590,54 @@ const historyData = [
   transform: translateX(3px);
 }
 
-/* ================== ส่วนจัดการ Card รูปภาพให้เท่ากัน ================== */
+.mb-4 { margin-bottom: 1.5rem; }
+.sub-title {
+  color: #1e3a8a;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.year-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 15px;
+}
+.year-card {
+  background: white;
+  border-left: 4px solid #ff9800;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.year-badge {
+  display: inline-block;
+  background-color: #ff9800;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.year-card h4 {
+  margin: 0 0 10px 0;
+  color: #1e3a8a;
+  font-size: 1.1rem;
+}
+.year-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
 .course-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 40px;
-  align-items: stretch; /* ให้กล่องทุกใบยืดสูงเท่ากันตามกล่องที่สูงที่สุด */
+  align-items: stretch; 
 }
-
 .course-card {
   background: white;
   border-radius: 16px;
@@ -565,18 +649,17 @@ const historyData = [
   justify-content: space-between;
   height: 100%; 
 }
-
 .card-img {
   background-color: #edf2f7;
   color: #718096;
   border-radius: 12px;
-  height: 160px; /* กำหนดความสูงของกรอบรูปให้ตายตัว */
+  height: 160px; 
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  flex-shrink: 0; /* ป้องกันไม่ให้รูปถูกบีบให้เล็กลง */
+  flex-shrink: 0; 
 }
 
 .small-btn {
@@ -722,7 +805,7 @@ const historyData = [
 }
 
 @media (max-width: 768px) {
-  .grid-2-col, .course-cards-grid {
+  .grid-2-col, .course-cards-grid, .year-grid {
     grid-template-columns: 1fr;
   }
   .image-text-box {
