@@ -1,11 +1,20 @@
 {
   "nav": {
     "home": "Home",
-    "academics": "Academics",
+    "academics": "Programs",
     "admission": "Admission",
-    "information": "Information",
-    "department": "Department",
-    "performance": "Performance",
+    "information": "News & Information",
+    "department": "Departments",
+    "performance": "Achievements",
     "contact": "Contact"
+  },
+
+  "footer": {
+    "admissionTitle": "Admission",
+    "round1": "Round 1 Portfolio",
+    "round2": "Round 2 Quota",
+    "round3": "Round 3 Admission",
+    "address": "Faculty of Engineering, King Mongkut's Institute of Technology Ladkrabang, 12th Floor, Engineering Building, 1 Chalongkrung 1 Alley, Ladkrabang, Bangkok 10520, Thailand",
+    "university": "King Mongkut's Institute of Technology Ladkrabang"
   }
 }
