@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "home": "Home",
+    "academics": "Academics",
+    "admission": "Admission",
+    "information": "Information",
+    "department": "Department",
+    "performance": "Performance",
+    "contact": "Contact"
+  }
+}
