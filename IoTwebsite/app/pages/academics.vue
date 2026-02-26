@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+
     <div class="content-wrapper" ref="contentArea">
       <transition name="fade" mode="out-in">
         
@@ -92,6 +93,7 @@
           <div class="image-text-box">
             <div class="img-area">
               <div class="placeholder-img">
+                <img :src="'/img/logo/Why_IoT.jpg'" alt="Why IoTE">
                 <h3>ภาควิชาวิศวกรรมคอมพิวเตอร์</h3>
                 <p>DEPARTMENT OF IOT AND INFORMATION ENGINEERING</p>
               </div>
@@ -121,19 +123,16 @@
                 <h4>ปูพื้นฐานวิศวกรรมและไอโอที</h4>
                 <p>เรียนวิชาพื้นฐานวิทยาศาสตร์-คณิตศาสตร์, การเขียนโปรแกรมคอมพิวเตอร์ (Programming), พื้นฐานทางวิศวกรรมวิชาชีพ และความรู้เบื้องต้นเกี่ยวกับไอโอทีและสารสนเทศ</p>
               </div>
-              
               <div class="year-card">
                 <div class="year-badge">ปี 2</div>
                 <h4>เจาะลึกเทคนิคและเครื่องมือ</h4>
                 <p>เรียนรู้ระบบวงจรดิจิทัล, อิเล็กทรอนิกส์, เครือข่ายคอมพิวเตอร์ (Computer Networks), การเขียนโปรแกรมเชิงวัตถุ (OOP), และเครื่องมือทางวิศวกรรมสำหรับวิเคราะห์และออกแบบระบบ</p>
               </div>
-
               <div class="year-card">
                 <div class="year-badge">ปี 3</div>
                 <h4>ประยุกต์ใช้และสร้างระบบขั้นสูง</h4>
                 <p>เน้นวิชาระบบสมองกลฝังตัว (Embedded Systems), การจัดการฐานข้อมูล, การสื่อสารข้อมูล, ความปลอดภัยทางไซเบอร์ (Cyber Security), และการวิเคราะห์ข้อมูลขั้นสูง ลงมือทำโปรเจกต์พัฒนาระบบ IoT ทั้งฮาร์ดแวร์และซอฟต์แวร์</p>
               </div>
-
               <div class="year-card">
                 <div class="year-badge">ปี 4</div>
                 <h4>เตรียมพร้อมสู่อุตสาหกรรม</h4>
@@ -141,7 +140,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <div v-else-if="activeTab === 'dual'" key="dual" class="tab-content">
@@ -182,25 +180,31 @@
 
           <div class="course-cards-grid">
             <div class="course-card">
-              <div class="card-img">IoTE Logo</div>
+              <div class="card-img">
+                <img :src="'/img/logo/logo_Iotcamp.jpg'" alt="IoTE Logo">
+              </div>
               <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing" target="_blank" class="outline-btn small-btn">
                 หลักสูตรวิศวกรรมระบบไอโอทีและ<br>สารสนเทศ <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
-              <div class="card-img">Physics Logo</div>
+              <div class="card-img">
+                <img :src="'/img/logo/logo_physic.jpg'" alt="Physics Logo">
+              </div>
               <a href="https://drive.google.com/file/d/1yVlGsT_CW8KtIDL4Gri4ucXSPXc6WEuo/view" target="_blank" class="outline-btn small-btn">
                 หลักสูตรฟิสิกส์อุตสาหกรรม <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
-              <div class="card-img">Dual Degree Logo</div>
+              <div class="card-img">
+                <img :src="'/img/logo/logo_phyIoT.jpg'" alt="Dual Degree Logo">
+              </div>
               <a href="https://drive.google.com/file/d/1_oKKmIsBsw7_-fnWVwYZeLV81ZufJIJl/view" target="_blank" class="outline-btn small-btn">
                 หลักสูตร 2 ปริญญา <span class="arrow-icon">➔</span>
               </a>
             </div>
           </div>
-          </div>
+        </div>
 
         <div v-else-if="activeTab === 'ceiot'" key="ceiot" class="tab-content">
           <div class="text-center-box">
@@ -264,7 +268,7 @@
           </div>
           
           <div class="action-btn-container" style="text-align: center; margin-top: 30px;">
-             <a href="/path-to-your-pdf/ceiot-course.pdf" target="_blank" class="outline-btn">
+             <a href="#" target="_blank" class="outline-btn">
                 หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <span class="arrow-icon">➔</span>
              </a>
           </div>
@@ -393,6 +397,7 @@ const historyData = [
 </script>
 
 <style scoped>
+/* ================== Global & Layout ================== */
 .academics-page {
   background-color: #fdfbf7;
   color: #333;
@@ -418,6 +423,8 @@ const historyData = [
   font-weight: 800;
   letter-spacing: 3px;
 }
+
+/* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
   background-color: #e9ecef;
   padding: 20px 30px;
@@ -453,6 +460,8 @@ const historyData = [
   border: 1px solid #e68a00;
   color: #000;
 }
+
+/* ================== Content Area ================== */
 .content-wrapper {
   max-width: 1000px;
   margin: 40px auto; 
@@ -497,6 +506,7 @@ const historyData = [
   margin-bottom: 15px;
   line-height: 1.6;
 }
+
 .grid-2-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -513,6 +523,8 @@ const historyData = [
   color: #555;
   margin-bottom: 20px;
 }
+
+/* ================== Image & Text Box ================== */
 .image-text-box {
   display: flex;
   background-color: #f1f3f5;
@@ -536,9 +548,6 @@ const historyData = [
   text-align: center;
   padding: 20px;
 }
-.students-bg {
-  background-color: #a0aec0;
-}
 .text-area {
   flex: 1;
   padding: 30px;
@@ -551,6 +560,8 @@ const historyData = [
   margin-bottom: 20px;
   flex-grow: 1;
 }
+
+/* ================== PDF Links / Buttons ================== */
 .action-btn-container {
   text-align: right;
   margin-top: 15px;
@@ -590,6 +601,57 @@ const historyData = [
   transform: translateX(3px);
 }
 
+.small-btn {
+  font-size: 0.9rem;
+  padding: 4px 4px 4px 16px;
+  width: fit-content;
+  margin: auto;
+}
+.small-btn .arrow-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+/* ================== Course Grid (Dual Degree) ================== */
+.course-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: stretch; 
+}
+.course-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
+}
+.card-img {
+  background-color: transparent; 
+  border-radius: 12px;
+  height: 160px; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0; 
+  overflow: hidden; 
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+
+/* ================== Year Grid (เรียนอะไรบ้าง) ================== */
 .mb-4 { margin-bottom: 1.5rem; }
 .sub-title {
   color: #1e3a8a;
@@ -631,50 +693,7 @@ const historyData = [
   line-height: 1.5;
 }
 
-.course-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
-  align-items: stretch; 
-}
-.course-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%; 
-}
-.card-img {
-  background-color: #edf2f7;
-  color: #718096;
-  border-radius: 12px;
-  height: 160px; 
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  flex-shrink: 0; 
-}
-
-.small-btn {
-  font-size: 0.9rem;
-  padding: 4px 4px 4px 16px;
-  width: fit-content;
-  margin: auto;
-}
-.small-btn .arrow-icon {
-  width: 28px;
-  height: 28px;
-  font-size: 1rem;
-  margin-left: 10px;
-}
-
+/* ================== Transitions ================== */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -684,6 +703,7 @@ const historyData = [
   opacity: 0;
 }
 
+/* ================== Timeline ================== */
 .history-section {
   margin-top: 60px;
   padding-bottom: 50px;
@@ -804,6 +824,7 @@ const historyData = [
   margin: 0 0 5px 0;
 }
 
+/* ================== Responsive ================== */
 @media (max-width: 768px) {
   .grid-2-col, .course-cards-grid, .year-grid {
     grid-template-columns: 1fr;
