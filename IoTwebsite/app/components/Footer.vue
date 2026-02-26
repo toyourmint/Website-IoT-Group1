@@ -5,10 +5,10 @@ const colorMode = useColorMode()
 <template>
   <footer class="footer">
     <div class="container footer-content">
-      
+
       <div class="footer-left">
 
-        <!-- ⭐ Logo เปลี่ยนตาม Dark Mode -->
+        <!-- Logo เปลี่ยนตาม Dark Mode -->
         <img
           :src="colorMode.value === 'dark'
             ? '/iote-logo-white.png'
@@ -22,15 +22,12 @@ const colorMode = useColorMode()
             <i class="fas fa-phone-alt icon"></i>
             <span>+662 329 8000</span>
           </div>
-          
-          <div class="contact-item align-top">
+
+          <div class="contact-item">
             <i class="fas fa-map-marker-alt icon"></i>
-            <span>
-              คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-              ชั้น 12 อาคารเรียนรวม 12 ชั้น<br>
-              เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>
-              กรุงเทพมหานคร 10520
-            </span>
+            <div class="contact-text">
+              {{ $t('footer.address') }}
+            </div>
           </div>
 
           <div class="contact-item">
@@ -52,11 +49,11 @@ const colorMode = useColorMode()
       </div>
 
       <div class="footer-right">
-        <h3 class="footer-heading">Admission</h3>
+        <h3 class="footer-heading">{{ $t('footer.admissionTitle') }}</h3>
         <ul class="footer-links">
-          <li><NuxtLink to="/admission">รอบ 1 Portfolio</NuxtLink></li>
-          <li><NuxtLink to="/admission">รอบ 2 Quota</NuxtLink></li>
-          <li><NuxtLink to="/admission">รอบ 3 Admission</NuxtLink></li>
+          <li><NuxtLink to="/admission">{{ $t('footer.round1') }}</NuxtLink></li>
+          <li><NuxtLink to="/admission">{{ $t('footer.round2') }}</NuxtLink></li>
+          <li><NuxtLink to="/admission">{{ $t('footer.round3') }}</NuxtLink></li>
         </ul>
       </div>
 
@@ -65,7 +62,7 @@ const colorMode = useColorMode()
     <div class="container">
       <hr class="footer-divider" />
       <div class="footer-bottom">
-        <p>King Mongkut's Institute of Technology Ladkrabang</p>
+        <p>{{ $t('footer.university') }}</p>
       </div>
     </div>
   </footer>
@@ -118,15 +115,21 @@ const colorMode = useColorMode()
 
 .contact-item {
   display: flex;
+  align-items: flex-start; /* ⭐ ให้ icon อยู่บน */
   gap: 15px;
   font-size: 14px;
 }
-
-.icon {
-  width: 20px;
-  color: #FFDCB7;
+.contact-text {
+  line-height: 1.7;
+  max-width: 520px;   /* ⭐ คุมความยาวบรรทัด */
 }
 
+.icon {
+  width: 22px;       /* ⭐ ทำให้ทุกไอคอนเริ่มตำแหน่งเท่ากัน */
+  flex-shrink: 0;    /* ⭐ ป้องกัน icon หด */
+  margin-top: 3px;   /* ⭐ ปรับให้ตรงบรรทัดแรก */
+  color: #FFDCB7;
+}
 .social-icons {
   display: flex;
   gap: 15px;
