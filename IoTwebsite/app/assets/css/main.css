@@ -16,3 +16,31 @@
   --color-green-900: #0A5331;
   --color-green-950: #052E16;
 }
+/* 🌞 Light mode */
+body {
+  background-color: #fdfbf7;
+  color: #1f2937;
+}
+
+/* 🌙 Dark mode */
+.dark body {
+  background-color: #0f172a;   /* slate-900 */
+  color: #e5e7eb;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  overflow-x: hidden; /* ป้องกันการเลื่อนซ้ายขวาถ้ามีอะไรล้น */
+}
+/* smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* image responsive */
+img {
+  max-width: 100%;
+  display: block;
+}
+ 
