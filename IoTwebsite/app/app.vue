@@ -161,7 +161,16 @@ onBeforeUnmount(() => {
 
 /* ===== HAMBURGER BUTTON ===== */
 .hamburger-btn {
-  display: flex;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hamburger-btn {
+    display: flex;
+  }
+}
+
+.hamburger-btn {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
