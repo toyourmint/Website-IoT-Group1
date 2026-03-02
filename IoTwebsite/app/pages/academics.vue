@@ -3,7 +3,7 @@
     <div class="hero-fullscreen">
       <div class="title-container">
         <h1 class="main-title">
-          Academics
+          {{ $t('pages.academics.title') }}
         </h1>
       </div>
 
@@ -13,19 +13,19 @@
             :class="{ active: activeTab === 'iot' }"
             @click="selectTab('iot')"
           >
-            IoT and information
+            {{ $t('pages.academics.tabs.iot') }}
           </button>
           <button
             :class="{ active: activeTab === 'dual' }"
             @click="selectTab('dual')"
           >
-            Dual Degree
+            {{ $t('pages.academics.tabs.dual') }}
           </button>
           <button
             :class="{ active: activeTab === 'ceiot' }"
             @click="selectTab('ceiot')"
           >
-            Computer Engineering and IoT
+            {{ $t('pages.academics.tabs.ceiot') }}
           </button>
         </div>
       </div>
@@ -46,73 +46,73 @@
         >
           <div class="content-box">
             <h2 class="box-title">
-              What is IoT and Information ?
+              {{ $t('pages.academics.iot.whatIsTitle') }}
             </h2>
             <ul class="custom-list">
               <li>
-                <strong>ไอโอที (IoT - Internet of Things) คืออะไร?</strong><br>
-                เทคโนโลยีที่เชื่อมต่ออุปกรณ์ต่างๆ (Hardware & Device) เข้าสู่เครือข่ายอินเทอร์เน็ต เพื่อให้สามารถรับส่งข้อมูล (Data Communication) และควบคุมการทำงานได้อัตโนมัติ (Automation) นำไปสู่การนำข้อมูลจากอุปกรณ์เหล่านั้นมาวิเคราะห์เพื่อใช้งานต่อ เช่น โครงการ Smart Home, Smart Farm หรือ Smart Factory
+                <strong>{{ $t('pages.academics.iot.q1') }}</strong><br>
+                {{ $t('pages.academics.iot.a1') }}
               </li>
               <li>
-                <strong>สารสนเทศ (Information) คืออะไร?</strong><br>
-                ระบบประมวลผลข้อมูลรูปแบบต่างๆ ผ่านการนำข้อมูล ที่รวบรวมได้จากอุปกรณ์เครือข่าย (Database), การประมวลผล (Processing), ไปจนถึงการวิเคราะห์ข้อมูล (Data Analysis) เพื่อนำไปใช้งานให้เกิดประโยชน์และช่วยให้การจัดการระบบเครือข่ายมีประสิทธิภาพและปลอดภัย (Cyber Security)
+                <strong>{{ $t('pages.academics.iot.q2') }}</strong><br>
+                {{ $t('pages.academics.iot.a2') }}
               </li>
               <li>
-                <strong>วิศวกรรมไอโอทีและสารสนเทศ คืออะไร?</strong><br>
-                หลักสูตรที่บูรณาการศาสตร์ทางด้าน "ไอโอที" (ฮาร์ดแวร์และระบบสมองกลฝังตัว) เข้ากับ "เทคโนโลยีสารสนเทศ" (จัดการข้อมูล) มุ่งเน้นสร้างวิศกรที่สามารถออกแบบและพัฒนาระบบอัจฉริยะ (Intelligent Systems) ที่ขับเคลื่อนด้วยข้อมูล ตอบโจทย์โลกยุคอุตสาหกรรมแห่งอนาคต (Industry 4.0 & 5.0)
+                <strong>{{ $t('pages.academics.iot.q3') }}</strong><br>
+                {{ $t('pages.academics.iot.a3') }}
               </li>
             </ul>
           </div>
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              Career Prospects
+              {{ $t('pages.academics.iot.careerTitle') }}
             </h2>
             <div class="grid-2-col">
               <div class="col-left">
                 <div class="career-group">
-                  <h4>ด้านฮาร์ดแวร์และระบบสมองกลฝังตัว (Hardware, Embedded & IoT)</h4>
+                  <h4>{{ $t('pages.academics.iot.careerGroup1') }}</h4>
                   <ul>
-                    <li>วิศวกรระบบไอโอที (IoT Engineer)</li>
-                    <li>วิศวกรระบบสมองกลฝังตัว (Embedded System Engineer)</li>
-                    <li>วิศวกรซอฟต์แวร์ระบบสมองกลฝังตัว (Embedded Software Engineer)</li>
+                    <li>{{ $t('pages.academics.iot.careerList1_1') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList1_2') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList1_3') }}</li>
                   </ul>
                 </div>
                 <div class="career-group">
-                  <h4>ด้านซอฟต์แวร์และแอปพลิเคชัน (Software & Application Development)</h4>
+                  <h4>{{ $t('pages.academics.iot.careerGroup2') }}</h4>
                   <ul>
-                    <li>วิศวกรซอฟต์แวร์ (Software Engineer)</li>
-                    <li>โปรแกรมเมอร์ (Programmer)</li>
-                    <li>นักพัฒนาแอปพลิเคชัน (Application Developer)</li>
-                    <li>นักพัฒนาส่วนหน้า (Front End Developer)</li>
-                    <li>นักพัฒนาส่วนหลัง (Back End Developer)</li>
-                    <li>นักพัฒนาฟูลสแต็ก (Full Stack Developer)</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_1') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_2') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_3') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_4') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_5') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList2_6') }}</li>
                   </ul>
                 </div>
               </div>
               <div class="col-right">
                 <div class="career-group">
-                  <h4>ด้านข้อมูลและระบบสารสนเทศ (Data & Information Systems)</h4>
+                  <h4>{{ $t('pages.academics.iot.careerGroup3') }}</h4>
                   <ul>
-                    <li>นักวิทยาศาสตร์ข้อมูล (Data Scientist)</li>
-                    <li>วิศวกรข้อมูล (Data Engineer)</li>
-                    <li>วิศวกรระบบสารสนเทศ (Information System Engineer)</li>
+                    <li>{{ $t('pages.academics.iot.careerList3_1') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList3_2') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList3_3') }}</li>
                   </ul>
                 </div>
                 <div class="career-group">
-                  <h4>ด้านโครงสร้างพื้นฐานและเครือข่าย (Infrastructure, Network & Cloud)</h4>
+                  <h4>{{ $t('pages.academics.iot.careerGroup4') }}</h4>
                   <ul>
-                    <li>วิศวกรระบบเครือข่าย (Network Engineer)</li>
-                    <li>วิศวกรคลาวด์ (Cloud Engineer)</li>
-                    <li>ผู้ดูแลระบบ (System Administrator)</li>
+                    <li>{{ $t('pages.academics.iot.careerList4_1') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList4_2') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList4_3') }}</li>
                   </ul>
                 </div>
                 <div class="career-group">
-                  <h4>กลุ่มงานวิชาการและผู้ประกอบการ (Academic & Business)</h4>
+                  <h4>{{ $t('pages.academics.iot.careerGroup5') }}</h4>
                   <ul>
-                    <li>นักวิจัย / นักวิชาการ</li>
-                    <li>เจ้าของธุรกิจส่วนตัว (Startup / Tech Business)</li>
-                    <li>อาชีพอื่น ๆ ที่เกี่ยวข้องกับเทคโนโลยีและนวัตกรรม</li>
+                    <li>{{ $t('pages.academics.iot.careerList5_1') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList5_2') }}</li>
+                    <li>{{ $t('pages.academics.iot.careerList5_3') }}</li>
                   </ul>
                 </div>
               </div>
@@ -126,22 +126,22 @@
                   :src="'/img/logo/Why_IoT.jpg'"
                   alt="Why IoTE"
                 >
-                <h3>ภาควิชาวิศวกรรมคอมพิวเตอร์</h3>
-                <p>DEPARTMENT OF IOT AND INFORMATION ENGINEERING</p>
+                <h3>{{ $t('pages.academics.iot.imgDept') }}</h3>
+                <p>{{ $t('pages.academics.iot.imgSubDept') }}</p>
               </div>
             </div>
             <div class="text-area">
               <h2 class="text-navy">
-                Why IoTE KMITL?
+                {{ $t('pages.academics.iot.whyTitle') }}
               </h2>
-              <p>หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมไอโอทีและสารสนเทศ มุ่งเน้นสร้างบัณฑิต ในการเป็นนวัตกร สร้างสรรค์ผลงานเทคโนโลยีที่ตอบโจทย์ความต้องการของประเทศ โดยบูรณาการความรู้พื้นฐานทางวิศวกรรมคอมพิวเตอร์และเทคโนโลยีสารสนเทศ สำคัญ 4 ด้าน ได้แก่ ระบบสมองกลฝังตัวและอุปกรณ์อัจฉริยะ, การพัฒนาโปรแกรมและซอฟต์แวร์, ระบบเครือข่ายอินเทอร์เน็ต, และการประยุกต์ใช้ข้อมูลเพื่อแก้ปัญหาและบริหารจัดการข้อมูล เพื่อให้ผู้เรียนสามารถออกแบบและสร้างสรรค์นวัตกรรมที่ตอบโจทย์การแก้ปัญหาของภาคอุตสาหกรรมอย่างมีประสิทธิภาพ พร้อมทั้งส่งเสริมทักษะทางภาษาและการเป็นผู้ประกอบการ เพื่อให้ผู้เรียนพร้อมเป็นผู้นำและก้าวสู่การทำงานในระดับสากล</p>
+              <p>{{ $t('pages.academics.iot.whyDesc') }}</p>
               <div class="action-btn-container">
                 <a
                   href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing"
                   target="_blank"
                   class="outline-btn"
                 >
-                  หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ <span class="arrow-icon">➔</span>
+                  {{ $t('pages.academics.iot.btnCourse') }} <span class="arrow-icon">➔</span>
                 </a>
               </div>
             </div>
@@ -149,44 +149,44 @@
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              วิศวกรรมไอโอทีและสารสนเทศ เรียนอะไรบ้าง ?
+              {{ $t('pages.academics.iot.learnTitle') }}
             </h2>
             <p class="desc-text mb-4">
-              <strong>ภาพรวม:</strong> เน้นเรียน 4 แกนหลัก คือ Hardware (อุปกรณ์/วงจร), Software (เขียนโปรแกรม/แอปพลิเคชัน), Network (เครือข่ายสื่อสาร), และ Data/AI (ข้อมูล/ปัญญาประดิษฐ์)
+              <strong>{{ $t('pages.academics.iot.learnOverview') }}</strong>
             </p>
 
             <h3 class="sub-title">
-              เจาะลึกรายชั้นปี (อ้างอิงหลักสูตรปรับปรุง พ.ศ. 2569):
+              {{ $t('pages.academics.iot.learnSub') }}
             </h3>
 
             <div class="year-grid">
               <div class="year-card">
                 <div class="year-badge">
-                  ปี 1
+                  {{ $t('pages.academics.iot.y1Badge') }}
                 </div>
-                <h4>ปูพื้นฐานวิศวกรรมและไอโอที</h4>
-                <p>เรียนวิชาพื้นฐานวิทยาศาสตร์-คณิตศาสตร์, การเขียนโปรแกรมคอมพิวเตอร์ (Programming), พื้นฐานทางวิศวกรรมวิชาชีพ และความรู้เบื้องต้นเกี่ยวกับไอโอทีและสารสนเทศ</p>
+                <h4>{{ $t('pages.academics.iot.y1Title') }}</h4>
+                <p>{{ $t('pages.academics.iot.y1Desc') }}</p>
               </div>
               <div class="year-card">
                 <div class="year-badge">
-                  ปี 2
+                  {{ $t('pages.academics.iot.y2Badge') }}
                 </div>
-                <h4>เจาะลึกเทคนิคและเครื่องมือ</h4>
-                <p>เรียนรู้ระบบวงจรดิจิทัล, อิเล็กทรอนิกส์, เครือข่ายคอมพิวเตอร์ (Computer Networks), การเขียนโปรแกรมเชิงวัตถุ (OOP), และเครื่องมือทางวิศวกรรมสำหรับวิเคราะห์และออกแบบระบบ</p>
+                <h4>{{ $t('pages.academics.iot.y2Title') }}</h4>
+                <p>{{ $t('pages.academics.iot.y2Desc') }}</p>
               </div>
               <div class="year-card">
                 <div class="year-badge">
-                  ปี 3
+                  {{ $t('pages.academics.iot.y3Badge') }}
                 </div>
-                <h4>ประยุกต์ใช้และสร้างระบบขั้นสูง</h4>
-                <p>เน้นวิชาระบบสมองกลฝังตัว (Embedded Systems), การจัดการฐานข้อมูล, การสื่อสารข้อมูล, ความปลอดภัยทางไซเบอร์ (Cyber Security), และการวิเคราะห์ข้อมูลขั้นสูง ลงมือทำโปรเจกต์พัฒนาระบบ IoT ทั้งฮาร์ดแวร์และซอฟต์แวร์</p>
+                <h4>{{ $t('pages.academics.iot.y3Title') }}</h4>
+                <p>{{ $t('pages.academics.iot.y3Desc') }}</p>
               </div>
               <div class="year-card">
                 <div class="year-badge">
-                  ปี 4
+                  {{ $t('pages.academics.iot.y4Badge') }}
                 </div>
-                <h4>เตรียมพร้อมสู่อุตสาหกรรม</h4>
-                <p>ทำโครงงานวิศวกรรม (Capstone Project) หรือ สหกิจศึกษา (Co-operative Education) ปฏิบัติงานจริงในสถานประกอบการ และเรียนรู้หัวข้อเทคโนโลยีสมัยใหม่เพื่อก้าวสู่อาชีพวิศวกรมืออาชีพ</p>
+                <h4>{{ $t('pages.academics.iot.y4Title') }}</h4>
+                <p>{{ $t('pages.academics.iot.y4Desc') }}</p>
               </div>
             </div>
           </div>
@@ -198,41 +198,41 @@
           class="tab-content"
         >
           <div class="text-center-box">
-            <h2>หลักสูตรสองปริญญา (ควบ 2 ปริญญา) <br>(Dual Degree)</h2>
+            <h2>{{ $t('pages.academics.dual.title1') }}</h2>
             <h3>
-              คณะวิศวกรรมศาสตร์และคณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-              วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ และ วท.บ. ฟิสิกส์อุตสาหกรรม
+              {{ $t('pages.academics.dual.title2') }}<br>
+              {{ $t('pages.academics.dual.title3') }}
             </h3>
             <p class="desc-text">
-              โปรแกรม 2 ปริญญา (Dual Degree) ตอบโจทย์โลกยุคใหม่ ผลิตบุคลากรที่มีความเชี่ยวชาญทั้งด้านวิศวกรรมและวิทยาศาสตร์ประยุกต์ (ฟิสิกส์) เข้าด้วยกันอย่างลงตัว... ผู้เรียนจะได้รับวุฒิปริญญาตรี 2 ใบ... เรียนรู้ตั้งแต่พื้นฐานทางฟิสิกส์ การออกแบบระบบฮาร์ดแวร์และซอฟต์แวร์ ไปจนถึงการนำไปประยุกต์ใช้งานในภาคอุตสาหกรรม ตอบโจทย์เทคโนโลยีแห่งอนาคต เช่น Smart Electronics, Smart Agriculture, Smart Factory และ Smart City
+              {{ $t('pages.academics.dual.desc') }}
             </p>
           </div>
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              Career Prospects
+              {{ $t('pages.academics.dual.careerTitle') }}
             </h2>
             <div class="grid-2-col">
               <div class="career-group">
-                <h4>ด้านวิศวกรรมและฮาร์ดแวร์ (Hardware, Embedded & IoT)</h4>
+                <h4>{{ $t('pages.academics.dual.careerGroup1') }}</h4>
                 <ul>
-                  <li>วิศวกรระบบไอโอที (IoT Engineer)</li>
-                  <li>วิศวกรระบบสมองกลฝังตัว (Embedded System Engineer)</li>
-                  <li>นักวิจัยและพัฒนาฮาร์ดแวร์ (Hardware R&D Engineer)</li>
-                  <li>นักประดิษฐ์ (Inventor)</li>
+                  <li>{{ $t('pages.academics.dual.careerList1_1') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList1_2') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList1_3') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList1_4') }}</li>
                 </ul>
               </div>
               <div class="career-group">
-                <h4>ด้านซอฟต์แวร์และแอปพลิเคชัน (Software & Application Development & Data)</h4>
+                <h4>{{ $t('pages.academics.dual.careerGroup2') }}</h4>
                 <ul>
-                  <li>วิศวกรซอฟต์แวร์ (Software Engineer)</li>
-                  <li>โปรแกรมเมอร์ (Programmer)</li>
-                  <li>นักพัฒนาแอปพลิเคชัน (Application Developer)</li>
-                  <li>นักพัฒนาส่วนหน้า (Front End Developer)</li>
-                  <li>นักพัฒนาส่วนหลัง (Back End Developer)</li>
-                  <li>นักพัฒนาฟูลสแต็ก (Full Stack Developer)</li>
-                  <li>นักวิทยาศาสตร์ข้อมูล (Data Scientist)</li>
-                  <li>วิศวกรข้อมูล (Data Engineer)</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_1') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_2') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_3') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_4') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_5') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_6') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_7') }}</li>
+                  <li>{{ $t('pages.academics.dual.careerList2_8') }}</li>
                 </ul>
               </div>
             </div>
@@ -251,7 +251,7 @@
                 target="_blank"
                 class="outline-btn small-btn"
               >
-                หลักสูตรวิศวกรรมระบบไอโอทีและ<br>สารสนเทศ <span class="arrow-icon">➔</span>
+                {{ $t('pages.academics.dual.btnCourseIot') }} <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
@@ -266,7 +266,7 @@
                 target="_blank"
                 class="outline-btn small-btn"
               >
-                หลักสูตรฟิสิกส์อุตสาหกรรม <span class="arrow-icon">➔</span>
+                {{ $t('pages.academics.dual.btnCoursePhy') }} <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
@@ -281,7 +281,7 @@
                 target="_blank"
                 class="outline-btn small-btn"
               >
-                หลักสูตร 2 ปริญญา <span class="arrow-icon">➔</span>
+                {{ $t('pages.academics.dual.btnCourseDual') }} <span class="arrow-icon">➔</span>
               </a>
             </div>
           </div>
@@ -293,57 +293,57 @@
           class="tab-content"
         >
           <div class="text-center-box">
-            <h2>หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <br>(หลักสูตรต่อเนื่อง)</h2>
+            <h2>{{ $t('pages.academics.ceiot.title1') }}</h2>
             <h3
               class="text-navy"
               style="font-weight: 600; font-size: 1.25rem; margin-top: 15px;"
             >
-              “จาก ปวส. สู่ วิศวกรเต็มตัว ทันสมัยที่สุดด้วย AI, IoT และ Digital Technology”
+              {{ $t('pages.academics.ceiot.quote') }}
             </h3>
             <p class="desc-text mt-3">
-              หลักสูตรนี้ถูกออกแบบมาเพื่อ Upgrade ผู้ที่มีวุฒิประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) ให้ก้าวขึ้นเป็นวิศวกรที่มีทักษะระดับสูง รองรับยุค Digital Transformation อย่างแท้จริง โดยเน้นการเรียนที่ “ทำได้จริง” และ “พร้อมเข้าสู่อุตสาหกรรม”
+              {{ $t('pages.academics.ceiot.desc') }}
             </p>
           </div>
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              ชื่อปริญญาและสาขาวิชา
+              {{ $t('pages.academics.ceiot.degTitle') }}
             </h2>
             <ul class="custom-list">
-              <li><strong>ชื่อเต็ม (ภาษาไทย):</strong> วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์และไอโอที</li>
-              <li><strong>ชื่อเต็ม (ภาษาอังกฤษ):</strong> Bachelor of Engineering Program in Computer Engineering and IoT</li>
-              <li><strong>ชื่อย่อ (ภาษาไทย):</strong> วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที</li>
-              <li><strong>ชื่อย่อ (ภาษาอังกฤษ):</strong> B.Eng. Computer Engineering and IoT</li>
-              <li><strong>จำนวนหน่วยกิตที่เรียนตลอดหลักสูตร:</strong> 118 หน่วยกิต (หลักสูตรปริญญาตรีต่อเนื่อง 3 ปี)</li>
+              <li>{{ $t('pages.academics.ceiot.degList1') }}</li>
+              <li>{{ $t('pages.academics.ceiot.degList2') }}</li>
+              <li>{{ $t('pages.academics.ceiot.degList3') }}</li>
+              <li>{{ $t('pages.academics.ceiot.degList4') }}</li>
+              <li>{{ $t('pages.academics.ceiot.degList5') }}</li>
             </ul>
           </div>
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              Career Prospects (ตำแหน่งงานที่สามารถประกอบอาชีพได้)
+              {{ $t('pages.academics.ceiot.careerTitle') }}
             </h2>
             <div class="grid-2-col">
               <div class="col-left">
                 <div class="career-group">
                   <ul>
-                    <li>วิศวกรไอโอที (IoT Engineer)</li>
-                    <li>วิศวกรรมระบบสมองกลฝังตัว (Embedded System Engineer / Embedded Software Engineering)</li>
-                    <li>วิศวกรระบบสารสนเทศ (Information Engineer / IT Engineer)</li>
-                    <li>วิศวกรคอมพิวเตอร์ (Computer Engineer)</li>
-                    <li>โปรแกรมเมอร์ (Programmer)</li>
-                    <li>นักพัฒนาแอพพลิเคชัน (Application Developer)</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_1') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_2') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_3') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_4') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_5') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_6') }}</li>
                   </ul>
                 </div>
               </div>
               <div class="col-right">
                 <div class="career-group">
                   <ul>
-                    <li>วิศวกรข้อมูล (Data Engineer)</li>
-                    <li>นักวิทยาการข้อมูล (Data Scientist)</li>
-                    <li>นักวิจัย/วิศวกรวิจัยและพัฒนา (Researcher / R&D Engineer)</li>
-                    <li>วิศวกรเครือข่าย (Network Engineer)</li>
-                    <li>วิศวกรคลาวด์ (Cloud Engineer)</li>
-                    <li>วิศวกรปัญญาประดิษฐ์ / การเรียนรู้ของเครื่อง (AI / ML Engineer)</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_7') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_8') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_9') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_10') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_11') }}</li>
+                    <li>{{ $t('pages.academics.ceiot.careerList_12') }}</li>
                   </ul>
                 </div>
               </div>
@@ -352,16 +352,16 @@
 
           <div class="content-box">
             <h2 class="box-title text-navy">
-              ผลลัพธ์การเรียนรู้ระดับหลักสูตร (PLOs)
+              {{ $t('pages.academics.ceiot.ploTitle') }}
             </h2>
             <ul class="custom-list">
-              <li><strong>PLO 1:</strong> ประยุกต์ความรู้ทางวิศวกรรมคอมพิวเตอร์ในด้านฮาร์ดแวร์ เครือข่าย ซอฟต์แวร์ และเทคโนโลยีไอโอทีเพื่อแก้ปัญหาทางวิศวกรรมได้อย่างเหมาะสม</li>
-              <li><strong>PLO 2:</strong> ออกแบบและพัฒนาระบบหรือโซลูชันทางวิศวกรรมคอมพิวเตอร์และไอโอทีที่ตอบสนองความต้องการที่กำหนด โดยคำนึงถึงความมั่นคงปลอดภัยทางไซเบอร์และประสิทธิภาพของระบบ</li>
-              <li><strong>PLO 3:</strong> บูรณาการองค์ความรู้ทางวิศวกรรมคอมพิวเตอร์และไอโอที (ตั้งแต่ระดับอุปกรณ์ การสื่อสาร แพลตฟอร์ม จนถึงส่วนต่อประสานผู้ใช้) เพื่อแก้ปัญหาทางวิศวกรรมของภาคอุตสาหกรรมได้อย่างมีประสิทธิภาพ ปรับตัวและเรียนรู้เทคโนโลยีใหม่ที่เกี่ยวข้องได้อย่างต่อเนื่อง</li>
-              <li><strong>PLO 4:</strong> จัดทำโครงงานเพื่อแก้ปัญหาของภาคอุตสาหกรรมได้อย่างเหมาะสม ผ่านกระบวนการเรียนรู้ด้วยตนเอง</li>
-              <li><strong>PLO 5:</strong> มีทักษะปฏิบัติในการเลือกและใช้งาน รวมถึงการทดสอบเครื่องมือ อุปกรณ์ ซอฟต์แวร์ และวิธีการทางวิศวกรรมในการปฏิบัติงานด้านวิศวกรรมคอมพิวเตอร์และไอโอทีได้อย่างถูกต้อง</li>
-              <li><strong>PLO 6:</strong> ทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ ทั้งในบทบาทผู้นำและผู้ตาม สื่อสารทางเทคนิคและนำเสนอผลงานวิชาชีพเป็นภาษาไทยและภาษาอังกฤษได้อย่างเหมาะสมกับบริบท</li>
-              <li><strong>PLO 7:</strong> ยึดมั่นในหลักคุณธรรม จริยธรรม และความรับผิดชอบต่อสังคมและสิ่งแวดล้อม ในการประกอบวิชาชีพทางวิศวกรรมคอมพิวเตอร์และไอโอที</li>
+              <li>{{ $t('pages.academics.ceiot.plo1') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo2') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo3') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo4') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo5') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo6') }}</li>
+              <li>{{ $t('pages.academics.ceiot.plo7') }}</li>
             </ul>
           </div>
 
@@ -374,7 +374,7 @@
               target="_blank"
               class="outline-btn"
             >
-              หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <span class="arrow-icon">➔</span>
+              {{ $t('pages.academics.ceiot.btnCourse') }} <span class="arrow-icon">➔</span>
             </a>
           </div>
         </div>
@@ -382,7 +382,7 @@
 
       <div class="history-section">
         <h2 class="history-title">
-          History of IoTE KMITL
+          {{ $t('pages.academics.history.title') }}
         </h2>
         <div class="timeline-container">
           <div class="timeline-line" />
@@ -390,7 +390,7 @@
           <div class="timeline-endpoint start-endpoint">
             <div class="endpoint-dot" />
             <div class="endpoint-text">
-              start
+              {{ $t('pages.academics.history.start') }}
             </div>
           </div>
 
@@ -419,7 +419,7 @@
           <div class="timeline-endpoint now-endpoint">
             <div class="endpoint-dot" />
             <div class="endpoint-text">
-              NOW
+              {{ $t('pages.academics.history.now') }}
             </div>
           </div>
         </div>
@@ -429,8 +429,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const activeTab = ref('iot')
 const contentArea = ref(null)
 
@@ -443,77 +445,78 @@ const selectTab = (tabName) => {
   }, 100)
 }
 
-const historyData = [
+// ใช้ computed เพื่อให้ข้อมูล History เปลี่ยนตามภาษาอัตโนมัติ
+const historyData = computed(() => [
   {
     year: '1974',
     align: 'left',
     text: [
-      'เปิดรับนักศึกษารุ่นแรกในชื่อ "ภาควิชาเทคโนโลยีการเกษตร"',
-      'คณะวิศวกรรมศาสตร์ สจล.',
-      'เป็นหลักสูตรประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)',
-      'และประกาศนียบัตรวิชาชีพเทคนิค (ปวท.) (รอบเช้า)'
+      t('pages.academics.history.y1974_1'),
+      t('pages.academics.history.y1974_2'),
+      t('pages.academics.history.y1974_3'),
+      t('pages.academics.history.y1974_4')
     ]
   },
   {
     year: '1975',
     align: 'right',
     text: [
-      'ได้รับอนุมัติหลักสูตรระดับปริญญาตรี',
-      'จัดการเรียนการสอน 3 ปี สำหรับผู้จบ ปวส.',
-      '(ต่อเนื่อง/นักศึกษาภาคสมทบ/รอบค่ำ)'
+      t('pages.academics.history.y1975_1'),
+      t('pages.academics.history.y1975_2'),
+      t('pages.academics.history.y1975_3')
     ]
   },
   {
     year: '1998',
     align: 'left',
     text: [
-      'ได้รับอนุมัติเปลี่ยนชื่อเป็น "วิศวกรรมสารสนเทศ" (วท.บ.)',
-      'ขยายเวลาเรียนเป็น 4 ปี',
-      'เปิดรับผู้จบ ปวช. และ ม.6 (สายวิทย์-คณิต)',
-      'เริ่มดำเนินการโครงการเพิ่มโอกาสทางการศึกษาให้แก่สถานประกอบการ'
+      t('pages.academics.history.y1998_1'),
+      t('pages.academics.history.y1998_2'),
+      t('pages.academics.history.y1998_3'),
+      t('pages.academics.history.y1998_4')
     ]
   },
   {
     year: '2001',
     align: 'right',
     text: [
-      '4 พฤศจิกายน วางศิลาฤกษ์อาคารปฏิบัติการรวมที่ใช้เป็นชื่อว่า',
-      '"อาคารวิศวกรรมสารสนเทศ"',
-      'ปรับปรุงหลักสูตรใหม่ เน้นความรู้ครอบคลุม คอมพิวเตอร์,',
-      'โทรคมนาคม, อิเล็กทรอนิกส์, การจัดการข้อมูล',
-      'เพื่อรองรับตลาดแรงงาน IT'
+      t('pages.academics.history.y2001_1'),
+      t('pages.academics.history.y2001_2'),
+      t('pages.academics.history.y2001_3'),
+      t('pages.academics.history.y2001_4'),
+      t('pages.academics.history.y2001_5')
     ]
   },
   {
     year: '2010',
     align: 'left',
     text: [
-      'คณะวิศวกรรมศาสตร์ปรับโครงสร้างใหม่',
-      'ยุบรวมภาควิชาวิศวกรรมคอมพิวเตอร์และวิศวกรรมสารสนเทศ',
-      'เปลี่ยนชื่อเป็น "ภาควิชาวิศวกรรมคอมพิวเตอร์"'
+      t('pages.academics.history.y2010_1'),
+      t('pages.academics.history.y2010_2'),
+      t('pages.academics.history.y2010_3')
     ]
   },
   {
     year: '2020',
     align: 'right',
     text: [
-      'ขอเปิดนักศึกษาในภาควิชา เพื่อเตรียมปรับปรุงหลักสูตรครั้งใหญ่'
+      t('pages.academics.history.y2020_1')
     ]
   },
   {
     year: '2021',
     align: 'left',
     text: [
-      'ปรับปรุงและเปลี่ยนชื่อหลักสูตรเป็น',
-      '"วิศวกรรมระบบไอโอทีและสารสนเทศ"',
-      'มีแผนการเรียนแบบ Disruptive Curriculum เพื่อความทันสมัย',
-      'สร้างความร่วมมือกับคณะ (ทำหลักสูตร 2 ปริญญา',
-      'ร่วมกับสาขาวิชาฟิสิกส์ คณะวิทยาศาสตร์)',
-      'เปิดหลักสูตรวิชาโท (Minor Program)',
-      'ข้ามสาขาเพื่อให้ตอบโจทย์ความสนใจและสร้างความหลากหลาย'
+      t('pages.academics.history.y2021_1'),
+      t('pages.academics.history.y2021_2'),
+      t('pages.academics.history.y2021_3'),
+      t('pages.academics.history.y2021_4'),
+      t('pages.academics.history.y2021_5'),
+      t('pages.academics.history.y2021_6'),
+      t('pages.academics.history.y2021_7')
     ]
   }
-]
+])
 </script>
 
 <style scoped>
