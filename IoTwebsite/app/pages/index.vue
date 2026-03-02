@@ -1,52 +1,94 @@
 <template>
   <div class="home-container">
+    <div class="global-background-decoration">
+      <div class="g-square sq-a" />
+      <div class="g-square sq-b" />
+      <div class="g-square sq-c" />
+      <div class="g-square sq-d" />
+      <div class="g-square sq-e" />
+      <div class="g-square sq-f" />
+      <div class="g-square sq-g" />
+      <div class="g-square sq-h" />
+      <div class="g-square sq-i" />
+      <div class="g-square sq-j" />
+      <div class="g-square sq-k" />
+      <div class="g-square sq-l" />
+    </div>
+
     <section class="hero-section">
+      <div class="hero-floating-elements">
+        <Icon
+          name="fa6-solid:wifi"
+          class="hero-float-item icon-wifi"
+        />
+        <Icon
+          name="bi:sd-card"
+          class="hero-float-item icon-sd"
+        />
+        <div class="hero-float-item text-binary">
+          <span>0101</span><br><span>1001</span>
+        </div>
+        <Icon
+          name="bx:chip"
+          class="hero-float-item icon-chip"
+        />
+        <Icon
+          name="carbon:network-4"
+          class="hero-float-item icon-network"
+        />
+        <div class="hero-float-item icon-iot-text">
+          <Icon
+            name="mdi:wifi"
+            class="iot-wifi"
+          />
+          <span>IoT</span>
+        </div>
+        <Icon
+          name="mdi:monitor-cellphone"
+          class="hero-float-item icon-devices"
+        />
+        <div class="hero-float-item hero-square sq-1" />
+        <div class="hero-float-item hero-square sq-2" />
+        <div class="hero-float-item hero-square sq-3" />
+        <div class="hero-float-item hero-square sq-4" />
+      </div>
+
       <div class="hero-content">
-        <h1>Department of IoT and Information Engineering</h1>
+        <h1>Department of IoT and<br>Information Engineering</h1>
         <p>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
       </div>
     </section>
 
-    <section class="features-section">
-      <h2>Curriculum Information</h2>
-
-      <div class="slider-wrapper">
-        <button
-          class="nav-btn left-btn"
-          @click="scrollLeft"
-        >
-          ❮
-        </button>
-
-        <div
-          ref="scrollContainer"
-          class="features-grid"
-        >
+    <section
+      ref="featuresSectionRef"
+      class="features-section"
+    >
+      <div class="section-content">
+        <h2>Curriculum Information</h2>
+        <div class="slider-wrapper">
           <div
-            v-for="(feature, index) in features"
-            :key="index"
-            class="feature-card"
+            class="features-grid"
+            :class="{ 'is-visible': isFeaturesVisible }"
           >
-            <Icon
-              :name="feature.icon"
-              class="card-icon"
-            />
-            <h3>{{ feature.title }}</h3>
-            <p>{{ feature.description }}</p>
+            <div
+              v-for="(feature, index) in features"
+              :key="index"
+              class="feature-card"
+            >
+              <Icon
+                :name="feature.icon"
+                class="card-icon"
+              />
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.description }}</p>
+            </div>
           </div>
         </div>
-
-        <button
-          class="nav-btn right-btn"
-          @click="scrollRight"
-        >
-          ❯
-        </button>
       </div>
     </section>
 
     <section class="info-section">
-      <div class="info-grid">
+      <div class="info-grid section-content">
         <div
           v-for="(info, index) in infoCards"
           :key="index"
@@ -65,41 +107,93 @@
               </div>
             </NuxtLink>
           </div>
-
           <div class="info-image">
             <img
               :src="info.Image"
               alt="IoT Information"
-              style="width: 100%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
             >
           </div>
         </div>
       </div>
     </section>
-    <section class="fame-section">
-      <h2>Hall of Fame</h2>
 
-      <div class="fame-container">
-        <div class="card-stack">
+    <section class="news-section">
+      <div class="section-content">
+        <h2>News & Announcements</h2>
+        <div class="news-list">
           <div
-            v-for="(fame, index) in fameCards.slice(0, 3)"
-            :key="fame.id"
-            :class="['stack-card', `pos-${index}`]"
-            @click="nextCard"
-          />
-        </div>
-
-        <div class="fame-description-box">
-          <p v-if="fameCards.length > 0">
-            {{ fameCards[0].description }}
-          </p>
+            v-for="(news, index) in newsItems"
+            :key="index"
+            class="news-item"
+          >
+            <div class="news-image-container">
+              <img
+                :src="news.image"
+                alt="News Image"
+              >
+            </div>
+            <div class="news-text-content">
+              <h3>{{ news.title }}</h3>
+              <p>{{ news.summary }}</p>
+              <NuxtLink
+                :to="news.link"
+                class="btn-more"
+              >
+                <span>Read More</span>
+                <div class="icon-circle">
+                  <Icon name="mdi:arrow-right" />
+                </div>
+              </NuxtLink>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <section class="act-section">
-      <div class="act-content">
-        <h2>Activities</h2>
 
+    <section class="fame-section">
+      <div class="section-content">
+        <h2>Hall of Fame</h2>
+        <div class="fame-container">
+          <div class="card-stack">
+            <button
+              class="fame-nav-btn fame-left"
+              @click.stop="prevCard"
+            >
+              ❮
+            </button>
+            <div
+              v-for="(fame, index) in fameCards.slice(0, 3)"
+              :key="fame.id"
+              :class="['stack-card', `pos-${index}`]"
+              @click="nextCard"
+            >
+              <div class="fame-image">
+                <img
+                  :src="fame.image"
+                  :alt="fame.description"
+                >
+              </div>
+            </div>
+            <button
+              class="fame-nav-btn fame-right"
+              @click.stop="nextCard"
+            >
+              ❯
+            </button>
+          </div>
+          <div class="fame-description-box">
+            <p v-if="fameCards.length > 0">
+              {{ fameCards[0].description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="act-section">
+      <div class="act-content section-content">
+        <h2>Activities</h2>
         <div class="act-gallery">
           <div class="act-left">
             <div class="act-large-image">
@@ -110,7 +204,6 @@
               >
             </div>
           </div>
-
           <div class="act-right">
             <div
               v-for="(act, index) in activities.slice(1, 7)"
@@ -130,91 +223,86 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
+// --- ข้อมูล Curriculum ---
 const features = ref([
-  {
-    title: 'Bachelor of Engineering (Computer and IoT)(Continuing Program)',
-    description: 'ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (คอมพิวเตอร์และไอโอที) หลักสูตรต่อเนื่อง',
-    icon: 'mdi:school-outline'
-  },
-  {
-    title: 'Bachelor of Engineering (IoT System and Information)',
-    description: 'ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (วิศวกรรมไอโอทีและสารสนเทศ)',
-    icon: 'carbon:skill-level-advanced'
-  },
-  {
-    title: 'Dual Degree (B.Eng. IoT System and Information + B.Sc.Industrial Physics)',
-    description: 'วท.บ. ฟิสิกส์อุตสาหกรรม และ วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ (หลักสูตรสองปริญญา)',
-    icon: 'ph:certificate-fill'
-  },
-  {
-    title: 'Master of Engineering  and Doctor of Philosophy(AIOT and Information)',
-    description: 'ปริญญาโท วิศวกรรมศาสตรมหาบัณฑิต (เอไอโอทีและสารสนเทศ) และ ปริญญาเอก ปรัชญาดุษฎีบัณฑิต (เอไอโอทีและสารสนเทศ)',
-    icon: 'mdi:head-cog-outline'
-  }
+  { title: 'Bachelor of Engineering (Computer and IoT)(Continuing Program)', description: 'ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (คอมพิวเตอร์และไอโอที) หลักสูตรต่อเนื่อง', icon: 'mdi:school-outline' },
+  { title: 'Bachelor of Engineering (IoT System and Information)', description: 'ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (วิศวกรรมไอโอทีและสารสนเทศ)', icon: 'carbon:skill-level-advanced' },
+  { title: 'Dual Degree (B.Eng. IoT System and Information + B.Sc.Industrial Physics)', description: 'วท.บ. ฟิสิกส์อุตสาหกรรม และ วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ (หลักสูตรสองปริญญา)', icon: 'ph:certificate-fill' },
+  { title: 'Master of Engineering  and Doctor of Philosophy(AIOT and Information)', description: 'ปริญญาโท วิศวกรรมศาสตรมหาบัณฑิต (เอไอโอทีและสารสนเทศ) และ ปริญญาเอก ปรัชญาดุษฎีบัณฑิต (เอไอโอทีและสารสนเทศ)', icon: 'mdi:head-cog-outline' }
 ])
 
-// 3. สร้าง ref สำหรับเก็บค่า DOM Element ของกล่อง Scroll
-const scrollContainer = ref(null)
+const featuresSectionRef = ref(null)
+const isFeaturesVisible = ref(false)
 
-// 4. ฟังก์ชันเลื่อนซ้าย
-const scrollLeft = () => {
-  if (scrollContainer.value) {
-    // เลื่อนไปทางซ้าย 320px (ขนาดการ์ด 300 + ช่องว่าง 20)
-    scrollContainer.value.scrollBy({ left: -320, behavior: 'smooth' })
-  }
-}
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      isFeaturesVisible.value = true
+      observer.disconnect()
+    }
+  }, { threshold: 0.2 })
 
-// 5. ฟังก์ชันเลื่อนขวา
-const scrollRight = () => {
-  if (scrollContainer.value) {
-    // เลื่อนไปทางขวา 320px
-    scrollContainer.value.scrollBy({ left: 320, behavior: 'smooth' })
-  }
-}
+  if (featuresSectionRef.value) { observer.observe(featuresSectionRef.value) }
+})
 
+// --- ข้อมูล Info ---
 const infoCards = ref([
+  { title: 'What is IoTE?', description: '" วิศวกรรมไอโอทีและสารสนเทศ " มุ่งเน้นการบูรณาการความรู้แบบสหวิทยาการอย่างครบวงจร ทั้งด้าน ฮาร์ดแวร์ , ซอฟต์แวร์ , ระบบเครือข่าย, และปัญญาประดิษฐ์โดยมีเป้าหมายให้ผู้เรียนสามารถประยุกต์ความรู้ เพื่อสร้างสรรค์นวัตกรรมใหม่ๆ และต่อยอดไปสู่การเป็นผู้ประกอบการสตาร์ทอัพได้ด้วยตนเอง', Image: '/images/image3.jpg', link: '/academics' }
+])
+
+// --- ข้อมูล News & Announcements ---
+const newsItems = ref([
   {
-    title: 'What is IoTE?',
-    description: '" วิศวกรรมไอโอทีและสารสนเทศ " มุ่งเน้นการบูรณาการความรู้แบบสหวิทยาการอย่างครบวงจร ทั้งด้าน ฮาร์ดแวร์ , ซอฟต์แวร์ , ระบบเครือข่าย, และปัญญาประดิษฐ์โดยมีเป้าหมายให้ผู้เรียนสามารถประยุกต์ความรู้ เพื่อสร้างสรรค์นวัตกรรมใหม่ๆ และต่อยอดไปสู่การเป็นผู้ประกอบการสตาร์ทอัพได้ด้วยตนเอง',
-    Image: '/images/image3.jpg'
-    // เพิ่มบรรทัดนี้: ลิงก์ไปยังหน้าเพจที่ต้องการ
-    // link: '/about'
+    title: 'IoT Workshop 2025',
+    summary: 'Join us for an exciting IoT workshop where we will explore the latest trends and technologies in the Internet of Things.',
+    image: '/images/news1.jpg', // เพิ่มรูปสำหรับข่าว
+    link: '/information' // ลิงก์ไปหน้า Information
+  },
+  {
+    title: 'New Research Publication',
+    summary: 'Our department has published a new research paper on AI and IoT integration. Check it out for cutting-edge insights!',
+    image: '/images/news2.jpg',
+    link: '/information'
+  },
+  {
+    title: 'Student Achievements',
+    summary: 'Congratulations to our students for winning the national IoT competition! Their innovative projects have been recognized at the highest level.',
+    image: '/images/news3.jpg',
+    link: '/information'
   }
 ])
 
+// --- ข้อมูล Hall of Fame ---
 const fameCards = ref([
-  { id: 1, image: '/images/fame1.jpg', description: 'รางวัลชนะเลิศนวัตกรรม IoT 2025', link: '/fame/1' },
-  { id: 2, image: '/images/fame2.jpg', description: 'ผลงานวิจัยดีเด่นด้าน AI สารสนเทศ', link: '/fame/2' },
-  { id: 3, image: '/images/fame3.jpg', description: 'โครงการ Smart Factory ยอดเยี่ยม', link: '/fame/3' },
-  { id: 4, image: '/images/fame4.jpg', description: 'นักศึกษาเกียรติยศประจำปี 2024', link: '/fame/4' }
+  { id: 1, image: '/images/fame1.jpg', description: 'Thailand Cyber Security Product and Service Awards 2025', link: '/fame/1' },
+  { id: 2, image: '/images/fame2.jpg', description: 'AI & Robotics Hackathon and Competitions 2025', link: '/fame/2' },
+  { id: 3, image: '/images/fame3.jpg', description: 'SPACE QUEST 2025', link: '/fame/3' }
 ])
 
 const currentIndex = ref(0)
-
 const nextCard = () => {
-  // 1. เพิ่มค่า Index ไปทีละ 1 (ถ้าถึงตัวสุดท้ายให้กลับไปเริ่มที่ 0)
   currentIndex.value = (currentIndex.value + 1) % fameCards.value.length
-
-  // 2. (Option) ถ้ายังอยากใช้ Logic เดิมที่ย้ายของใน Array ให้ทำแบบนี้:
   const first = fameCards.value.shift()
   fameCards.value.push(first)
 }
-// --- ข้อมูลสำหรับ Activities (ทั้งหมด 7 รูป) ---
+const prevCard = () => {
+  const last = fameCards.value.pop()
+  fameCards.value.unshift(last)
+}
+
+// --- ข้อมูล Activities ---
 const activities = ref([
-  { image: '/images/act1.jpg' }, // รูปที่ 1 (รูปใหญ่สุดฝั่งซ้าย)
-  { image: '/images/act2.jpg' }, // รูปที่ 2 (ฝั่งขวา)
-  { image: '/images/act3.jpg' }, // รูปที่ 3 (ฝั่งขวา)
-  { image: '/images/act4.jpg' }, // รูปที่ 4 (ฝั่งขวา)
-  { image: '/images/act5.jpg' }, // รูปที่ 5 (ฝั่งขวา)
-  { image: '/images/act6.jpg' }, // รูปที่ 6 (ฝั่งขวา)
-  { image: '/images/act7.jpg' } // รูปที่ 7 (ฝั่งขวา)
+  { image: '/images/act1.jpg' }, { image: '/images/act2.jpg' }, { image: '/images/act3.jpg' },
+  { image: '/images/act4.jpg' }, { image: '/images/act5.jpg' }, { image: '/images/act6.jpg' }, { image: '/images/act7.jpg' }
 ])
 </script>
 
 <style scoped>
-/* รีเซ็ตค่าเริ่มต้นเล็กน้อย */
+/* =========================================
+   Base & Typography
+========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -224,214 +312,410 @@ const activities = ref([
 .home-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-}
-
-/* ตกแต่ง Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  opacity: 0.9;
-}
-
-/* ตกแต่ง ส่วนจุดเด่น */
-.features-section {
-  padding: 60px 0;
-  /* เปลี่ยนให้ padding ซ้าย-ขวา เป็น 0 เพื่อให้เลื่อนสุดจอได้ */
-  text-align: center;
-  background-color: #f9f9f9;
-}
-
-.features-section h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #2a5298;
-}
-
-/* --- การตั้งค่า Slider และปุ่มกด --- */
-.slider-wrapper {
   position: relative;
-  /* เพื่อให้ปุ่มอ้างอิงตำแหน่งจากกล่องนี้ */
-  width: 100%;
-  max-width: 1000px;
-  /* จำกัดความกว้างรวมของ Slider ไม่ให้กว้างเกินไป */
-  margin: 0 auto;
-  /* จัดให้อยู่กึ่งกลางหน้าจอ */
+  background-color: #FFFDF9;
+  overflow-x: hidden;
 }
 
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: white;
-  color: #1e3c72;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.section-content {
+  position: relative;
   z-index: 10;
-  /* ให้ปุ่มลอยอยู่เหนือการ์ด */
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.nav-btn:hover {
-  background-color: #1e3c72;
-  color: white;
-  transform: translateY(-50%) scale(1.1);
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #1e3c72;
+  font-weight: 700;
+  text-align: center;
 }
 
-/* การจัดตำแหน่งปุ่มซ้าย-ขวา ให้อยู่ริมจอ แต่ขยับออกมานอกกล่องการ์ดเล็กน้อย */
-.left-btn {
-  left: -25px;
+/* =========================================
+   Global Background Decoration
+========================================= */
+.global-background-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.right-btn {
-  right: -25px;
+.g-square {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(45, 49, 66, 0.15);
+  border-radius: 4px;
+  opacity: 0.6;
+  animation: globalFloatAnim 8s ease-in-out infinite;
 }
 
-/* ซ่อนปุ่มเมื่อหน้าจอเล็กกว่า 768px (มือถือ/แท็บเล็ต) เพราะใช้นิ้วปัดสะดวกกว่า */
-@media (max-width: 768px) {
-  .nav-btn {
-    display: none;
+@keyframes globalFloatAnim {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
 }
 
-.features-grid {
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-  flex-wrap: nowrap;
-  width: 100%;
-
-  overflow-x: auto;
-  padding: 20px;
-
-  /* ลูกเล่นเสริม: ทำให้เลื่อนแล้วการ์ดเข้าล็อกพอดี (Snap) */
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  /* --- โค้ดสำหรับซ่อน Scrollbar --- */
-  -ms-overflow-style: none;
-  /* สำหรับ Internet Explorer, Edge */
-  scrollbar-width: none;
-  /* สำหรับ Firefox */
+.sq-a {
+  top: 10%;
+  left: 3%;
+  animation-delay: 0s;
 }
 
-/* ซ่อน Scrollbar ของ Webkit (Chrome, Safari) */
-.features-grid::-webkit-scrollbar {
-  display: none;
+.sq-b {
+  top: 25%;
+  right: 4%;
+  animation-delay: 1s;
+  width: 12px;
+  height: 12px;
+}
+
+.sq-c {
+  top: 40%;
+  left: 6%;
+  animation-delay: 2s;
+}
+
+.sq-d {
+  top: 55%;
+  right: 5%;
+  animation-delay: 0.5s;
+  width: 18px;
+  height: 18px;
+}
+
+.sq-e {
+  top: 70%;
+  left: 2%;
+  animation-delay: 1.5s;
+}
+
+.sq-f {
+  top: 85%;
+  right: 3%;
+  animation-delay: 2.5s;
+  width: 10px;
+  height: 10px;
+}
+
+.sq-g {
+  bottom: 10%;
+  left: 5%;
+  animation-delay: 0.2s;
+}
+
+.sq-h {
+  bottom: 25%;
+  right: 6%;
+  animation-delay: 1.2s;
+  width: 20px;
+  height: 20px;
+}
+
+.sq-i {
+  bottom: 40%;
+  left: 4%;
+  animation-delay: 2.2s;
+}
+
+.sq-j {
+  bottom: 55%;
+  right: 2%;
+  animation-delay: 0.7s;
+  width: 14px;
+  height: 14px;
+}
+
+.sq-k {
+  bottom: 70%;
+  left: 7%;
+  animation-delay: 1.7s;
+}
+
+.sq-l {
+  bottom: 85%;
+  right: 4%;
+  animation-delay: 2.7s;
+}
+
+/* =========================================
+   1. Hero Section
+========================================= */
+.hero-section {
+  position: relative;
+  background-color: #FFFDF9;
+  color: #2D3142;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 0 15px rgba(255, 253, 249, 0.8);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.hero-floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-float-item {
+  position: absolute;
+  color: #1a1a1a;
+  opacity: 0.7;
+  animation: heroFloatAnim 6s ease-in-out infinite;
+}
+
+@keyframes heroFloatAnim {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.icon-wifi {
+  top: 15%;
+  left: 5%;
+  font-size: 6rem;
+  transform: rotate(-15deg);
+}
+
+.icon-sd {
+  bottom: 15%;
+  left: 10%;
+  font-size: 3rem;
+}
+
+.text-binary {
+  top: 60%;
+  left: 15%;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: monospace;
+  line-height: 1.1;
+}
+
+.icon-chip {
+  bottom: 5%;
+  left: 50%;
+  font-size: 7rem;
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+.icon-network {
+  top: 15%;
+  right: 5%;
+  font-size: 7rem;
+}
+
+.icon-devices {
+  top: 45%;
+  right: 8%;
+  font-size: 3rem;
+}
+
+.icon-iot-text {
+  bottom: 12%;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.iot-wifi {
+  margin-bottom: -10px;
+  font-size: 3rem;
+}
+
+.hero-square {
+  width: 25px;
+  height: 25px;
+  border: 3px solid #1a1a1a;
+  border-radius: 8px;
+  opacity: 0.5;
+}
+
+.sq-1 {
+  top: 10%;
+  left: 20%;
+}
+
+.sq-2 {
+  bottom: 40%;
+  left: 5%;
+  width: 20px;
+  height: 20px;
+}
+
+.sq-3 {
+  top: 10%;
+  right: 25%;
+  width: 20px;
+  height: 20px;
+}
+
+.sq-4 {
+  bottom: 30%;
+  right: 5%;
+}
+
+/* =========================================
+   2. Curriculum Section
+========================================= */
+.features-section {
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
 }
 
 .feature-card {
-  /* ห้ามหด, ห้ามขยาย, กำหนดความกว้างตายตัวที่ 300px */
-  flex: 0 0 300px;
-  /* บอกให้การ์ดนี้เป็นจุดยึดเวลา Scroll แบบ Snap */
-  scroll-snap-align: center;
   background: white;
-  padding: 30px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  width: 300px;
+  padding: 40px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(60px) scale(0.85);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.features-grid.is-visible .feature-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.features-grid.is-visible .feature-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.features-grid.is-visible .feature-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.features-grid.is-visible .feature-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.features-grid.is-visible .feature-card:nth-child(4) {
+  transition-delay: 0.4s;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* เพิ่ม CSS สำหรับไอคอน */
 .card-icon {
   font-size: 3.5rem;
-  /* ขนาดไอคอน */
   color: #ff9800;
-  /* สีไอคอน (ใช้สีส้มเป็นสีเน้น) หรือถ้าชอบสีน้ำเงินให้แก้เป็น #1e3c72 */
   margin-bottom: 20px;
-  /* ระยะห่างจากไอคอนถึงหัวข้อ */
   display: inline-block;
-  /* เพื่อให้ transform ทำงานได้สมบูรณ์ */
+  transition: transform 0.3s ease;
 }
 
-/* ลูกเล่นเสริม: เมื่อเอาเมาส์ชี้การ์ด ให้ไอคอนขยับนิดๆ */
 .feature-card:hover .card-icon {
   transform: scale(1.1) rotate(-5deg);
-  transition: transform 0.3s ease;
 }
 
 .feature-card h3 {
   margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #1e3c72;
+  line-height: 1.4;
 }
 
 .feature-card p {
   color: #666;
   line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* =========================================
-   ตกแต่งส่วน Info Section
+   3. Info Section
 ========================================= */
 .info-section {
   padding: 80px 20px;
-  background-color: #ffffff;
-  /* ใช้พื้นหลังสีขาวเพื่อให้ตัดกับส่วนก่อนหน้าที่เป็นสีเทาอ่อน */
 }
 
-.info-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ใช้ CSS Grid เพื่อให้การ์ดเรียงตัวและยืดหยุ่นอัตโนมัติ */
 .info-grid {
   display: flex;
   justify-content: center;
-  padding: 0 20px;
 }
 
-/* ตกแต่งตัว Info Card */
 .info-card {
-  background: #fdfdfd;
+  background: white;
   padding: 40px 30px;
   border-radius: 16px;
-  text-align: center;
   border: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  /* --- ส่วนที่เพิ่มเข้ามาสำหรับจัด Layout ซ้าย-ขวา --- */
-  display: flex;
-  align-items: center;
-  /* จัดให้ข้อความและรูปอยู่กึ่งกลางแนวตั้ง */
-  justify-content: space-between;
-  /* ดันข้อความไปซ้ายสุด ดันรูปไปขวาสุด */
-  gap: 40px;
-  /* ระยะห่างระหว่างข้อความกับรูปภาพ */
-  /* --- ตั้งค่าให้การ์ดอยู่ตรงกลางและขนาดพอดี --- */
-  width: 100%;
-  max-width: 900px;
-  /* กำหนดความกว้างสูงสุดของการ์ด (ปรับเพิ่ม/ลดได้) */
-  margin: 0 auto;
-  /* จัดการ์ดให้อยู่กึ่งกลางจอ */
 }
 
 .info-card:hover {
@@ -440,7 +724,6 @@ const activities = ref([
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* เส้นสีส้มเล็กๆ ด้านบนการ์ด */
 .info-card::before {
   content: '';
   position: absolute;
@@ -472,70 +755,36 @@ const activities = ref([
   text-align: left;
 }
 
-/* --- ตกแต่งส่วนรูปภาพ --- */
 .info-image {
   flex-shrink: 0;
   width: 350px;
-  /* ขยายความกว้างรูปภาพให้ใหญ่ขึ้น */
   height: 250px;
-  /* ขยายความสูงรูปภาพให้สมดุล */
-}
-
-/* --- Responsive สำหรับหน้าจอมือถือ/แท็บเล็ต --- */
-@media (max-width: 768px) {
-  .info-card {
-    flex-direction: column-reverse;
-    /* เปลี่ยนให้เรียงจากบนลงล่าง */
-    padding: 30px 20px;
-    gap: 25px;
-  }
-
-  .info-image {
-    width: 100%;
-    /* ให้รูปภาพขยายเต็มการ์ดเมื่ออยู่บนมือถือ */
-    height: 200px;
-  }
-
-  .info-card h3,
-  .info-card p {
-    text-align: center;
-    /* จัดกึ่งกลางข้อความเมื่อเป็นแนวตั้ง */
-  }
 }
 
 .info-content {
   flex: 1;
   text-align: left;
-  /* เพิ่มบรรทัดนี้เพื่อให้ทุกอย่างชิดซ้าย */
 }
 
-/* --- ตกแต่งปุ่ม More --- */
+/* ปุ่ม Read More / More แบบใช้ร่วมกันได้ */
 .btn-more {
   margin-top: 25px;
   padding: 6px 8px 6px 24px;
-  /* ปรับ Padding ให้พอดีกับวงกลม */
-  background-color: #fdfdfd;
-  /* พื้นหลังสีขาว/กลืนกับการ์ด */
+  background-color: white;
   color: #1e3c72;
-  /* สีตัวอักษรน้ำเงินเข้ม */
   border: 2px solid #ff9800;
-  /* ขอบสีส้ม */
   border-radius: 50px;
-  /* ปรับให้เป็นทรงแคปซูล (Pill shape) */
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  /* ใช้ Flexbox เพื่อจัดให้ข้อความและลูกศรอยู่ตรงกลางแนวเดียวกัน */
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  /* ระยะห่างระหว่างคำว่า more กับลูกศร */
   text-decoration: none;
+  width: fit-content;
 }
 
-/* ตกแต่งวงกลมสีส้มและลูกศรด้านในปุ่ม */
 .btn-more .icon-circle {
   background-color: #ff9800;
   color: white;
@@ -549,151 +798,101 @@ const activities = ref([
   transition: transform 0.3s ease;
 }
 
-/* เอฟเฟกต์ตอนเอาเมาส์ชี้ปุ่ม */
 .btn-more:hover {
   background-color: #fff3e0;
-  /* เปลี่ยนพื้นหลังเป็นสีส้มอ่อนๆ */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
 }
 
 .btn-more:hover .icon-circle {
   transform: translateX(3px);
-  /* ให้ลูกศรขยับไปทางขวานิดนึงตอน Hover */
-}
-
-.info-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* =========================================
-   ตกแต่งส่วน Hall of Fame
+   4. News & Announcements Section (จัดระเบียบใหม่)
 ========================================= */
-.fame-section {
-  padding: 80px 0;
-  text-align: center;
-  background-color: #f0f4f8;
-  /* เปลี่ยนสีพื้นหลังนิดหน่อยให้แยกส่วนชัดเจน */
+.news-section {
+  padding: 80px 20px;
 }
 
-.fame-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.news-item {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.news-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.news-image-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: #eaeaea;
+}
+
+.news-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.news-item:hover .news-image-container img {
+  transform: scale(1.05);
+}
+
+.news-text-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.news-text-content h3 {
+  font-size: 1.2rem;
   color: #1e3c72;
+  margin-bottom: 12px;
   font-weight: 700;
 }
 
-/* ใช้ Grid แบบเลื่อนแนวนอนเหมือน Features Section */
-.fame-grid {
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-  flex-wrap: nowrap;
-  width: 100%;
-  overflow-x: auto;
-  padding: 20px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.news-text-content p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-.fame-grid::-webkit-scrollbar {
-  display: none;
+.news-text-content .btn-more {
+  margin-top: auto;
 }
 
 /* =========================================
-   ตกแต่งส่วน Hall of Fame (Card Stack)
+   5. Hall of Fame
 ========================================= */
-/* การตั้งค่าพื้นฐานของการ์ดทุกใบ */
-.fame-card {
-  position: absolute;
-  /* ให้การ์ดซ้อนทับกัน */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.fame-section {
+  padding: 80px 20px;
   overflow: hidden;
-  text-align: left;
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* แอนิเมชันให้สมูทตอนสลับที่ */
-
-  /* ค่าเริ่มต้น (ใบที่ 4 เป็นต้นไป จะถูกซ่อนไว้ด้านหลัง) */
-  opacity: 0;
-  transform: translateY(-40px) scale(0.8);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ====================================
-   กำหนดตำแหน่งไพ่ 3 ใบแรก (เรียงลำดับ)
-==================================== */
-
-/* ใบหน้าสุด (ตำแหน่ง 0) */
-.card-pos-0 {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  z-index: 3;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-/* ใบที่ 2 ซ้อนอยู่ตรงกลาง (ตำแหน่ง 1) */
-.card-pos-1 {
-  opacity: 1;
-  transform: translateY(-20px) scale(0.95);
-  /* ขยับขึ้นและหดเล็กลงนิดนึง */
-  z-index: 2;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* ใบที่ 3 ซ้อนอยู่หลังสุด (ตำแหน่ง 2) */
-.card-pos-2 {
-  opacity: 1;
-  transform: translateY(-40px) scale(0.9);
-  /* ขยับขึ้นอีกและหดเล็กลงอีก */
-  z-index: 1;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* ==================================== */
-
-/* ตกแต่งรูปภาพบนไพ่ */
-.fame-image {
-  width: 100%;
-  height: 220px;
-}
-
-.fame-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.fame-content {
-  padding: 20px;
-}
-
-.fame-content h3 {
-  font-size: 1.2rem;
-  color: #1e3c72;
-  margin-bottom: 10px;
-}
-
-.fame-content p {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 .fame-container {
   position: relative;
-  height: 500px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -702,9 +901,9 @@ const activities = ref([
 
 .card-stack {
   position: relative;
-  width: 100%;
+  width: 90%;
   max-width: 600px;
-  height: 350px;
+  height: 320px;
 }
 
 .stack-card {
@@ -716,9 +915,9 @@ const activities = ref([
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-/* การตั้งค่าตำแหน่ง 3 มิติ */
 .pos-0 {
   z-index: 3;
   transform: scale(1) translateX(0);
@@ -727,81 +926,95 @@ const activities = ref([
 
 .pos-1 {
   z-index: 2;
-  transform: scale(0.85) translateX(150px);
+  transform: scale(0.85) translateX(120px);
   opacity: 0.7;
 }
 
 .pos-2 {
   z-index: 1;
-  transform: scale(0.85) translateX(-150px);
+  transform: scale(0.85) translateX(-120px);
   opacity: 0.7;
 }
 
+.fame-image {
+  width: 100%;
+  height: 100%;
+}
+
+.fame-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .fame-description-box {
-  margin-top: 20px;
-  /* ระยะห่างจากก้นการ์ด */
+  margin-top: 30px;
   text-align: center;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
   min-height: 60px;
-  /* จองพื้นที่ไว้กันหน้าเว็บวูบวาบเวลาข้อความยาวไม่เท่ากัน */
-  transition: opacity 0.3s ease;
-  /* ถ้าอยากให้ข้อความค่อยๆ เปลี่ยน */
+  color: #555;
+  font-weight: 500;
+  z-index: 10;
 }
 
-/* ตกแต่ง ส่วนจุดเด่น */
-.act-section {
-  padding: 60px 0;
-  /* เปลี่ยนให้ padding ซ้าย-ขวา เป็น 0 เพื่อให้เลื่อนสุดจอได้ */
-  text-align: center;
-  background-color: #f9f9f9;
+.fame-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: #1e3c72;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.act-section h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #2a5298;
+.fame-nav-btn:hover {
+  background-color: #ff9800;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
 }
+
+.fame-left {
+  left: -60px;
+}
+
+.fame-right {
+  right: -60px;
+}
+
 /* =========================================
-   ตกแต่งส่วน Activities (Gallery Grid)
+   6. Activities Section
 ========================================= */
 .act-section {
   padding: 80px 20px;
-  background-color: #FFFBF1;
-  text-align: center;
 }
 
-.act-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.act-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #1e3c72;
-  font-weight: 700;
-}
-
-/* --- Layout หลัก --- */
 .act-gallery {
   display: grid;
-  /* ปรับสัดส่วนให้ซ้าย 1 ส่วน ขวา 1.3 ส่วน เพื่อไม่ให้รูปซ้ายใหญ่เกินไป */
   grid-template-columns: 1fr 1.3fr;
   gap: 20px;
-  height: 450px; /* ล็อคความสูงรวมไว้ที่ 450px เพื่อให้ทั้งสองฝั่งสูงเท่ากันพอดี */
+  height: auto;
+  /* ปล่อยให้ความสูงยืดตามรูปภาพอัตโนมัติ */
 }
 
-/* --- บล็อกซ้าย (รูปใหญ่ 1 รูป) --- */
 .act-left {
   width: 100%;
-  height: 100%; /* ให้สูงเต็ม 450px */
+  height: 100%;
 }
 
 .act-large-image {
   width: 100%;
   height: 100%;
+  min-height: 350px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -810,7 +1023,7 @@ const activities = ref([
 .act-large-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ตัดส่วนเกิน ไม่ให้รูปเบี้ยว */
+  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
@@ -818,22 +1031,21 @@ const activities = ref([
   transform: scale(1.05);
 }
 
-/* --- บล็อกขวา (รูปเล็ก 6 รูป) --- */
 .act-right {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* บังคับ 3 คอลัมน์กว้างเท่ากัน */
-  grid-template-rows: repeat(2, 1fr);    /* บังคับ 2 แถวสูงเท่ากันเป๊ะ */
+  grid-template-columns: repeat(3, 1fr);
+  /* ลบ grid-template-rows ออกเพื่อให้ใช้ aspect-ratio จัดการความสูง */
   gap: 15px;
-  height: 100%; /* ให้สูงเต็ม 450px ตามฝั่งซ้าย */
+  align-content: start;
 }
 
 .act-small-image {
   width: 100%;
-  height: 100%; /* ยืดเต็มช่องกริดแต่ละช่อง */
+  aspect-ratio: 1 / 1;
+  /* ✨ คีย์สำคัญ: บังคับให้เป็นสี่เหลี่ยมจัตุรัสเสมอ (กว้างสูงเท่ากัน) */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  /* (ลบ aspect-ratio ของเดิมทิ้งไปได้เลยครับ กริดจะคุมความสูงให้เอง) */
 }
 
 .act-small-image img {
@@ -847,18 +1059,195 @@ const activities = ref([
   transform: scale(1.1);
 }
 
-/* --- Responsive สำหรับมือถือ --- */
-@media (max-width: 900px) {
+/* =========================================
+   📱 RESPONSIVE MEDIA QUERIES
+========================================= */
+
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* แท็บเล็ตแสดงข่าว 2 แถว */
+  .fame-left {
+    left: -20px;
+  }
+
+  .fame-right {
+    right: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 15px;
+    min-height: 60vh;
+  }
+
+  .features-section,
+  .info-section,
+  .news-section,
+  .fame-section,
+  .act-section {
+    padding: 50px 15px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .icon-chip,
+  .text-binary,
+  .icon-devices,
+  .sq-1,
+  .sq-2,
+  .sq-3,
+  .sq-4 {
+    display: none;
+  }
+
+  .icon-wifi {
+    top: 5%;
+    left: -5%;
+    font-size: 4rem;
+    opacity: 0.15;
+  }
+
+  .icon-network {
+    top: 5%;
+    right: -5%;
+    font-size: 4rem;
+    opacity: 0.15;
+  }
+
+  .info-card {
+    flex-direction: column-reverse;
+    padding: 30px 20px;
+    gap: 25px;
+  }
+
+  .info-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .info-card h3,
+  .info-card p {
+    text-align: center;
+  }
+
+  .info-card .btn-more {
+    margin: 25px auto 0;
+  }
+
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* มือถือแสดงข่าวทีละการ์ด */
+
+  .fame-container {
+    height: 400px;
+  }
+
+  .card-stack {
+    width: 85%;
+    height: 260px;
+  }
+
+  .pos-1 {
+    transform: scale(0.85) translateX(50px);
+  }
+
+  .pos-2 {
+    transform: scale(0.85) translateX(-50px);
+  }
+
+  .fame-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .fame-left {
+    left: -15px;
+  }
+
+  .fame-right {
+    right: -15px;
+  }
+
   .act-gallery {
-    grid-template-columns: 1fr; /* เปลี่ยนเป็นบน-ล่าง */
-    height: auto; /* ปลดล็อคความสูงบนมือถือ */
+    grid-template-columns: 1fr;
   }
-  .act-left {
-    height: 300px; /* ขนาดรูปใหญ่บนมือถือ */
+
+  .act-large-image {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
   }
+
+  /* รูปใหญ่บนมือถือปรับสัดส่วนแนวนอน */
   .act-right {
-    grid-template-columns: repeat(2, 1fr); /* แบ่งเหลือ 2 คอลัมน์ */
-    grid-template-rows: repeat(3, 150px); /* มี 3 แถว แถวละ 150px */
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* บนมือถือรูปเล็กขวายังคงเป็น 3 ช่อง */
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-stack {
+    width: 75%;
+    height: 220px;
+  }
+
+  .pos-1 {
+    transform: scale(0.85) translateX(30px);
+  }
+
+  .pos-2 {
+    transform: scale(0.85) translateX(-30px);
+  }
+
+  .fame-nav-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .fame-left {
+    left: -10px;
+  }
+
+  .fame-right {
+    right: -10px;
+  }
+
+  .act-right {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
