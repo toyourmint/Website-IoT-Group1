@@ -17,32 +17,38 @@ const colorMode = useColorMode()
 
         <div class="contact-list">
           <div class="contact-item">
-            <i class="fas fa-phone-alt icon" />
+            <UIcon name="i-heroicons-phone" class="icon" />
             <span>+662 329 8000</span>
           </div>
 
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt icon" />
+            <UIcon name="i-heroicons-map-pin" class="icon" />
             <div class="contact-text">
               {{ $t('footer.address') }}
             </div>
           </div>
 
           <div class="contact-item">
-            <i class="far fa-envelope icon" />
+            <UIcon name="i-heroicons-envelope" class="icon" />
             <span>iote@kmitl.ac.th</span>
           </div>
 
           <div class="contact-item">
-            <i class="fab fa-line icon" />
+            <UIcon name="i-simple-icons-line" class="icon" />
             <span>@iotekmitl</span>
           </div>
         </div>
 
         <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook" /></a>
-          <a href="#"><i class="fab fa-instagram" /></a>
-          <a href="#"><i class="fab fa-tiktok" /></a>
+          <a href="#" aria-label="Facebook">
+            <UIcon name="i-simple-icons-facebook" />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <UIcon name="i-simple-icons-instagram" />
+          </a>
+          <a href="#" aria-label="TikTok">
+            <UIcon name="i-simple-icons-tiktok" />
+          </a>
         </div>
       </div>
 
@@ -111,20 +117,23 @@ const colorMode = useColorMode()
 
 .contact-item {
   display: flex;
-  align-items: flex-start; /* ⭐ ให้ icon อยู่บน */
+  align-items: flex-start;
   gap: 15px;
   font-size: 14px;
 }
+
 .contact-text {
   line-height: 1.7;
-  max-width: 520px;   /* ⭐ คุมความยาวบรรทัด */
+  max-width: 520px;
 }
 
 .icon {
-  width: 22px;       /* ⭐ ทำให้ทุกไอคอนเริ่มตำแหน่งเท่ากัน */
-  flex-shrink: 0;    /* ⭐ ป้องกัน icon หด */
-  margin-top: 3px;   /* ⭐ ปรับให้ตรงบรรทัดแรก */
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
+
 .social-icons {
   display: flex;
   gap: 15px;
@@ -133,6 +142,13 @@ const colorMode = useColorMode()
 
 .social-icons a {
   font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a :deep(svg) {
+  width: 20px;
+  height: 20px;
 }
 
 .social-icons a:hover {
