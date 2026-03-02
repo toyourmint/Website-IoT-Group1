@@ -3,7 +3,7 @@
     
     <div class="hero-section">
       <div class="title-container">
-        <h1 class="main-title">News & Updates</h1>
+        <h1 class="main-title">Information</h1>
         <p class="section-desc">ข่าวสารและกิจกรรมล่าสุดจากภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
       </div>
     </div>
@@ -70,24 +70,18 @@
 <script setup>
 import { ref } from 'vue'
 
-// ==========================================
-// ส่วนของการจัดการ Modal
-// ==========================================
 const selectedNews = ref(null)
 
 const openModal = (news) => {
   selectedNews.value = news
-  document.body.style.overflow = 'hidden' // ป้องกันไม่ให้ background เลื่อนตอนเปิด Modal
+  document.body.style.overflow = 'hidden'
 }
 
 const closeModal = () => {
   selectedNews.value = null
-  document.body.style.overflow = '' // คืนค่าการเลื่อนหน้าจอ
+  document.body.style.overflow = ''
 }
 
-// ==========================================
-// ข่าวสารจำลอง (Mock Data) อิงจากรูปภาพของคุณ
-// ==========================================
 const newsList = ref([
   {
     id: 1,
@@ -95,7 +89,7 @@ const newsList = ref([
     excerpt: 'Join us for an exciting IoT workshop where we will explore the latest trends and technologies in the Internet of Things.',
     fullContent: 'ขอเชิญนักศึกษาและผู้ที่สนใจเข้าร่วมงาน IoT Workshop 2025!\n\nภายในงานจะได้พบกับการอัปเดตเทรนด์ใหม่ๆ ของเทคโนโลยี Internet of Things การทดลองใช้อุปกรณ์จริง และรับฟังบรรยายจากวิทยากรผู้เชี่ยวชาญในอุตสาหกรรม\n\nวันที่: 15 มีนาคม 2026\nสถานที่: ตึกพระจอมเกล้า',
     date: '10 March 2026',
-    image: '' // เว้นว่างไว้เพื่อให้โชว์ Placeholder สีเทาแบบในรูป
+    image: ''
   },
   {
     id: 2,
@@ -119,23 +113,23 @@ const newsList = ref([
 <style scoped>
 /* ================== Layout ================== */
 .news-page {
-  font-family: sans-serif;
-  color: #2D3142;
+  /* เปลี่ยนสีพื้นหลังและตัวหนังสือให้ดึงจาก main.css */
+  color: var(--text-main);
+  background-color: transparent; 
   min-height: 100vh;
-  background-color: #FAFAFA; /* พื้นหลังสีอ่อนๆ ให้ Card โดดเด่น */
 }
 
 /* ================== Header Section ================== */
 .hero-section {
   padding: 6rem 1rem 3rem;
   text-align: center;
-  background-color: #fff;
-  border-bottom: 1px solid #eaeaea;
+  background-color: transparent; /* ให้โปร่งใสเพื่อโชว์พื้นหลังหลักของเว็บ */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .main-title {
   font-size: 3.5rem;
-  color: #1e293b;
+  color: var(--heading-color);
   margin: 0 0 1rem 0;
   font-weight: 800;
   letter-spacing: 2px;
@@ -143,7 +137,7 @@ const newsList = ref([
 
 .section-desc {
   font-size: 1.2rem;
-  color: #6b7280;
+  color: var(--text-muted);
 }
 
 /* ================== Content & Grid ================== */
@@ -161,19 +155,20 @@ const newsList = ref([
 
 /* ================== News Card ================== */
 .news-card {
-  background-color: #ffffff;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px var(--card-shadow);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px var(--card-shadow);
+  border-color: #F59E0B; /* ขอบส้มตอน Hover เหมือนหน้าอื่น */
 }
 
 /* ================== Card Image / Placeholder ================== */
@@ -181,6 +176,7 @@ const newsList = ref([
   height: 220px;
   width: 100%;
   overflow: hidden;
+  border-bottom: 1px solid var(--border-color); /* เพิ่มเส้นขอบแบ่งรูปกับเนื้อหา */
 }
 
 .news-image-wrapper img {
@@ -191,19 +187,19 @@ const newsList = ref([
 }
 
 .news-card:hover .news-image-wrapper img {
-  transform: scale(1.05); /* รูปขยายออกนิดนึงตอน Hover */
+  transform: scale(1.05);
 }
 
 .placeholder-image {
   width: 100%;
   height: 100%;
-  background-color: #E6E5E3; /* สีเทาอ่อนเหมือนในตัวอย่าง */
+  background-color: var(--bg-main); /* ปรับสี placeholder ให้เข้ากับโหมด */
   display: flex;
   padding: 1rem;
 }
 
 .placeholder-text {
-  color: #6b7280;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -218,30 +214,30 @@ const newsList = ref([
 .news-title {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #1A365D; /* สีน้ำเงินเข้มแบบในตัวอย่าง */
+  color: var(--heading-color);
   margin: 0 0 1rem 0;
   line-height: 1.3;
 }
 
 .news-excerpt {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0 0 2rem 0;
-  flex-grow: 1; /* ดันปุ่มให้อยู่ด้านล่างสุดเสมอ */
+  flex-grow: 1;
 }
 
 /* ================== Read More Button ================== */
 .read-more-btn {
-  align-self: flex-start; /* ให้อยู่ชิดซ้าย */
+  align-self: flex-start;
   display: flex;
   align-items: center;
   gap: 1rem;
   background: transparent;
-  border: 1px solid #F59E0B; /* ขอบสีส้ม */
+  border: 1px solid #F59E0B;
   border-radius: 2rem;
-  padding: 0.25rem 0.25rem 0.25rem 1.25rem; /* ปรับ Padding ให้พอดีกับวงกลม */
-  color: #1A365D;
+  padding: 0.25rem 0.25rem 0.25rem 1.25rem;
+  color: var(--text-main); /* เปลี่ยนสีข้อความให้รองรับ Dark Mode */
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
@@ -249,11 +245,12 @@ const newsList = ref([
 }
 
 .read-more-btn:hover {
-  background-color: #FFFBEB;
+  background-color: var(--border-color); /* ใช้สีเส้นขอบมาทำพื้นหลังตอน Hover ให้เนียนตา */
+  color: #F59E0B;
 }
 
 .icon-circle {
-  background-color: #F59E0B; /* สีส้ม */
+  background-color: #F59E0B;
   color: white;
   width: 36px;
   height: 36px;
@@ -268,14 +265,14 @@ const newsList = ref([
   height: 20px;
 }
 
-/* ================== Modal Styles (อิงจากของเดิม) ================== */
+/* ================== Modal Styles ================== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6); /* เข้มขึ้นนิดนึงให้เหมือนหน้า Department */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,12 +282,13 @@ const newsList = ref([
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color); /* เพิ่มเส้นขอบ Modal สำหรับ Dark Mode */
   border-radius: 1.5rem;
   width: 100%;
   max-width: 900px;
   position: relative;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 25px -5px var(--card-shadow);
   max-height: 90vh;
   overflow-y: auto;
 }
@@ -299,19 +297,19 @@ const newsList = ref([
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: #f3f4f6;
-  border: none;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color); /* เพิ่มขอบปุ่ม */
   cursor: pointer;
-  color: #6b7280;
+  color: var(--text-muted);
   padding: 0.5rem;
   border-radius: 50%;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
   z-index: 10;
 }
 
 .close-btn:hover {
-  background-color: #e5e7eb;
-  color: #1f2937;
+  background-color: var(--border-color);
+  color: #F59E0B;
 }
 
 .close-btn svg {
@@ -328,6 +326,7 @@ const newsList = ref([
   height: 350px;
   border-radius: 1.5rem 1.5rem 0 0;
   border: none;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .modal-details {
@@ -345,13 +344,13 @@ const newsList = ref([
 .detail-title {
   font-size: 2rem;
   font-weight: 800;
-  color: #1A365D;
+  color: var(--heading-color);
   margin: 0 0 1.5rem 0;
   line-height: 1.3;
 }
 
 .detail-full-content p {
-  color: #475569;
+  color: var(--text-muted);
   line-height: 1.8;
   font-size: 1.1rem;
 }
