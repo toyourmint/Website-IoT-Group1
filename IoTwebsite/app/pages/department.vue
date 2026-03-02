@@ -26,6 +26,7 @@ const selectTab = (tab) => {
 // ข้อมูลสาขา IoT
 // ==========================================
 const iotFaculty = ref([
+<<<<<<< HEAD
   { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\n(หัวหน้าภาควิชา)', image: '/img/profIoT/ajkaew.jpg' },
   { id: 2, nameTh: 'รศ.ดร. สุวิทย์ รุ่งเรือง', nameEn: 'Assoc. Prof. Dr. Suwit Rungruang', image: '/images/iot-2.jpg' },
   { id: 3, nameTh: 'อ.ดร. เจริญชัย ใจดี', nameEn: 'Dr. Charoenchai Jaidee', image: '/images/iot-3.jpg' },
@@ -37,12 +38,37 @@ const iotFaculty = ref([
 const iotStaff = ref([
   { id: 1, nameTh: 'นายสมชาย รักดี', nameEn: 'Mr. Somchai Rakdee', image: '/images/staff-1.jpg' },
   { id: 2, nameTh: 'นายสมเกียรติ ยอดเยี่ยม', nameEn: 'Mr. Somkiat Yodyiam', image: '/images/staff-2.jpg' }
+=======
+  { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา', image: '/img/profIoT/ajkaew.jpg' },
+  { id: 2, nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์', nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ', image: '/img/profIoT/ajboon.jpg' },
+  { id: 3, nameTh: 'ศ.ดร. อภิรัฐ ศิริธราธิวัตร', nameEn: 'Prof. Dr. Apirat Siritaratiwat\nรองหัวหน้าภาควิชา (ฝ่ายวิจัยและนวัตกรรม)', image: '/img/profIoT/ajapirat.jpg' },
+  { id: 4, nameTh: 'ผศ.ดร.วันวิสา ชัชวงษ์', nameEn: 'Asst.Prof.Dr.Vanvisa Chutchavong\nรองหัวหน้าภาควิชา (ฝ่ายการเงิน)', image: '/img/profIoT/ajkai.jpg' },
+  { id: 5, nameTh: 'ผศ.ดร.นัชนัยน์ รุ่งเหมือนฟ้า', nameEn: 'Asst.Prof.Dr.Natchanai Roongmuanpha\nรองหัวหน้าภาควิชา (ฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajohm.jpg' },
+  { id: 6, nameTh: 'ผศ.ดร.เกล็ดดาว สัตย์เจริญ', nameEn: 'Asst.Prof.Dr.Kleddao Satcharoen\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajfon.jpg' },
+  { id: 7, nameTh: 'ผศ.นิจจารีย์ สัตยารักษ์', nameEn: 'Asst.Prof.Nitjaree Satayarak\nรองหัวหน้าภาควิชา (ฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajnit.jpg' },
+  { id: 8, nameTh: 'ผศ.ดร.ธนวิชญ์ อนุวงศ์พินิจ', nameEn: 'Asst.Prof.Dr.Thanavit Anuwongpinit\nรองหัวหน้าภาควิชา (ฝ่ายวิชาการ)', image: '/img/profIoT/ajneng.jpg' },
+  { id: 9, nameTh: 'ดร.สุวิไล พุ่มโพธิ์', nameEn: 'Dr.Suwilai Phumpho\nรองหัวหน้าภาควิชา (ฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajjeng.jpg' },
+  { id: 10, nameTh: 'ผศ.ดร.อรรถพล ป้อมสถิตย์', nameEn: 'Asst.Prof.Dr.Auttapon Pomsathit\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajped.jpg' },
+  { id: 11, nameTh: 'ผศ.ดร.พนารัตน์ เชิญถนอมวงศ์', nameEn: 'Asst.Prof.Dr.Panarat Cherntanomwong\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajpanarat.png' },
+  { id: 12, nameTh: 'ผศ.สรพงษ์ วชิรรัตนพรกุล', nameEn: 'Asst.Prof.Sorapong Wachirarattanapornkul\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajtee.jpg' },
+  { id: 13, nameTh: 'ผศ.ไพศาล สิทธิโยภาสกุล', nameEn: 'Asst.Prof.Paisan Sithiyopasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajpaisan.jpg' },
+  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' },
+])
+
+const iotStaff = ref([
+  { id: 1, nameTh: 'นายธนาตย์ จอมใจเอกชน', nameEn: 'Mr. Thanat Chomjaiakchan', image: '/img/profIoT/pchai.jpg' },
+  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' },
+>>>>>>> dev
 ])
 
 // ==========================================
 // ข้อมูลสาขา Industrial Physics
 // ==========================================
+// ==========================================
+// ข้อมูลสาขา Industrial Physics (อัปเดตตามรูปภาพล่าสุด)
+// ==========================================
 const physicsFaculty = ref([
+<<<<<<< HEAD
   { id: 1, nameTh: 'รศ.ดร. สมปอง รักวิทย์', nameEn: 'Assoc. Prof. Dr. Sompong Rakwit\n(หัวหน้าภาควิชา)', image: '/images/phy-1.jpg' },
   { id: 2, nameTh: 'ผศ.ดร. มานี มีตา', nameEn: 'Asst. Prof. Dr. Manee Meeta', image: '/images/phy-2.jpg' },
   { id: 3, nameTh: 'อ.ดร. ปิติ ดีใจ', nameEn: 'Dr. Piti Deejai', image: '/images/phy-3.jpg' }
@@ -51,6 +77,167 @@ const physicsFaculty = ref([
 const physicsStaff = ref([
   { id: 1, nameTh: 'นางสุดา ใจดี', nameEn: 'Mrs. Suda Jaidee', image: '/images/staff-3.jpg' },
   { id: 2, nameTh: 'นายวิชาญ รักงาน', nameEn: 'Mr. Wichan Rakngan', image: '/images/staff-4.jpg' }
+=======
+  // แถวที่ 1
+  { 
+    id: 1, 
+    nameTh: 'รศ.ดร.ภัทรียา ดำรงศักดิ์', 
+    nameEn: 'Assoc. Prof. Dr. Pattareeya Damrongsak\n(หัวหน้าภาควิชาฟิสิกส์)', 
+    image: '/img/profPhy/pattareeya.png' 
+  },
+  { 
+    id: 2, 
+    nameTh: 'รศ.ดร.สาหร่าย เล็กชะอุ่ม', 
+    nameEn: 'Assoc. Prof. Dr. Sarai Lekchaum\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/sarai.png' 
+  },
+  { 
+    id: 3, 
+    nameTh: 'รศ.ดร.รัชนก สมพรเสน่ห์', 
+    nameEn: 'Assoc. Prof. Dr. Ratchanok Sompornsane\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/ratchanok.png' 
+  },
+  { 
+    id: 4, 
+    nameTh: 'ผศ.ดร.ศ.ทิพวรรณ คล้ายบุญมี', 
+    nameEn: 'Asst. Prof. Dr. S.Tipawan Khlayboonme\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/tipawan.png' 
+  },
+  { 
+    id: 5, 
+    nameTh: 'รศ.ดร.อาภาภรณ์ สกุลการะเวก', 
+    nameEn: 'Assoc. Prof. Dr. Aparporn Sakulkalavek\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/aparporn.png' 
+  },
+  { 
+    id: 6, 
+    nameTh: 'ดร.พิชชานันท์ ธีเศรษฐ์โศภน', 
+    nameEn: 'Dr. Pichanan Teesetsopon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/pichanan.png' 
+  },
+  { 
+    id: 7, 
+    nameTh: 'ผศ.ดร.เมตยา กิติวรรณ', 
+    nameEn: 'Asst. Prof. Dr. Metaya Kittiwan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/mettaya.png' 
+  },
+  { 
+    id: 8, 
+    nameTh: 'ผศ.ธนภรณ์ ลีลาวัฒนานนท์', 
+    nameEn: 'Asst. Prof. Thanaporn Leelawattananon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/thanaporn.png' 
+  },
+  // แถวที่ 3
+  { 
+    id: 9, 
+    nameTh: 'ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์', 
+    nameEn: 'Asst. Prof. Surasak Phiphatsart\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/surasak.png' 
+  },
+  { 
+    id: 10, 
+    nameTh: 'ผศ.ดร.ประธาน บุรณศิริ', 
+    nameEn: 'Asst. Prof. Dr. Prathan Buranasiri\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/prathan.png' 
+  },
+  { 
+    id: 11, 
+    nameTh: 'อ.ธรรมรัตน์ แต่งตั้ง', 
+    nameEn: 'Mr. Thammarat Tangtang\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/thammarat.png' 
+  },
+  { 
+    id: 12, 
+    nameTh: 'อ.สุรชาติ กมลดิลก', 
+    nameEn: 'Mr. Surachat Kamol-dilok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/surachart.png' 
+  },
+  // แถวที่ 4
+  { 
+    id: 13, 
+    nameTh: 'ผศ.ดร.ณัฐพร พรหมรส', 
+    nameEn: 'Asst. Prof. Dr. Nattaporn Promros\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/nathaporn.png' 
+  },
+  { 
+    id: 14, 
+    nameTh: 'ศ.ดร.เชรษฐา รัตนพันธ์', 
+    nameEn: 'Prof. Dr. Chettra Rattanaphan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/chesta.png' 
+  },
+  { 
+    id: 15, 
+    nameTh: 'รศ.ดร.กฤษกร โล้เจริญรัตน์', 
+    nameEn: 'Assoc. Prof. Dr. Kitsakorn Locharoenrat\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/kitsakorn.png' 
+  },
+  { 
+    id: 16, 
+    nameTh: 'ผศ.ดร.ภาณุพล โขลนกระโทก', 
+    nameEn: 'Asst. Prof. Dr. Panupol Khlonkratok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/bhanupol.png' 
+  },
+  // แถวที่ 5
+  { 
+    id: 17, 
+    nameTh: 'ผศ.ดร.พิศาล ศรีราช', 
+    nameEn: 'Asst. Prof. Dr. Phisan Srirach\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/pisan.png' 
+  },
+  { 
+    id: 18, 
+    nameTh: 'ดร.ชินพรรธน์ รัตนศิรวิทย์', 
+    nameEn: 'Dr. Chinnaphat Rattanasirawit\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/chinnapat.png' 
+  },
+  { 
+    id: 19, 
+    nameTh: 'ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์', 
+    nameEn: 'Asst. Prof. Dr. Keerayut Srinuanjan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/keerayoot.png' 
+  },
+  { 
+    id: 20, 
+    nameTh: 'ดร.วิฑูรย์ ยินดีสุข', 
+    nameEn: 'Dr. Witoon Yindeesuk\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/witoon.png' 
+  },
+  // แถวที่ 6
+  { 
+    id: 21, 
+    nameTh: 'ผศ.ดร.ณัฏกฤษ สมดอก', 
+    nameEn: 'Asst. Prof. Dr. Natthakrit Somdok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/nuttakrit.png' 
+  },
+  { 
+    id: 22, 
+    nameTh: 'ผศ.ดร.ลัญจกร ตันนุกิจ', 
+    nameEn: 'Asst. Prof. Dr. Lanchakorn Tannukij\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/lunchakurn.png' 
+  },
+  { 
+    id: 23, 
+    nameTh: 'ดร.เฉลิมพล รุจรดาวงศ์', 
+    nameEn: 'Dr. Chalermpol Rudradawong\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/chalermpol.png' 
+  },
+  { 
+    id: 24, 
+    nameTh: 'ดร.ยงยุทธ แก้วจำรัส', 
+    nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
+    image: '/img/profPhy/yongyut.png' 
+  }
+])
+
+const physicsStaff = ref([
+  { id: 1, nameTh: 'นางสาวสายสุดาวัลย์ สุทธิญาณ', nameEn: 'Ms.Saisudawan Suttiyan\nนักวิทยาศาสตร์', image: '/img/profPhy/saisudawan.png' },
+  { id: 2, nameTh: 'นางพิมพร อ่อนละออ', nameEn: 'Mrs.Pimporn Onlaor\nนักวิทยาศาสตร์', image: '/img/profPhy/pimporn.png' },
+  { id: 3, nameTh: 'นางสาวนลิตา สว่างจิตต์', nameEn: 'Ms.Nalita Sawangjit\nนักวิทยาศาสตร์', image: '/img/profPhy/nalita.png' },
+  { id: 4, nameTh: 'นางสาวเกศณี เกตุนวม', nameEn: 'Ms.Kesanee Ketnuam\nเจ้าหน้าที่บริหารงานทั่วไป', image: '/img/profPhy/kesanee.png' },
+  { id: 5, nameTh: 'นายวีระพันธ์ ทิพาพงศ์', nameEn: 'Mr.Weraphan Tipaphong\nนักวิทยาศาสตร์', image: '/img/profPhy/weraphan.png' },
+  { id: 6, nameTh: 'นายชวนนท์ มะโน', nameEn: 'Mr.Chawanon Mano\nนักวิทยาศาสตร์', image: '/img/profPhy/chawanon.png' },
+  { id: 7, nameTh: 'นายสาโรจน์ ชูอำไพ', nameEn: 'Mr.Saroj Chooampai\nผู้ปฏิบัติงานวิทยาศาสตร์', image: '/img/profPhy/saroj.png' }
+>>>>>>> dev
 ])
 </script>
 

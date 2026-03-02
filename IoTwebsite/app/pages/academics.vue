@@ -519,7 +519,6 @@ const historyData = [
 <style scoped>
 /* ================== Global & Layout ================== */
 .academics-page {
-  background-color: #fdfbf7;
   color: #333;
   font-family: 'Sarabun', 'Kanit', sans-serif;
 }

@@ -251,8 +251,8 @@ const quotaPages = ref([
 
 <style scoped>
 .wrapper{
-  background-color: #fdfbf7;
-  font-family:'Segoe UI', sans-serif;
+  
+  font-family:'Kanit', sans-serif;
   color:#1e2a38;
 }
 

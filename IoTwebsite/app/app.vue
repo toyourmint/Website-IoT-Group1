@@ -1,5 +1,6 @@
 <script setup>
 const { locale } = useI18n()
+//const { load } = useFontSize()
 
 useHead({
   meta: [
@@ -11,7 +12,11 @@ useHead({
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap' }
   ],
   htmlAttrs: {
+<<<<<<< HEAD
     lang: locale // ⭐ เปลี่ยนอัตโนมัติตามภาษา
+=======
+    lang: locale
+>>>>>>> dev
   }
 })
 
@@ -24,6 +29,10 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description
 })
+
+//onMounted(() => {
+//  load()
+//})
 </script>
 
 <template>
@@ -83,9 +92,10 @@ useSeoMeta({
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* ป้องกันการเลื่อนซ้ายขวาถ้ามีอะไรล้น */
+  overflow-x: hidden;
 }
-  /* 🌙 Dark mode navbar */
+
+/* 🌙 Dark mode navbar */
 .dark .header {
   background-color: #101022;
   border-bottom: 1px solid #333;
@@ -98,21 +108,21 @@ body {
 .dark .nav-links a:hover {
   color: #f26522;
 }
+
 /* 🌙 Dark mode footer */
 .dark .footer {
-  background-color: #101022;   /* เข้มขึ้น */
+  background-color: #101022;
   color: #e5e7eb;
 }
+
 .dark .footer-heading {
   color: #cbd5e1;
 }
 
-/* สีไอคอน */
 .dark .footer .icon {
   color: #94a3b8;
 }
 
-/* ลิงก์ */
 .dark .footer-links a {
   color: #cbd5e1;
 }
@@ -121,18 +131,19 @@ body {
   color: #f26522;
 }
 
-/* social icons */
 .dark .social-icons a {
   color: #e5e7eb;
 }
 
-/* เส้น divider */
 .dark .footer-divider {
   background-color: #2a2f45;
 }
 
-/* ข้อความล่างสุด */
 .dark .footer-bottom {
   color: #9ca3af;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> dev
