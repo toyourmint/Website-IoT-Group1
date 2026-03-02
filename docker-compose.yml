@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: mysql-strapi
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iotwebsite_db
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  strapi:
+    image: node:20
+    container_name: strapi
+    working_dir: /app
+    volumes:
+      - ./cms:/app
+    command: sh -c "npm install && npm run develop"
+    ports:
+      - "1337:1337"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DATABASE_CLIENT: mysql
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: iotwebsite_db
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+
+volumes:
+  mysql_data:

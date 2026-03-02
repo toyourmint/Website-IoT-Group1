@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "professors",
+  "info": {
+    "singularName": "professor",
+    "pluralName": "professors",
+    "displayName": "professor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_th": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "department": {
+      "type": "enumeration",
+      "enum": [
+        "IoT",
+        "Physics"
+      ]
+    },
+    "role": {
+      "type": "enumeration",
+      "enum": [
+        "Faculty",
+        "Staff"
+      ]
+    },
+    "education": {
+      "type": "blocks"
+    },
+    "expertise": {
+      "type": "blocks"
+    }
+  }
+}
