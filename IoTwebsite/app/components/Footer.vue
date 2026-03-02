@@ -69,10 +69,7 @@ const colorMode = useColorMode()
 
 <style scoped>
 .footer {
-  background-color: #1a1c29;
-  color: #FFDCB7;
   padding: 60px 0 20px 0;
-  font-family: 'Prompt', sans-serif;
   width: 100%;
 }
 
@@ -127,7 +124,6 @@ const colorMode = useColorMode()
   width: 22px;       /* ⭐ ทำให้ทุกไอคอนเริ่มตำแหน่งเท่ากัน */
   flex-shrink: 0;    /* ⭐ ป้องกัน icon หด */
   margin-top: 3px;   /* ⭐ ปรับให้ตรงบรรทัดแรก */
-  color: #FFDCB7;
 }
 .social-icons {
   display: flex;
@@ -136,7 +132,6 @@ const colorMode = useColorMode()
 }
 
 .social-icons a {
-  color: #FFDCB7;
   font-size: 20px;
 }
 
@@ -150,7 +145,6 @@ const colorMode = useColorMode()
 }
 
 .footer-heading {
-  color: #FFDCB7;
   margin-bottom: 25px;
 }
 
@@ -160,7 +154,6 @@ const colorMode = useColorMode()
 }
 
 .footer-links a {
-  color: #FFDCB7;
   text-decoration: none;
 }
 
@@ -170,14 +163,12 @@ const colorMode = useColorMode()
 
 .footer-divider {
   height: 1px;
-  background-color: #FFDCB7;
   border: 0;
   margin-bottom: 20px;
 }
 
 .footer-bottom {
   font-size: 12px;
-  color: #FFDCB7;
 }
 
 @media (max-width: 768px) {

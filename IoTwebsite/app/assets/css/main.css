@@ -16,31 +16,85 @@
   --color-green-900: #0A5331;
   --color-green-950: #052E16;
 }
-/* 🌞 Light mode */
-body {
-  background-color: #fdfbf7;
-  color: #1f2937;
-}
 
-/* 🌙 Dark mode */
-.dark body {
-  background-color: #0f172a;   /* slate-900 */
-  color: #e5e7eb;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-sans);
-  overflow-x: hidden; /* ป้องกันการเลื่อนซ้ายขวาถ้ามีอะไรล้น */
-}
-/* smooth scroll */
+/* --- Global Base Styles --- */
 html {
   scroll-behavior: smooth;
 }
 
-/* image responsive */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-color: #fdfbf7;
+  color: #1f2937; /* สีดำ/เทาเข้มตอน Light Mode */
+  transition: background-color 0.2s, color 0.2s;
+}
+
 img {
   max-width: 100%;
   display: block;
 }
- 
+.footer {
+  background-color: #1a1c29;
+  color: #FFDCB7;
+}
+/* --- Dark Mode Logic --- */
+/* ใช้ .dark เป็นจุดเริ่มเพื่อให้ Priority สูงกว่าสไตล์ปกติ */
+.dark body {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* แก้ไขสีส่วนประกอบต่างๆ เมื่อเป็น Dark Mode */
+.dark .header, 
+.dark .footer {
+  background-color: #101022 !important;
+  color: #f8fafc !important;
+}
+
+.dark .nav-links a,
+.dark .footer-links a,
+.dark .social-icons a {
+  color: #e5e7eb !important;
+}
+
+.dark .nav-links a:hover,
+.dark .footer-links a:hover {
+  color: #f26522 !important; /* ใช้สีเขียวแบรนด์ที่คุณตั้งไว้ */
+}
+
+.dark .footer-heading {
+  color: #ffffff;
+}
+
+.dark .footer-divider {
+  background-color: #334155;
+}
+
+
+
+.dark .footer-bottom {
+  color: #94a3b8;
+}
+
+/* เพิ่มต่อท้ายใน main.css ของคุณ */
+
+/* --- Dark Mode Specific for Navbar --- */
+.dark .lang-toggle, 
+.dark .font-size-controls {
+  background-color: #1e293b !important; /* พื้นหลังเข้มขึ้นในโหมดมืด */
+  border-color: #334155 !important;
+}
+
+.dark .lang-link.active {
+  background-color: #334155 !important; /* สีปุ่มภาษาที่ถูกเลือกในโหมดมืด */
+  color: #f26522 !important;
+}
+
+/* เส้นคั่นใน Navbar */
+.dark .nav-item-last::after,
+.dark .font-divider {
+  background-color: #475569 !important;
+}
