@@ -1,11 +1,34 @@
 <template>
   <div class="wrapper">
-    <!-- HERO -->
-    <section class="section hero">
-      <h1>Admission</h1>
-    </section>
+    
+    <div class="hero-fullscreen">
+      <div class="title-container">
+        <h1 class="main-title">Admission</h1>
+      </div>
 
-    <!-- COURSE DETAIL -->
+      <div class="tab-buttons-wrapper">
+        <div class="tab-buttons">
+          <button 
+            :class="{ active: activeSection === 'portfolio' }" 
+            @click="scrollTo('portfolio')"
+          >
+            PORTFOLIO
+          </button>
+          <button 
+            :class="{ active: activeSection === 'quota' }" 
+            @click="scrollTo('quota')"
+          >
+            QUOTA
+          </button>
+          <button 
+            :class="{ active: activeSection === 'admission' }" 
+            @click="scrollTo('admission')"
+          >
+            ADMISSION
+          </button>
+        </div>
+      </div>
+    </div>
     <section class="section">
       <h2 class="section-title">
         รายละเอียดหลักสูตร
@@ -33,7 +56,6 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
     <section
       id="portfolio"
       class="section"
@@ -44,7 +66,6 @@
       <Carousel :items="portfolioPages" />
     </section>
 
-    <!-- QUOTA -->
     <section
       id="quota"
       class="section"
@@ -55,7 +76,6 @@
       <Carousel :items="quotaPages" />
     </section>
 
-    <!-- ADMISSION -->
     <section
       id="admission"
       class="section admission-section"
@@ -87,41 +107,26 @@
 
       <NuxtLink
         to="https://admission.reg.kmitl.ac.th/#/"
-        class="more-btn"
+        class="outline-btn"
       >
         เรียนรู้รายละเอียดเพิ่มเติม
-        <span class="circle-arrow">➜</span>
+        <span class="arrow-icon">➔</span>
       </NuxtLink>
     </section>
 
-    <button
-      v-show="showScroll"
-      class="scroll-top"
-      @click="scrollToTop"
-    >
-      ↑
-    </button>
+    <transition name="slide-up">
+      <button 
+        v-if="showScroll" 
+        class="scroll-top-btn" 
+        @click="scrollToTop" 
+        aria-label="Scroll to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+    </transition>
 
-    <div class="bottom-nav">
-      <button
-        class="nav-btn"
-        @click="scrollTo('portfolio')"
-      >
-        PORTFOLIO
-      </button>
-      <button
-        class="nav-btn"
-        @click="scrollTo('quota')"
-      >
-        QUOTA
-      </button>
-      <button
-        class="nav-btn"
-        @click="scrollTo('admission')"
-      >
-        ADMISSION
-      </button>
-    </div>
   </div>
 </template>
 
@@ -130,12 +135,15 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Carousel from '../components/Carousel.vue'
 
 const showScroll = ref(false)
+const activeSection = ref('') 
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+  activeSection.value = '' 
 }
 
 const scrollTo = (id) => {
+  activeSection.value = id 
   document.getElementById(id)?.scrollIntoView({
     behavior: 'smooth'
   })
@@ -251,10 +259,77 @@ const quotaPages = ref([
 
 <style scoped>
 .wrapper{
-  
   font-family:'Kanit', sans-serif;
   color:#1e2a38;
 }
+
+/* ================== ส่วน CSS ของ Hero และปุ่ม ================== */
+.hero-fullscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.title-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title {
+  font-size: 64px;
+  margin: 0;
+  margin-top: -50px;
+  font-weight: bold;
+}
+
+.tab-buttons-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.tab-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.tab-buttons button {
+  flex: 1;
+  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
+  border: none;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #32363f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tab-buttons button:hover {
+  transform: scale(1.02);
+  color: #000;
+}
+
+.tab-buttons button.active {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* ====================================================================== */
 
 .section{
   min-height:100vh;
@@ -266,17 +341,11 @@ const quotaPages = ref([
   position:relative;
 }
 
-.hero h1{
-  font-size:64px;
-  margin-top:-120px;
-}
-
 .section-title{
   font-size:36px;
   margin-top:-40px;
 }
 
-/* เลื่อนหัวข้อ ADMISSION ขึ้นเล็กน้อย */
 .admission-title{
   margin-top:-100px;
 }
@@ -311,95 +380,100 @@ const quotaPages = ref([
   padding:30px;
 }
 
-/* เลื่อนปุ่มลง ไม่ให้ทับกล่อง */
-.admission-section .more-btn{
-  position:absolute;
-  bottom:80px;
-  right:60px;
+/* ================== CSS ของปุ่มลิงก์รายละเอียด ================== */
+.admission-section .outline-btn {
+  position: absolute;
+  bottom: 80px;
+  right: 60px;
 }
 
-.more-btn{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:450px;
-  padding:18px 25px;
-  border-radius:50px;
-  border:4px solid #ff8c00;
-  font-size:20px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#222;
-  background:white;
-  transition:.3s;
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid #ff9800;
+  color: #333;
+  padding: 6px 6px 6px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.more-btn:hover{
-  background:#fff3e0;
-  transform:scale(1.05);
+.outline-btn:hover {
+  background-color: #fef8f0;
+  color: #ff9800;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 152, 0, 0.2);
 }
 
-.circle-arrow{
-  background:#ff8c00;
-  color:white;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.3s;
+.arrow-icon {
+  background-color: #ff9800;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: transform 0.3s ease;
 }
 
-.more-btn:hover .circle-arrow{
-  transform:translateX(8px);
+.outline-btn:hover .arrow-icon {
+  transform: translateX(3px);
+}
+/* =================================================================================== */
+
+/* ================== ปุ่มเลื่อนขึ้นบนสุด (อัปเดตให้เหมือน Department) ================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.scroll-top{
-  position:fixed;
-  bottom: 120px;
-  left:50px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:none;
-  background:#ff8c00;
-  color:white;
-  font-size:28px;
-  cursor:pointer;
-  transition:.3s;
-  z-index:1000;
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-.scroll-top:hover{
-  transform:scale(1.2);
+.scroll-top-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #32363f;
 }
 
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:white;
-  display:flex;
-  justify-content:center;
-  gap:30px;
-  padding:20px;
-  box-shadow:0 -5px 20px rgba(0,0,0,0.08);
+/* ================== Slide-up Transition ================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.nav-btn{
-  width:220px;
-  padding:16px 0;
-  border-radius:20px;
-  background:linear-gradient(to bottom,#f9c27c,#f4a64d);
-  border:3px solid #ff8c00;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.3s;
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
-.nav-btn:hover{
-  transform:translateY(-5px) scale(1.05);
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+/* ================== Responsive สำหรับมือถือ ================== */
+@media (max-width: 768px) {
+  .tab-buttons {
+    flex-direction: column;
+  }
 }
 </style>

@@ -425,14 +425,23 @@
         </div>
       </div>
     </div>
-  </div>
+    
+    <transition name="slide-up">
+      <button v-if="showScrollTop" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+    </transition>
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeTab = ref('iot')
 const contentArea = ref(null)
+const showScrollTop = ref(false)
 
 const selectTab = (tabName) => {
   activeTab.value = tabName
@@ -442,6 +451,22 @@ const selectTab = (tabName) => {
     }
   }, 100)
 }
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 300
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const historyData = [
   {
@@ -941,6 +966,48 @@ const historyData = [
 }
 .timeline-text p {
   margin: 0 0 5px 0;
+}
+
+/* ================== Scroll To Top Button ================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-top-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #32363f;
+}
+
+/* ================== Slide-up Transition ================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 /* ================== Responsive ================== */
