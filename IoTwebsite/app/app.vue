@@ -12,11 +12,7 @@ useHead({
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap' }
   ],
   htmlAttrs: {
-<<<<<<< HEAD
     lang: locale // ⭐ เปลี่ยนอัตโนมัติตามภาษา
-=======
-    lang: locale
->>>>>>> dev
   }
 })
 
@@ -142,8 +138,4 @@ body {
 .dark .footer-bottom {
   color: #9ca3af;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> dev
