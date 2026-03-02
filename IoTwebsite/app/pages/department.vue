@@ -1,3 +1,233 @@
+<template>
+  <div class="department-page">
+    <div class="hero-fullscreen">
+      <div class="title-container">
+        <h1 class="main-title">
+          Department
+        </h1>
+      </div>
+
+      <div class="tab-buttons-wrapper">
+        <div class="tab-buttons">
+          <button
+            :class="{ active: activeTab === 'iot' }"
+            @click="selectTab('iot')"
+          >
+            the Department of IoT<br>and Information Engineering
+          </button>
+          <button
+            :class="{ active: activeTab === 'physics' }"
+            @click="selectTab('physics')"
+          >
+            Industrial Physics
+          </button>
+        </div>
+
+        <div class="scroll-hint">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ปุ่ม Scroll to Top -->
+    <transition name="slide-up">
+      <button
+        v-if="showScrollTop"
+        class="scroll-top-btn"
+        aria-label="Scroll to top"
+        @click="scrollToTop"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 15.75l7.5-7.5 7.5 7.5"
+          />
+        </svg>
+      </button>
+    </transition>
+
+    <div
+      ref="contentSection"
+      class="content-wrapper"
+    >
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="activeTab === 'iot'"
+          key="iot"
+          class="tab-content"
+        >
+          <div class="section-header">
+            <h2 class="section-title">
+              IoT and Information Engineering
+            </h2>
+            <h3 class="section-subtitle">
+              Department Faculty Members
+            </h3>
+            <p class="section-desc">
+              คณาจารย์ประจำภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
+          </div>
+
+          <div class="member-grid">
+            <div
+              v-for="member in iotFaculty"
+              :key="member.id"
+              class="member-card"
+            >
+              <div class="member-info">
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
+                </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  :alt="member.nameTh"
+                  class="member-img"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header staff-header">
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
+          </div>
+
+          <div class="staff-grid">
+            <div
+              v-for="staff in iotStaff"
+              :key="staff.id"
+              class="member-card"
+            >
+              <div class="member-info">
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
+                </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img
+                  v-if="staff.image"
+                  :src="staff.image"
+                  :alt="staff.nameTh"
+                  class="member-img"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-else-if="activeTab === 'physics'"
+          key="physics"
+          class="tab-content"
+        >
+          <div class="section-header">
+            <h2 class="section-title">
+              Industrial Physics Department Faculty Members
+            </h2>
+            <p class="section-desc">
+              คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม
+            </p>
+          </div>
+
+          <div class="member-grid">
+            <div
+              v-for="member in physicsFaculty"
+              :key="member.id"
+              class="member-card"
+            >
+              <div class="member-info">
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
+                </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  :alt="member.nameTh"
+                  class="member-img"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header staff-header">
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
+            </p>
+          </div>
+
+          <div class="staff-grid">
+            <div
+              v-for="staff in physicsStaff"
+              :key="staff.id"
+              class="member-card"
+            >
+              <div class="member-info">
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
+                </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img
+                  v-if="staff.image"
+                  :src="staff.image"
+                  :alt="staff.nameTh"
+                  class="member-img"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { ref } from 'vue'
 
@@ -39,12 +269,12 @@ const iotFaculty = ref([
   { id: 11, nameTh: 'ผศ.ดร.พนารัตน์ เชิญถนอมวงศ์', nameEn: 'Asst.Prof.Dr.Panarat Cherntanomwong\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajpanarat.png' },
   { id: 12, nameTh: 'ผศ.สรพงษ์ วชิรรัตนพรกุล', nameEn: 'Asst.Prof.Sorapong Wachirarattanapornkul\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajtee.jpg' },
   { id: 13, nameTh: 'ผศ.ไพศาล สิทธิโยภาสกุล', nameEn: 'Asst.Prof.Paisan Sithiyopasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajpaisan.jpg' },
-  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' },
+  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' }
 ])
 
 const iotStaff = ref([
   { id: 1, nameTh: 'นายธนาตย์ จอมใจเอกชน', nameEn: 'Mr. Thanat Chomjaiakchan', image: '/img/profIoT/pchai.jpg' },
-  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' },
+  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' }
 ])
 
 // ==========================================
@@ -55,154 +285,113 @@ const iotStaff = ref([
 // ==========================================
 const physicsFaculty = ref([
   // แถวที่ 1
-  { 
-    id: 1, 
-    nameTh: 'รศ.ดร.ภัทรียา ดำรงศักดิ์', 
-    nameEn: 'Assoc. Prof. Dr. Pattareeya Damrongsak\n(หัวหน้าภาควิชาฟิสิกส์)', 
-    image: '/img/profPhy/pattareeya.png' 
+  {
+    id: 1,
+    nameTh: 'รศ.ดร.ภัทรียา ดำรงศักดิ์',
+    nameEn: 'Assoc. Prof. Dr. Pattareeya Damrongsak\n(หัวหน้าภาควิชาฟิสิกส์)',
+    image: '/img/profPhy/pattareeya.png'
   },
-  { 
-    id: 2, 
-    nameTh: 'รศ.ดร.สาหร่าย เล็กชะอุ่ม', 
-    nameEn: 'Assoc. Prof. Dr. Sarai Lekchaum\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/sarai.png' 
+  {
+    id: 2,
+    nameTh: 'รศ.ดร.สาหร่าย เล็กชะอุ่ม',
+    nameEn: 'Assoc. Prof. Dr. Sarai Lekchaum\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/sarai.png'
   },
-  { 
-    id: 3, 
-    nameTh: 'รศ.ดร.รัชนก สมพรเสน่ห์', 
-    nameEn: 'Assoc. Prof. Dr. Ratchanok Sompornsane\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/ratchanok.png' 
+  {
+    id: 3,
+    nameTh: 'รศ.ดร.รัชนก สมพรเสน่ห์',
+    nameEn: 'Assoc. Prof. Dr. Ratchanok Sompornsane\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/ratchanok.png'
   },
-  { 
-    id: 4, 
-    nameTh: 'ผศ.ดร.ศ.ทิพวรรณ คล้ายบุญมี', 
-    nameEn: 'Asst. Prof. Dr. S.Tipawan Khlayboonme\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/tipawan.png' 
+  {
+    id: 4,
+    nameTh: 'ผศ.ดร.ศ.ทิพวรรณ คล้ายบุญมี',
+    nameEn: 'Asst. Prof. Dr. S.Tipawan Khlayboonme\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/tipawan.png'
   },
-  { 
-    id: 5, 
-    nameTh: 'รศ.ดร.อาภาภรณ์ สกุลการะเวก', 
-    nameEn: 'Assoc. Prof. Dr. Aparporn Sakulkalavek\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/aparporn.png' 
+  {
+    id: 5,
+    nameTh: 'รศ.ดร.อาภาภรณ์ สกุลการะเวก',
+    nameEn: 'Assoc. Prof. Dr. Aparporn Sakulkalavek\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/aparporn.png'
   },
-  { 
-    id: 6, 
-    nameTh: 'ดร.พิชชานันท์ ธีเศรษฐ์โศภน', 
-    nameEn: 'Dr. Pichanan Teesetsopon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/pichanan.png' 
+  {
+    id: 6,
+    nameTh: 'ดร.พิชชานันท์ ธีเศรษฐ์โศภน',
+    nameEn: 'Dr. Pichanan Teesetsopon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/pichanan.png'
   },
-  { 
-    id: 7, 
-    nameTh: 'ผศ.ดร.เมตยา กิติวรรณ', 
-    nameEn: 'Asst. Prof. Dr. Metaya Kittiwan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/mettaya.png' 
+  {
+    id: 7,
+    nameTh: 'ผศ.ดร.เมตยา กิติวรรณ',
+    nameEn: 'Asst. Prof. Dr. Metaya Kittiwan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/mettaya.png'
   },
-  { 
-    id: 8, 
-    nameTh: 'ผศ.ธนภรณ์ ลีลาวัฒนานนท์', 
-    nameEn: 'Asst. Prof. Thanaporn Leelawattananon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/thanaporn.png' 
+  {
+    id: 8,
+    nameTh: 'ผศ.ธนภรณ์ ลีลาวัฒนานนท์',
+    nameEn: 'Asst. Prof. Thanaporn Leelawattananon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/thanaporn.png'
   },
   // แถวที่ 3
-  { 
-    id: 9, 
-    nameTh: 'ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์', 
-    nameEn: 'Asst. Prof. Surasak Phiphatsart\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/surasak.png' 
+  {
+    id: 9,
+    nameTh: 'ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์',
+    nameEn: 'Asst. Prof. Surasak Phiphatsart\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/surasak.png'
   },
-  { 
-    id: 10, 
-    nameTh: 'ผศ.ดร.ประธาน บุรณศิริ', 
-    nameEn: 'Asst. Prof. Dr. Prathan Buranasiri\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/prathan.png' 
+  {
+    id: 10,
+    nameTh: 'ผศ.ดร.ประธาน บุรณศิริ',
+    nameEn: 'Asst. Prof. Dr. Prathan Buranasiri\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/prathan.png'
   },
-  { 
-    id: 11, 
-    nameTh: 'อ.ธรรมรัตน์ แต่งตั้ง', 
-    nameEn: 'Mr. Thammarat Tangtang\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/thammarat.png' 
+  {
+    id: 11,
+    nameTh: 'อ.ธรรมรัตน์ แต่งตั้ง',
+    nameEn: 'Mr. Thammarat Tangtang\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/thammarat.png'
   },
-  { 
-    id: 12, 
-    nameTh: 'อ.สุรชาติ กมลดิลก', 
-    nameEn: 'Mr. Surachat Kamol-dilok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/surachart.png' 
+  {
+    id: 12,
+    nameTh: 'อ.สุรชาติ กมลดิลก',
+    nameEn: 'Mr. Surachat Kamol-dilok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/surachart.png'
   },
   // แถวที่ 4
-  { 
-    id: 13, 
-    nameTh: 'ผศ.ดร.ณัฐพร พรหมรส', 
-    nameEn: 'Asst. Prof. Dr. Nattaporn Promros\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/nathaporn.png' 
+  {
+    id: 13,
+    nameTh: 'ผศ.ดร.ณัฐพร พรหมรส',
+    nameEn: 'Asst. Prof. Dr. Nattaporn Promros\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/nathaporn.png'
   },
-  { 
-    id: 14, 
-    nameTh: 'ศ.ดร.เชรษฐา รัตนพันธ์', 
-    nameEn: 'Prof. Dr. Chettra Rattanaphan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/chesta.png' 
+  {
+    id: 14,
+    nameTh: 'ศ.ดร.เชรษฐา รัตนพันธ์',
+    nameEn: 'Prof. Dr. Chettra Rattanaphan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/chesta.png'
   },
-  { 
-    id: 15, 
-    nameTh: 'รศ.ดร.กฤษกร โล้เจริญรัตน์', 
-    nameEn: 'Assoc. Prof. Dr. Kitsakorn Locharoenrat\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/kitsakorn.png' 
+  {
+    id: 15,
+    nameTh: 'รศ.ดร.กฤษกร โล้เจริญรัตน์',
+    nameEn: 'Assoc. Prof. Dr. Kitsakorn Locharoenrat\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/kitsakorn.png'
   },
-  { 
-    id: 16, 
-    nameTh: 'ผศ.ดร.ภาณุพล โขลนกระโทก', 
-    nameEn: 'Asst. Prof. Dr. Panupol Khlonkratok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/bhanupol.png' 
+  {
+    id: 16,
+    nameTh: 'ผศ.ดร.ภาณุพล โขลนกระโทก',
+    nameEn: 'Asst. Prof. Dr. Panupol Khlonkratok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)',
+    image: '/img/profPhy/bhanupol.png'
   },
   // แถวที่ 5
-  { 
-    id: 17, 
-    nameTh: 'ผศ.ดร.พิศาล ศรีราช', 
-    nameEn: 'Asst. Prof. Dr. Phisan Srirach\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/pisan.png' 
-  },
-  { 
-    id: 18, 
-    nameTh: 'ดร.ชินพรรธน์ รัตนศิรวิทย์', 
-    nameEn: 'Dr. Chinnaphat Rattanasirawit\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/chinnapat.png' 
-  },
-  { 
-    id: 19, 
-    nameTh: 'ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์', 
-    nameEn: 'Asst. Prof. Dr. Keerayut Srinuanjan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/keerayoot.png' 
-  },
-  { 
-    id: 20, 
-    nameTh: 'ดร.วิฑูรย์ ยินดีสุข', 
-    nameEn: 'Dr. Witoon Yindeesuk\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/witoon.png' 
-  },
-  // แถวที่ 6
-  { 
-    id: 21, 
-    nameTh: 'ผศ.ดร.ณัฏกฤษ สมดอก', 
-    nameEn: 'Asst. Prof. Dr. Natthakrit Somdok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/nuttakrit.png' 
-  },
-  { 
-    id: 22, 
-    nameTh: 'ผศ.ดร.ลัญจกร ตันนุกิจ', 
-    nameEn: 'Asst. Prof. Dr. Lanchakorn Tannukij\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/lunchakurn.png' 
-  },
-  { 
-    id: 23, 
-    nameTh: 'ดร.เฉลิมพล รุจรดาวงศ์', 
-    nameEn: 'Dr. Chalermpol Rudradawong\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/chalermpol.png' 
-  },
-  { 
-    id: 24, 
-    nameTh: 'ดร.ยงยุทธ แก้วจำรัส', 
-    nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', 
-    image: '/img/profPhy/yongyut.png' 
-  }
+  { id: 17, nameTh: 'ผศ.ดร.พิศาล ศรีราช', nameEn: 'Asst. Prof. Dr. Phisan Srirach\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/pisan.png' },
+  { id: 18, nameTh: 'ดร.ชินพรรธน์ รัตนศิรวิทย์', nameEn: 'Dr.Chinnapat Ruttanasirawit\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chinnapat.png' },
+  { id: 19, nameTh: 'ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์', nameEn: 'Asst. Prof. Dr. Keerayoot Srinuanjan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/keerayoot.png' },
+  { id: 20, nameTh: 'ดร.วิฑูรย์ ยินดีสุข', nameEn: 'Dr.Witoon Yindeesuk\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/witoon.png' },
+  { id: 21, nameTh: 'ดร.ณัฏกฤษ สมดอก', nameEn: 'Dr.Nuttakrit Somdock\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/nuttakrit.png' },
+  { id: 22, nameTh: 'ผศ.ดร.ลัญจกร ตันนุกิจ', nameEn: 'Asst. Prof. Dr. Lanchakorn Tannukij\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/lunchakurn.png' },
+  { id: 23, nameTh: 'ดร.เฉลิมพล รุจรดาวงศ์', nameEn: 'Dr. Chalermpol Rudradawong\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chalermpol.png' },
+  { id: 24, nameTh: 'ดร.ยงยุทธ แก้วจำรัส', nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/yongyut.png' }
 ])
 
 const physicsStaff = ref([
