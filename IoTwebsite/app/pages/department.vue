@@ -2,15 +2,12 @@
   <div class="department-page">
     <div class="hero-fullscreen">
       <div class="title-container">
-        <<<<<<< HEAD
         <h1 class="main-title">
           Department
         </h1>
-        =======
         <h1 class="main-title">
           Departments
         </h1>
-        >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
       </div>
 
       <div class="tab-buttons-wrapper">
@@ -96,20 +93,17 @@
           </div>
 
           <div class="member-grid">
-            <<<<<<< HEAD
             <div
               v-for="member in iotFaculty"
               :key="member.id"
               class="member-card"
             >
-              =======
               <div
                 v-for="member in iotFaculty"
                 :key="member.id"
                 class="member-card clickable-card"
                 @click="openModal(member)"
               >
-                >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
                 <div class="member-info">
                   <h4 class="member-name-th">
                     {{ member.nameTh }}
@@ -139,20 +133,17 @@
             </div>
 
             <div class="staff-grid">
-              <<<<<<< HEAD
               <div
                 v-for="staff in iotStaff"
                 :key="staff.id"
                 class="member-card"
               >
-                =======
                 <div
                   v-for="staff in iotStaff"
                   :key="staff.id"
                   class="member-card clickable-card"
                   @click="openModal(staff)"
                 >
-                  >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
                   <div class="member-info">
                     <h4 class="member-name-th">
                       {{ staff.nameTh }}
@@ -188,20 +179,17 @@
               </div>
 
               <div class="member-grid">
-                <<<<<<< HEAD
                 <div
                   v-for="member in physicsFaculty"
                   :key="member.id"
                   class="member-card"
                 >
-                  =======
                   <div
                     v-for="member in physicsFaculty"
                     :key="member.id"
                     class="member-card clickable-card"
                     @click="openModal(member)"
                   >
-                    >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
                     <div class="member-info">
                       <h4 class="member-name-th">
                         {{ member.nameTh }}
@@ -231,20 +219,17 @@
                 </div>
 
                 <div class="staff-grid">
-                  <<<<<<< HEAD
                   <div
                     v-for="staff in physicsStaff"
                     :key="staff.id"
                     class="member-card"
                   >
-                    =======
                     <div
                       v-for="staff in physicsStaff"
                       :key="staff.id"
                       class="member-card clickable-card"
                       @click="openModal(staff)"
                     >
-                      >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
                       <div class="member-info">
                         <h4 class="member-name-th">
                           {{ staff.nameTh }}
@@ -270,9 +255,6 @@
         </div>
       </transition>
     </div>
-    <<<<<<< HEAD
-    =======
-
     <transition name="modal-fade">
       <div
         v-if="selectedMember"
@@ -357,8 +339,6 @@
         </div>
       </div>
     </transition>
-
-    >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
   </div>
 </template>
 
@@ -425,7 +405,8 @@ const scrollToTop = () => {
 // ข้อมูลสาขา IoT
 // ==========================================
 const iotFaculty = ref([
-  { id: 1,
+  {
+    id: 1,
     nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์',
     nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา',
     image: '/img/profIoT/ajkaew.jpg',
@@ -442,7 +423,8 @@ const iotFaculty = ref([
       '- Information Security'
     ]
   },
-  { id: 2,
+  {
+    id: 2,
     nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์',
     nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ',
     image: '/img/profIoT/ajboon.jpg',
@@ -460,7 +442,8 @@ const iotFaculty = ref([
     ]
   },
   { id: 3, nameTh: 'ศ.ดร. อภิรัฐ ศิริธราธิวัตร', nameEn: 'Prof. Dr. Apirat Siritaratiwat\nรองหัวหน้าภาควิชา (ฝ่ายวิจัยและนวัตกรรม)', image: '/img/profIoT/ajapirat.jpg' },
-  { id: 4,
+  {
+    id: 4,
     nameTh: 'ผศ.ดร.วันวิสา ชัชวงษ์',
     nameEn: 'Asst.Prof.Dr.Vanvisa Chutchavong\nรองหัวหน้าภาควิชา (ฝ่ายการเงิน)',
     image: '/img/profIoT/ajkai.jpg',
@@ -479,7 +462,8 @@ const iotFaculty = ref([
       '- Railway Communications'
     ]
   },
-  { id: 5,
+  {
+    id: 5,
     nameTh: 'ผศ.ดร.นัชนัยน์ รุ่งเหมือนฟ้า',
     nameEn: 'Asst.Prof.Dr.Natchanai Roongmuanpha\nรองหัวหน้าภาควิชา (ฝ่ายต่างประเทศและกิจกรรมคณะ)',
     image: '/img/profIoT/ajohm.jpg',
@@ -645,8 +629,15 @@ const physicsStaff = ref([
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 /* ================== Content Wrapper ================== */
@@ -728,6 +719,7 @@ const physicsStaff = ref([
 .clickable-card {
   cursor: pointer;
 }
+
 .clickable-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -849,7 +841,8 @@ const physicsStaff = ref([
   position: relative;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  max-height: 90vh; /* เผื่อเนื้อหาเยอะให้ scroll ได้ */
+  max-height: 90vh;
+  /* เผื่อเนื้อหาเยอะให้ scroll ได้ */
   overflow-y: auto;
 }
 
@@ -868,7 +861,7 @@ const physicsStaff = ref([
 }
 
 .close-btn:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   color: #1f2937;
 }
 
@@ -957,6 +950,7 @@ const physicsStaff = ref([
 .modal-fade-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
@@ -989,13 +983,16 @@ const physicsStaff = ref([
     padding: 2rem 1.5rem;
     gap: 1.5rem;
   }
+
   .modal-details {
     text-align: center;
   }
+
   .modal-footer-action {
     justify-content: center;
     margin-top: 1.5rem;
   }
+
   .modal-content {
     max-height: 85vh;
   }
