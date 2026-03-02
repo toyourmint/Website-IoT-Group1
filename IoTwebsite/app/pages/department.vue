@@ -24,6 +24,15 @@
       </div>
     </div>
 
+    <!-- ปุ่ม Scroll to Top -->
+    <transition name="slide-up">
+      <button v-if="showScrollTop" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+    </transition>
+
     <div class="content-wrapper" ref="contentSection">
       <transition name="fade" mode="out-in">
 
@@ -107,13 +116,29 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 // State ควบคุมแท็บ (ค่าเริ่มต้นคือ iot)
 const activeTab = ref('iot')
 
 // อ้างอิง (Ref) ไปที่ส่วนเนื้อหาเพื่อใช้ทำฟังก์ชันเลื่อนจอลงมา
 const contentSection = ref(null)
+
+// State ควบคุมการแสดงปุ่ม scroll top
+const showScrollTop = ref(false)
+
+// ตรวจจับการเลื่อนหน้าจอ
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 300
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 // ฟังก์ชันเปลี่ยนแท็บ + เลื่อนหน้าจอ
 const selectTab = (tab) => {
@@ -129,6 +154,10 @@ const selectTab = (tab) => {
   }, 100)
 }
 
+// ฟังก์ชัน scroll กลับขึ้นบนสุด
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 // ==========================================
 // ข้อมูลสาขา IoT
 // ==========================================
@@ -302,10 +331,6 @@ const physicsStaff = ref([
   margin: 0 auto;
 }
 
-.tab-content {
-  /* เนื้อหาแต่ละแท็บ */
-}
-
 /* ================== Section Header ================== */
 .section-header {
   text-align: center;
@@ -414,6 +439,48 @@ const physicsStaff = ref([
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ================== Scroll To Top Button ================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-top-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #32363f;
+}
+
+/* ================== Slide-up Transition ================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 /* ================== Transitions ================== */
