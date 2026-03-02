@@ -1,29 +1,22 @@
 <template>
   <div class="wrapper">
-    
+
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Admission</h1>
+        <h1 class="main-title">Admission
+          <p>การรับสมัครนักศึกษา</p>
+        </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
-          <button 
-            :class="{ active: activeSection === 'portfolio' }" 
-            @click="selectTab('portfolio')"
-          >
+          <button :class="{ active: activeSection === 'portfolio' }" @click="selectTab('portfolio')">
             PORTFOLIO
           </button>
-          <button 
-            :class="{ active: activeSection === 'quota' }" 
-            @click="selectTab('quota')"
-          >
+          <button :class="{ active: activeSection === 'quota' }" @click="selectTab('quota')">
             QUOTA
           </button>
-          <button 
-            :class="{ active: activeSection === 'admission' }" 
-            @click="selectTab('admission')"
-          >
+          <button :class="{ active: activeSection === 'admission' }" @click="selectTab('admission')">
             ADMISSION
           </button>
         </div>
@@ -57,19 +50,16 @@
     </section>
 
     <transition name="fade" mode="out-in">
-      
+
       <section v-if="activeSection === 'portfolio'" key="portfolio" id="portfolio" class="section tab-section">
         <h2 class="section-title">
           PORTFOLIO รับ 30 คน
         </h2>
         <Carousel :items="portfolioPages" />
-        
+
         <div class="card-container" style="margin-top: 20px;">
           <div class="action-btn-container">
-            <NuxtLink
-              to="https://admission.reg.kmitl.ac.th/#/"
-              class="outline-btn"
-            >
+            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
               เรียนรู้รายละเอียดเพิ่มเติม
               <span class="arrow-icon">➔</span>
             </NuxtLink>
@@ -85,10 +75,7 @@
 
         <div class="card-container" style="margin-top: 20px;">
           <div class="action-btn-container">
-            <NuxtLink
-              to="https://admission.reg.kmitl.ac.th/#/"
-              class="outline-btn"
-            >
+            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
               เรียนรู้รายละเอียดเพิ่มเติม
               <span class="arrow-icon">➔</span>
             </NuxtLink>
@@ -96,7 +83,8 @@
         </div>
       </section>
 
-      <section v-else-if="activeSection === 'admission'" key="admission" id="admission" class="section admission-section tab-section">
+      <section v-else-if="activeSection === 'admission'" key="admission" id="admission"
+        class="section admission-section tab-section">
         <h2 class="section-title admission-title">
           ADMISSION รับ 5 คน
         </h2>
@@ -124,10 +112,7 @@
           </div>
 
           <div class="action-btn-container">
-            <NuxtLink
-              to="https://admission.reg.kmitl.ac.th/#/"
-              class="outline-btn"
-            >
+            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
               เรียนรู้รายละเอียดเพิ่มเติม
               <span class="arrow-icon">➔</span>
             </NuxtLink>
@@ -138,12 +123,7 @@
     </transition>
 
     <transition name="slide-up">
-      <button 
-        v-if="showScroll" 
-        class="scroll-top-btn" 
-        @click="scrollToTop" 
-        aria-label="Scroll to top"
-      >
+      <button v-if="showScroll" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
         </svg>
@@ -158,12 +138,12 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Carousel from '../components/Carousel.vue'
 
 const showScroll = ref(false)
-const activeSection = ref('portfolio') 
+const activeSection = ref('portfolio')
 const contentArea = ref(null)
 
 const selectTab = (tabName) => {
   activeSection.value = tabName
-  
+
   setTimeout(() => {
     if (contentArea.value) {
       contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -284,7 +264,7 @@ const quotaPages = ref([
 </script>
 
 <style scoped>
-.wrapper{
+.wrapper {
   position: relative;
 }
 
@@ -297,23 +277,33 @@ const quotaPages = ref([
   box-sizing: border-box;
 }
 
+.main-title {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+}
+
 .title-container {
-  flex-grow: 1;
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.main-title {
-  /* ใช้ขนาด 4rem เพื่อให้มันขยายตามระบบ A+ ได้ */
-  font-size: 4rem; 
-  margin: 0;
-  margin-top: -50px;
-  font-weight: bold;
+  overflow: hidden;
 }
 
 .tab-buttons-wrapper {
-  background-color: transparent; 
+  background-color: transparent;
   padding: 20px 30px;
   border-radius: 20px 20px 0 0;
   width: 100%;
@@ -355,6 +345,7 @@ const quotaPages = ref([
   border: 1px solid #e68a00;
   color: #fff;
 }
+
 /* ====================================================================== */
 
 /* ================== Transitions ของ Tab ================== */
@@ -362,20 +353,22 @@ const quotaPages = ref([
 .fade-leave-active {
   transition: opacity 0.4s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
+
 /* ========================================================= */
 
-.section{
-  min-height:100vh;
-  padding:100px 20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+.section {
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .tab-section {
@@ -383,24 +376,24 @@ const quotaPages = ref([
   padding: 60px 20px 100px;
 }
 
-.section-title{
-  margin-top:-40px;
+.section-title {
+  margin-top: -40px;
   /* ลบ font-size:36px; ทิ้ง ปล่อยให้แท็ก h2 ใน main.css จัดการ */
 }
 
-.admission-title{
-  margin-top:-40px;
+.admission-title {
+  margin-top: -40px;
 }
 
-.info-box{
+.info-box {
   /* เปลี่ยนไปใช้ตัวแปรการ์ด แทนสีเทาที่ถูก fix ไว้ */
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  padding:25px;
-  border-radius:15px;
-  margin:10px 0;
-  width:60%;
-  text-align:center;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 10px 0;
+  width: 60%;
+  text-align: center;
   box-shadow: 0 4px 15px var(--card-shadow);
   transition: all 0.3s ease;
 }
@@ -429,30 +422,33 @@ const quotaPages = ref([
   flex-direction: column;
 }
 
-.card{
+.card {
   width: 100%;
-  min-height: 400px; 
+  min-height: 400px;
   /* ดึงสีการ์ดมาใช้ */
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 15px var(--card-shadow);
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
-.card-header{
-  background: linear-gradient(135deg,#ffb36b,#ff8c00); /* ไล่สีส้ม */
-  color: white; /* ตัวหนังสือในหัวการ์ดสีส้มต้องเป็นสีขาวเสมอ */
+.card-header {
+  background: linear-gradient(135deg, #ffb36b, #ff8c00);
+  /* ไล่สีส้ม */
+  color: white;
+  /* ตัวหนังสือในหัวการ์ดสีส้มต้องเป็นสีขาวเสมอ */
   padding: 20px;
   text-align: center;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
-.card-body{
+.card-body {
   padding: 30px;
-  color: var(--text-muted); /* สีตัวหนังสือเนื้อหาในกล่อง */
+  color: var(--text-muted);
+  /* สีตัวหนังสือเนื้อหาในกล่อง */
 }
 
 .card-body ul {
@@ -466,7 +462,8 @@ const quotaPages = ref([
 }
 
 .card-body strong {
-  color: var(--text-main); /* ทำตัวหนาให้สว่างขึ้นในโหมดมืด */
+  color: var(--text-main);
+  /* ทำตัวหนาให้สว่างขึ้นในโหมดมืด */
   display: inline-block;
   margin-top: 10px;
 }
@@ -495,7 +492,8 @@ const quotaPages = ref([
 }
 
 .outline-btn:hover {
-  background-color: var(--border-color); /* เปลี่ยนเป็นสีพื้นหลังอ่อนๆ ของธีมตอน hover */
+  background-color: var(--border-color);
+  /* เปลี่ยนเป็นสีพื้นหลังอ่อนๆ ของธีมตอน hover */
   color: #ff9800;
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(255, 152, 0, 0.2);
@@ -518,6 +516,7 @@ const quotaPages = ref([
 .outline-btn:hover .arrow-icon {
   transform: translateX(3px);
 }
+
 /* =================================================================================== */
 
 /* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */
@@ -571,10 +570,13 @@ const quotaPages = ref([
   .main-title {
     font-size: 3rem;
   }
+
   .tab-buttons {
     flex-direction: column;
   }
-  .card-container, .info-box {
+
+  .card-container,
+  .info-box {
     width: 90%;
   }
 }

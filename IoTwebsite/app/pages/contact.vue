@@ -1,7 +1,9 @@
 <template>
   <div class="contact-page">
     <div class="hero-section">
-      <h1 class="main-title">Contact</h1>
+      <h1 class="main-title">Contact
+        <p>ช่องทางติดต่อ</p>
+      </h1>
     </div>
 
     <div class="content-section">
@@ -250,11 +252,28 @@
 }
 
 .main-title {
-  font-size: 4.5rem;
-  font-weight: 800;
-  letter-spacing: 2px;
+  font-size: 4rem;
   margin: 0;
-  color: var(--text-main);
+  font-weight: 800;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* ================== Content Section ================== */

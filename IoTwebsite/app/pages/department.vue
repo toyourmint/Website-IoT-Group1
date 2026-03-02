@@ -4,6 +4,7 @@
       <div class="title-container">
         <h1 class="main-title">
           Departments
+          <p>ภาควิชา</p>
         </h1>
       </div>
 
@@ -319,19 +320,29 @@ const physicsStaff = ref([
   overflow: hidden;
 }
 
-.title-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .main-title {
-  font-size: 4.5rem;
-
+  font-size: 4rem;
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* ================== Tab Buttons ================== */

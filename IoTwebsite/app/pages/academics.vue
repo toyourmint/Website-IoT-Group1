@@ -4,8 +4,10 @@
       <div class="title-container">
         <h1 class="main-title">
           Academics
+        <p>หลักสูตร</p>
         </h1>
       </div>
+      
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
@@ -540,18 +542,30 @@ const historyData = [
 }
 
 .main-title {
-  font-size: 4.5rem;
+  font-size: 4rem;
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
   transition: color 0.3s ease;
 }
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.title-container {
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
-  background-color: var(--card-bg);
-  padding: 20px 30px;
+  
   border-radius: 20px 20px 0 0;
   width: 100%;
   max-width: 900px;

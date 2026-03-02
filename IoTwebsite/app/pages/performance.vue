@@ -3,7 +3,9 @@
     
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Performance</h1>
+        <h1 class="main-title">Performance
+          <p>ผลงาน</p>
+        </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
@@ -184,9 +186,6 @@ const teamData = ref({
 <style scoped>
 /* ================== Global & Layout ================== */
 .performance-page {
-  background-color: #fdfbf7;
-  color: #333;
-  font-family: 'Sarabun', 'Kanit', sans-serif;
   min-height: 100vh;
 }
 .hero-fullscreen {
@@ -196,19 +195,31 @@ const teamData = ref({
   justify-content: space-between;
   box-sizing: border-box;
 }
-.title-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .main-title {
-  font-size: 4.5rem;
-  color: #1e293b;
+  font-size: 4rem;
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  transition: color 0.3s ease;
 }
+
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
@@ -263,7 +274,7 @@ const teamData = ref({
 }
 .desc-text {
   font-size: 1rem;
-  color: #444;
+  color: #333;
   line-height: 1.6;
 }
 .custom-list {
@@ -308,13 +319,11 @@ const teamData = ref({
 }
 .section-title {
   font-size: 2rem;
-  color: #1e293b;
   font-weight: 700;
   margin-bottom: 30px;
 }
 .sub-team-title {
   font-size: 1.2rem;
-  color: #333;
   font-weight: 600;
   margin-bottom: 25px;
 }

@@ -469,7 +469,7 @@ h2 {
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
