@@ -3,7 +3,7 @@
 
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Department</h1>
+        <h1 class="main-title">Departments</h1>
       </div>
 
       <div class="tab-buttons-wrapper">
