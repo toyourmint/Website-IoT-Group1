@@ -2,9 +2,15 @@
   <div class="department-page">
     <div class="hero-fullscreen">
       <div class="title-container">
+        <<<<<<< HEAD
         <h1 class="main-title">
           Department
         </h1>
+        =======
+        <h1 class="main-title">
+          Departments
+        </h1>
+        >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
       </div>
 
       <div class="tab-buttons-wrapper">
@@ -41,7 +47,6 @@
       </div>
     </div>
 
-    <!-- ปุ่ม Scroll to Top -->
     <transition name="slide-up">
       <button
         v-if="showScrollTop"
@@ -91,140 +96,269 @@
           </div>
 
           <div class="member-grid">
+            <<<<<<< HEAD
             <div
               v-for="member in iotFaculty"
               :key="member.id"
               class="member-card"
             >
-              <div class="member-info">
-                <h4 class="member-name-th">
-                  {{ member.nameTh }}
-                </h4>
-                <p class="member-name-en">
-                  {{ member.nameEn }}
-                </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img
-                  v-if="member.image"
-                  :src="member.image"
-                  :alt="member.nameTh"
-                  class="member-img"
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="section-header staff-header">
-            <h3 class="section-subtitle">
-              Department Staff
-            </h3>
-            <p class="section-desc">
-              บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
-            </p>
-          </div>
-
-          <div class="staff-grid">
-            <div
-              v-for="staff in iotStaff"
-              :key="staff.id"
-              class="member-card"
-            >
-              <div class="member-info">
-                <h4 class="member-name-th">
-                  {{ staff.nameTh }}
-                </h4>
-                <p class="member-name-en">
-                  {{ staff.nameEn }}
-                </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img
-                  v-if="staff.image"
-                  :src="staff.image"
-                  :alt="staff.nameTh"
-                  class="member-img"
-                >
+              =======
+              <div
+                v-for="member in iotFaculty"
+                :key="member.id"
+                class="member-card clickable-card"
+                @click="openModal(member)"
+              >
+                >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
+                <div class="member-info">
+                  <h4 class="member-name-th">
+                    {{ member.nameTh }}
+                  </h4>
+                  <p class="member-name-en">
+                    {{ member.nameEn }}
+                  </p>
+                </div>
+                <div class="member-img-wrapper">
+                  <img
+                    v-if="member.image"
+                    :src="member.image"
+                    :alt="member.nameTh"
+                    class="member-img"
+                  >
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div
-          v-else-if="activeTab === 'physics'"
-          key="physics"
-          class="tab-content"
-        >
-          <div class="section-header">
-            <h2 class="section-title">
-              Industrial Physics Department Faculty Members
-            </h2>
-            <p class="section-desc">
-              คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม
-            </p>
-          </div>
+            <div class="section-header staff-header">
+              <h3 class="section-subtitle">
+                Department Staff
+              </h3>
+              <p class="section-desc">
+                บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+              </p>
+            </div>
 
-          <div class="member-grid">
-            <div
-              v-for="member in physicsFaculty"
-              :key="member.id"
-              class="member-card"
-            >
-              <div class="member-info">
-                <h4 class="member-name-th">
-                  {{ member.nameTh }}
-                </h4>
-                <p class="member-name-en">
-                  {{ member.nameEn }}
-                </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img
-                  v-if="member.image"
-                  :src="member.image"
-                  :alt="member.nameTh"
-                  class="member-img"
+            <div class="staff-grid">
+              <<<<<<< HEAD
+              <div
+                v-for="staff in iotStaff"
+                :key="staff.id"
+                class="member-card"
+              >
+                =======
+                <div
+                  v-for="staff in iotStaff"
+                  :key="staff.id"
+                  class="member-card clickable-card"
+                  @click="openModal(staff)"
                 >
+                  >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
+                  <div class="member-info">
+                    <h4 class="member-name-th">
+                      {{ staff.nameTh }}
+                    </h4>
+                    <p class="member-name-en">
+                      {{ staff.nameEn }}
+                    </p>
+                  </div>
+                  <div class="member-img-wrapper">
+                    <img
+                      v-if="staff.image"
+                      :src="staff.image"
+                      :alt="staff.nameTh"
+                      class="member-img"
+                    >
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="section-header staff-header">
-            <h3 class="section-subtitle">
-              Department Staff
-            </h3>
-            <p class="section-desc">
-              บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
-            </p>
-          </div>
-
-          <div class="staff-grid">
             <div
-              v-for="staff in physicsStaff"
-              :key="staff.id"
-              class="member-card"
+              v-else-if="activeTab === 'physics'"
+              key="physics"
+              class="tab-content"
             >
-              <div class="member-info">
-                <h4 class="member-name-th">
-                  {{ staff.nameTh }}
-                </h4>
-                <p class="member-name-en">
-                  {{ staff.nameEn }}
+              <div class="section-header">
+                <h2 class="section-title">
+                  Industrial Physics Department Faculty Members
+                </h2>
+                <p class="section-desc">
+                  คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม
                 </p>
               </div>
-              <div class="member-img-wrapper">
-                <img
-                  v-if="staff.image"
-                  :src="staff.image"
-                  :alt="staff.nameTh"
-                  class="member-img"
+
+              <div class="member-grid">
+                <<<<<<< HEAD
+                <div
+                  v-for="member in physicsFaculty"
+                  :key="member.id"
+                  class="member-card"
                 >
+                  =======
+                  <div
+                    v-for="member in physicsFaculty"
+                    :key="member.id"
+                    class="member-card clickable-card"
+                    @click="openModal(member)"
+                  >
+                    >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
+                    <div class="member-info">
+                      <h4 class="member-name-th">
+                        {{ member.nameTh }}
+                      </h4>
+                      <p class="member-name-en">
+                        {{ member.nameEn }}
+                      </p>
+                    </div>
+                    <div class="member-img-wrapper">
+                      <img
+                        v-if="member.image"
+                        :src="member.image"
+                        :alt="member.nameTh"
+                        class="member-img"
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-header staff-header">
+                  <h3 class="section-subtitle">
+                    Department Staff
+                  </h3>
+                  <p class="section-desc">
+                    บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
+                  </p>
+                </div>
+
+                <div class="staff-grid">
+                  <<<<<<< HEAD
+                  <div
+                    v-for="staff in physicsStaff"
+                    :key="staff.id"
+                    class="member-card"
+                  >
+                    =======
+                    <div
+                      v-for="staff in physicsStaff"
+                      :key="staff.id"
+                      class="member-card clickable-card"
+                      @click="openModal(staff)"
+                    >
+                      >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
+                      <div class="member-info">
+                        <h4 class="member-name-th">
+                          {{ staff.nameTh }}
+                        </h4>
+                        <p class="member-name-en">
+                          {{ staff.nameEn }}
+                        </p>
+                      </div>
+                      <div class="member-img-wrapper">
+                        <img
+                          v-if="staff.image"
+                          :src="staff.image"
+                          :alt="staff.nameTh"
+                          class="member-img"
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </transition>
     </div>
+    <<<<<<< HEAD
+    =======
+
+    <transition name="modal-fade">
+      <div
+        v-if="selectedMember"
+        class="modal-overlay"
+        @click.self="closeModal"
+      >
+        <div class="modal-content">
+          <button
+            class="close-btn"
+            @click="closeModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <div class="modal-body">
+            <div class="modal-image-wrapper">
+              <img
+                :src="selectedMember.image"
+                :alt="selectedMember.nameTh"
+              >
+            </div>
+
+            <div class="modal-details">
+              <h2 class="detail-name-th">
+                {{ selectedMember.nameTh }}
+              </h2>
+              <h3 class="detail-name-en">
+                {{ selectedMember.nameEn.split('\n')[0] }}
+              </h3>
+
+              <div class="detail-info-group">
+                <p v-if="selectedMember.position || selectedMember.nameEn.split('\n')[1]">
+                  <strong>ตำแหน่ง :</strong> {{ selectedMember.position || selectedMember.nameEn.split('\n')[1] }}
+                </p>
+                <p v-if="selectedMember.email">
+                  <strong>e-mail :</strong> {{ selectedMember.email }}
+                </p>
+              </div>
+
+              <div
+                v-if="selectedMember.education && selectedMember.education.length"
+                class="detail-section"
+              >
+                <h4>ประวัติการศึกษา</h4>
+                <ul>
+                  <li
+                    v-for="(edu, idx) in selectedMember.education"
+                    :key="idx"
+                    v-html="edu.replace(/\n/g, '<br>')"
+                  />
+                </ul>
+              </div>
+
+              <div
+                v-if="selectedMember.expertise && selectedMember.expertise.length"
+                class="detail-section"
+              >
+                <h4>ความเชี่ยวชาญ</h4>
+                <ul>
+                  <li
+                    v-for="(exp, idx) in selectedMember.expertise"
+                    :key="idx"
+                  >
+                    {{ exp }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    >>>>>>> 8bb12811a9d56399bb29ef1555bd66d4c6e67e13
   </div>
 </template>
 
@@ -239,6 +373,21 @@ const contentSection = ref(null)
 
 // State ควบคุมการแสดงปุ่ม scroll top
 const showScrollTop = ref(false)
+
+// ==========================================
+// ส่วนของการจัดการ Modal
+// ==========================================
+const selectedMember = ref(null)
+
+const openModal = (member) => {
+  selectedMember.value = member
+  document.body.style.overflow = 'hidden' // ป้องกันไม่ให้ background เลื่อนตอนเปิด Modal
+}
+
+const closeModal = () => {
+  selectedMember.value = null
+  document.body.style.overflow = '' // คืนค่าการเลื่อนหน้าจอ
+}
 
 // ตรวจจับการเลื่อนหน้าจอ
 const handleScroll = () => {
@@ -271,15 +420,83 @@ const selectTab = (tab) => {
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
 // ==========================================
 // ข้อมูลสาขา IoT
 // ==========================================
 const iotFaculty = ref([
-  { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา', image: '/img/profIoT/ajkaew.jpg' },
-  { id: 2, nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์', nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ', image: '/img/profIoT/ajboon.jpg' },
+  { id: 1,
+    nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์',
+    nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา',
+    image: '/img/profIoT/ajkaew.jpg',
+    position: 'อาจารย์ประจำหลักสูตร',
+    email: 'pikulkaew.ta@kmitl.ac.th',
+    education: [
+      '- วศ.บ. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+      '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+      '- D.Eng. (Science and Technology) Tokai University, JAPAN'
+    ],
+    expertise: [
+      '- Web Application',
+      '- Mobile Application',
+      '- Information Security'
+    ]
+  },
+  { id: 2,
+    nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์',
+    nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ',
+    image: '/img/profIoT/ajboon.jpg',
+    position: 'ผู้ประสานงานสาขาวิชาวิศวกรรมสารสนเทศ',
+    email: 'boonchana.pu@kmitl.ac.th',
+    education: [
+      '- อส.บ. (เทคโนโลยีอิเล็กทรอนิกส์)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+      '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง'
+    ],
+    expertise: [
+      '- Microprocessor Application',
+      '- Microcontroller',
+      '- Robotic',
+      '- Internet of Things and Smart System'
+    ]
+  },
   { id: 3, nameTh: 'ศ.ดร. อภิรัฐ ศิริธราธิวัตร', nameEn: 'Prof. Dr. Apirat Siritaratiwat\nรองหัวหน้าภาควิชา (ฝ่ายวิจัยและนวัตกรรม)', image: '/img/profIoT/ajapirat.jpg' },
-  { id: 4, nameTh: 'ผศ.ดร.วันวิสา ชัชวงษ์', nameEn: 'Asst.Prof.Dr.Vanvisa Chutchavong\nรองหัวหน้าภาควิชา (ฝ่ายการเงิน)', image: '/img/profIoT/ajkai.jpg' },
-  { id: 5, nameTh: 'ผศ.ดร.นัชนัยน์ รุ่งเหมือนฟ้า', nameEn: 'Asst.Prof.Dr.Natchanai Roongmuanpha\nรองหัวหน้าภาควิชา (ฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajohm.jpg' },
+  { id: 4,
+    nameTh: 'ผศ.ดร.วันวิสา ชัชวงษ์',
+    nameEn: 'Asst.Prof.Dr.Vanvisa Chutchavong\nรองหัวหน้าภาควิชา (ฝ่ายการเงิน)',
+    image: '/img/profIoT/ajkai.jpg',
+    position: 'อาจารย์ประจำหลักสูตร',
+    email: 'vanvisa.ch@kmitl.ac.th',
+    education: [
+      '- อส.บ. เกียรตินิยมอันดับ 2 (เทคโนโลยีอิเล็กทรอนิกส์)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+      '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+      '- วศ.ด. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง'
+    ],
+    expertise: [
+      '- Electronic',
+      '- Bernstein Filter',
+      '- Railway Signaling and Operation',
+      '- Pattern recognition',
+      '- Railway Communications'
+    ]
+  },
+  { id: 5,
+    nameTh: 'ผศ.ดร.นัชนัยน์ รุ่งเหมือนฟ้า',
+    nameEn: 'Asst.Prof.Dr.Natchanai Roongmuanpha\nรองหัวหน้าภาควิชา (ฝ่ายต่างประเทศและกิจกรรมคณะ)',
+    image: '/img/profIoT/ajohm.jpg',
+    position: 'อาจารย์ประจำหลักสูตร',
+    email: 'natchanai.ro@kmitl.ac.th',
+    education: [
+      '- B.Eng.(Electronics Engineering) King Mongkuts Institute of Technology Ladkrabang',
+      '- M.Eng.(Control Engineering) King Mongkuts Institute of Technology Ladkrabang',
+      '- D.Eng.(Electrical Engineering) King Mongkuts Institute of Technology Ladkrabang'
+    ],
+    expertise: [
+      '- immittance function simulators',
+      '- active analog filters',
+      '- oscillator design',
+      '- chaotic circuit realization'
+    ]
+  },
   { id: 6, nameTh: 'ผศ.ดร.เกล็ดดาว สัตย์เจริญ', nameEn: 'Asst.Prof.Dr.Kleddao Satcharoen\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajfon.jpg' },
   { id: 7, nameTh: 'ผศ.นิจจารีย์ สัตยารักษ์', nameEn: 'Asst.Prof.Nitjaree Satayarak\nรองหัวหน้าภาควิชา (ฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajnit.jpg' },
   { id: 8, nameTh: 'ผศ.ดร.ธนวิชญ์ อนุวงศ์พินิจ', nameEn: 'Asst.Prof.Dr.Thanavit Anuwongpinit\nรองหัวหน้าภาควิชา (ฝ่ายวิชาการ)', image: '/img/profIoT/ajneng.jpg' },
@@ -300,7 +517,6 @@ const iotStaff = ref([
 // ข้อมูลสาขา Industrial Physics
 // ==========================================
 const physicsFaculty = ref([
-  // แถวที่ 1
   { id: 1, nameTh: 'รศ.ดร.ภัทรียา ดำรงศักดิ์', nameEn: 'Assoc. Prof. Dr. Pattareeya Damrongsak\n(หัวหน้าภาควิชาฟิสิกส์)', image: '/img/profPhy/pattareeya.png' },
   { id: 2, nameTh: 'รศ.ดร.สาหร่าย เล็กชะอุ่ม', nameEn: 'Assoc. Prof. Dr. Sarai Lekchaum\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/sarai.png' },
   { id: 3, nameTh: 'รศ.ดร.รัชนก สมพรเสน่ห์', nameEn: 'Assoc. Prof. Dr. Ratchanok Sompornsane\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/ratchanok.png' },
@@ -309,17 +525,14 @@ const physicsFaculty = ref([
   { id: 6, nameTh: 'ดร.พิชชานันท์ ธีเศรษฐ์โศภน', nameEn: 'Dr. Pichanan Teesetsopon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/pichanan.png' },
   { id: 7, nameTh: 'ผศ.ดร.เมตยา กิติวรรณ', nameEn: 'Asst. Prof. Dr. Metaya Kittiwan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/mettaya.png' },
   { id: 8, nameTh: 'ผศ.ธนภรณ์ ลีลาวัฒนานนท์', nameEn: 'Asst. Prof. Thanaporn Leelawattananon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/thanaporn.png' },
-  // แถวที่ 3
   { id: 9, nameTh: 'ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์', nameEn: 'Asst. Prof. Surasak Phiphatsart\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/surasak.png' },
   { id: 10, nameTh: 'ผศ.ดร.ประธาน บุรณศิริ', nameEn: 'Asst. Prof. Dr. Prathan Buranasiri\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/prathan.png' },
   { id: 11, nameTh: 'อ.ธรรมรัตน์ แต่งตั้ง', nameEn: 'Mr. Thammarat Tangtang\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/thammarat.png' },
   { id: 12, nameTh: 'อ.สุรชาติ กมลดิลก', nameEn: 'Mr. Surachat Kamol-dilok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/surachart.png' },
-  // แถวที่ 4
   { id: 13, nameTh: 'ผศ.ดร.ณัฐพร พรหมรส', nameEn: 'Asst. Prof. Dr. Nattaporn Promros\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/nathaporn.png' },
   { id: 14, nameTh: 'ศ.ดร.เชรษฐา รัตนพันธ์', nameEn: 'Prof. Dr. Chettra Rattanaphan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chesta.png' },
   { id: 15, nameTh: 'รศ.ดร.กฤษกร โล้เจริญรัตน์', nameEn: 'Assoc. Prof. Dr. Kitsakorn Locharoenrat\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/kitsakorn.png' },
   { id: 16, nameTh: 'ผศ.ดร.ภาณุพล โขลนกระโทก', nameEn: 'Asst. Prof. Dr. Panupol Khlonkratok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/bhanupol.png' },
-  // แถวที่ 5
   { id: 17, nameTh: 'ผศ.ดร.พิศาล ศรีราช', nameEn: 'Asst. Prof. Dr. Phisan Srirach\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/pisan.png' },
   { id: 18, nameTh: 'ดร.ชินพรรธน์ รัตนศิรวิทย์', nameEn: 'Dr.Chinnapat Ruttanasirawit\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chinnapat.png' },
   { id: 19, nameTh: 'ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์', nameEn: 'Asst. Prof. Dr. Keerayoot Srinuanjan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/keerayoot.png' },
@@ -344,7 +557,7 @@ const physicsStaff = ref([
 <style scoped>
 /* ================== Layout ================== */
 .department-page {
-  background-color: #FFFDF9;
+  /* background-color: #FFFDF9; */
   font-family: sans-serif;
   color: #2D3142;
 }
@@ -508,11 +721,16 @@ const physicsStaff = ref([
   align-items: center;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.member-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* ================== Card Hover Effect ================== */
+.clickable-card {
+  cursor: pointer;
+}
+.clickable-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .member-info {
@@ -607,6 +825,143 @@ const physicsStaff = ref([
   opacity: 0;
 }
 
+/* ================== Modal Styles ================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: #E6E5E3;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  max-height: 90vh; /* เผื่อเนื้อหาเยอะให้ scroll ได้ */
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background-color: rgba(0,0,0,0.1);
+  color: #1f2937;
+}
+
+.close-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+  gap: 3rem;
+}
+
+.modal-image-wrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 250px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  border: 4px solid white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.modal-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-details {
+  flex-grow: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-name-th {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 0.25rem 0;
+}
+
+.detail-name-en {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #475569;
+  margin: 0 0 1.5rem 0;
+}
+
+.detail-info-group p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.detail-section {
+  margin-top: 1.5rem;
+}
+
+.detail-section h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-section li {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Modal Transition */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
 /* ================== Responsive ================== */
 @media (max-width: 1024px) {
   .member-grid {
@@ -625,6 +980,24 @@ const physicsStaff = ref([
 
   .staff-grid .member-card {
     width: 100%;
+  }
+
+  /* Responsive สำหรับ Modal */
+  .modal-body {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .modal-details {
+    text-align: center;
+  }
+  .modal-footer-action {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .modal-content {
+    max-height: 85vh;
   }
 }
 </style>
