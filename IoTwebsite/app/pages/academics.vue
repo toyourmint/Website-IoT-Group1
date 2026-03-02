@@ -550,15 +550,11 @@ const historyData = [
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
   /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
-  background-color: var(--card-bg);
+  background-color: transparent;
   padding: 20px 30px;
-  border-radius: 20px 20px 0 0;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  border-top: 1px solid var(--border-color);
-  border-left: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
