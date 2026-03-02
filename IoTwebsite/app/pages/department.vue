@@ -1,24 +1,41 @@
 <template>
   <div class="department-page">
-
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Department</h1>
+        <h1 class="main-title">
+          Department
+        </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
-          <button :class="{ active: activeTab === 'iot' }" @click="selectTab('iot')">
+          <button
+            :class="{ active: activeTab === 'iot' }"
+            @click="selectTab('iot')"
+          >
             the Department of IoT<br>and Information Engineering
           </button>
-          <button :class="{ active: activeTab === 'physics' }" @click="selectTab('physics')">
+          <button
+            :class="{ active: activeTab === 'physics' }"
+            @click="selectTab('physics')"
+          >
             Industrial Physics
           </button>
         </div>
 
         <div class="scroll-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
           </svg>
         </div>
       </div>
@@ -26,92 +43,188 @@
 
     <!-- ปุ่ม Scroll to Top -->
     <transition name="slide-up">
-      <button v-if="showScrollTop" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+      <button
+        v-if="showScrollTop"
+        class="scroll-top-btn"
+        aria-label="Scroll to top"
+        @click="scrollToTop"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 15.75l7.5-7.5 7.5 7.5"
+          />
         </svg>
       </button>
     </transition>
 
-    <div class="content-wrapper" ref="contentSection">
-      <transition name="fade" mode="out-in">
-
-        <div v-if="activeTab === 'iot'" key="iot" class="tab-content">
+    <div
+      ref="contentSection"
+      class="content-wrapper"
+    >
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="activeTab === 'iot'"
+          key="iot"
+          class="tab-content"
+        >
           <div class="section-header">
-            <h2 class="section-title">IoT and Information Engineering</h2>
-            <h3 class="section-subtitle">Department Faculty Members</h3>
-            <p class="section-desc">คณาจารย์ประจำภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
+            <h2 class="section-title">
+              IoT and Information Engineering
+            </h2>
+            <h3 class="section-subtitle">
+              Department Faculty Members
+            </h3>
+            <p class="section-desc">
+              คณาจารย์ประจำภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
           </div>
 
           <div class="member-grid">
-            <div v-for="member in iotFaculty" :key="member.id" class="member-card">
+            <div
+              v-for="member in iotFaculty"
+              :key="member.id"
+              class="member-card"
+            >
               <div class="member-info">
-                <h4 class="member-name-th">{{ member.nameTh }}</h4>
-                <p class="member-name-en">{{ member.nameEn }}</p>
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
+                </p>
               </div>
               <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  :alt="member.nameTh"
+                  class="member-img"
+                >
               </div>
             </div>
           </div>
 
           <div class="section-header staff-header">
-            <h3 class="section-subtitle">Department Staff</h3>
-            <p class="section-desc">บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
           </div>
 
           <div class="staff-grid">
-            <div v-for="staff in iotStaff" :key="staff.id" class="member-card">
+            <div
+              v-for="staff in iotStaff"
+              :key="staff.id"
+              class="member-card"
+            >
               <div class="member-info">
-                <h4 class="member-name-th">{{ staff.nameTh }}</h4>
-                <p class="member-name-en">{{ staff.nameEn }}</p>
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
+                </p>
               </div>
               <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
+                <img
+                  v-if="staff.image"
+                  :src="staff.image"
+                  :alt="staff.nameTh"
+                  class="member-img"
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <div v-else-if="activeTab === 'physics'" key="physics" class="tab-content">
+        <div
+          v-else-if="activeTab === 'physics'"
+          key="physics"
+          class="tab-content"
+        >
           <div class="section-header">
-            <h2 class="section-title">Industrial Physics Department Faculty Members</h2>
-            <p class="section-desc">คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม</p>
+            <h2 class="section-title">
+              Industrial Physics Department Faculty Members
+            </h2>
+            <p class="section-desc">
+              คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม
+            </p>
           </div>
 
           <div class="member-grid">
-            <div v-for="member in physicsFaculty" :key="member.id" class="member-card">
+            <div
+              v-for="member in physicsFaculty"
+              :key="member.id"
+              class="member-card"
+            >
               <div class="member-info">
-                <h4 class="member-name-th">{{ member.nameTh }}</h4>
-                <p class="member-name-en">{{ member.nameEn }}</p>
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
+                </p>
               </div>
               <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  :alt="member.nameTh"
+                  class="member-img"
+                >
               </div>
             </div>
           </div>
 
           <div class="section-header staff-header">
-            <h3 class="section-subtitle">Department Staff</h3>
-            <p class="section-desc">บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม</p>
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
+            </p>
           </div>
 
           <div class="staff-grid">
-            <div v-for="staff in physicsStaff" :key="staff.id" class="member-card">
+            <div
+              v-for="staff in physicsStaff"
+              :key="staff.id"
+              class="member-card"
+            >
               <div class="member-info">
-                <h4 class="member-name-th">{{ staff.nameTh }}</h4>
-                <p class="member-name-en">{{ staff.nameEn }}</p>
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
+                </p>
               </div>
               <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
+                <img
+                  v-if="staff.image"
+                  :src="staff.image"
+                  :alt="staff.nameTh"
+                  class="member-img"
+                >
               </div>
             </div>
           </div>
         </div>
-
       </transition>
     </div>
-
   </div>
 </template>
 
@@ -175,12 +288,12 @@ const iotFaculty = ref([
   { id: 11, nameTh: 'ผศ.ดร.พนารัตน์ เชิญถนอมวงศ์', nameEn: 'Asst.Prof.Dr.Panarat Cherntanomwong\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajpanarat.png' },
   { id: 12, nameTh: 'ผศ.สรพงษ์ วชิรรัตนพรกุล', nameEn: 'Asst.Prof.Sorapong Wachirarattanapornkul\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajtee.jpg' },
   { id: 13, nameTh: 'ผศ.ไพศาล สิทธิโยภาสกุล', nameEn: 'Asst.Prof.Paisan Sithiyopasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajpaisan.jpg' },
-  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' },
+  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' }
 ])
 
 const iotStaff = ref([
   { id: 1, nameTh: 'นายธนาตย์ จอมใจเอกชน', nameEn: 'Mr. Thanat Chomjaiakchan', image: '/img/profIoT/pchai.jpg' },
-  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' },
+  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' }
 ])
 
 // ==========================================
@@ -214,7 +327,7 @@ const physicsFaculty = ref([
   { id: 21, nameTh: 'ดร.ณัฏกฤษ สมดอก', nameEn: 'Dr.Nuttakrit Somdock\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/nuttakrit.png' },
   { id: 22, nameTh: 'ผศ.ดร.ลัญจกร ตันนุกิจ', nameEn: 'Asst. Prof. Dr. Lanchakorn Tannukij\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/lunchakurn.png' },
   { id: 23, nameTh: 'ดร.เฉลิมพล รุจรดาวงศ์', nameEn: 'Dr. Chalermpol Rudradawong\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chalermpol.png' },
-  { id: 24, nameTh: 'ดร.ยงยุทธ แก้วจำรัส', nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/yongyut.png' },
+  { id: 24, nameTh: 'ดร.ยงยุทธ แก้วจำรัส', nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/yongyut.png' }
 ])
 
 const physicsStaff = ref([
@@ -224,7 +337,7 @@ const physicsStaff = ref([
   { id: 4, nameTh: 'นางสาวเกศณี เกตุนวม', nameEn: 'Ms.Kesanee Ketnuam\nเจ้าหน้าที่บริหารงานทั่วไป', image: '/img/profPhy/kesanee.png' },
   { id: 5, nameTh: 'นายวีระพันธ์ ทิพาพงศ์', nameEn: 'Mr.Weraphan Tipaphong\nนักวิทยาศาสตร์', image: '/img/profPhy/weraphan.png' },
   { id: 6, nameTh: 'นายชวนนท์ มะโน', nameEn: 'Mr.Chawanon Mano\nนักวิทยาศาสตร์', image: '/img/profPhy/chawanon.png' },
-  { id: 7, nameTh: 'นายสาโรจน์ ชูอำไพ', nameEn: 'Mr.Saroj Chooampai\nผู้ปฏิบัติงานวิทยาศาสตร์', image: '/img/profPhy/saroj.png' },
+  { id: 7, nameTh: 'นายสาโรจน์ ชูอำไพ', nameEn: 'Mr.Saroj Chooampai\nผู้ปฏิบัติงานวิทยาศาสตร์', image: '/img/profPhy/saroj.png' }
 ])
 </script>
 
