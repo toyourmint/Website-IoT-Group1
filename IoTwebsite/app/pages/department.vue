@@ -26,19 +26,6 @@ const selectTab = (tab) => {
 // ข้อมูลสาขา IoT
 // ==========================================
 const iotFaculty = ref([
-<<<<<<< HEAD
-  { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\n(หัวหน้าภาควิชา)', image: '/img/profIoT/ajkaew.jpg' },
-  { id: 2, nameTh: 'รศ.ดร. สุวิทย์ รุ่งเรือง', nameEn: 'Assoc. Prof. Dr. Suwit Rungruang', image: '/images/iot-2.jpg' },
-  { id: 3, nameTh: 'อ.ดร. เจริญชัย ใจดี', nameEn: 'Dr. Charoenchai Jaidee', image: '/images/iot-3.jpg' },
-  { id: 4, nameTh: 'ผศ.ดร. ใจดี มีสุข', nameEn: 'Asst. Prof. Dr. Jaidee Meesuk', image: '/images/iot-4.jpg' },
-  { id: 5, nameTh: 'อ.ดร. รักเรียน ขยันยิ่ง', nameEn: 'Dr. Rakrian Kayanying', image: '/images/iot-5.jpg' },
-  { id: 6, nameTh: 'อ.ดร. สมหญิง งามพร้อม', nameEn: 'Dr. Somying Ngamprom', image: '/images/iot-6.jpg' }
-])
-
-const iotStaff = ref([
-  { id: 1, nameTh: 'นายสมชาย รักดี', nameEn: 'Mr. Somchai Rakdee', image: '/images/staff-1.jpg' },
-  { id: 2, nameTh: 'นายสมเกียรติ ยอดเยี่ยม', nameEn: 'Mr. Somkiat Yodyiam', image: '/images/staff-2.jpg' }
-=======
   { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา', image: '/img/profIoT/ajkaew.jpg' },
   { id: 2, nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์', nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ', image: '/img/profIoT/ajboon.jpg' },
   { id: 3, nameTh: 'ศ.ดร. อภิรัฐ ศิริธราธิวัตร', nameEn: 'Prof. Dr. Apirat Siritaratiwat\nรองหัวหน้าภาควิชา (ฝ่ายวิจัยและนวัตกรรม)', image: '/img/profIoT/ajapirat.jpg' },
@@ -58,7 +45,6 @@ const iotStaff = ref([
 const iotStaff = ref([
   { id: 1, nameTh: 'นายธนาตย์ จอมใจเอกชน', nameEn: 'Mr. Thanat Chomjaiakchan', image: '/img/profIoT/pchai.jpg' },
   { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' },
->>>>>>> dev
 ])
 
 // ==========================================
@@ -68,16 +54,6 @@ const iotStaff = ref([
 // ข้อมูลสาขา Industrial Physics (อัปเดตตามรูปภาพล่าสุด)
 // ==========================================
 const physicsFaculty = ref([
-<<<<<<< HEAD
-  { id: 1, nameTh: 'รศ.ดร. สมปอง รักวิทย์', nameEn: 'Assoc. Prof. Dr. Sompong Rakwit\n(หัวหน้าภาควิชา)', image: '/images/phy-1.jpg' },
-  { id: 2, nameTh: 'ผศ.ดร. มานี มีตา', nameEn: 'Asst. Prof. Dr. Manee Meeta', image: '/images/phy-2.jpg' },
-  { id: 3, nameTh: 'อ.ดร. ปิติ ดีใจ', nameEn: 'Dr. Piti Deejai', image: '/images/phy-3.jpg' }
-])
-
-const physicsStaff = ref([
-  { id: 1, nameTh: 'นางสุดา ใจดี', nameEn: 'Mrs. Suda Jaidee', image: '/images/staff-3.jpg' },
-  { id: 2, nameTh: 'นายวิชาญ รักงาน', nameEn: 'Mr. Wichan Rakngan', image: '/images/staff-4.jpg' }
-=======
   // แถวที่ 1
   { 
     id: 1, 
@@ -237,7 +213,6 @@ const physicsStaff = ref([
   { id: 5, nameTh: 'นายวีระพันธ์ ทิพาพงศ์', nameEn: 'Mr.Weraphan Tipaphong\nนักวิทยาศาสตร์', image: '/img/profPhy/weraphan.png' },
   { id: 6, nameTh: 'นายชวนนท์ มะโน', nameEn: 'Mr.Chawanon Mano\nนักวิทยาศาสตร์', image: '/img/profPhy/chawanon.png' },
   { id: 7, nameTh: 'นายสาโรจน์ ชูอำไพ', nameEn: 'Mr.Saroj Chooampai\nผู้ปฏิบัติงานวิทยาศาสตร์', image: '/img/profPhy/saroj.png' }
->>>>>>> dev
 ])
 </script>
 
