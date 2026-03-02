@@ -1,25 +1,65 @@
+/* นำเข้าฟอนต์ Kanit จาก Google Fonts ครอบคลุมทุกความหนา */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme static {
   --font-sans: 'Kanit', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316; /* สีหลัก (Primary) */
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
 }
 
-/* --- Global Base Styles --- */
+/* =========================================
+   🎨 CSS Variables (ตัวแปรสีสำหรับใช้ทุกหน้า)
+========================================= */
+:root {
+  /* 🌞 Light Mode */
+  --bg-main: #fdfbf7;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --heading-color: #1e3c72;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  /* 🌙 Dark Mode (ตีมสีส้มสำหรับเนื้อหา) */
+  --bg-main: #0f172a;       /* สี slate-900 ตามที่คุณตั้งไว้ */
+  --text-main: #f8fafc;
+  --text-muted: #f1f1f1;
+  --heading-color: #ff9800; /* สีส้มตามตีมที่คุณต้องการ */
+  --card-bg: #1e293b;       /* สี slate-800 สำหรับพื้นหลังการ์ด */
+  --border-color: #334155;
+  --card-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   --- Global Base Styles --- 
+========================================= */
 html {
   scroll-behavior: smooth;
+}
+
+/* ✅ บังคับให้ทุกๆ Element ดึงฟอนต์ Kanit ไปใช้ */
+*, *::before, *::after {
+  font-family: var(--font-sans);
+}
+
+/* ✅ บังคับปุ่ม และช่องกรอกข้อมูล (มักจะดื้อไม่ยอมใช้ฟอนต์ตาม body) */
+button, input, select, textarea {
+  font-family: inherit;
 }
 
 body {
@@ -27,25 +67,30 @@ body {
   padding: 0;
   font-family: var(--font-sans);
   overflow-x: hidden;
-  background-color: #fdfbf7;
-  color: #1f2937; /* สีดำ/เทาเข้มตอน Light Mode */
+  background-color: var(--bg-main);
+  color: var(--text-main); 
   transition: background-color 0.2s, color 0.2s;
+}
+
+/* ✅ จัดการขนาดฟอนต์หัวข้อ ให้เป็นระเบียบ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700; /* ให้หัวข้อมีความหนา */
 }
 
 img {
   max-width: 100%;
   display: block;
 }
+
 .footer {
   background-color: #1a1c29;
   color: #FFDCB7;
 }
-/* --- Dark Mode Logic --- */
-/* ใช้ .dark เป็นจุดเริ่มเพื่อให้ Priority สูงกว่าสไตล์ปกติ */
-.dark body {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
-}
+
+/* =========================================
+   --- Dark Mode Specific (Layout / Navbar) --- 
+========================================= */
 
 /* แก้ไขสีส่วนประกอบต่างๆ เมื่อเป็น Dark Mode */
 .dark .header, 
@@ -62,7 +107,7 @@ img {
 
 .dark .nav-links a:hover,
 .dark .footer-links a:hover {
-  color: #f26522 !important; /* ใช้สีเขียวแบรนด์ที่คุณตั้งไว้ */
+  color: #f26522 !important; /* สีส้มของแบรนด์ */
 }
 
 .dark .footer-heading {
@@ -73,15 +118,11 @@ img {
   background-color: #334155;
 }
 
-
-
 .dark .footer-bottom {
   color: #94a3b8;
 }
 
-/* เพิ่มต่อท้ายใน main.css ของคุณ */
-
-/* --- Dark Mode Specific for Navbar --- */
+/* --- Dark Mode Specific for Navbar Tools --- */
 .dark .lang-toggle, 
 .dark .font-size-controls {
   background-color: #1e293b !important; /* พื้นหลังเข้มขึ้นในโหมดมืด */

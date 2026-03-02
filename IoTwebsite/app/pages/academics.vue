@@ -425,29 +425,6 @@
         </div>
       </div>
     </div>
-
-    <transition name="slide-up">
-      <button
-        v-if="showScrollTop"
-        class="scroll-top-btn"
-        aria-label="Scroll to top"
-        @click="scrollToTop"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4.5 15.75l7.5-7.5 7.5 7.5"
-          />
-        </svg>
-      </button>
-    </transition>
   </div>
 </template>
 
@@ -542,9 +519,11 @@ const historyData = [
 <style scoped>
 /* ================== Global & Layout ================== */
 .academics-page {
-  color: #333;
-  font-family: 'Sarabun', 'Kanit', sans-serif;
+  /* ใช้ตัวแปรสีข้อความหลักแทน */
+  color: var(--text-main);
+  font-family: var(--font-sans);
 }
+
 .hero-fullscreen {
   height: 100vh;
   display: flex;
@@ -552,55 +531,70 @@ const historyData = [
   justify-content: space-between;
   box-sizing: border-box;
 }
+
 .title-container {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .main-title {
   font-size: 4.5rem;
-  color: #1e293b;
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  transition: color 0.3s ease;
 }
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  background-color: #e9ecef;
+  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
+  background-color: var(--card-bg);
   padding: 20px 30px;
   border-radius: 20px 20px 0 0;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
+
 .tab-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
 }
+
 .tab-buttons button {
   flex: 1;
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
-  background: linear-gradient(to bottom, #ffe4cc, #ffcc99);
-  color: #333;
+  /* ปุ่มปกติให้ดึงสีจากตีม เพื่อความสะอาดตาใน Dark Mode */
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px var(--card-shadow);
 }
+
 .tab-buttons button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 10px var(--card-shadow);
+  border-color: #ff9800;
+  color: #ff9800;
 }
+
 .tab-buttons button.active {
-  background: linear-gradient(to bottom, #ffcc99, #ffb366);
+  /* ปุ่มที่กำลังเลือก (Active) ใช้สีส้มเพื่อให้เด่นชัดเสมอ */
+  background: #ff9800;
   border: 1px solid #e68a00;
-  color: #000;
+  color: #fff;
 }
 
 /* ================== Content Area ================== */
@@ -609,44 +603,63 @@ const historyData = [
   margin: 40px auto;
   padding: 0 20px;
 }
+
 .content-box {
-  background-color: #f1f3f5;
+  /* ใช้พื้นหลังของการ์ด */
+  background-color: var(--card-bg);
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 30px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
+
 .text-center-box {
   text-align: center;
   margin-bottom: 40px;
 }
+
 .text-center-box h2 {
   font-size: 1.5rem;
-  color: #1e3a8a;
+  color: var(--heading-color);
 }
+
 .text-center-box h3 {
   font-size: 1.1rem;
   font-weight: normal;
   margin: 10px 0 20px;
+  color: var(--text-main);
 }
+
 .desc-text {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.6;
 }
+
 .box-title {
   font-size: 1.5rem;
   margin-bottom: 20px;
   font-weight: bold;
+  color: var(--heading-color);
 }
+
 .text-navy {
-  color: #1e3a8a;
+  color: var(--heading-color); /* เปลี่ยนจากสีกรมท่าที่เจาะจง เป็นตัวแปรของหัวข้อ */
 }
+
 .custom-list {
   padding-left: 20px;
 }
+
 .custom-list li {
   margin-bottom: 15px;
   line-height: 1.6;
+  color: var(--text-muted);
+}
+.custom-list li strong {
+  color: var(--text-main); /* ทำตัวหนาให้สว่างขึ้น */
 }
 
 .grid-2-col {
@@ -654,30 +667,36 @@ const historyData = [
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
+
 .career-group h4 {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-main);
   margin-bottom: 10px;
 }
+
 .career-group ul {
   padding-left: 20px;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }
 
 /* ================== Image & Text Box ================== */
 .image-text-box {
   display: flex;
-  background-color: #f1f3f5;
+  background-color: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 40px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  border: 1px solid var(--border-color);
 }
+
 .img-area {
   flex: 1;
-  background-color: #2c3e50;
+  background-color: transparent;
 }
+
 .placeholder-img {
   width: 100%;
   height: 100%;
@@ -686,21 +705,28 @@ const historyData = [
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   text-align: center;
   padding: 20px;
 }
+
+.placeholder-img h3, .placeholder-img p {
+  color: var(--text-main);
+  margin-top: 15px;
+}
+
 .text-area {
   flex: 1;
   padding: 30px;
   display: flex;
   flex-direction: column;
 }
+
 .text-area p {
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 20px;
   flex-grow: 1;
+  color: var(--text-muted);
 }
 
 /* ================== PDF Links / Buttons ================== */
@@ -708,12 +734,13 @@ const historyData = [
   text-align: right;
   margin-top: 15px;
 }
+
 .outline-btn {
   display: inline-flex;
   align-items: center;
   background-color: transparent;
   border: 2px solid #ff9800;
-  color: #333;
+  color: var(--text-main);
   padding: 6px 6px 6px 24px;
   border-radius: 50px;
   cursor: pointer;
@@ -722,13 +749,15 @@ const historyData = [
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .outline-btn:hover {
-  background-color: #fef8f0;
+  background-color: var(--border-color); /* เปลี่ยนสีเมื่อ hover ให้เข้ากับตีม */
   color: #ff9800;
 }
+
 .arrow-icon {
   background-color: #ff9800;
-  color: white;
+  color: white; /* สีไอคอนชัดเจนดีแล้ว */
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -739,6 +768,7 @@ const historyData = [
   margin-left: 15px;
   transition: transform 0.3s ease;
 }
+
 .outline-btn:hover .arrow-icon {
   transform: translateX(3px);
 }
@@ -749,6 +779,7 @@ const historyData = [
   width: fit-content;
   margin: auto;
 }
+
 .small-btn .arrow-icon {
   width: 28px;
   height: 28px;
@@ -764,17 +795,20 @@ const historyData = [
   margin-bottom: 40px;
   align-items: stretch;
 }
+
 .course-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px var(--card-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
+
 .card-img {
   background-color: transparent;
   border-radius: 12px;
@@ -787,6 +821,7 @@ const historyData = [
   flex-shrink: 0;
   overflow: hidden;
 }
+
 .card-img img {
   width: 100%;
   height: 100%;
@@ -795,24 +830,29 @@ const historyData = [
 
 /* ================== Year Grid (เรียนอะไรบ้าง) ================== */
 .mb-4 { margin-bottom: 1.5rem; }
+
 .sub-title {
-  color: #1e3a8a;
+  color: var(--heading-color);
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
+
 .year-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-top: 15px;
 }
+
 .year-card {
-  background: white;
+  background: var(--bg-main); /* ทำให้ดูลึกกว่า content-box พื้นฐานนิดหน่อย */
+  border: 1px solid var(--border-color);
   border-left: 4px solid #ff9800;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px var(--card-shadow);
 }
+
 .year-badge {
   display: inline-block;
   background-color: #ff9800;
@@ -823,15 +863,17 @@ const historyData = [
   font-size: 0.9rem;
   margin-bottom: 10px;
 }
+
 .year-card h4 {
   margin: 0 0 10px 0;
-  color: #1e3a8a;
+  color: var(--text-main);
   font-size: 1.1rem;
 }
+
 .year-card p {
   margin: 0;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -850,19 +892,22 @@ const historyData = [
   margin-top: 60px;
   padding-bottom: 50px;
 }
+
 .history-title {
   text-align: center;
   font-size: 2rem;
-  color: #2c3e50;
+  color: var(--heading-color);
   margin-bottom: 40px;
   font-weight: bold;
 }
+
 .timeline-container {
   position: relative;
   max-width: 900px;
   margin: 0 auto;
   padding: 0;
 }
+
 .timeline-line {
   position: absolute;
   left: 50%;
@@ -870,7 +915,7 @@ const historyData = [
   top: 15px;
   bottom: 15px;
   width: 2px;
-  background-color: #ff9800;
+  background-color: #ff9800; /* สีส้ม */
   z-index: 1;
 }
 
@@ -880,12 +925,15 @@ const historyData = [
   align-items: center;
   z-index: 2;
 }
+
 .start-endpoint {
   margin-bottom: 40px;
 }
+
 .now-endpoint {
   margin-top: 40px;
 }
+
 .endpoint-dot {
   position: absolute;
   left: 50%;
@@ -895,13 +943,14 @@ const historyData = [
   background-color: #ff9800;
   border-radius: 50%;
 }
+
 .endpoint-text {
   width: 50%;
   margin-left: 50%;
   padding-left: 40px;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: var(--heading-color);
 }
 
 .timeline-item {
@@ -911,12 +960,15 @@ const historyData = [
   margin-bottom: 50px;
   z-index: 2;
 }
+
 .timeline-item.left {
   justify-content: flex-start;
 }
+
 .timeline-item.right {
   justify-content: flex-end;
 }
+
 .timeline-dot {
   position: absolute;
   left: 50%;
@@ -924,44 +976,52 @@ const historyData = [
   transform: translateX(-50%);
   width: 16px;
   height: 16px;
-  background-color: white;
+  background-color: var(--bg-main); /* เปลี่ยนจุดไข่ปลาให้ตรงกับพื้นหลัง */
   border: 3px solid #ff9800;
   border-radius: 50%;
   z-index: 3;
 }
+
 .timeline-content-wrapper {
   width: 50%;
   display: flex;
   align-items: flex-start;
 }
+
 .timeline-item.left .timeline-content-wrapper {
   padding-right: 40px;
   flex-direction: row-reverse;
   text-align: right;
 }
+
 .timeline-item.right .timeline-content-wrapper {
   padding-left: 40px;
   flex-direction: row;
   text-align: left;
 }
+
 .timeline-year {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--heading-color);
   line-height: 1.1;
   flex-shrink: 0;
 }
+
 .timeline-item.left .timeline-year {
   margin-left: 20px;
 }
+
 .timeline-item.right .timeline-year {
   margin-right: 20px;
 }
+
 .timeline-text {
   font-size: 0.9rem;
-  color: #555;
   line-height: 1.6;
+  color: var(--text-muted);
 }
+
 .timeline-text p {
   margin: 0 0 5px 0;
 }
