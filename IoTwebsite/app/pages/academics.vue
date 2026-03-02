@@ -570,7 +570,7 @@ const historyData = [
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  background-color: #e9ecef;
+  background-color: transparent; /* เอาพื้นหลังสีเทาออกตรงนี้ครับ */
   padding: 20px 30px;
   border-radius: 20px 20px 0 0;
   width: 100%;

@@ -10,26 +10,26 @@
         <div class="tab-buttons">
           <button 
             :class="{ active: activeSection === 'portfolio' }" 
-            @click="scrollTo('portfolio')"
+            @click="selectTab('portfolio')"
           >
             PORTFOLIO
           </button>
           <button 
             :class="{ active: activeSection === 'quota' }" 
-            @click="scrollTo('quota')"
+            @click="selectTab('quota')"
           >
             QUOTA
           </button>
           <button 
             :class="{ active: activeSection === 'admission' }" 
-            @click="scrollTo('admission')"
+            @click="selectTab('admission')"
           >
             ADMISSION
           </button>
         </div>
       </div>
     </div>
-    <section class="section">
+    <section class="section" ref="contentArea">
       <h2 class="section-title">
         รายละเอียดหลักสูตร
       </h2>
@@ -56,63 +56,86 @@
       </div>
     </section>
 
-    <section
-      id="portfolio"
-      class="section"
-    >
-      <h2 class="section-title">
-        PORTFOLIO รับ 30 คน
-      </h2>
-      <Carousel :items="portfolioPages" />
-    </section>
-
-    <section
-      id="quota"
-      class="section"
-    >
-      <h2 class="section-title">
-        QUOTA รับ 15 คน
-      </h2>
-      <Carousel :items="quotaPages" />
-    </section>
-
-    <section
-      id="admission"
-      class="section admission-section"
-    >
-      <h2 class="section-title admission-title">
-        ADMISSION รับ 5 คน
-      </h2>
-
-      <div class="card">
-        <div class="card-header">
-          Admission
+    <transition name="fade" mode="out-in">
+      
+      <section v-if="activeSection === 'portfolio'" key="portfolio" id="portfolio" class="section tab-section">
+        <h2 class="section-title">
+          PORTFOLIO รับ 30 คน
+        </h2>
+        <Carousel :items="portfolioPages" />
+        
+        <div class="card-container" style="margin-top: 20px;">
+          <div class="action-btn-container">
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              เรียนรู้รายละเอียดเพิ่มเติม
+              <span class="arrow-icon">➔</span>
+            </NuxtLink>
+          </div>
         </div>
-        <div class="card-body">
-          <ul>
-            <li><strong>คุณสมบัติ :</strong></li>
-            <li>- หลักสูตรแกนกลาง / นานาชาติ / อาชีวะ</li>
-            <li><strong>เงื่อนไขการรับ :</strong></li>
-            <li>- ม.ปลายสาย วิทย์-คณิต หรือ ปวช. สายช่างอุตสาหกรรม</li>
-            <li>- ต้องมีคะแนน TGAT, TPAT3, A-Level Math 1 และ Physics</li>
-            <li><strong>การคำนวณคะแนน</strong></li>
-            <li>TGAT 20%</li>
-            <li>TPAT3 25%</li>
-            <li>A-Level Math 1 25%</li>
-            <li>A-Level Physics 30%</li>
-            <li><strong>จำนวนรับ : 5 คน</strong></li>
-          </ul>
-        </div>
-      </div>
+      </section>
 
-      <NuxtLink
-        to="https://admission.reg.kmitl.ac.th/#/"
-        class="outline-btn"
-      >
-        เรียนรู้รายละเอียดเพิ่มเติม
-        <span class="arrow-icon">➔</span>
-      </NuxtLink>
-    </section>
+      <section v-else-if="activeSection === 'quota'" key="quota" id="quota" class="section tab-section">
+        <h2 class="section-title">
+          QUOTA รับ 15 คน
+        </h2>
+        <Carousel :items="quotaPages" />
+
+        <div class="card-container" style="margin-top: 20px;">
+          <div class="action-btn-container">
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              เรียนรู้รายละเอียดเพิ่มเติม
+              <span class="arrow-icon">➔</span>
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
+
+      <section v-else-if="activeSection === 'admission'" key="admission" id="admission" class="section admission-section tab-section">
+        <h2 class="section-title admission-title">
+          ADMISSION รับ 5 คน
+        </h2>
+
+        <div class="card-container">
+          <div class="card">
+            <div class="card-header">
+              Admission
+            </div>
+            <div class="card-body">
+              <ul>
+                <li><strong>คุณสมบัติ :</strong></li>
+                <li>- หลักสูตรแกนกลาง / นานาชาติ / อาชีวะ</li>
+                <li><strong>เงื่อนไขการรับ :</strong></li>
+                <li>- ม.ปลายสาย วิทย์-คณิต หรือ ปวช. สายช่างอุตสาหกรรม</li>
+                <li>- ต้องมีคะแนน TGAT, TPAT3, A-Level Math 1 และ Physics</li>
+                <li><strong>การคำนวณคะแนน</strong></li>
+                <li>TGAT 20%</li>
+                <li>TPAT3 25%</li>
+                <li>A-Level Math 1 25%</li>
+                <li>A-Level Physics 30%</li>
+                <li><strong>จำนวนรับ : 5 คน</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="action-btn-container">
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              เรียนรู้รายละเอียดเพิ่มเติม
+              <span class="arrow-icon">➔</span>
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
+
+    </transition>
 
     <transition name="slide-up">
       <button 
@@ -135,18 +158,21 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Carousel from '../components/Carousel.vue'
 
 const showScroll = ref(false)
-const activeSection = ref('') 
+const activeSection = ref('portfolio') 
+const contentArea = ref(null)
+
+const selectTab = (tabName) => {
+  activeSection.value = tabName
+  
+  setTimeout(() => {
+    if (contentArea.value) {
+      contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, 100)
+}
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
-  activeSection.value = '' 
-}
-
-const scrollTo = (id) => {
-  activeSection.value = id 
-  document.getElementById(id)?.scrollIntoView({
-    behavior: 'smooth'
-  })
 }
 
 const handleScroll = () => {
@@ -263,7 +289,7 @@ const quotaPages = ref([
   color:#1e2a38;
 }
 
-/* ================== ส่วน CSS ของ Hero และปุ่ม ================== */
+/* ================== ส่วน CSS ของ Hero และปุ่มแบบใหม่ ================== */
 .hero-fullscreen {
   height: 100vh;
   display: flex;
@@ -287,49 +313,56 @@ const quotaPages = ref([
 }
 
 .tab-buttons-wrapper {
+  background-color: transparent; /* เอาพื้นหลังสีเทาออก */
+  padding: 20px 30px;
+  border-radius: 20px 20px 0 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .tab-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 900px;
-  padding: 0 1rem;
+  gap: 15px;
 }
 
 .tab-buttons button {
   flex: 1;
-  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
+  padding: 12px 20px;
   border: none;
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #ffe4cc, #ffcc99);
+  color: #333;
+  font-weight: 600;
   font-size: 1.1rem;
-  font-weight: bold;
-  color: #32363f;
   cursor: pointer;
-  transition: all 0.3s ease;
-  line-height: 1.5;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .tab-buttons button:hover {
-  transform: scale(1.02);
-  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
 }
 
 .tab-buttons button.active {
-  transform: scale(1.02);
-  box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #ffcc99, #ffb366);
+  border: 1px solid #e68a00;
+  color: #000;
 }
 /* ====================================================================== */
+
+/* ================== Transitions ของ Tab ================== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+/* ========================================================= */
 
 .section{
   min-height:100vh;
@@ -341,13 +374,18 @@ const quotaPages = ref([
   position:relative;
 }
 
+.tab-section {
+  min-height: auto;
+  padding: 60px 20px 100px;
+}
+
 .section-title{
   font-size:36px;
   margin-top:-40px;
 }
 
 .admission-title{
-  margin-top:-100px;
+  margin-top:-40px; /* ลด margin เพื่อให้ชิดกล่องขึ้นนิดนึง */
 }
 
 .info-box{
@@ -360,31 +398,39 @@ const quotaPages = ref([
   box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
+/* ================== กล่องและการจัดปุ่มให้ไม่ทับกัน ================== */
+.card-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
 .card{
-  width:60%;
-  height:400px;
-  background:white;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  min-height: 400px; 
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom: 20px; 
 }
 
 .card-header{
-  background:linear-gradient(135deg,#ffb36b,#ff8c00);
-  padding:20px;
-  text-align:center;
-  font-weight:bold;
+  background: linear-gradient(135deg,#ffb36b,#ff8c00);
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .card-body{
-  padding:30px;
+  padding: 30px;
 }
 
-/* ================== CSS ของปุ่มลิงก์รายละเอียด ================== */
-.admission-section .outline-btn {
-  position: absolute;
-  bottom: 80px;
-  right: 60px;
+/* จัดให้ปุ่มอยู่ชิดขวาของกล่อง */
+.action-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .outline-btn {
@@ -428,7 +474,7 @@ const quotaPages = ref([
 }
 /* =================================================================================== */
 
-/* ================== ปุ่มเลื่อนขึ้นบนสุด (อัปเดตให้เหมือน Department) ================== */
+/* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */
 .scroll-top-btn {
   position: fixed;
   bottom: 2rem;
@@ -474,6 +520,9 @@ const quotaPages = ref([
 @media (max-width: 768px) {
   .tab-buttons {
     flex-direction: column;
+  }
+  .card-container, .info-box {
+    width: 90%;
   }
 }
 </style>
