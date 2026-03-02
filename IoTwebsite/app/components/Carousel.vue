@@ -1,55 +1,72 @@
 <template>
   <div class="carousel">
-
-    <div 
+    <div
       class="slider"
       :style="{ transform: `translateX(-${current * 100}%)` }"
       @touchstart="startTouch"
       @touchend="endTouch"
     >
-      <div class="slide" v-for="(item,index) in items" :key="index">
+      <div
+        v-for="(item, index) in items"
+        :key="index"
+        class="slide"
+      >
         <div class="card">
-          <div class="card-header">{{ item.title }}</div>
+          <div class="card-header">
+            {{ item.title }}
+          </div>
           <div class="card-body">
-  <img v-if="item.image" :src="item.image" class="image"/>
+            <img
+              v-if="item.image"
+              :src="item.image"
+              class="image"
+            >
 
-  <!-- ถ้ามี items ให้แสดงเป็น list -->
-  <ul v-if="item.items">
-    <li 
-      v-for="(text, i) in item.items" 
-      :key="i"
-      :class="{ 'first-line': i === 0 }"
-    >
-      {{ text }}
-    </li>
-  </ul>
+            <!-- ถ้ามี items ให้แสดงเป็น list -->
+            <ul v-if="item.items">
+              <li
+                v-for="(text, i) in item.items"
+                :key="i"
+                :class="{ 'first-line': i === 0 }"
+              >
+                {{ text }}
+              </li>
+            </ul>
 
-  <!-- ถ้าเป็น content แบบเดิม -->
-  <p v-else>
-    {{ item.content }}
-  </p>
-
-</div>
+            <!-- ถ้าเป็น content แบบเดิม -->
+            <p v-else>
+              {{ item.content }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- แถวปุ่มลูกศร + dots -->
     <div class="nav-row">
-      <button class="arrow-inline" @click="prev">❮</button>
+      <button
+        class="arrow-inline"
+        @click="prev"
+      >
+        ❮
+      </button>
 
       <div class="dots">
         <span
-          v-for="(item,index) in items"
+          v-for="(item, index) in items"
           :key="index"
-          :class="{active:index===current}"
+          :class="{ active: index===current }"
           @click="current=index"
-        ></span>
+        />
       </div>
 
-      <button class="arrow-inline" @click="next">❯</button>
+      <button
+        class="arrow-inline"
+        @click="next"
+      >
+        ❯
+      </button>
     </div>
-
   </div>
 </template>
 

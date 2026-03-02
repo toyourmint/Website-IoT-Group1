@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-
     <!-- HERO -->
     <section class="section hero">
       <h1>Admission</h1>
@@ -8,7 +7,9 @@
 
     <!-- COURSE DETAIL -->
     <section class="section">
-      <h2 class="section-title">รายละเอียดหลักสูตร</h2>
+      <h2 class="section-title">
+        รายละเอียดหลักสูตร
+      </h2>
 
       <div class="info-box">
         <h3>ชื่อหลักสูตร</h3>
@@ -33,23 +34,40 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="section" id="portfolio">
-      <h2 class="section-title">PORTFOLIO รับ 30 คน</h2>
+    <section
+      id="portfolio"
+      class="section"
+    >
+      <h2 class="section-title">
+        PORTFOLIO รับ 30 คน
+      </h2>
       <Carousel :items="portfolioPages" />
     </section>
 
     <!-- QUOTA -->
-    <section class="section" id="quota">
-      <h2 class="section-title">QUOTA รับ 15 คน</h2>
+    <section
+      id="quota"
+      class="section"
+    >
+      <h2 class="section-title">
+        QUOTA รับ 15 คน
+      </h2>
       <Carousel :items="quotaPages" />
     </section>
 
     <!-- ADMISSION -->
-    <section class="section admission-section" id="admission">
-      <h2 class="section-title admission-title">ADMISSION รับ 5 คน</h2>
+    <section
+      id="admission"
+      class="section admission-section"
+    >
+      <h2 class="section-title admission-title">
+        ADMISSION รับ 5 คน
+      </h2>
 
       <div class="card">
-        <div class="card-header">Admission</div>
+        <div class="card-header">
+          Admission
+        </div>
         <div class="card-body">
           <ul>
             <li><strong>คุณสมบัติ :</strong></li>
@@ -67,22 +85,43 @@
         </div>
       </div>
 
-      <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="more-btn">
+      <NuxtLink
+        to="https://admission.reg.kmitl.ac.th/#/"
+        class="more-btn"
+      >
         เรียนรู้รายละเอียดเพิ่มเติม
         <span class="circle-arrow">➜</span>
       </NuxtLink>
     </section>
 
-    <button v-show="showScroll" class="scroll-top" @click="scrollToTop">
+    <button
+      v-show="showScroll"
+      class="scroll-top"
+      @click="scrollToTop"
+    >
       ↑
     </button>
 
     <div class="bottom-nav">
-      <button class="nav-btn" @click="scrollTo('portfolio')">PORTFOLIO</button>
-      <button class="nav-btn" @click="scrollTo('quota')">QUOTA</button>
-      <button class="nav-btn" @click="scrollTo('admission')">ADMISSION</button>
+      <button
+        class="nav-btn"
+        @click="scrollTo('portfolio')"
+      >
+        PORTFOLIO
+      </button>
+      <button
+        class="nav-btn"
+        @click="scrollTo('quota')"
+      >
+        QUOTA
+      </button>
+      <button
+        class="nav-btn"
+        @click="scrollTo('admission')"
+      >
+        ADMISSION
+      </button>
     </div>
-
   </div>
 </template>
 
@@ -207,7 +246,7 @@ const quotaPages = ref([
       '4. มีผลการเรียนเฉลี่ยสะสมรวม 5 ภาคการศึกษา มากกว่า 3.00 หรือมากกว่า 2.75 สำหรับผู้สมัครโครงการ K-Engineering'
     ]
   }
-]) 
+])
 </script>
 
 <style scoped>

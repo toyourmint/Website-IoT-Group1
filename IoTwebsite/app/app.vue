@@ -7,11 +7,11 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
-    { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" },
-    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" }
+    { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap' }
   ],
   htmlAttrs: {
-    lang: locale   // ⭐ เปลี่ยนอัตโนมัติตามภาษา
+    lang: locale // ⭐ เปลี่ยนอัตโนมัติตามภาษา
   }
 })
 
@@ -29,9 +29,11 @@ useSeoMeta({
 <template>
   <UApp>
     <UHeader class="header">
-      
       <template #left>
-        <NuxtLink to="/" class="logo-link">
+        <NuxtLink
+          to="/"
+          class="logo-link"
+        >
           <AppLogo />
         </NuxtLink>
       </template>
@@ -50,7 +52,6 @@ useSeoMeta({
           variant="ghost"
         />
       </template>
-
     </UHeader>
 
     <UMain>
@@ -60,7 +61,6 @@ useSeoMeta({
     <USeparator icon="i-simple-icons-nuxtdotjs" />
 
     <Footer />
-    
   </UApp>
 </template>
 
@@ -78,7 +78,6 @@ useSeoMeta({
   align-items: center;
 }
 </style>
-
 
 <style>
 body {
@@ -136,5 +135,4 @@ body {
 .dark .footer-bottom {
   color: #9ca3af;
 }
-
 </style>

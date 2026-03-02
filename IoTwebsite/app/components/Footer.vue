@@ -5,9 +5,7 @@ const colorMode = useColorMode()
 <template>
   <footer class="footer">
     <div class="container footer-content">
-
       <div class="footer-left">
-
         <!-- Logo เปลี่ยนตาม Dark Mode -->
         <img
           :src="colorMode.value === 'dark'
@@ -15,52 +13,53 @@ const colorMode = useColorMode()
             : '/iote-logo-footer.png'"
           alt="iOTE Logo"
           class="footer-logo"
-        />
+        >
 
         <div class="contact-list">
           <div class="contact-item">
-            <i class="fas fa-phone-alt icon"></i>
+            <i class="fas fa-phone-alt icon" />
             <span>+662 329 8000</span>
           </div>
 
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt icon"></i>
+            <i class="fas fa-map-marker-alt icon" />
             <div class="contact-text">
               {{ $t('footer.address') }}
             </div>
           </div>
 
           <div class="contact-item">
-            <i class="far fa-envelope icon"></i>
+            <i class="far fa-envelope icon" />
             <span>iote@kmitl.ac.th</span>
           </div>
 
           <div class="contact-item">
-            <i class="fab fa-line icon"></i>
+            <i class="fab fa-line icon" />
             <span>@iotekmitl</span>
           </div>
         </div>
 
         <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-facebook" /></a>
+          <a href="#"><i class="fab fa-instagram" /></a>
+          <a href="#"><i class="fab fa-tiktok" /></a>
         </div>
       </div>
 
       <div class="footer-right">
-        <h3 class="footer-heading">{{ $t('footer.admissionTitle') }}</h3>
+        <h3 class="footer-heading">
+          {{ $t('footer.admissionTitle') }}
+        </h3>
         <ul class="footer-links">
           <li><NuxtLink to="/admission">{{ $t('footer.round1') }}</NuxtLink></li>
           <li><NuxtLink to="/admission">{{ $t('footer.round2') }}</NuxtLink></li>
           <li><NuxtLink to="/admission">{{ $t('footer.round3') }}</NuxtLink></li>
         </ul>
       </div>
-
     </div>
 
     <div class="container">
-      <hr class="footer-divider" />
+      <hr class="footer-divider">
       <div class="footer-bottom">
         <p>{{ $t('footer.university') }}</p>
       </div>

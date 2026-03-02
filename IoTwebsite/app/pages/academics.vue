@@ -1,44 +1,73 @@
 <template>
   <div class="academics-page">
-    
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Academics</h1>
+        <h1 class="main-title">
+          Academics
+        </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
-          <button :class="{ active: activeTab === 'iot' }" @click="selectTab('iot')">
+          <button
+            :class="{ active: activeTab === 'iot' }"
+            @click="selectTab('iot')"
+          >
             IoT and information
           </button>
-          <button :class="{ active: activeTab === 'dual' }" @click="selectTab('dual')">
+          <button
+            :class="{ active: activeTab === 'dual' }"
+            @click="selectTab('dual')"
+          >
             Dual Degree
           </button>
-          <button :class="{ active: activeTab === 'ceiot' }" @click="selectTab('ceiot')">
+          <button
+            :class="{ active: activeTab === 'ceiot' }"
+            @click="selectTab('ceiot')"
+          >
             Computer Engineering and IoT
           </button>
         </div>
       </div>
     </div>
 
-    <div class="content-wrapper" ref="contentArea">
-      <transition name="fade" mode="out-in">
-        
-        <div v-if="activeTab === 'iot'" key="iot" class="tab-content">
+    <div
+      ref="contentArea"
+      class="content-wrapper"
+    >
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="activeTab === 'iot'"
+          key="iot"
+          class="tab-content"
+        >
           <div class="content-box">
-            <h2 class="box-title">What is IoT and Information ?</h2>
+            <h2 class="box-title">
+              What is IoT and Information ?
+            </h2>
             <ul class="custom-list">
-              <li><strong>ไอโอที (IoT - Internet of Things) คืออะไร?</strong><br>
-                เทคโนโลยีที่เชื่อมต่ออุปกรณ์ต่างๆ (Hardware & Device) เข้าสู่เครือข่ายอินเทอร์เน็ต เพื่อให้สามารถรับส่งข้อมูล (Data Communication) และควบคุมการทำงานได้อัตโนมัติ (Automation) นำไปสู่การนำข้อมูลจากอุปกรณ์เหล่านั้นมาวิเคราะห์เพื่อใช้งานต่อ เช่น โครงการ Smart Home, Smart Farm หรือ Smart Factory</li>
-              <li><strong>สารสนเทศ (Information) คืออะไร?</strong><br>
-                ระบบประมวลผลข้อมูลรูปแบบต่างๆ ผ่านการนำข้อมูล ที่รวบรวมได้จากอุปกรณ์เครือข่าย (Database), การประมวลผล (Processing), ไปจนถึงการวิเคราะห์ข้อมูล (Data Analysis) เพื่อนำไปใช้งานให้เกิดประโยชน์และช่วยให้การจัดการระบบเครือข่ายมีประสิทธิภาพและปลอดภัย (Cyber Security)</li>
-              <li><strong>วิศวกรรมไอโอทีและสารสนเทศ คืออะไร?</strong><br>
-                หลักสูตรที่บูรณาการศาสตร์ทางด้าน "ไอโอที" (ฮาร์ดแวร์และระบบสมองกลฝังตัว) เข้ากับ "เทคโนโลยีสารสนเทศ" (จัดการข้อมูล) มุ่งเน้นสร้างวิศกรที่สามารถออกแบบและพัฒนาระบบอัจฉริยะ (Intelligent Systems) ที่ขับเคลื่อนด้วยข้อมูล ตอบโจทย์โลกยุคอุตสาหกรรมแห่งอนาคต (Industry 4.0 & 5.0)</li>
+              <li>
+                <strong>ไอโอที (IoT - Internet of Things) คืออะไร?</strong><br>
+                เทคโนโลยีที่เชื่อมต่ออุปกรณ์ต่างๆ (Hardware & Device) เข้าสู่เครือข่ายอินเทอร์เน็ต เพื่อให้สามารถรับส่งข้อมูล (Data Communication) และควบคุมการทำงานได้อัตโนมัติ (Automation) นำไปสู่การนำข้อมูลจากอุปกรณ์เหล่านั้นมาวิเคราะห์เพื่อใช้งานต่อ เช่น โครงการ Smart Home, Smart Farm หรือ Smart Factory
+              </li>
+              <li>
+                <strong>สารสนเทศ (Information) คืออะไร?</strong><br>
+                ระบบประมวลผลข้อมูลรูปแบบต่างๆ ผ่านการนำข้อมูล ที่รวบรวมได้จากอุปกรณ์เครือข่าย (Database), การประมวลผล (Processing), ไปจนถึงการวิเคราะห์ข้อมูล (Data Analysis) เพื่อนำไปใช้งานให้เกิดประโยชน์และช่วยให้การจัดการระบบเครือข่ายมีประสิทธิภาพและปลอดภัย (Cyber Security)
+              </li>
+              <li>
+                <strong>วิศวกรรมไอโอทีและสารสนเทศ คืออะไร?</strong><br>
+                หลักสูตรที่บูรณาการศาสตร์ทางด้าน "ไอโอที" (ฮาร์ดแวร์และระบบสมองกลฝังตัว) เข้ากับ "เทคโนโลยีสารสนเทศ" (จัดการข้อมูล) มุ่งเน้นสร้างวิศกรที่สามารถออกแบบและพัฒนาระบบอัจฉริยะ (Intelligent Systems) ที่ขับเคลื่อนด้วยข้อมูล ตอบโจทย์โลกยุคอุตสาหกรรมแห่งอนาคต (Industry 4.0 & 5.0)
+              </li>
             </ul>
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">Career Prospects</h2>
+            <h2 class="box-title text-navy">
+              Career Prospects
+            </h2>
             <div class="grid-2-col">
               <div class="col-left">
                 <div class="career-group">
@@ -93,48 +122,69 @@
           <div class="image-text-box">
             <div class="img-area">
               <div class="placeholder-img">
-                <img :src="'/img/logo/Why_IoT.jpg'" alt="Why IoTE">
+                <img
+                  :src="'/img/logo/Why_IoT.jpg'"
+                  alt="Why IoTE"
+                >
                 <h3>ภาควิชาวิศวกรรมคอมพิวเตอร์</h3>
                 <p>DEPARTMENT OF IOT AND INFORMATION ENGINEERING</p>
               </div>
             </div>
             <div class="text-area">
-              <h2 class="text-navy">Why IoTE KMITL?</h2>
+              <h2 class="text-navy">
+                Why IoTE KMITL?
+              </h2>
               <p>หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมไอโอทีและสารสนเทศ มุ่งเน้นสร้างบัณฑิต ในการเป็นนวัตกร สร้างสรรค์ผลงานเทคโนโลยีที่ตอบโจทย์ความต้องการของประเทศ โดยบูรณาการความรู้พื้นฐานทางวิศวกรรมคอมพิวเตอร์และเทคโนโลยีสารสนเทศ สำคัญ 4 ด้าน ได้แก่ ระบบสมองกลฝังตัวและอุปกรณ์อัจฉริยะ, การพัฒนาโปรแกรมและซอฟต์แวร์, ระบบเครือข่ายอินเทอร์เน็ต, และการประยุกต์ใช้ข้อมูลเพื่อแก้ปัญหาและบริหารจัดการข้อมูล เพื่อให้ผู้เรียนสามารถออกแบบและสร้างสรรค์นวัตกรรมที่ตอบโจทย์การแก้ปัญหาของภาคอุตสาหกรรมอย่างมีประสิทธิภาพ พร้อมทั้งส่งเสริมทักษะทางภาษาและการเป็นผู้ประกอบการ เพื่อให้ผู้เรียนพร้อมเป็นผู้นำและก้าวสู่การทำงานในระดับสากล</p>
               <div class="action-btn-container">
-                 <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing" target="_blank" class="outline-btn">
-                    หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ <span class="arrow-icon">➔</span>
-                 </a>
+                <a
+                  href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing"
+                  target="_blank"
+                  class="outline-btn"
+                >
+                  หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ <span class="arrow-icon">➔</span>
+                </a>
               </div>
             </div>
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">วิศวกรรมไอโอทีและสารสนเทศ เรียนอะไรบ้าง ?</h2>
+            <h2 class="box-title text-navy">
+              วิศวกรรมไอโอทีและสารสนเทศ เรียนอะไรบ้าง ?
+            </h2>
             <p class="desc-text mb-4">
               <strong>ภาพรวม:</strong> เน้นเรียน 4 แกนหลัก คือ Hardware (อุปกรณ์/วงจร), Software (เขียนโปรแกรม/แอปพลิเคชัน), Network (เครือข่ายสื่อสาร), และ Data/AI (ข้อมูล/ปัญญาประดิษฐ์)
             </p>
-            
-            <h3 class="sub-title">เจาะลึกรายชั้นปี (อ้างอิงหลักสูตรปรับปรุง พ.ศ. 2569):</h3>
-            
+
+            <h3 class="sub-title">
+              เจาะลึกรายชั้นปี (อ้างอิงหลักสูตรปรับปรุง พ.ศ. 2569):
+            </h3>
+
             <div class="year-grid">
               <div class="year-card">
-                <div class="year-badge">ปี 1</div>
+                <div class="year-badge">
+                  ปี 1
+                </div>
                 <h4>ปูพื้นฐานวิศวกรรมและไอโอที</h4>
                 <p>เรียนวิชาพื้นฐานวิทยาศาสตร์-คณิตศาสตร์, การเขียนโปรแกรมคอมพิวเตอร์ (Programming), พื้นฐานทางวิศวกรรมวิชาชีพ และความรู้เบื้องต้นเกี่ยวกับไอโอทีและสารสนเทศ</p>
               </div>
               <div class="year-card">
-                <div class="year-badge">ปี 2</div>
+                <div class="year-badge">
+                  ปี 2
+                </div>
                 <h4>เจาะลึกเทคนิคและเครื่องมือ</h4>
                 <p>เรียนรู้ระบบวงจรดิจิทัล, อิเล็กทรอนิกส์, เครือข่ายคอมพิวเตอร์ (Computer Networks), การเขียนโปรแกรมเชิงวัตถุ (OOP), และเครื่องมือทางวิศวกรรมสำหรับวิเคราะห์และออกแบบระบบ</p>
               </div>
               <div class="year-card">
-                <div class="year-badge">ปี 3</div>
+                <div class="year-badge">
+                  ปี 3
+                </div>
                 <h4>ประยุกต์ใช้และสร้างระบบขั้นสูง</h4>
                 <p>เน้นวิชาระบบสมองกลฝังตัว (Embedded Systems), การจัดการฐานข้อมูล, การสื่อสารข้อมูล, ความปลอดภัยทางไซเบอร์ (Cyber Security), และการวิเคราะห์ข้อมูลขั้นสูง ลงมือทำโปรเจกต์พัฒนาระบบ IoT ทั้งฮาร์ดแวร์และซอฟต์แวร์</p>
               </div>
               <div class="year-card">
-                <div class="year-badge">ปี 4</div>
+                <div class="year-badge">
+                  ปี 4
+                </div>
                 <h4>เตรียมพร้อมสู่อุตสาหกรรม</h4>
                 <p>ทำโครงงานวิศวกรรม (Capstone Project) หรือ สหกิจศึกษา (Co-operative Education) ปฏิบัติงานจริงในสถานประกอบการ และเรียนรู้หัวข้อเทคโนโลยีสมัยใหม่เพื่อก้าวสู่อาชีพวิศวกรมืออาชีพ</p>
               </div>
@@ -142,16 +192,26 @@
           </div>
         </div>
 
-        <div v-else-if="activeTab === 'dual'" key="dual" class="tab-content">
+        <div
+          v-else-if="activeTab === 'dual'"
+          key="dual"
+          class="tab-content"
+        >
           <div class="text-center-box">
             <h2>หลักสูตรสองปริญญา (ควบ 2 ปริญญา) <br>(Dual Degree)</h2>
-            <h3>คณะวิศวกรรมศาสตร์และคณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-            วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ และ วท.บ. ฟิสิกส์อุตสาหกรรม</h3>
-            <p class="desc-text">โปรแกรม 2 ปริญญา (Dual Degree) ตอบโจทย์โลกยุคใหม่ ผลิตบุคลากรที่มีความเชี่ยวชาญทั้งด้านวิศวกรรมและวิทยาศาสตร์ประยุกต์ (ฟิสิกส์) เข้าด้วยกันอย่างลงตัว... ผู้เรียนจะได้รับวุฒิปริญญาตรี 2 ใบ... เรียนรู้ตั้งแต่พื้นฐานทางฟิสิกส์ การออกแบบระบบฮาร์ดแวร์และซอฟต์แวร์ ไปจนถึงการนำไปประยุกต์ใช้งานในภาคอุตสาหกรรม ตอบโจทย์เทคโนโลยีแห่งอนาคต เช่น Smart Electronics, Smart Agriculture, Smart Factory และ Smart City</p>
+            <h3>
+              คณะวิศวกรรมศาสตร์และคณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
+              วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ และ วท.บ. ฟิสิกส์อุตสาหกรรม
+            </h3>
+            <p class="desc-text">
+              โปรแกรม 2 ปริญญา (Dual Degree) ตอบโจทย์โลกยุคใหม่ ผลิตบุคลากรที่มีความเชี่ยวชาญทั้งด้านวิศวกรรมและวิทยาศาสตร์ประยุกต์ (ฟิสิกส์) เข้าด้วยกันอย่างลงตัว... ผู้เรียนจะได้รับวุฒิปริญญาตรี 2 ใบ... เรียนรู้ตั้งแต่พื้นฐานทางฟิสิกส์ การออกแบบระบบฮาร์ดแวร์และซอฟต์แวร์ ไปจนถึงการนำไปประยุกต์ใช้งานในภาคอุตสาหกรรม ตอบโจทย์เทคโนโลยีแห่งอนาคต เช่น Smart Electronics, Smart Agriculture, Smart Factory และ Smart City
+            </p>
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">Career Prospects</h2>
+            <h2 class="box-title text-navy">
+              Career Prospects
+            </h2>
             <div class="grid-2-col">
               <div class="career-group">
                 <h4>ด้านวิศวกรรมและฮาร์ดแวร์ (Hardware, Embedded & IoT)</h4>
@@ -181,40 +241,74 @@
           <div class="course-cards-grid">
             <div class="course-card">
               <div class="card-img">
-                <img :src="'/img/logo/logo_Iotcamp.jpg'" alt="IoTE Logo">
+                <img
+                  :src="'/img/logo/logo_Iotcamp.jpg'"
+                  alt="IoTE Logo"
+                >
               </div>
-              <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing" target="_blank" class="outline-btn small-btn">
+              <a
+                href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view?usp=sharing"
+                target="_blank"
+                class="outline-btn small-btn"
+              >
                 หลักสูตรวิศวกรรมระบบไอโอทีและ<br>สารสนเทศ <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
               <div class="card-img">
-                <img :src="'/img/logo/logo_physic.jpg'" alt="Physics Logo">
+                <img
+                  :src="'/img/logo/logo_physic.jpg'"
+                  alt="Physics Logo"
+                >
               </div>
-              <a href="https://drive.google.com/file/d/1yVlGsT_CW8KtIDL4Gri4ucXSPXc6WEuo/view" target="_blank" class="outline-btn small-btn">
+              <a
+                href="https://drive.google.com/file/d/1yVlGsT_CW8KtIDL4Gri4ucXSPXc6WEuo/view"
+                target="_blank"
+                class="outline-btn small-btn"
+              >
                 หลักสูตรฟิสิกส์อุตสาหกรรม <span class="arrow-icon">➔</span>
               </a>
             </div>
             <div class="course-card">
               <div class="card-img">
-                <img :src="'/img/logo/logo_phyIoT.jpg'" alt="Dual Degree Logo">
+                <img
+                  :src="'/img/logo/logo_phyIoT.jpg'"
+                  alt="Dual Degree Logo"
+                >
               </div>
-              <a href="https://drive.google.com/file/d/1_oKKmIsBsw7_-fnWVwYZeLV81ZufJIJl/view" target="_blank" class="outline-btn small-btn">
+              <a
+                href="https://drive.google.com/file/d/1_oKKmIsBsw7_-fnWVwYZeLV81ZufJIJl/view"
+                target="_blank"
+                class="outline-btn small-btn"
+              >
                 หลักสูตร 2 ปริญญา <span class="arrow-icon">➔</span>
               </a>
             </div>
           </div>
         </div>
 
-        <div v-else-if="activeTab === 'ceiot'" key="ceiot" class="tab-content">
+        <div
+          v-else-if="activeTab === 'ceiot'"
+          key="ceiot"
+          class="tab-content"
+        >
           <div class="text-center-box">
             <h2>หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <br>(หลักสูตรต่อเนื่อง)</h2>
-            <h3 class="text-navy" style="font-weight: 600; font-size: 1.25rem; margin-top: 15px;">“จาก ปวส. สู่ วิศวกรเต็มตัว ทันสมัยที่สุดด้วย AI, IoT และ Digital Technology”</h3>
-            <p class="desc-text mt-3">หลักสูตรนี้ถูกออกแบบมาเพื่อ Upgrade ผู้ที่มีวุฒิประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) ให้ก้าวขึ้นเป็นวิศวกรที่มีทักษะระดับสูง รองรับยุค Digital Transformation อย่างแท้จริง โดยเน้นการเรียนที่ “ทำได้จริง” และ “พร้อมเข้าสู่อุตสาหกรรม”</p>
+            <h3
+              class="text-navy"
+              style="font-weight: 600; font-size: 1.25rem; margin-top: 15px;"
+            >
+              “จาก ปวส. สู่ วิศวกรเต็มตัว ทันสมัยที่สุดด้วย AI, IoT และ Digital Technology”
+            </h3>
+            <p class="desc-text mt-3">
+              หลักสูตรนี้ถูกออกแบบมาเพื่อ Upgrade ผู้ที่มีวุฒิประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) ให้ก้าวขึ้นเป็นวิศวกรที่มีทักษะระดับสูง รองรับยุค Digital Transformation อย่างแท้จริง โดยเน้นการเรียนที่ “ทำได้จริง” และ “พร้อมเข้าสู่อุตสาหกรรม”
+            </p>
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">ชื่อปริญญาและสาขาวิชา</h2>
+            <h2 class="box-title text-navy">
+              ชื่อปริญญาและสาขาวิชา
+            </h2>
             <ul class="custom-list">
               <li><strong>ชื่อเต็ม (ภาษาไทย):</strong> วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์และไอโอที</li>
               <li><strong>ชื่อเต็ม (ภาษาอังกฤษ):</strong> Bachelor of Engineering Program in Computer Engineering and IoT</li>
@@ -225,7 +319,9 @@
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">Career Prospects (ตำแหน่งงานที่สามารถประกอบอาชีพได้)</h2>
+            <h2 class="box-title text-navy">
+              Career Prospects (ตำแหน่งงานที่สามารถประกอบอาชีพได้)
+            </h2>
             <div class="grid-2-col">
               <div class="col-left">
                 <div class="career-group">
@@ -255,7 +351,9 @@
           </div>
 
           <div class="content-box">
-            <h2 class="box-title text-navy">ผลลัพธ์การเรียนรู้ระดับหลักสูตร (PLOs)</h2>
+            <h2 class="box-title text-navy">
+              ผลลัพธ์การเรียนรู้ระดับหลักสูตร (PLOs)
+            </h2>
             <ul class="custom-list">
               <li><strong>PLO 1:</strong> ประยุกต์ความรู้ทางวิศวกรรมคอมพิวเตอร์ในด้านฮาร์ดแวร์ เครือข่าย ซอฟต์แวร์ และเทคโนโลยีไอโอทีเพื่อแก้ปัญหาทางวิศวกรรมได้อย่างเหมาะสม</li>
               <li><strong>PLO 2:</strong> ออกแบบและพัฒนาระบบหรือโซลูชันทางวิศวกรรมคอมพิวเตอร์และไอโอทีที่ตอบสนองความต้องการที่กำหนด โดยคำนึงถึงความมั่นคงปลอดภัยทางไซเบอร์และประสิทธิภาพของระบบ</li>
@@ -266,44 +364,66 @@
               <li><strong>PLO 7:</strong> ยึดมั่นในหลักคุณธรรม จริยธรรม และความรับผิดชอบต่อสังคมและสิ่งแวดล้อม ในการประกอบวิชาชีพทางวิศวกรรมคอมพิวเตอร์และไอโอที</li>
             </ul>
           </div>
-          
-          <div class="action-btn-container" style="text-align: center; margin-top: 30px;">
-             <a href="#" target="_blank" class="outline-btn">
-                หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <span class="arrow-icon">➔</span>
-             </a>
+
+          <div
+            class="action-btn-container"
+            style="text-align: center; margin-top: 30px;"
+          >
+            <a
+              href="#"
+              target="_blank"
+              class="outline-btn"
+            >
+              หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที <span class="arrow-icon">➔</span>
+            </a>
           </div>
         </div>
-
       </transition>
 
       <div class="history-section">
-        <h2 class="history-title">History of IoTE KMITL</h2>
+        <h2 class="history-title">
+          History of IoTE KMITL
+        </h2>
         <div class="timeline-container">
-          <div class="timeline-line"></div>
-          
+          <div class="timeline-line" />
+
           <div class="timeline-endpoint start-endpoint">
-            <div class="endpoint-dot"></div>
-            <div class="endpoint-text">start</div>
+            <div class="endpoint-dot" />
+            <div class="endpoint-text">
+              start
+            </div>
           </div>
-          
-          <div class="timeline-item" v-for="(item, index) in historyData" :key="index" :class="item.align">
-            <div class="timeline-dot"></div>
+
+          <div
+            v-for="(item, index) in historyData"
+            :key="index"
+            class="timeline-item"
+            :class="item.align"
+          >
+            <div class="timeline-dot" />
             <div class="timeline-content-wrapper">
-               <div class="timeline-year">{{ item.year }}</div>
-               <div class="timeline-text">
-                 <p v-for="(line, i) in item.text" :key="i">{{ line }}</p>
-               </div>
+              <div class="timeline-year">
+                {{ item.year }}
+              </div>
+              <div class="timeline-text">
+                <p
+                  v-for="(line, i) in item.text"
+                  :key="i"
+                >
+                  {{ line }}
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="timeline-endpoint now-endpoint">
-            <div class="endpoint-dot"></div>
-            <div class="endpoint-text">NOW</div>
+            <div class="endpoint-dot" />
+            <div class="endpoint-text">
+              NOW
+            </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -464,7 +584,7 @@ const historyData = [
 /* ================== Content Area ================== */
 .content-wrapper {
   max-width: 1000px;
-  margin: 40px auto; 
+  margin: 40px auto;
   padding: 0 20px;
 }
 .content-box {
@@ -620,7 +740,7 @@ const historyData = [
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 40px;
-  align-items: stretch; 
+  align-items: stretch;
 }
 .course-card {
   background: white;
@@ -631,24 +751,24 @@ const historyData = [
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; 
+  height: 100%;
 }
 .card-img {
-  background-color: transparent; 
+  background-color: transparent;
   border-radius: 12px;
-  height: 160px; 
+  height: 160px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  flex-shrink: 0; 
-  overflow: hidden; 
+  flex-shrink: 0;
+  overflow: hidden;
 }
 .card-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
 }
 
 /* ================== Year Grid (เรียนอะไรบ้าง) ================== */
@@ -719,14 +839,14 @@ const historyData = [
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0; 
+  padding: 0;
 }
 .timeline-line {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 15px;    
-  bottom: 15px; 
+  top: 15px;
+  bottom: 15px;
   width: 2px;
   background-color: #ff9800;
   z-index: 1;
@@ -739,10 +859,10 @@ const historyData = [
   z-index: 2;
 }
 .start-endpoint {
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 .now-endpoint {
-  margin-top: 40px; 
+  margin-top: 40px;
 }
 .endpoint-dot {
   position: absolute;
@@ -750,16 +870,16 @@ const historyData = [
   transform: translateX(-50%);
   width: 14px;
   height: 14px;
-  background-color: #ff9800; 
+  background-color: #ff9800;
   border-radius: 50%;
 }
 .endpoint-text {
   width: 50%;
   margin-left: 50%;
-  padding-left: 40px; 
+  padding-left: 40px;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #2c3e50; 
+  color: #2c3e50;
 }
 
 .timeline-item {
@@ -793,13 +913,13 @@ const historyData = [
   align-items: flex-start;
 }
 .timeline-item.left .timeline-content-wrapper {
-  padding-right: 40px; 
-  flex-direction: row-reverse; 
+  padding-right: 40px;
+  flex-direction: row-reverse;
   text-align: right;
 }
 .timeline-item.right .timeline-content-wrapper {
-  padding-left: 40px; 
-  flex-direction: row; 
+  padding-left: 40px;
+  flex-direction: row;
   text-align: left;
 }
 .timeline-year {
