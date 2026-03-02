@@ -1,7 +1,9 @@
 export const useFontSize = () => {
-  const size = useState('fontSize', () => 100) // percent
+  const size = useState('fontSize', () => 100)
 
   const applySize = () => {
+    if (typeof window === 'undefined') return
+
     document.documentElement.style.fontSize = size.value + '%'
     localStorage.setItem('fontSize', size.value.toString())
   }
@@ -26,11 +28,12 @@ export const useFontSize = () => {
   }
 
   const load = () => {
+    if (typeof window === 'undefined') return
+
     const saved = localStorage.getItem('fontSize')
-    if (saved) {
-      size.value = parseInt(saved)
-      applySize()
-    }
+    if (saved) size.value = parseInt(saved)
+
+    applySize()
   }
 
   return { size, increase, decrease, reset, load }
