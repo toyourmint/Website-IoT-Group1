@@ -285,8 +285,7 @@ const quotaPages = ref([
 
 <style scoped>
 .wrapper{
-  font-family:'Kanit', sans-serif;
-  color:#1e2a38;
+  position: relative;
 }
 
 /* ================== ส่วน CSS ของ Hero และปุ่มแบบใหม่ ================== */
@@ -306,14 +305,15 @@ const quotaPages = ref([
 }
 
 .main-title {
-  font-size: 64px;
+  /* ใช้ขนาด 4rem เพื่อให้มันขยายตามระบบ A+ ได้ */
+  font-size: 4rem; 
   margin: 0;
   margin-top: -50px;
   font-weight: bold;
 }
 
 .tab-buttons-wrapper {
-  background-color: transparent; /* เอาพื้นหลังสีเทาออก */
+  background-color: transparent; 
   padding: 20px 30px;
   border-radius: 20px 20px 0 0;
   width: 100%;
@@ -330,26 +330,30 @@ const quotaPages = ref([
 .tab-buttons button {
   flex: 1;
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
-  background: linear-gradient(to bottom, #ffe4cc, #ffcc99);
-  color: #333;
+  /* ปุ่มปกติให้ดึงสีจากตีม เพื่อความสะอาดตาใน Dark Mode */
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px var(--card-shadow);
 }
 
 .tab-buttons button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 10px var(--card-shadow);
+  border-color: #ff9800;
+  color: #ff9800;
 }
 
 .tab-buttons button.active {
-  background: linear-gradient(to bottom, #ffcc99, #ffb366);
+  /* ปุ่มที่กำลังเลือก (Active) ใช้สีส้มเพื่อให้เด่นชัดเสมอ */
+  background: #ff9800;
   border: 1px solid #e68a00;
-  color: #000;
+  color: #fff;
 }
 /* ====================================================================== */
 
@@ -380,22 +384,42 @@ const quotaPages = ref([
 }
 
 .section-title{
-  font-size:36px;
   margin-top:-40px;
+  /* ลบ font-size:36px; ทิ้ง ปล่อยให้แท็ก h2 ใน main.css จัดการ */
 }
 
 .admission-title{
-  margin-top:-40px; /* ลด margin เพื่อให้ชิดกล่องขึ้นนิดนึง */
+  margin-top:-40px;
 }
 
 .info-box{
-  background-color: #f1f3f5;
+  /* เปลี่ยนไปใช้ตัวแปรการ์ด แทนสีเทาที่ถูก fix ไว้ */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding:25px;
   border-radius:15px;
   margin:10px 0;
   width:60%;
   text-align:center;
-  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  border-color: #ff9800;
+}
+
+.info-box h3 {
+  /* สีหัวข้อใช้ตัวแปร */
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  /* สีเนื้อหาใช้ตัวแปร */
+  color: var(--text-muted);
+  margin: 0;
 }
 
 /* ================== กล่องและการจัดปุ่มให้ไม่ทับกัน ================== */
@@ -408,22 +432,43 @@ const quotaPages = ref([
 .card{
   width: 100%;
   min-height: 400px; 
-  background: white;
+  /* ดึงสีการ์ดมาใช้ */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px var(--card-shadow);
   margin-bottom: 20px; 
 }
 
 .card-header{
-  background: linear-gradient(135deg,#ffb36b,#ff8c00);
+  background: linear-gradient(135deg,#ffb36b,#ff8c00); /* ไล่สีส้ม */
+  color: white; /* ตัวหนังสือในหัวการ์ดสีส้มต้องเป็นสีขาวเสมอ */
   padding: 20px;
   text-align: center;
   font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .card-body{
   padding: 30px;
+  color: var(--text-muted); /* สีตัวหนังสือเนื้อหาในกล่อง */
+}
+
+.card-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-body li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.card-body strong {
+  color: var(--text-main); /* ทำตัวหนาให้สว่างขึ้นในโหมดมืด */
+  display: inline-block;
+  margin-top: 10px;
 }
 
 /* จัดให้ปุ่มอยู่ชิดขวาของกล่อง */
@@ -438,7 +483,8 @@ const quotaPages = ref([
   align-items: center;
   background-color: transparent;
   border: 2px solid #ff9800;
-  color: #333;
+  /* สีข้อความในปุ่ม */
+  color: var(--text-main);
   padding: 6px 6px 6px 24px;
   border-radius: 50px;
   cursor: pointer;
@@ -449,7 +495,7 @@ const quotaPages = ref([
 }
 
 .outline-btn:hover {
-  background-color: #fef8f0;
+  background-color: var(--border-color); /* เปลี่ยนเป็นสีพื้นหลังอ่อนๆ ของธีมตอน hover */
   color: #ff9800;
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(255, 152, 0, 0.2);
@@ -483,25 +529,29 @@ const quotaPages = ref([
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
-  border: none;
+  /* ปรับสีปุ่มให้กลืนไปกับ Theme ปัจจุบัน */
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
 }
 
 .scroll-top-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border-color: #ff9800;
+  color: #ff9800;
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.2);
 }
 
 .scroll-top-btn svg {
   width: 1.25rem;
   height: 1.25rem;
-  color: #32363f;
+  color: inherit;
 }
 
 /* ================== Slide-up Transition ================== */
@@ -518,6 +568,9 @@ const quotaPages = ref([
 
 /* ================== Responsive สำหรับมือถือ ================== */
 @media (max-width: 768px) {
+  .main-title {
+    font-size: 3rem;
+  }
   .tab-buttons {
     flex-direction: column;
   }
