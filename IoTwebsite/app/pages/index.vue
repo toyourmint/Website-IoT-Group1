@@ -151,23 +151,31 @@
         <div class="act-gallery">
           <div class="act-left">
             <div class="act-large-image">
-              <img
-                v-if="activities.length > 0"
-                :src="activities[0].image"
-                alt="Main Activity"
-              >
+               <!-- 🎬 VIDEO แทนรูปแรก -->
+                <video
+                  class="activity-video"
+                  controls
+                  autoplay
+                  muted
+                  playsinline
+                >
+                  <source src="/img/activities/video.mp4" type="video/mp4" />
+                </video>
             </div>
           </div>
           <div class="act-right">
             <div
-              v-for="(act, index) in activities.slice(1, 7)"
+              v-for="(act, index) in activities"
               :key="index"
               class="act-small-image"
             >
-              <img
-                :src="act.image"
-                alt="Activity Image"
-              >
+              <img :src="act.image" alt="Activity Image" />
+
+              <!-- Overlay -->
+              <div class="act-overlay">
+                <h4>{{ act.title }}</h4>
+                <p>{{ act.description }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -203,7 +211,7 @@ onMounted(() => {
 
 // --- ข้อมูล Info ---
 const infoCards = ref([
-  { title: 'What is IoTE?', description: '" วิศวกรรมไอโอทีและสารสนเทศ " มุ่งเน้นการบูรณาการความรู้แบบสหวิทยาการอย่างครบวงจร ทั้งด้าน ฮาร์ดแวร์ , ซอฟต์แวร์ , ระบบเครือข่าย, และปัญญาประดิษฐ์โดยมีเป้าหมายให้ผู้เรียนสามารถประยุกต์ความรู้ เพื่อสร้างสรรค์นวัตกรรมใหม่ๆ และต่อยอดไปสู่การเป็นผู้ประกอบการสตาร์ทอัพได้ด้วยตนเอง', Image: '/images/image3.jpg', link: '/academics' }
+  { title: $t("pages.home.infotitle"), description: $t("pages.home.infodesc"), Image: '/images/image3.jpg', link: '/academics' }
 ])
 
 // --- ข้อมูล News & Announcements ---
@@ -244,9 +252,9 @@ const newsItems = computed(() => {
 })
 // --- ข้อมูล Hall of Fame ---
 const fameCards = ref([
-  { id: 1, image: '/images/fame1.jpg', description: 'Thailand Cyber Security Product and Service Awards 2025', link: '/fame/1' },
-  { id: 2, image: '/images/fame2.jpg', description: 'AI & Robotics Hackathon and Competitions 2025', link: '/fame/2' },
-  { id: 3, image: '/images/fame3.jpg', description: 'SPACE QUEST 2025', link: '/fame/3' }
+  { id: 1, image: '/img/activities/cyber.jpg', description: 'Thailand Cyber Security Product and Service Awards 2025', link: '/fame/1' },
+  { id: 2, image: '/img/activities/ai.jpg', description: 'AI & Robotics Hackathon and Competitions 2025', link: '/fame/2' },
+  { id: 3, image: '/img/activities/spacequest.jpg', description: 'SPACE QUEST 2025', link: '/fame/3' }
 ])
 
 const nextCard = () => {
@@ -265,8 +273,36 @@ const prevCard = () => {
 
 // --- ข้อมูล Activities ---
 const activities = ref([
-  { image: '/images/act1.jpg' }, { image: '/images/act2.jpg' }, { image: '/images/act3.jpg' },
-  { image: '/images/act4.jpg' }, { image: '/images/act5.jpg' }, { image: '/images/act6.jpg' }, { image: '/images/act7.jpg' }
+  {
+    image: '/img/activities/goit.jpg',
+    title: 'Go IT Camp',
+    description: 'ค่ายอบรมพื้นฐาน IoT และ Programming'
+  },
+  {
+    image: '/img/activities/iotecamp2.png',
+    title: 'IoT Camp 2025',
+    description: 'กิจกรรมพัฒนาโครงงาน IoT'
+  },
+  {
+    image: '/img/activities/connectthings3.jpg',
+    title: 'Connect Things',
+    description: 'Workshop การเชื่อมต่ออุปกรณ์อัจฉริยะ'
+  },
+  {
+    image: '/img/activities/aicybercamp2025.jpg',
+    title: 'AI Cyber Camp',
+    description: 'ค่าย AI และ Cyber Security'
+  },
+  {
+    image: '/img/activities/preiote4.jpg',
+    title: 'Pre-IoTE',
+    description: 'กิจกรรมแนะนำภาควิชา'
+  },
+  {
+    image: '/img/activities/keng2025.jpg',
+    title: 'แข่งขัน IoT 2025',
+    description: 'การแข่งขันพัฒนาโครงงาน'
+  }
 ])
 </script>
 
@@ -744,61 +780,54 @@ h2 {
   right: -60px;
 }
 
+
 /* =========================================
-   6. Activities Section
+   6. Activities Section (Final Balanced)
 ========================================= */
+
 .act-section {
   padding: 80px 20px;
 }
 
+/* Layout หลัก */
 .act-gallery {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 20px;
-  height: auto;
-  /* ปล่อยให้ความสูงยืดตามรูปภาพอัตโนมัติ */
+  grid-template-columns: 0.7fr 1.5fr; /* ซ้ายเล็กลง ขวาใหญ่ขึ้น */
+  gap: 24px;
+  align-items: center;
 }
 
-.act-left {
-  width: 100%;
-  height: 100%;
-}
+/* -------- LEFT (Video) -------- */
 
 .act-large-image {
+  aspect-ratio: 9 / 16;     /* คงสัดส่วนแนวตั้ง */
   width: 100%;
-  height: 100%;
-  min-height: 350px;
-  border-radius: 16px;
+  max-height: 480px;        /* ⭐ ลดขนาดไม่ให้ล้น */
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.act-large-image img {
+.activity-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
 }
 
-.act-large-image:hover img {
-  transform: scale(1.05);
-}
+/* -------- RIGHT (Images Grid) -------- */
 
 .act-right {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* ลบ grid-template-rows ออกเพื่อให้ใช้ aspect-ratio จัดการความสูง */
-  gap: 15px;
-  align-content: start;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 18px;
+  height: 100%;
 }
 
 .act-small-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  /* ✨ คีย์สำคัญ: บังคับให้เป็นสี่เหลี่ยมจัตุรัสเสมอ (กว้างสูงเท่ากัน) */
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .act-small-image img {
@@ -809,9 +838,90 @@ h2 {
 }
 
 .act-small-image:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 1024px) {
+  .act-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .act-large-image {
+    max-height: 420px;
+  }
+
+  .act-right {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+}
+/* ---------- Hover Overlay ---------- */
+
+.act-small-image {
+  position: relative;
+  cursor: pointer;
+}
+
+.act-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.2)
+  );
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.act-overlay h4 {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72; /* 🔵 น้ำเงินปกติ */
+  transition: all 0.3s ease;
+}
+.act-overlay p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Hover Effect */
+.act-small-image:hover .act-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  
+}
+.act-small-image:hover .act-overlay h4 {
+  color: #ff9800;   /* 🟠 ส้มตอน hover */
+  font-weight: 800; /* หนาขึ้น */
+}
+
+@media (max-width: 768px) {
+  .act-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .act-large-image {
+    aspect-ratio: 9 / 16;   /* คงแนวตั้งเหมือนเดิม */
+    max-height: 420px;      /* ลดขนาดนิดหน่อย */
+  }
+
+  .act-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 /* =========================================
    📱 RESPONSIVE MEDIA QUERIES
 ========================================= */

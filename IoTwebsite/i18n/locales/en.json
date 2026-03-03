@@ -19,6 +19,10 @@
   },
 
   "pages": {
+    "home": {
+      "infotitle": "What is IoTE?",
+      "infodesc":" \"IoT and Information Engineering\" focuses on integrating interdisciplinary knowledge comprehensively, covering hardware, software, network systems, and artificial intelligence. The goal is to enable students to apply their knowledge to create new innovations and develop into startup entrepreneurs."
+    },
     "academics": {
       "title": "Academics",
       "tabs": {
