@@ -184,8 +184,8 @@
                 <div class="contact-info">
                   <span class="label">Line</span>
                   <span class="value">
-                    <a href="https://line.me/R/ti/p/@842xlplr" target="_blank" rel="noopener noreferrer"
-                      class="text-link">@842xlplr</a>
+                    <a href="https://line.me/R/ti/p/@842xiplr" target="_blank" rel="noopener noreferrer"
+                      class="text-link">@842xiplr</a>
                   </span>
                 </div>
               </div>
