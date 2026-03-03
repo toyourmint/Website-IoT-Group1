@@ -3,18 +3,22 @@
     <div class="hero-fullscreen">
       <div class="title-container">
         <h1 class="main-title">
+<<<<<<< HEAD
           Departments
           <p>ภาควิชา</p>
+=======
+          {{ $t('pages.department.title') }}
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
         </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
           <button :class="{ active: activeTab === 'iot' }" @click="selectTab('iot')">
-            the Department of IoT<br>and Information Engineering
+            {{ $t('pages.department.iote') }}
           </button>
           <button :class="{ active: activeTab === 'physics' }" @click="selectTab('physics')">
-            Industrial Physics
+            {{ $t('pages.department.physics') }}
           </button>
         </div>
 
@@ -91,10 +95,13 @@
         <div v-else-if="activeTab === 'physics'" key="physics" class="tab-content">
           <div class="section-header">
             <h2 class="section-title">
-              Industrial Physics Department Faculty Members
+              IoT and Information Engineering
             </h2>
+            <h3 class="section-subtitle">
+              Faculty Members
+            </h3>
             <p class="section-desc">
-              คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม
+              คณาจารย์ประจำสาขาวิชาฟิสิกส์อุตสาหกรรม
             </p>
           </div>
 

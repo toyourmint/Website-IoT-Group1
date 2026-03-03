@@ -3,9 +3,13 @@
     
     <div class="hero-fullscreen">
       <div class="title-container">
+<<<<<<< HEAD
         <h1 class="main-title">Performance
           <p>ผลงาน</p>
         </h1>
+=======
+        <h1 class="main-title">{{ $t('pages.performance.title') }}</h1>
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
       </div>
 
       <div class="tab-buttons-wrapper">
@@ -34,19 +38,21 @@
             </div>
             
             <div class="lab-desc-container">
-              <h2 class="text-navy" style="margin-top: 0;">Cyber Security Laboratory</h2>
+              <h2 class="text-navy" style="margin-top: 0;">
+                Cyber Security Laboratory
+              </h2>
               <p class="desc-text">
-                คือพื้นที่เรียนรู้เฉพาะทางที่ออกแบบมาเพื่อให้นักศึกษา ผู้เชี่ยวชาญ และนักวิจัย ได้ฝึกฝนและพัฒนาทักษะในการป้องกันและวิเคราะห์ภัยคุกคามทางไซเบอร์ ภายในห้องปฏิบัติการเพียบพร้อมด้วยเครื่องมือและเทคโนโลยีที่สามารถ จำลองสถานการณ์การโจมตีและการป้องกันเสมือนจริง (Simulation) ช่วยให้ผู้เรียนสามารถทดสอบองค์ความรู้และกลยุทธ์ต่างๆ ได้ในสภาพแวดล้อมที่ปลอดภัยและมีการควบคุม
+                {{ $t('pages.performance.cyber.desc1') }}
               </p>
               <p class="desc-text" style="margin-top: 10px;">
-                โดยทั่วไป การเรียนรู้ในห้องปฏิบัติการนี้จะมุ่งเน้นที่ 2 ด้านหลัก ได้แก่:
+                {{ $t('pages.performance.cyber.desc2') }}
               </p>
               <div class="desc-text" style="margin-top: 5px;">
                 <div style="margin-bottom: 8px;">
-                  1. ความมั่นคงปลอดภัยเชิงรับ (Defensive Security): เน้นการสร้างเกราะป้องกันระบบ เช่น การตั้งค่าไฟร์วอลล์ (Firewall), การติดตั้งระบบตรวจจับการบุกรุก (IDS), การเข้ารหัสข้อมูล (Encryption) และการกำหนดค่าความปลอดภัยของเครือข่ายเพื่อป้องกันการถูกโจมตี
+                  {{ $t('pages.performance.cyber.point1') }}
                 </div>
                 <div>
-                  2. ความมั่นคงปลอดภัยเชิงรุก (Offensive Security): เน้นการเรียนรู้ผ่านมุมมองของผู้โจมตี เช่น การแฮกอย่างมีจริยธรรม (Ethical Hacking) และการทดสอบเจาะระบบ (Penetration Testing) เพื่อค้นหาและระบุช่องโหว่ของระบบ เว็บไซต์ หรือเครือข่าย ทำให้เข้าใจวิธีการทำงานของผู้ไม่หวังดีได้อย่างลึกซึ้ง
+                  {{ $t('pages.performance.cyber.point2') }}
                 </div>
               </div>
             </div>
@@ -116,13 +122,13 @@
 
         <div v-else-if="activeTab === 'ierl'" key="ierl" class="tab-content">
           <div class="text-center-box" style="padding: 100px 0;">
-            <h2 class="text-navy">IERL Content Coming Soon...</h2>
+            <h2 class="text-navy">{{ $t('pages.performance.ierlComingSoon') }}</h2>
           </div>
         </div>
 
         <div v-else-if="activeTab === 'aiot'" key="aiot" class="tab-content">
           <div class="text-center-box" style="padding: 100px 0;">
-            <h2 class="text-navy">AIoT Content Coming Soon...</h2>
+            <h2 class="text-navy">{{ $t('pages.performance.aiotComingSoon') }}</h2>
           </div>
         </div>
 

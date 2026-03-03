@@ -3,6 +3,7 @@
 
     <div class="hero-fullscreen">
       <div class="title-container">
+<<<<<<< HEAD
         <h1 class="main-title">Admission
           <p>การรับสมัครนักศึกษา</p>
         </h1>
@@ -20,47 +21,77 @@
             ADMISSION
           </button>
         </div>
+=======
+        <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
       </div>
     </div>
+
     <section class="section" ref="contentArea">
       <h2 class="section-title">
-        รายละเอียดหลักสูตร
+        {{ $t('pages.admission.courseDetails') }}
       </h2>
 
       <div class="info-box">
-        <h3>ชื่อหลักสูตร</h3>
-        <p>วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ</p>
-        <p>B.Eng. IoT and Information Engineering</p>
+        <h3>{{ $t('pages.admission.info.courseNameTitle') }}</h3>
+        <p>{{ $t('pages.admission.info.courseNameTh') }}</p>
+        <p>{{ $t('pages.admission.info.courseNameEn') }}</p>
       </div>
 
       <div class="info-box">
-        <h3>ประเภทหลักสูตร</h3>
-        <p>ภาษาไทย ปกติ</p>
+        <h3>{{ $t('pages.admission.info.courseTypeTitle') }}</h3>
+        <p>{{ $t('pages.admission.info.courseType') }}</p>
       </div>
 
       <div class="info-box">
-        <h3>วิทยาเขต</h3>
-        <p>ลาดกระบัง</p>
+        <h3>{{ $t('pages.admission.info.campusTitle') }}</h3>
+        <p>{{ $t('pages.admission.info.campus') }}</p>
       </div>
 
       <div class="info-box">
-        <h3>ค่าใช้จ่าย</h3>
-        <p>25,000 บาท / ภาคการศึกษา</p>
+        <h3>{{ $t('pages.admission.info.feeTitle') }}</h3>
+        <p>{{ $t('pages.admission.info.fee') }}</p>
       </div>
     </section>
+
+    <div class="tab-buttons-wrapper" ref="tabArea">
+      <div class="tab-buttons">
+        <button 
+          :class="{ active: activeSection === 'portfolio' }" 
+          @click="selectTab('portfolio')"
+        >
+          {{ $t('pages.admission.tabs.portfolio') }}
+        </button>
+        <button 
+          :class="{ active: activeSection === 'quota' }" 
+          @click="selectTab('quota')"
+        >
+          {{ $t('pages.admission.tabs.quota') }}
+        </button>
+        <button 
+          :class="{ active: activeSection === 'admission' }" 
+          @click="selectTab('admission')"
+        >
+          {{ $t('pages.admission.tabs.admission') }}
+        </button>
+      </div>
+    </div>
 
     <transition name="fade" mode="out-in">
 
       <section v-if="activeSection === 'portfolio'" key="portfolio" id="portfolio" class="section tab-section">
         <h2 class="section-title">
-          PORTFOLIO รับ 30 คน
+          {{ $t('pages.admission.portfolio.heading') }}
         </h2>
         <Carousel :items="portfolioPages" />
 
         <div class="card-container" style="margin-top: 20px;">
           <div class="action-btn-container">
-            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
-              เรียนรู้รายละเอียดเพิ่มเติม
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              {{ $t('pages.admission.btnMore') }}
               <span class="arrow-icon">➔</span>
             </NuxtLink>
           </div>
@@ -69,14 +100,17 @@
 
       <section v-else-if="activeSection === 'quota'" key="quota" id="quota" class="section tab-section">
         <h2 class="section-title">
-          QUOTA รับ 15 คน
+          {{ $t('pages.admission.quota.heading') }}
         </h2>
         <Carousel :items="quotaPages" />
 
         <div class="card-container" style="margin-top: 20px;">
           <div class="action-btn-container">
-            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
-              เรียนรู้รายละเอียดเพิ่มเติม
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              {{ $t('pages.admission.btnMore') }}
               <span class="arrow-icon">➔</span>
             </NuxtLink>
           </div>
@@ -86,34 +120,37 @@
       <section v-else-if="activeSection === 'admission'" key="admission" id="admission"
         class="section admission-section tab-section">
         <h2 class="section-title admission-title">
-          ADMISSION รับ 5 คน
+          {{ $t('pages.admission.admissionTab.heading') }}
         </h2>
 
         <div class="card-container">
           <div class="card">
             <div class="card-header">
-              Admission
+              {{ $t('pages.admission.admissionTab.cardHeader') }}
             </div>
             <div class="card-body">
               <ul>
-                <li><strong>คุณสมบัติ :</strong></li>
-                <li>- หลักสูตรแกนกลาง / นานาชาติ / อาชีวะ</li>
-                <li><strong>เงื่อนไขการรับ :</strong></li>
-                <li>- ม.ปลายสาย วิทย์-คณิต หรือ ปวช. สายช่างอุตสาหกรรม</li>
-                <li>- ต้องมีคะแนน TGAT, TPAT3, A-Level Math 1 และ Physics</li>
-                <li><strong>การคำนวณคะแนน</strong></li>
-                <li>TGAT 20%</li>
-                <li>TPAT3 25%</li>
-                <li>A-Level Math 1 25%</li>
-                <li>A-Level Physics 30%</li>
-                <li><strong>จำนวนรับ : 5 คน</strong></li>
+                <li><strong>{{ $t('pages.admission.admissionTab.propTitle') }}</strong></li>
+                <li>{{ $t('pages.admission.admissionTab.prop1') }}</li>
+                <li><strong>{{ $t('pages.admission.admissionTab.condTitle') }}</strong></li>
+                <li>{{ $t('pages.admission.admissionTab.cond1') }}</li>
+                <li>{{ $t('pages.admission.admissionTab.cond2') }}</li>
+                <li><strong>{{ $t('pages.admission.admissionTab.calcTitle') }}</strong></li>
+                <li>{{ $t('pages.admission.admissionTab.calc1') }}</li>
+                <li>{{ $t('pages.admission.admissionTab.calc2') }}</li>
+                <li>{{ $t('pages.admission.admissionTab.calc3') }}</li>
+                <li>{{ $t('pages.admission.admissionTab.calc4') }}</li>
+                <li><strong>{{ $t('pages.admission.admissionTab.acceptCount') }}</strong></li>
               </ul>
             </div>
           </div>
 
           <div class="action-btn-container">
-            <NuxtLink to="https://admission.reg.kmitl.ac.th/#/" class="outline-btn">
-              เรียนรู้รายละเอียดเพิ่มเติม
+            <NuxtLink
+              to="https://admission.reg.kmitl.ac.th/#/"
+              class="outline-btn"
+            >
+              {{ $t('pages.admission.btnMore') }}
               <span class="arrow-icon">➔</span>
             </NuxtLink>
           </div>
@@ -134,19 +171,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Carousel from '../components/Carousel.vue'
+import { useRoute } from 'vue-router'
 
+const { t } = useI18n()
 const showScroll = ref(false)
 const activeSection = ref('portfolio')
 const contentArea = ref(null)
+const tabArea = ref(null) 
+const route = useRoute()
 
 const selectTab = (tabName) => {
   activeSection.value = tabName
 
   setTimeout(() => {
-    if (contentArea.value) {
-      contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (tabArea.value) {
+      tabArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, 100)
 }
@@ -159,6 +201,16 @@ const handleScroll = () => {
   showScroll.value = window.scrollY > 300
 }
 
+watch(
+  () => route.query.tab,
+  (tab) => {
+    if (tab && ['portfolio', 'quota', 'admission'].includes(tab)) {
+      selectTab(tab)
+    }
+  },
+  { immediate: true }
+)
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -167,97 +219,98 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const portfolioPages = ref([
+// เปลี่ยนเป็น computed + $t เพื่อให้สลับภาษาอัตโนมัติ
+const portfolioPages = computed(() => [
   {
-    title: 'โครงการ Engineering Top Talents',
+    title: t('pages.admission.portProjects.p1_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. เป็นผู้ที่กำลังศึกษาชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์–คณิตศาสตร์ หรือห้องเรียนพิเศษที่เกี่ยวข้องกับคณิตศาสตร์–วิทยาศาสตร์–เทคโนโลยี) หรือประกาศนียบัตรวิชาชีพชั้นปีที่ 3 (ปวช.) ในสาขาที่เกี่ยวข้องกับหลักสูตรที่ต้องการสมัคร เช่น เครื่องกล ไฟฟ้า อิเล็กทรอนิกส์ การก่อสร้าง โลหะการ เป็นต้น',
-      '2. ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสม (GPAX) รวมอย่างน้อย 4 ภาคการศึกษา ไม่น้อยกว่า 3.00',
-      '3. เป็นผู้ที่เคยได้รับรางวัลการแข่งขัน อย่างน้อย 1 รายการ ดังรายการต่อไปนี้เท่านั้น',
-      '4. เป็นผู้ที่ไม่มีโรคสำคัญที่จะเป็นอุปสรรคต่อการศึกษา',
-      '5. เป็นผู้มีความประพฤติดีและรับรองต่อสถาบันว่าจะตั้งใจศึกษาเล่าเรียนเต็มความสามารถ และยินยอมปฏิบัติตามระเบียบข้อบังคับของสถาบันที่มีอยู่แล้ว หรือที่จะมีต่อไปโดยเคร่งครัดทุกประการ'
+      t('pages.admission.portProjects.p1_1'),
+      t('pages.admission.portProjects.p1_2'),
+      t('pages.admission.portProjects.p1_3'),
+      t('pages.admission.portProjects.p1_4'),
+      t('pages.admission.portProjects.p1_5'),
+      t('pages.admission.portProjects.p1_6')
     ]
   },
   {
-    title: 'โครงการ K - Engineering Incubator',
+    title: t('pages.admission.portProjects.p2_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. เป็นผู้ที่กำลังศึกษาชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์–คณิตศาสตร์ หรือห้องเรียนพิเศษที่เกี่ยวข้องกับคณิตศาสตร์ วิทยาศาสตร์–เทคโนโลยี) หรือประกาศนียบัตรวิชาชีพชั้นปีที่ 3 (ปวช.) ในสาขาที่เกี่ยวข้องกับหลักสูตรที่ต้องการสมัคร เช่น เครื่องกล ไฟฟ้า อิเล็กทรอนิกส์ การก่อสร้าง โลหะการ เป็นต้น',
-      '2. ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสม (GPAX) รวมอย่างน้อย 4 ภาคการศึกษา ไม่น้อยกว่า 3.00',
-      '3. เป็นผู้ได้รับรางวัลหรือเป็นผู้ผ่านโครงการ อย่างน้อย 1 โครงการ ดังรายการต่อไปนี้เท่านั้น',
-      '3.1 เป็นผู้ผ่านการคัดเลือกรอบที่ 2 (อบรมและแข่งขัน) ของค่ายเตรียมวิศวกร “วิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์” จัดโดยคณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง โดยเลือกสมัครเฉพาะหลักสูตรวิศวกรรมคอมพิวเตอร์',
-      '3.2 เป็นผู้ได้รับรางวัลชนะเลิศ โครงการ “e-Waste HACK BKK” จัดโดยกลุ่มบริษัท ทรู คอร์ปอเรชัน จำกัด (มหาชน) ที่ร่วมมือกับคณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง โดยเลือกสมัครเฉพาะหลักสูตรวิศวกรรมไอโอทีและสารสนเทศ',
-      '4. เป็นผู้ที่ไม่มีโรคสำคัญที่จะเป็นอุปสรรคต่อการศึกษา',
-      '5. เป็นผู้มีความประพฤติดี และรับรองต่อสถาบันว่าจะตั้งใจศึกษาเล่าเรียนเต็มความสามารถ และยินยอมปฏิบัติตามระเบียบข้อบังคับของสถาบันที่มีอยู่แล้ว หรือที่จะมีต่อไปโดยเคร่งครัดทุกประการ'
+      t('pages.admission.portProjects.p2_1'),
+      t('pages.admission.portProjects.p2_2'),
+      t('pages.admission.portProjects.p2_3'),
+      t('pages.admission.portProjects.p2_4'),
+      t('pages.admission.portProjects.p2_5'),
+      t('pages.admission.portProjects.p2_6'),
+      t('pages.admission.portProjects.p2_7'),
+      t('pages.admission.portProjects.p2_8')
     ]
   },
   {
-    title: 'โครงการผลการทดสอบวัดความรู้ทางวิชาการ',
+    title: t('pages.admission.portProjects.p3_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. เป็นผู้ที่กำลังศึกษาชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์–คณิตศาสตร์ หรือห้องเรียนพิเศษที่เกี่ยวข้องกับคณิตศาสตร์–วิทยาศาสตร์–เทคโนโลยี) หรือประกาศนียบัตรวิชาชีพชั้นปีที่ 3 (ปวช.) ในสาขาที่เกี่ยวข้องกับหลักสูตรที่ต้องการสมัคร เช่น เครื่องกล ไฟฟ้า อิเล็กทรอนิกส์ การก่อสร้าง โลหะการ เป็นต้น',
-      '2. ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสม (GPAX) รวมอย่างน้อย 4 ภาคการศึกษา ไม่น้อยกว่า 3.00',
-      '3. มีผลการทดสอบวัดความรู้ทางวิชาการ TGAT และ TPAT3 (ทางคณะจะนำเข้าผลคะแนนจากทาง ทปอ. เพื่อคัดเลือกผู้มีสิทธิ์สอบสัมภาษณ์ ผู้สมัครไม่ต้องยื่นผลคะแนน)',
-      '4. เป็นผู้ที่ไม่มีโรคสำคัญที่จะเป็นอุปสรรคต่อการศึกษา',
-      '5. เป็นผู้มีความประพฤติดีและรับรองต่อสถาบันว่าจะตั้งใจศึกษาเล่าเรียนเต็มความสามารถ และยินยอมปฏิบัติตามระเบียบข้อบังคับของสถาบันที่มีอยู่แล้ว หรือที่จะมีต่อไปโดยเคร่งครัดทุกประการ'
+      t('pages.admission.portProjects.p3_1'),
+      t('pages.admission.portProjects.p3_2'),
+      t('pages.admission.portProjects.p3_3'),
+      t('pages.admission.portProjects.p3_4'),
+      t('pages.admission.portProjects.p3_5'),
+      t('pages.admission.portProjects.p3_6')
     ]
   },
   {
-    title: 'โครงการเรียนดี ช้างเผือก กลุ่มโรงเรียนสายสามัญ',
+    title: t('pages.admission.portProjects.p4_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. เป็นผู้ที่กำลังศึกษาชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์–คณิตศาสตร์ หรือห้องเรียนพิเศษที่เกี่ยวข้องกับคณิตศาสตร์–วิทยาศาสตร์–เทคโนโลยี)',
-      '2. ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสม (GPAX) รวมอย่างน้อย 4 ภาคการศึกษา ไม่น้อยกว่า 3.00',
-      '3. เป็นผู้ที่มีรายชื่อในแบบฟอร์มแบบสรุปอันดับของนักเรียน โครงการเรียนดี ช้างเผือก กลุ่มโรงเรียนสายสามัญ ซึ่งได้รับจากทางโรงเรียน',
-      '4. มีผลการทดสอบวัดความรู้ทางวิชาการ TGAT และ TPAT3 (ทางคณะจะนำเข้าผลคะแนนจากทาง ทปอ. เพื่อคัดเลือกผู้มีสิทธิ์สอบสัมภาษณ์ ผู้สมัครไม่ต้องยื่นผลคะแนน)',
-      '5. เป็นผู้ที่ไม่มีโรคสำคัญที่จะเป็นอุปสรรคต่อการศึกษา',
-      '6. เป็นผู้มีความประพฤติดีและรับรองต่อสถาบันว่าจะตั้งใจศึกษาเล่าเรียนเต็มความสามารถ และยินยอมปฏิบัติตามระเบียบข้อบังคับของสถาบันที่มีอยู่แล้ว หรือที่จะมีต่อไปโดยเคร่งครัดทุกประการ'
+      t('pages.admission.portProjects.p4_1'),
+      t('pages.admission.portProjects.p4_2'),
+      t('pages.admission.portProjects.p4_3'),
+      t('pages.admission.portProjects.p4_4'),
+      t('pages.admission.portProjects.p4_5'),
+      t('pages.admission.portProjects.p4_6'),
+      t('pages.admission.portProjects.p4_7')
     ]
   },
   {
-    title: 'โครงการ K - ENGINEERING PATHWAY',
+    title: t('pages.admission.portProjects.p5_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. เป็นผู้ที่กำลังศึกษาชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์–คณิตศาสตร์ หรือห้องเรียนพิเศษที่เกี่ยวข้องกับคณิตศาสตร์–วิทยาศาสตร์–เทคโนโลยี) หรือประกาศนียบัตรวิชาชีพชั้นปีที่ 3 (ปวช.) ในสาขาที่เกี่ยวข้องกับหลักสูตรที่ต้องการสมัคร เช่น เครื่องกล ไฟฟ้า อิเล็กทรอนิกส์ การก่อสร้าง โลหะการ เป็นต้น',
-      '2. เป็นผู้ที่เข้าร่วมเรียนในโครงการ Pre-Engineering School ที่จัดโดยคณะวิศวกรรมศาสตร์ สจล. และได้คะแนนเฉลี่ยสะสมรวมอย่างน้อย 3.5 จากการเรียน 6 วิชา (โดยแต่ละรายวิชาเกรดไม่ต่ำกว่า C)',
-      '3. จำกัดจำนวนผู้มีสิทธิ์ได้เข้าศึกษาต่อ ไม่เกิน 5 คนต่อ 1 สาขาวิชา ในกรณีที่มีผู้สมัครเกินจำนวนที่สาขาวิชานั้นรับได้ คณะฯ จะทำการคัดเลือกโดยให้สิทธิ์ผู้ที่มีคะแนนเฉลี่ยสะสมสูงสุด 5 อันดับแรก ผู้สมัครในอันดับถัดไปจะได้สิทธิ์ในการเข้าศึกษาต่อในสาขาวิชาที่เลือกเป็นอันดับ 2 และ 3 ต่อไป',
-      '4. เป็นผู้ที่ไม่มีโรคสำคัญที่จะเป็นอุปสรรคต่อการศึกษา',
-      '5. เป็นผู้มีความประพฤติดีและรับรองต่อสถาบันว่าจะตั้งใจศึกษาเล่าเรียนเต็มความสามารถ และยินยอมปฏิบัติตามระเบียบข้อบังคับของสถาบันที่มีอยู่แล้ว หรือที่จะมีต่อไปโดยเคร่งครัดทุกประการ'
+      t('pages.admission.portProjects.p5_1'),
+      t('pages.admission.portProjects.p5_2'),
+      t('pages.admission.portProjects.p5_3'),
+      t('pages.admission.portProjects.p5_4'),
+      t('pages.admission.portProjects.p5_5'),
+      t('pages.admission.portProjects.p5_6')
     ]
   }
 ])
 
-const quotaPages = ref([
+const quotaPages = computed(() => [
   {
-    title: 'โควตาเรียนดี',
+    title: t('pages.admission.quotaProjects.q1_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง',
-      '2. รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ',
-      '3. รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ',
-      '4. มีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อยรวม 5 ภาคการศึกษา ไม่น้อยกว่า 3.00'
+      t('pages.admission.quotaProjects.q1_1'),
+      t('pages.admission.quotaProjects.q1_2'),
+      t('pages.admission.quotaProjects.q1_3'),
+      t('pages.admission.quotaProjects.q1_4'),
+      t('pages.admission.quotaProjects.q1_5')
     ]
   },
   {
-    title: 'โควตากิจกรรม K - Engineering',
+    title: t('pages.admission.quotaProjects.q2_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง',
-      '2. รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ',
-      '3. รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ',
-      '4. มีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อยรวม 5 ภาคการศึกษา ไม่น้อยกว่า 2.75',
-      '5. เป็นผู้ที่ผ่านการเข้าร่วมกิจกรรมและได้รับประกาศนียบัตรในโครงการทางวิชาการกับ คณะ วิศวกรรมศาสตร์ สจล.'
+      t('pages.admission.quotaProjects.q2_1'),
+      t('pages.admission.quotaProjects.q2_2'),
+      t('pages.admission.quotaProjects.q2_3'),
+      t('pages.admission.quotaProjects.q2_4'),
+      t('pages.admission.quotaProjects.q2_5'),
+      t('pages.admission.quotaProjects.q2_6')
     ]
   },
   {
-    title: 'โควตา KMITL One',
+    title: t('pages.admission.quotaProjects.q3_title'),
     items: [
-      'คุณสมบัติ :',
-      '1. รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง',
-      '2. รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ',
-      '3. รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ',
-      '4. มีผลการเรียนเฉลี่ยสะสมรวม 5 ภาคการศึกษา มากกว่า 3.00 หรือมากกว่า 2.75 สำหรับผู้สมัครโครงการ K-Engineering'
+      t('pages.admission.quotaProjects.q3_1'),
+      t('pages.admission.quotaProjects.q3_2'),
+      t('pages.admission.quotaProjects.q3_3'),
+      t('pages.admission.quotaProjects.q3_4'),
+      t('pages.admission.quotaProjects.q3_5')
     ]
   }
 ])
@@ -268,12 +321,12 @@ const quotaPages = ref([
   position: relative;
 }
 
-/* ================== ส่วน CSS ของ Hero และปุ่มแบบใหม่ ================== */
+/* ================== เปลี่ยนเป็นเต็มจอ (100vh) ================== */
 .hero-fullscreen {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
@@ -292,14 +345,14 @@ const quotaPages = ref([
 }
 
 .title-container {
-  position: relative;
   text-align: center;
-  padding: 150px 20px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+}
+
+.main-title {
+  font-size: 5rem; /* เพิ่มขนาดเพื่อให้เด่นชัดเวลาอยู่เดี่ยวๆ กลางจอ */
+  margin: 0;
+  font-weight: bold;
+  margin-top: -20%;
 }
 
 .tab-buttons-wrapper {
@@ -321,7 +374,6 @@ const quotaPages = ref([
   flex: 1;
   padding: 12px 20px;
   border-radius: 8px;
-  /* ปุ่มปกติให้ดึงสีจากตีม เพื่อความสะอาดตาใน Dark Mode */
   background: var(--bg-main);
   color: var(--text-main);
   border: 1px solid var(--border-color);
@@ -340,7 +392,6 @@ const quotaPages = ref([
 }
 
 .tab-buttons button.active {
-  /* ปุ่มที่กำลังเลือก (Active) ใช้สีส้มเพื่อให้เด่นชัดเสมอ */
   background: #ff9800;
   border: 1px solid #e68a00;
   color: #fff;
@@ -361,32 +412,30 @@ const quotaPages = ref([
 
 /* ========================================================= */
 
-.section {
-  min-height: 100vh;
-  padding: 100px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.section{
+  min-height: auto;
+  padding: 60px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
 }
 
 .tab-section {
   min-height: auto;
-  padding: 60px 20px 100px;
+  padding: 40px 20px 100px;
 }
 
-.section-title {
-  margin-top: -40px;
-  /* ลบ font-size:36px; ทิ้ง ปล่อยให้แท็ก h2 ใน main.css จัดการ */
+.section-title{
+  margin-bottom: 30px;
 }
 
-.admission-title {
-  margin-top: -40px;
+.admission-title{
+  margin-top:-20px;
 }
 
-.info-box {
-  /* เปลี่ยนไปใช้ตัวแปรการ์ด แทนสีเทาที่ถูก fix ไว้ */
+.info-box{
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   padding: 25px;
@@ -404,13 +453,11 @@ const quotaPages = ref([
 }
 
 .info-box h3 {
-  /* สีหัวข้อใช้ตัวแปร */
   color: var(--heading-color);
   margin-bottom: 10px;
 }
 
 .info-box p {
-  /* สีเนื้อหาใช้ตัวแปร */
   color: var(--text-muted);
   margin: 0;
 }
@@ -424,8 +471,7 @@ const quotaPages = ref([
 
 .card {
   width: 100%;
-  min-height: 400px;
-  /* ดึงสีการ์ดมาใช้ */
+  min-height: 400px; 
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 20px;
@@ -434,11 +480,9 @@ const quotaPages = ref([
   margin-bottom: 20px;
 }
 
-.card-header {
-  background: linear-gradient(135deg, #ffb36b, #ff8c00);
-  /* ไล่สีส้ม */
-  color: white;
-  /* ตัวหนังสือในหัวการ์ดสีส้มต้องเป็นสีขาวเสมอ */
+.card-header{
+  background: linear-gradient(135deg,#ffb36b,#ff8c00); 
+  color: var(--text-main); 
   padding: 20px;
   text-align: center;
   font-weight: bold;
@@ -448,7 +492,6 @@ const quotaPages = ref([
 .card-body {
   padding: 30px;
   color: var(--text-muted);
-  /* สีตัวหนังสือเนื้อหาในกล่อง */
 }
 
 .card-body ul {
@@ -463,12 +506,10 @@ const quotaPages = ref([
 
 .card-body strong {
   color: var(--text-main);
-  /* ทำตัวหนาให้สว่างขึ้นในโหมดมืด */
   display: inline-block;
   margin-top: 10px;
 }
 
-/* จัดให้ปุ่มอยู่ชิดขวาของกล่อง */
 .action-btn-container {
   display: flex;
   justify-content: flex-end;
@@ -480,7 +521,6 @@ const quotaPages = ref([
   align-items: center;
   background-color: transparent;
   border: 2px solid #ff9800;
-  /* สีข้อความในปุ่ม */
   color: var(--text-main);
   padding: 6px 6px 6px 24px;
   border-radius: 50px;
@@ -492,8 +532,7 @@ const quotaPages = ref([
 }
 
 .outline-btn:hover {
-  background-color: var(--border-color);
-  /* เปลี่ยนเป็นสีพื้นหลังอ่อนๆ ของธีมตอน hover */
+  background-color: var(--border-color); 
   color: #ff9800;
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(255, 152, 0, 0.2);
@@ -528,7 +567,6 @@ const quotaPages = ref([
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  /* ปรับสีปุ่มให้กลืนไปกับ Theme ปัจจุบัน */
   background-color: var(--card-bg);
   color: var(--text-main);
   border: 1px solid var(--border-color);
@@ -568,7 +606,7 @@ const quotaPages = ref([
 /* ================== Responsive สำหรับมือถือ ================== */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 3rem;
+    font-size: 3.5rem; /* ลดขนาดลงหน่อยในจอมือถือ */
   }
 
   .tab-buttons {

@@ -1,9 +1,13 @@
 <template>
   <div class="contact-page">
     <div class="hero-section">
+<<<<<<< HEAD
       <h1 class="main-title">Contact
         <p>ช่องทางติดต่อ</p>
       </h1>
+=======
+      <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
     </div>
 
     <div class="content-section">
@@ -17,14 +21,14 @@
 
           <div class="location-wrapper">
             <div class="address-col">
-              <h4>ที่ตั้ง</h4>
+              <h4>{{ $t('pages.contact.locationLabel') }}</h4>
               <p>
-                ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ<br>
-                คณะวิศวกรรมศาสตร์<br>
-                สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-                ชั้น 12 อาคารเรียนรวม 12 ชั้น<br>
-                เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>
-                กรุงเทพมหานคร 10520
+                {{ $t('pages.contact.iote.l1') }}<br>
+                {{ $t('pages.contact.iote.l2') }}<br>
+                {{ $t('pages.contact.iote.l3') }}<br>
+                {{ $t('pages.contact.iote.l4') }}<br>
+                {{ $t('pages.contact.iote.l5') }}<br>
+                {{ $t('pages.contact.iote.l6') }}
               </p>
             </div>
             <div class="map-col">
@@ -139,14 +143,14 @@
               </iframe>
             </div>
             <div class="address-col">
-              <h4>ที่ตั้ง</h4>
+              <h4>{{ $t('pages.contact.locationLabel') }}</h4>
               <p>
-                หลักสูตรฟิสิกส์อุตสาหกรรม ภาควิชาฟิสิกส์<br>
-                คณะวิทยาศาสตร์<br>
-                สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>
-                ตึกจุฬาภรณ์วลัยลักษณ์ 1 ชั้น 3<br>
-                เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>
-                กรุงเทพมหานคร 10520
+                {{ $t('pages.contact.physics.l1') }}<br>
+                {{ $t('pages.contact.physics.l2') }}<br>
+                {{ $t('pages.contact.physics.l3') }}<br>
+                {{ $t('pages.contact.physics.l4') }}<br>
+                {{ $t('pages.contact.physics.l5') }}<br>
+                {{ $t('pages.contact.physics.l6') }}
               </p>
             </div>
           </div>
