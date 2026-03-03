@@ -449,7 +449,7 @@ const quotaPages = computed(() => [
 
 .card-header{
   background: linear-gradient(135deg,#ffb36b,#ff8c00); 
-  color: white; 
+  color: var(--text-main); 
   padding: 20px;
   text-align: center;
   font-weight: bold;
