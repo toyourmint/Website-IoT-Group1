@@ -28,6 +28,9 @@
             {{ $t('pages.academics.tabs.ceiot') }}
           </button>
         </div>
+        <div class="scroll-hint">
+          <Icon name="mdi:chevron-down" style="width: 2rem; height: 2rem;" />
+        </div>
       </div>
     </div>
 
@@ -126,8 +129,8 @@
                   :src="'/img/logo/Why_IoT.jpg'"
                   alt="Why IoTE"
                 >
-                <h3>{{ $t('pages.academics.iot.imgDept') }}</h3>
-                <p>{{ $t('pages.academics.iot.imgSubDept') }}</p>
+                <h3>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h3>
+                <p>DEPARTMENT OF IOT AND INFORMATION ENGINEERING</p>
               </div>
             </div>
             <div class="text-area">
@@ -527,12 +530,14 @@ const historyData = computed(() => [
   font-family: var(--font-sans);
 }
 
+/* ================== Hero Section ================== */
 .hero-fullscreen {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
+  padding: 0 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .title-container {
@@ -552,26 +557,25 @@ const historyData = computed(() => [
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
-  background-color: transparent;
-  padding: 20px 30px;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem; /* เพิ่มระยะห่างจากขอบล่างให้เหมือนหน้า Department */
 }
 
 .tab-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
+  width: 100%;
+  max-width: 950px; /* คงความกว้างปุ่มให้เท่ากับกล่องเนื้อหาด้านล่าง */
 }
 
 .tab-buttons button {
   flex: 1;
   padding: 12px 20px;
   border-radius: 8px;
-  /* ปุ่มปกติให้ดึงสีจากตีม เพื่อความสะอาดตาใน Dark Mode */
   background: var(--bg-main);
   color: var(--text-main);
   border: 1px solid var(--border-color);
@@ -580,6 +584,13 @@ const historyData = computed(() => [
   cursor: pointer;
   transition: 0.3s;
   box-shadow: 0 4px 6px var(--card-shadow);
+  
+  /* ปรับความสูงและการจัดข้อความในปุ่มให้เหมือนหน้า Department */
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .tab-buttons button:hover {
@@ -590,10 +601,25 @@ const historyData = computed(() => [
 }
 
 .tab-buttons button.active {
-  /* ปุ่มที่กำลังเลือก (Active) ใช้สีส้มเพื่อให้เด่นชัดเสมอ */
   background: #ff9800;
   border: 1px solid #e68a00;
   color: #fff;
+}
+
+.scroll-hint {
+  margin-top: 2rem;
+  color: var(--text-muted);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 /* ================== Content Area ================== */

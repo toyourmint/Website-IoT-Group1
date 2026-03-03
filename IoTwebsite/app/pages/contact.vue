@@ -1,7 +1,7 @@
 <template>
   <div class="contact-page">
     <div class="hero-section">
-      <h1 class="main-title">Contact</h1>
+      <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
     </div>
 
     <div class="content-section">

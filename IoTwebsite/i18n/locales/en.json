@@ -4,8 +4,8 @@
     "academics": "Academics",
     "admission": "Admission",
     "information": "Information",
-    "department": "Departments",
-    "performance": "Performance",
+    "department": "Department",
+    "performance": "Laboratories",
     "contact": "Contact"
   },
 
@@ -22,9 +22,9 @@
     "academics": {
       "title": "Academics",
       "tabs": {
-        "iot": "IoT and Information",
-        "dual": "Dual Degree",
-        "ceiot": "Computer Engineering and IoT"
+        "iot": "IoT and Information Engineering (1 Degree)",
+        "dual": "IoTE + Industrial Physics (Dual Degree)",
+        "ceiot": "Computer Engineering and IoT (Continuing Program)"
       },
       "iot": {
         "whatIsTitle": "What is IoT and Information ?",
@@ -58,8 +58,6 @@
         "careerList5_1": "Researcher / Academician",
         "careerList5_2": "Entrepreneur (Startup / Tech Business)",
         "careerList5_3": "Other technology and innovation-related careers",
-        "imgDept": "Department of Computer Engineering",
-        "imgSubDept": "DEPARTMENT OF IOT AND INFORMATION ENGINEERING",
         "whyTitle": "Why IoTE KMITL?",
         "whyDesc": "The Bachelor of Engineering Program in IoT System and Information Engineering focuses on producing graduates as innovators who create technologies meeting national demands. The program integrates 4 core areas: Embedded Systems & Smart Devices, Software Development, Internet Networks, and Data Application & Management. Students are equipped to design effective industrial solutions, while promoting language and entrepreneurial skills to lead in the global workforce.",
         "btnCourse": "IoT and Information Engineering Curriculum",
@@ -272,6 +270,31 @@
         "q3_4": "3. Graduate of a Vocational Curriculum.",
         "q3_5": "4. Minimum GPAX of 3.00 (or 2.75 for K-Engineering project applicants) over 5 semesters."
       }
+    },
+
+    "information" : {
+      "title": "Information & News"
+    },
+
+    "department" : {
+      "title": "Department",
+      "iote": "Department of IoT and Information Engineering",
+      "physics": "Industrial Physics"
+    },
+
+    "performance": {
+      "title": "Laboratories",
+      "cyber": {
+        "desc1": "is a dedicated environment where students, professionals, and researchers can practice and enhance their skills in defending against and analyzing cyber threats. These labs are equipped with tools and technologies that simulate real-world cyber attacks and defense strategies, allowing users to test their knowledge in a controlled, safe setting.",
+        "desc2": "Cyber security labs typically focus on two main areas:",
+        "point1": "1. Defensive Security: This includes activities like setting up firewalls, intrusion detection systems, encryption methods, and network security configurations to protect against attacks.",
+        "point2": "2. Offensive Security: In this area, participants engage in ethical hacking and penetration testing to identify and exploit vulnerabilities in systems, websites, or networks, helping to build a deeper understanding of how attackers operate.",
+        "roles": {
+          "head": "Lecturer (Assistant for External Affairs)"
+        }
+      },
+      "ierlComingSoon": "IERL Content Coming Soon...",
+      "aiotComingSoon": "AIoT Content Coming Soon..."
     },
 
     "contact": {
