@@ -3,8 +3,8 @@
 
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Admission
-          <p>การรับสมัครนักศึกษา</p>
+        <h1 class="main-title">
+          {{ $t('pages.admission.title') }}
         </h1>
       </div>
 
@@ -20,9 +20,6 @@
             ADMISSION
           </button>
         </div>
-
-        <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
-        <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
       </div>
     </div>
 

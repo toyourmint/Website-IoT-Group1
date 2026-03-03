@@ -3,9 +3,6 @@
     <div class="hero-fullscreen">
       <div class="title-container">
         <h1 class="main-title">
-          Academics
-        <p>หลักสูตร</p>
-          {{ $t('pages.academics.title') }}
           {{ $t('pages.academics.title') }}
         </h1>
       </div>
