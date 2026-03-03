@@ -6,7 +6,7 @@
           {{ $t('pages.academics.title') }}
         </h1>
       </div>
-      
+      <Background />
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
@@ -436,6 +436,9 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+// ถ้าไม่ได้ใช้ Nuxt auto-import ให้ uncomment บรรทัดด้านล่าง
+// import Background from '~/components/Background.vue'
+
 const { t } = useI18n()
 const activeTab = ref('iot')
 const contentArea = ref(null)
@@ -449,7 +452,6 @@ const selectTab = (tabName) => {
   }, 100)
 }
 
-// ใช้ computed เพื่อให้ข้อมูล History เปลี่ยนตามภาษาอัตโนมัติ
 const historyData = computed(() => [
   {
     year: '1974',
@@ -526,7 +528,6 @@ const historyData = computed(() => [
 <style scoped>
 /* ================== Global & Layout ================== */
 .academics-page {
-  /* ใช้ตัวแปรสีข้อความหลักแทน */
   color: var(--text-main);
   font-family: var(--font-sans);
 }
@@ -541,11 +542,18 @@ const historyData = computed(() => [
   overflow: hidden;
 }
 
+/* content ใน hero ต้องมี z-index สูงกว่า Background */
 .title-container {
-  flex-grow: 1;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .main-title {
@@ -555,33 +563,21 @@ const historyData = computed(() => [
   letter-spacing: 3px;
   transition: color 0.3s ease;
 }
-.main-title p {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-.title-container {
-  position: relative;
-  text-align: center;
-  padding: 150px 20px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
   background-color: transparent;
   padding: 20px 30px;
-  
   border-radius: 20px 20px 0 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3rem; /* เพิ่มระยะห่างจากขอบล่างให้เหมือนหน้า Department */
+  padding-bottom: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .tab-buttons {
@@ -589,7 +585,7 @@ const historyData = computed(() => [
   justify-content: center;
   gap: 15px;
   width: 100%;
-  max-width: 950px; /* คงความกว้างปุ่มให้เท่ากับกล่องเนื้อหาด้านล่าง */
+  max-width: 950px;
 }
 
 .tab-buttons button {
@@ -604,8 +600,6 @@ const historyData = computed(() => [
   cursor: pointer;
   transition: 0.3s;
   box-shadow: 0 4px 6px var(--card-shadow);
-  
-  /* ปรับความสูงและการจัดข้อความในปุ่มให้เหมือนหน้า Department */
   min-height: 75px;
   display: flex;
   align-items: center;
@@ -650,7 +644,6 @@ const historyData = computed(() => [
 }
 
 .content-box {
-  /* ใช้พื้นหลังของการ์ด */
   background-color: var(--card-bg);
   border-radius: 16px;
   padding: 30px;
@@ -691,7 +684,7 @@ const historyData = computed(() => [
 }
 
 .text-navy {
-  color: var(--heading-color); /* เปลี่ยนจากสีกรมท่าที่เจาะจง เป็นตัวแปรของหัวข้อ */
+  color: var(--heading-color);
 }
 
 .custom-list {
@@ -704,7 +697,7 @@ const historyData = computed(() => [
   color: var(--text-muted);
 }
 .custom-list li strong {
-  color: var(--text-main); /* ทำตัวหนาให้สว่างขึ้น */
+  color: var(--text-main);
 }
 
 .grid-2-col {
@@ -796,13 +789,13 @@ const historyData = computed(() => [
 }
 
 .outline-btn:hover {
-  background-color: var(--border-color); /* เปลี่ยนสีเมื่อ hover ให้เข้ากับตีม */
+  background-color: var(--border-color);
   color: #ff9800;
 }
 
 .arrow-icon {
   background-color: #ff9800;
-  color: white; /* สีไอคอนชัดเจนดีแล้ว */
+  color: white;
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -890,7 +883,7 @@ const historyData = computed(() => [
 }
 
 .year-card {
-  background: var(--bg-main); /* ทำให้ดูลึกกว่า content-box พื้นฐานนิดหน่อย */
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-left: 4px solid #ff9800;
   padding: 20px;
@@ -960,7 +953,7 @@ const historyData = computed(() => [
   top: 15px;
   bottom: 15px;
   width: 2px;
-  background-color: #ff9800; /* สีส้ม */
+  background-color: #ff9800;
   z-index: 1;
 }
 
@@ -1021,7 +1014,7 @@ const historyData = computed(() => [
   transform: translateX(-50%);
   width: 16px;
   height: 16px;
-  background-color: var(--bg-main); /* เปลี่ยนจุดไข่ปลาให้ตรงกับพื้นหลัง */
+  background-color: var(--bg-main);
   border: 3px solid #ff9800;
   border-radius: 50%;
   z-index: 3;

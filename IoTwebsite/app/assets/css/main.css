@@ -1,3 +1,4 @@
+
 /* นำเข้าฟอนต์ Kanit จาก Google Fonts ครอบคลุมทุกความหนา */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
@@ -24,25 +25,55 @@
    🎨 CSS Variables (ตัวแปรสีสำหรับใช้ทุกหน้า)
 ========================================= */
 :root {
-  /* 🌞 Light Mode */
+  /* 🌞 Light Mode (คลีนๆ สว่างๆ ปกติ) */
   --bg-main: #fdfbf7;
   --text-main: #1f2937;
-  --text-muted: #4b5563;
-  --heading-color: #1e3c72;
-  --card-bg: #ffffff;
-  --border-color: #e5e7eb;
-  --card-shadow: rgba(0, 0, 0, 0.05);
+  --text-muted: #64748b;
+  --heading-color: #162f5d;
+  
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(229, 231, 235, 0.8);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  
+  --glow-accent: 0 8px 20px rgba(255, 152, 0, 0.2); /* เงาสีส้มอ่อนๆ ตอน Hover */
+  --tab-active-bg: linear-gradient(135deg, #ffcc99, #ffb366);
+
+  /* 📝 Typography Font Sizes (ปรับให้ default ใหญ่ขึ้นอ่านง่าย) */
+  --fs-h1: 3rem;       /* หัวข้อใหญ่สุด 48px */
+  --fs-h2: 2.25rem;    /* หัวข้อรอง 36px */
+  --fs-h3: 1.75rem;    /* หัวข้อย่อย 28px */
+  --fs-h4: 1.25rem;    /* หัวข้อระดับ 4 20px */
+  --fs-body: 1.125rem; /* เนื้อหาปกติ 18px (ใหญ่กว่า 16px เดิม) */
+  --fs-small: 0.95rem; /* ข้อความเล็ก 15px */
+}
+
+/* ปรับขนาดให้อัตโนมัติเมื่ออยู่บนหน้าจอมือถือ/แท็บเล็ต */
+@media (max-width: 768px) {
+  :root {
+    --fs-h1: 2.25rem;
+    --fs-h2: 1.8rem;
+    --fs-h3: 1.5rem;
+    --fs-h4: 1.15rem;
+    --fs-body: 1.0625rem; /* เนื้อหาปกติบนมือถือประมาณ 17px */
+  }
 }
 
 .dark {
-  /* 🌙 Dark Mode (ตีมสีส้มสำหรับเนื้อหา) */
-  --bg-main: #0f172a;       /* สี slate-900 ตามที่คุณตั้งไว้ */
+  /* 🌙 Dark Mode (Modern Tech / Glassmorphism ล้ำๆ) */
+  --bg-main: #0B0F19;       /* เปลี่ยนจาก slate-900 เป็นสีดำอมน้ำเงินเข้มจัดๆ เพื่อให้ขอบการ์ดชัดเจน */
   --text-main: #f8fafc;
-  --text-muted: #f1f1f1;
-  --heading-color: #ff9800; /* สีส้มตามตีมที่คุณต้องการ */
-  --card-bg: #1e293b;       /* สี slate-800 สำหรับพื้นหลังการ์ด */
-  --border-color: #334155;
-  --card-shadow: rgba(0, 0, 0, 0.5);
+  --text-muted: #94a3b8;
+  --heading-color: #ff6f2c; /* สีส้มสว่างขึ้นนิดนึงเพื่อไม่ให้กลืนกับจอดำ */
+  
+  /* หัวใจสำคัญ: ทำการ์ดให้เป็นกระจกโปร่งแสง (Glassmorphism) */
+  --card-bg: rgba(30, 41, 59, 0.3); 
+  /* ขอบการ์ดบางเฉียบสีขาวโปร่งแสง (ช่วยลบความรู้สึกดินน้ำมัน) */
+  --border-color: rgba(255, 255, 255, 0.08); 
+  /* เปลี่ยนจากเงาดำๆ เป็นเงาลึกๆ ผสมแสง */
+  --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); 
+  
+  --glow-accent: 0 0 20px rgba(249, 115, 22, 0.35); /* แสง Neon สีส้มล้อมรอบตอน Hover */
+  --tab-active-bg: linear-gradient(135deg, #ea580c, #c2410c); /* แท็บ Active สีส้มเข้มไล่ระดับ ดูมีมิติ */
 }
 
 /* =========================================
@@ -50,6 +81,7 @@
 ========================================= */
 html {
   scroll-behavior: smooth;
+  font-size: 16px; /* ล็อกค่าเริ่มต้นไว้ให้ปุ่ม A- A A+ บน Navbar ใช้งานได้สมบูรณ์ */
 }
 
 /* ✅ บังคับให้ทุกๆ Element ดึงฟอนต์ Kanit ไปใช้ */
@@ -60,6 +92,7 @@ html {
 /* ✅ บังคับปุ่ม และช่องกรอกข้อมูล (มักจะดื้อไม่ยอมใช้ฟอนต์ตาม body) */
 button, input, select, textarea {
   font-family: inherit;
+  font-size: inherit;
 }
 
 body {
@@ -69,14 +102,28 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-main);
   color: var(--text-main); 
+  font-size: var(--fs-body); /* ✅ ดึงขนาดตัวอักษรใหม่ (18px) มาใช้ */
+  line-height: 1.6;
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* ✅ จัดการขนาดฟอนต์หัวข้อ ให้เป็นระเบียบ */
+/* ✅ จัดการขนาดฟอนต์หัวข้อ ให้เป็นระเบียบตามตัวแปร */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700; /* ให้หัวข้อมีความหนา */
+  color: var(--heading-color);
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  transition: color 0.2s;
 }
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+p  { font-size: var(--fs-body); margin-bottom: 1em; }
+small { font-size: var(--fs-small); }
 
 img {
   max-width: 100%;

@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
     
-    <div class="hero-fullscreen">
+    <Background>
       <div class="title-container">
         <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
       </div>
-    </div>
+    </Background>
 
     <section class="section" ref="contentArea">
       <h2 class="section-title">
@@ -159,6 +159,7 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Carousel from '../components/Carousel.vue'
 import { useRoute } from 'vue-router'
+import Background from '../components/Background.vue'
 
 const { t } = useI18n()
 const showScroll = ref(false)
@@ -306,23 +307,25 @@ const quotaPages = computed(() => [
 }
 
 /* ================== เปลี่ยนเป็นเต็มจอ (100vh) ================== */
-.hero-fullscreen {
-  height: 100vh;
+
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-}
-
-.title-container {
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 .main-title {
-  font-size: 5rem; /* เพิ่มขนาดเพื่อให้เด่นชัดเวลาอยู่เดี่ยวๆ กลางจอ */
+  font-size: var(--fs-h1);
   margin: 0;
-  font-weight: bold;
-  margin-top: -20%;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--text-main);
+  text-align: center;
+  transition: color 0.3s ease;
 }
 
 .tab-buttons-wrapper {
