@@ -4,9 +4,13 @@
     <div class="hero-fullscreen">
       <div class="title-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <h1 class="main-title">Performance
           <p>ผลงาน</p>
         </h1>
+=======
+        <h1 class="main-title">{{ $t('pages.performance.title') }}</h1>
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
 =======
         <h1 class="main-title">{{ $t('pages.performance.title') }}</h1>
 >>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84

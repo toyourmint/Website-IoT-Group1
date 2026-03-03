@@ -4,8 +4,12 @@
       <div class="title-container">
         <h1 class="main-title">
 <<<<<<< HEAD
+<<<<<<< HEAD
           Departments
           <p>ภาควิชา</p>
+=======
+          {{ $t('pages.department.title') }}
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
 =======
           {{ $t('pages.department.title') }}
 >>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84

@@ -2,9 +2,13 @@
   <div class="contact-page">
     <div class="hero-section">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <h1 class="main-title">Contact
         <p>ช่องทางติดต่อ</p>
       </h1>
+=======
+      <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
+>>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
 =======
       <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
 >>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
