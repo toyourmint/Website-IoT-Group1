@@ -1,45 +1,47 @@
 <template>
   <div class="department-page">
-
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">Departments</h1>
+        <h1 class="main-title">
+          {{ $t('pages.department.title') }}
+        </h1>
       </div>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
           <button :class="{ active: activeTab === 'iot' }" @click="selectTab('iot')">
-            the Department of IoT<br>and Information Engineering
+            {{ $t('pages.department.iote') }}
           </button>
           <button :class="{ active: activeTab === 'physics' }" @click="selectTab('physics')">
-            Industrial Physics
+            {{ $t('pages.department.physics') }}
           </button>
         </div>
 
         <div class="scroll-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <Icon name="mdi:chevron-down" style="width: 2rem; height: 2rem;" />
         </div>
       </div>
     </div>
 
     <transition name="slide-up">
-      <button v-if="showScrollTop" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-        </svg>
+      <button v-if="showScrollTop" class="scroll-top-btn" aria-label="Scroll to top" @click="scrollToTop">
+        <Icon name="mdi:arrow-up" />
       </button>
     </transition>
 
-    <div class="content-wrapper" ref="contentSection">
+    <div ref="contentSection" class="content-wrapper">
       <transition name="fade" mode="out-in">
-
         <div v-if="activeTab === 'iot'" key="iot" class="tab-content">
           <div class="section-header">
-            <h2 class="section-title">IoT and Information Engineering</h2>
-            <h3 class="section-subtitle">Department Faculty Members</h3>
-            <p class="section-desc">คณาจารย์ประจำภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
+            <h2 class="section-title">
+              IoT and Information Engineering
+            </h2>
+            <h3 class="section-subtitle">
+              Department Faculty Members
+            </h3>
+            <p class="section-desc">
+              คณาจารย์ประจำภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
           </div>
 
           <div class="member-grid">
@@ -58,8 +60,12 @@
           </div>
 
           <div class="section-header staff-header">
-            <h3 class="section-subtitle">Department Staff</h3>
-            <p class="section-desc">บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+            </p>
           </div>
 
           <div class="staff-grid">
@@ -81,8 +87,15 @@
 
         <div v-else-if="activeTab === 'physics'" key="physics" class="tab-content">
           <div class="section-header">
-            <h2 class="section-title">Industrial Physics Department Faculty Members</h2>
-            <p class="section-desc">คณาจารย์ประจำภาควิชาฟิสิกส์อุตสาหกรรม</p>
+            <h2 class="section-title">
+              IoT and Information Engineering
+            </h2>
+            <h3 class="section-subtitle">
+              Faculty Members
+            </h3>
+            <p class="section-desc">
+              คณาจารย์ประจำสาขาวิชาฟิสิกส์อุตสาหกรรม
+            </p>
           </div>
 
           <div class="member-grid">
@@ -102,8 +115,12 @@
           </div>
 
           <div class="section-header staff-header">
-            <h3 class="section-subtitle">Department Staff</h3>
-            <p class="section-desc">บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม</p>
+            <h3 class="section-subtitle">
+              Department Staff
+            </h3>
+            <p class="section-desc">
+              บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
+            </p>
           </div>
 
           <div class="staff-grid">
@@ -122,7 +139,6 @@
             </div>
           </div>
         </div>
-
       </transition>
     </div>
 
@@ -130,20 +146,22 @@
       <div v-if="selectedMember" class="modal-overlay" @click.self="closeModal">
         <div class="modal-content">
           <button class="close-btn" @click="closeModal">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <Icon name="mdi:close" />
           </button>
 
           <div class="modal-body">
             <div class="modal-image-wrapper">
-              <img :src="selectedMember.image" :alt="selectedMember.nameTh" />
+              <img :src="selectedMember.image" :alt="selectedMember.nameTh">
             </div>
 
             <div class="modal-details">
-              <h2 class="detail-name-th">{{ selectedMember.nameTh }}</h2>
-              <h3 class="detail-name-en">{{ selectedMember.nameEn.split('\n')[0] }}</h3>
-              
+              <h2 class="detail-name-th">
+                {{ selectedMember.nameTh }}
+              </h2>
+              <h3 class="detail-name-en">
+                {{ selectedMember.nameEn.split('\n')[0] }}
+              </h3>
+
               <div class="detail-info-group">
                 <p v-if="selectedMember.position || selectedMember.nameEn.split('\n')[1]">
                   <strong>ตำแหน่ง :</strong> {{ selectedMember.position || selectedMember.nameEn.split('\n')[1] }}
@@ -153,17 +171,19 @@
                 </p>
               </div>
 
-              <div class="detail-section" v-if="selectedMember.education && selectedMember.education.length">
+              <div v-if="selectedMember.education && selectedMember.education.length" class="detail-section">
                 <h4>ประวัติการศึกษา</h4>
                 <ul>
-                  <li v-for="(edu, idx) in selectedMember.education" :key="idx" v-html="edu.replace(/\n/g, '<br>')"></li>
+                  <li v-for="(edu, idx) in selectedMember.education" :key="idx" v-html="edu.replace(/\n/g, '<br>')" />
                 </ul>
               </div>
 
-              <div class="detail-section" v-if="selectedMember.expertise && selectedMember.expertise.length">
+              <div v-if="selectedMember.expertise && selectedMember.expertise.length" class="detail-section">
                 <h4>ความเชี่ยวชาญ</h4>
                 <ul>
-                  <li v-for="(exp, idx) in selectedMember.expertise" :key="idx">{{ exp }}</li>
+                  <li v-for="(exp, idx) in selectedMember.expertise" :key="idx">
+                    {{ exp }}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -171,7 +191,6 @@
         </div>
       </div>
     </transition>
-
   </div>
 </template>
 
@@ -271,9 +290,7 @@ const scrollToTop = () => {
 <style scoped>
 /* ================== Layout ================== */
 .department-page {
-  /* background-color: #FFFDF9; */
-  font-family: sans-serif;
-  color: #2D3142;
+  position: relative;
 }
 
 /* ================== Hero Section ================== */
@@ -286,19 +303,29 @@ const scrollToTop = () => {
   overflow: hidden;
 }
 
-.title-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .main-title {
-  font-size: 4.5rem;
-  color: #1e293b;
+  font-size: 4rem;
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.main-title p {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
+  padding: 150px 20px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* ================== Tab Buttons ================== */
@@ -312,55 +339,61 @@ const scrollToTop = () => {
 
 .tab-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 15px;
   width: 100%;
   max-width: 900px;
-  padding: 0 1rem;
 }
 
 .tab-buttons button {
   flex: 1;
-  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
-  border: none;
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-weight: 600;
   font-size: 1.1rem;
-  font-weight: bold;
-  color: #32363f;
   cursor: pointer;
-  transition: all 0.3s ease;
-  line-height: 1.5;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px var(--card-shadow);
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .tab-buttons button:hover {
-  transform: scale(1.02);
-  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px var(--card-shadow);
+  border-color: #ff9800;
+  color: #ff9800;
 }
 
 .tab-buttons button.active {
-  transform: scale(1.02);
-  box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #ff9800;
+  border: 1px solid #e68a00;
+  color: #fff;
 }
 
 /* ================== Scroll Hint ================== */
 .scroll-hint {
   margin-top: 2rem;
-  color: #9ca3af;
+  color: var(--text-muted);
   animation: bounce 1s infinite;
 }
 
-.scroll-hint svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 /* ================== Content Wrapper ================== */
@@ -383,21 +416,19 @@ const scrollToTop = () => {
 }
 
 .section-title {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #1f2937;
+  color: var(--heading-color);
 }
 
 .section-subtitle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1f2937;
+  color: var(--text-main);
   margin-top: 0.5rem;
 }
 
 .section-desc {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-top: 0.75rem;
   font-weight: 500;
 }
@@ -427,24 +458,26 @@ const scrollToTop = () => {
 
 /* ================== Member Card ================== */
 .member-card {
-  background-color: #F6F5F2;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 2rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s;
 }
 
-/* ================== Card Hover Effect ================== */
 .clickable-card {
   cursor: pointer;
 }
+
 .clickable-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px var(--card-shadow);
+  border-color: #ff9800;
 }
 
 .member-info {
@@ -457,14 +490,14 @@ const scrollToTop = () => {
 
 .member-name-th {
   font-weight: bold;
-  color: #1f2937;
+  color: var(--text-main);
   font-size: 1rem;
   margin-bottom: 0.25rem;
 }
 
 .member-name-en {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-muted);
   white-space: pre-line;
   line-height: 1.6;
 }
@@ -475,68 +508,14 @@ const scrollToTop = () => {
   height: 12rem;
   border-radius: 1rem;
   overflow: hidden;
-  background-color: #e5e7eb;
-  border: 4px solid white;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-main);
+  border: 4px solid var(--border-color);
 }
 
 .member-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* ================== Scroll To Top Button ================== */
-.scroll-top-btn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 100;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: linear-gradient(to bottom, #FDE8D0, #F8C694);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.scroll-top-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-top-btn svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #32363f;
-}
-
-/* ================== Slide-up Transition ================== */
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.slide-up-enter-from,
-.slide-up-leave-to {
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-/* ================== Transitions ================== */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 /* ================== Modal Styles ================== */
@@ -546,7 +525,7 @@ const scrollToTop = () => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -556,14 +535,15 @@ const scrollToTop = () => {
 }
 
 .modal-content {
-  background-color: #E6E5E3;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   width: 100%;
   max-width: 800px;
   position: relative;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px var(--card-shadow);
   overflow: hidden;
-  max-height: 90vh; /* เผื่อเนื้อหาเยอะให้ scroll ได้ */
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -571,19 +551,22 @@ const scrollToTop = () => {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: none;
-  border: none;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  color: #6b7280;
+  color: var(--text-muted);
   padding: 0.5rem;
   border-radius: 50%;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-btn:hover {
-  background-color: rgba(0,0,0,0.1);
-  color: #1f2937;
+  background-color: var(--border-color);
+  color: #ff9800;
 }
 
 .close-btn svg {
@@ -604,9 +587,8 @@ const scrollToTop = () => {
   height: 250px;
   border-radius: 1rem;
   overflow: hidden;
-  background-color: #fff;
-  border: 4px solid white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-main);
+  border: 4px solid var(--border-color);
 }
 
 .modal-image-wrapper img {
@@ -625,21 +607,21 @@ const scrollToTop = () => {
 .detail-name-th {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #1e293b;
+  color: var(--text-main);
   margin: 0 0 0.25rem 0;
 }
 
 .detail-name-en {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #475569;
+  color: var(--text-muted);
   margin: 0 0 1.5rem 0;
 }
 
 .detail-info-group p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
-  color: #334155;
+  color: var(--text-main);
 }
 
 .detail-section {
@@ -649,7 +631,7 @@ const scrollToTop = () => {
 .detail-section h4 {
   font-size: 1rem;
   font-weight: bold;
-  color: #1e293b;
+  color: var(--heading-color);
   margin: 0 0 0.5rem 0;
 }
 
@@ -661,19 +643,51 @@ const scrollToTop = () => {
 
 .detail-section li {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
   line-height: 1.5;
 }
 
-/* Modal Transition */
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
+}
+
+/* ================== Scroll To Top Button ================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  transition: transform 0.2s ease, border-color 0.2s;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+  border-color: #ff9800;
+  color: #ff9800;
+}
+
+.scroll-top-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: inherit;
 }
 
 /* ================== Responsive ================== */
@@ -696,20 +710,17 @@ const scrollToTop = () => {
     width: 100%;
   }
 
-  /* Responsive สำหรับ Modal */
   .modal-body {
     flex-direction: column;
     align-items: center;
     padding: 2rem 1.5rem;
     gap: 1.5rem;
   }
+
   .modal-details {
     text-align: center;
   }
-  .modal-footer-action {
-    justify-content: center;
-    margin-top: 1.5rem;
-  }
+
   .modal-content {
     max-height: 85vh;
   }

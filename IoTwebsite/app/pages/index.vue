@@ -331,10 +331,7 @@ const activities = ref([
 }
 
 .home-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
   position: relative;
-  background-color: #FFFDF9;
   overflow-x: hidden;
 }
 
@@ -349,7 +346,6 @@ const activities = ref([
 h2 {
   font-size: 2.2rem;
   margin-bottom: 40px;
-  color: #1e3c72;
   font-weight: 700;
   text-align: center;
 }
@@ -479,8 +475,6 @@ h2 {
 ========================================= */
 .hero-section {
   position: relative;
-  background-color: #FFFDF9;
-  color: #2D3142;
   text-align: center;
   padding: 150px 20px;
   min-height: 80vh;
@@ -493,11 +487,10 @@ h2 {
 .hero-content {
   position: relative;
   z-index: 10;
-  text-shadow: 0 0 15px rgba(255, 253, 249, 0.8);
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
@@ -505,7 +498,6 @@ h2 {
 
 .hero-content p {
   font-size: 1.5rem;
-  color: #555;
   font-weight: 500;
 }
 
@@ -521,7 +513,6 @@ h2 {
 
 .hero-float-item {
   position: absolute;
-  color: #1a1a1a;
   opacity: 0.7;
   animation: heroFloatAnim 6s ease-in-out infinite;
 }
@@ -701,7 +692,7 @@ h2 {
 .feature-card h3 {
   margin-bottom: 15px;
   font-size: 1.15rem;
-  color: #1e3c72;
+  color: #333;
   line-height: 1.4;
 }
 
@@ -820,7 +811,7 @@ h2 {
 }
 
 .btn-more:hover {
-  background-color: #fff3e0;
+
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
 }
@@ -973,7 +964,6 @@ h2 {
   text-align: center;
   max-width: 400px;
   min-height: 60px;
-  color: #555;
   font-weight: 500;
   z-index: 10;
 }
