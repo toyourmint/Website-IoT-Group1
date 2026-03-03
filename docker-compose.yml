@@ -7,10 +7,8 @@ services:
     container_name: mysql-strapi
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: strongpassword123
       MYSQL_DATABASE: iotwebsite_db
-    ports:
-      - "3309:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -20,24 +18,29 @@ services:
       retries: 10
 
   strapi:
-    image: node:20
+    build: ./cms
     container_name: strapi
-    working_dir: /app
-    volumes:
-      - ./cms:/app
-    command: sh -c "npm install && npm run develop"
+    restart: always
     ports:
       - "1337:1337"
     depends_on:
       mysql:
         condition: service_healthy
     environment:
+      NODE_ENV: production
       DATABASE_CLIENT: mysql
       DATABASE_HOST: mysql
       DATABASE_PORT: 3306
       DATABASE_NAME: iotwebsite_db
       DATABASE_USERNAME: root
-      DATABASE_PASSWORD: root
+      DATABASE_PASSWORD: strongpassword123
+
+      APP_KEYS: 966a40e6a2aa8686ac64e65080dc0e8b192ce0855ff2a7ecafc4ec65211e8fbc,34933de2a6e9e31f1779e291d74af7a84271a42e63094534c6166bb8ca5216a3
+      API_TOKEN_SALT: 880f766da702829f33aad2554368bb5106b0a61d1d46f1c0982921c7ce5ad147
+      ADMIN_JWT_SECRET: 8ac915a4c46bdffd7c0f68951c3352d5991a3bc659ffbb8b17b1f210488f8c9f
+      JWT_SECRET: 34933de2a6e9e31f1779e291d74af7a84271a42e63094534c6166bb8ca5216a3
+    volumes:
+      - ./cms/public/uploads:/app/public/uploads
 
 volumes:
   mysql_data:
