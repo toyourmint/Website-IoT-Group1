@@ -126,7 +126,7 @@
                   :src="'/img/logo/Why_IoT.jpg'"
                   alt="Why IoTE"
                 >
-                <h3>ภาควิชาวิศวกรรมคอมพิวเตอร์</h3>
+                <h3>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h3>
                 <p>DEPARTMENT OF IOT AND INFORMATION ENGINEERING</p>
               </div>
             </div>
