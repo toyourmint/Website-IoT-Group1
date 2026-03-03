@@ -44,15 +44,15 @@
 
           <div class="member-grid">
             <div v-for="member in iotFaculty" :key="member.id" class="member-card clickable-card" @click="openModal(member)">
+              <div class="member-img-wrapper">
+                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
+              </div>
               <div class="member-info">
                 <h4 class="member-name-th">{{ member.nameTh }}</h4>
                 <p class="member-name-en">{{ member.nameEn }}</p>
                 <p v-if="member.position" class="member-position">
                   {{ member.position }}
                 </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
               </div>
             </div>
           </div>
@@ -64,15 +64,16 @@
 
           <div class="staff-grid">
             <div v-for="staff in iotStaff" :key="staff.id" class="member-card clickable-card" @click="openModal(staff)">
+              
+              <div class="member-img-wrapper">
+                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
+              </div>
               <div class="member-info">
                 <h4 class="member-name-th">{{ staff.nameTh }}</h4>
                 <p class="member-name-en">{{ staff.nameEn }}</p>
                 <p v-if="staff.position" class="member-position">
                   {{ staff.position }}
                 </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
               </div>
             </div>
           </div>
@@ -86,15 +87,16 @@
 
           <div class="member-grid">
             <div v-for="member in physicsFaculty" :key="member.id" class="member-card clickable-card" @click="openModal(member)">
+              
+              <div class="member-img-wrapper">
+                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
+              </div>
               <div class="member-info">
                 <h4 class="member-name-th">{{ member.nameTh }}</h4>
                 <p class="member-name-en">{{ member.nameEn }}</p>
                 <p v-if="member.position" class="member-position">
                   {{ member.position }}
                 </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
               </div>
             </div>
           </div>
@@ -106,15 +108,16 @@
 
           <div class="staff-grid">
             <div v-for="staff in physicsStaff" :key="staff.id" class="member-card clickable-card" @click="openModal(staff)">
+              
+              <div class="member-img-wrapper">
+                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
+              </div>
               <div class="member-info">
                 <h4 class="member-name-th">{{ staff.nameTh }}</h4>
                 <p class="member-name-en">{{ staff.nameEn }}</p>
                 <p v-if="staff.position" class="member-position">
                   {{ staff.position }}
                 </p>
-              </div>
-              <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
               </div>
             </div>
           </div>
