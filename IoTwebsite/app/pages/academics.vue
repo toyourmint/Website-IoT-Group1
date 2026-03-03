@@ -3,16 +3,10 @@
     <div class="hero-fullscreen">
       <div class="title-container">
         <h1 class="main-title">
-<<<<<<< HEAD
-<<<<<<< HEAD
           Academics
         <p>หลักสูตร</p>
-=======
           {{ $t('pages.academics.title') }}
->>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
-=======
           {{ $t('pages.academics.title') }}
->>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
         </h1>
       </div>
       
@@ -581,17 +575,11 @@ const historyData = computed(() => [
 
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-<<<<<<< HEAD
-<<<<<<< HEAD
   /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
   background-color: transparent;
   padding: 20px 30px;
   
   border-radius: 20px 20px 0 0;
-=======
->>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
-=======
->>>>>>> 642a12bdfe5f78764c5d9d24dedb689f0acfbb84
   width: 100%;
   display: flex;
   flex-direction: column;
