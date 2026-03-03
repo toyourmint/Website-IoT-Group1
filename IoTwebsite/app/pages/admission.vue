@@ -1,25 +1,9 @@
 <template>
   <div class="wrapper">
-
+    
     <div class="hero-fullscreen">
       <div class="title-container">
-        <h1 class="main-title">
-          {{ $t('pages.admission.title') }}
-        </h1>
-      </div>
-
-      <div class="tab-buttons-wrapper">
-        <div class="tab-buttons">
-          <button :class="{ active: activeSection === 'portfolio' }" @click="selectTab('portfolio')">
-            PORTFOLIO
-          </button>
-          <button :class="{ active: activeSection === 'quota' }" @click="selectTab('quota')">
-            QUOTA
-          </button>
-          <button :class="{ active: activeSection === 'admission' }" @click="selectTab('admission')">
-            ADMISSION
-          </button>
-        </div>
+        <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
       </div>
     </div>
 
@@ -74,13 +58,13 @@
     </div>
 
     <transition name="fade" mode="out-in">
-
+      
       <section v-if="activeSection === 'portfolio'" key="portfolio" id="portfolio" class="section tab-section">
         <h2 class="section-title">
           {{ $t('pages.admission.portfolio.heading') }}
         </h2>
         <Carousel :items="portfolioPages" />
-
+        
         <div class="card-container" style="margin-top: 20px;">
           <div class="action-btn-container">
             <NuxtLink
@@ -113,8 +97,7 @@
         </div>
       </section>
 
-      <section v-else-if="activeSection === 'admission'" key="admission" id="admission"
-        class="section admission-section tab-section">
+      <section v-else-if="activeSection === 'admission'" key="admission" id="admission" class="section admission-section tab-section">
         <h2 class="section-title admission-title">
           {{ $t('pages.admission.admissionTab.heading') }}
         </h2>
@@ -156,7 +139,12 @@
     </transition>
 
     <transition name="slide-up">
-      <button v-if="showScroll" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
+      <button 
+        v-if="showScroll" 
+        class="scroll-top-btn" 
+        @click="scrollToTop" 
+        aria-label="Scroll to top"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
         </svg>
@@ -174,14 +162,14 @@ import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
 const showScroll = ref(false)
-const activeSection = ref('portfolio')
+const activeSection = ref('portfolio') 
 const contentArea = ref(null)
 const tabArea = ref(null) 
 const route = useRoute()
 
 const selectTab = (tabName) => {
   activeSection.value = tabName
-
+  
   setTimeout(() => {
     if (tabArea.value) {
       tabArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -313,7 +301,7 @@ const quotaPages = computed(() => [
 </script>
 
 <style scoped>
-.wrapper {
+.wrapper{
   position: relative;
 }
 
@@ -324,20 +312,6 @@ const quotaPages = computed(() => [
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-.main-title {
-  font-size: 4rem;
-  margin: 0;
-  font-weight: 800;
-  letter-spacing: 3px;
-  transition: color 0.3s ease;
-}
-
-.main-title p {
-  font-size: 1.5rem;
-  font-weight: 500;
-
 }
 
 .title-container {
@@ -352,7 +326,7 @@ const quotaPages = computed(() => [
 }
 
 .tab-buttons-wrapper {
-  background-color: transparent;
+  background-color: transparent; 
   padding: 20px 30px;
   border-radius: 20px 20px 0 0;
   width: 100%;
@@ -392,7 +366,6 @@ const quotaPages = computed(() => [
   border: 1px solid #e68a00;
   color: #fff;
 }
-
 /* ====================================================================== */
 
 /* ================== Transitions ของ Tab ================== */
@@ -400,12 +373,10 @@ const quotaPages = computed(() => [
 .fade-leave-active {
   transition: opacity 0.4s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
-
 /* ========================================================= */
 
 .section{
@@ -434,11 +405,11 @@ const quotaPages = computed(() => [
 .info-box{
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  padding: 25px;
-  border-radius: 15px;
-  margin: 10px 0;
-  width: 60%;
-  text-align: center;
+  padding:25px;
+  border-radius:15px;
+  margin:10px 0;
+  width:60%;
+  text-align:center;
   box-shadow: 0 4px 15px var(--card-shadow);
   transition: all 0.3s ease;
 }
@@ -465,7 +436,7 @@ const quotaPages = computed(() => [
   flex-direction: column;
 }
 
-.card {
+.card{
   width: 100%;
   min-height: 400px; 
   background: var(--card-bg);
@@ -473,19 +444,19 @@ const quotaPages = computed(() => [
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 15px var(--card-shadow);
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 }
 
 .card-header{
   background: linear-gradient(135deg,#ffb36b,#ff8c00); 
-  color: var(--text-main); 
+  color: white; 
   padding: 20px;
   text-align: center;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
-.card-body {
+.card-body{
   padding: 30px;
   color: var(--text-muted);
 }
@@ -551,7 +522,6 @@ const quotaPages = computed(() => [
 .outline-btn:hover .arrow-icon {
   transform: translateX(3px);
 }
-
 /* =================================================================================== */
 
 /* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */
@@ -604,13 +574,10 @@ const quotaPages = computed(() => [
   .main-title {
     font-size: 3.5rem; /* ลดขนาดลงหน่อยในจอมือถือ */
   }
-
   .tab-buttons {
     flex-direction: column;
   }
-
-  .card-container,
-  .info-box {
+  .card-container, .info-box {
     width: 90%;
   }
 }

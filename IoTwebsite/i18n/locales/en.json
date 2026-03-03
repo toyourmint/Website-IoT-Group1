@@ -298,6 +298,7 @@
     },
 
     "contact": {
+      "title": "Contact Us",
       "locationLabel": "Location",
       "iote": {
         "l1": "Department of IoT and Information Engineering",
