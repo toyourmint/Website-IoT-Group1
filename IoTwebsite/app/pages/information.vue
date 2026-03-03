@@ -6,10 +6,13 @@
       <div v-if="!selectedNews" key="list">
 
         <div class="hero-section">
+          <Background>
           <div class="title-container">
             <h1 class="main-title">Information</h1>
             <p class="section-desc">ข่าวสารและกิจกรรมล่าสุดจากภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
           </div>
+        </Background>
+
         </div>
 
         <div class="content-wrapper">
@@ -104,6 +107,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import Background from '~/components/Background.vue'
 
 const selectedNews = ref(null)
 
@@ -174,18 +178,34 @@ const newsList = computed(() =>
 
 /* ================== Header Section ================== */
 .hero-section {
-  padding: 6rem 1rem 3rem;
+  position: relative;
   text-align: center;
   background-color: transparent;
   border-bottom: 1px solid var(--border-color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .main-title {
-  font-size: 3.5rem;
-  color: var(--heading-color);
-  margin: 0 0 1rem 0;
+  font-size: var(--fs-h1);
+  margin: 0;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  color: var(--text-main);
+  text-align: center;
+  transition: color 0.3s ease;
 }
 
 .section-desc {
@@ -200,90 +220,116 @@ const newsList = computed(() =>
   margin: 0 auto;
 }
 
+/* ===== Grid แนวตั้ง 3 คอลัมน์ ===== */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-/* ================== News Card ================== */
+/* ===== Card แนวตั้ง ===== */
 .news-card {
-  border-radius: 16px;
+  display: flex;
+  flex-direction: column;   /* ⭐ ทำให้เป็นแนวตั้ง */
+  background: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(
-    to bottom,
-    transparent 55%,
-    rgba(255,255,255,0.02)
-  );
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  transition: all .25s ease;
-}
-.news-card:hover {
-  transform: translateY(-6px);
-  border-color: #F59E0B;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
 }
 
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== รูปด้านบน ===== */
 .news-image-wrapper {
-  height: 180px;
   width: 100%;
+  height: 220px;
   overflow: hidden;
-  background: #0b1a33; /* dark mode */
 }
 
 .news-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .news-card:hover .news-image-wrapper img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-.placeholder-image {
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder-text {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
+/* ===== เนื้อหาด้านล่าง ===== */
 .news-content {
-  padding: 1.6rem;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  gap: 12px;
+  flex: 1;
 }
 
-:root.light .news-content {
-  background: #f4f5f7;
+.news-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
-.news-title {
-  color: #F59E0B;
-  font-weight: 800;
-}
-:root.light .news-title {
-  color: #1f3a5f;
-}
-
-.news-excerpt {
-  font-size: 1rem;
-  color: var(--text-muted);
+.news-content p {
+  color: #555;
   line-height: 1.6;
-  margin: 0 0 2rem 0;
-  flex-grow: 1;
+}
+
+/* ===== ปุ่ม ===== */
+.btn-more {
+  margin-top: auto;
+  padding: 6px 8px 6px 24px;
+  background-color: white;
+  color: #1e3c72;
+  border: 2px solid #ff9800;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  width: fit-content;
+}
+
+.btn-more .icon-circle {
+  background-color: #ff9800;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.btn-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+}
+
+.btn-more:hover .icon-circle {
+  transform: translateX(3px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ================== Read More Button ================== */

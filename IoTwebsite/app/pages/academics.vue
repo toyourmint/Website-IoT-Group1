@@ -557,10 +557,12 @@ const historyData = computed(() => [
 }
 
 .main-title {
-  font-size: 4rem;
+  font-size: var(--fs-h1);
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  color: var(--text-main);
+  text-align: center;
   transition: color 0.3s ease;
 }
 

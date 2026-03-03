@@ -1,57 +1,43 @@
 <template>
-    <div class="global-background-decoration">
-      <div class="g-square sq-a" />
-      <div class="g-square sq-b" />
-      <div class="g-square sq-c" />
-      <div class="g-square sq-d" />
-      <div class="g-square sq-e" />
-      <div class="g-square sq-f" />
-      <div class="g-square sq-g" />
-      <div class="g-square sq-h" />
-      <div class="g-square sq-i" />
-      <div class="g-square sq-j" />
-      <div class="g-square sq-k" />
-      <div class="g-square sq-l" />
-    </div>
+  <div class="global-background-decoration">
+    <div class="g-square sq-a" />
+    <div class="g-square sq-b" />
+    <div class="g-square sq-c" />
+    <div class="g-square sq-d" />
+    <div class="g-square sq-e" />
+    <div class="g-square sq-f" />
+    <div class="g-square sq-g" />
+    <div class="g-square sq-h" />
+    <div class="g-square sq-i" />
+    <div class="g-square sq-j" />
+    <div class="g-square sq-k" />
+    <div class="g-square sq-l" />
+  </div>
 
-    <section class="hero-section">
-      <div class="hero-floating-elements">
-        <Icon
-          name="fa6-solid:wifi"
-          class="hero-float-item icon-wifi"
-        />
-        <Icon
-          name="bi:sd-card"
-          class="hero-float-item icon-sd"
-        />
-        <div class="hero-float-item text-binary">
-          <span>0101</span><br><span>1001</span>
-        </div>
-        <Icon
-          name="bx:chip"
-          class="hero-float-item icon-chip"
-        />
-        <Icon
-          name="carbon:network-4"
-          class="hero-float-item icon-network"
-        />
-        <div class="hero-float-item icon-iot-text">
-          <Icon
-            name="mdi:wifi"
-            class="iot-wifi"
-          />
-          <span>IoT</span>
-        </div>
-        <Icon
-          name="mdi:monitor-cellphone"
-          class="hero-float-item icon-devices"
-        />
-        <div class="hero-float-item hero-square sq-1" />
-        <div class="hero-float-item hero-square sq-2" />
-        <div class="hero-float-item hero-square sq-3" />
-        <div class="hero-float-item hero-square sq-4" />
+  <section class="hero-section">
+    <div class="hero-floating-elements">
+      <Icon name="fa6-solid:wifi" class="hero-float-item icon-wifi" />
+      <Icon name="bi:sd-card" class="hero-float-item icon-sd" />
+      <div class="hero-float-item text-binary">
+        <span>0101</span><br><span>1001</span>
       </div>
-    </section>
+      <Icon name="bx:chip" class="hero-float-item icon-chip" />
+      <Icon name="carbon:network-4" class="hero-float-item icon-network" />
+      <div class="hero-float-item icon-iot-text">
+        <Icon name="mdi:wifi" class="iot-wifi" />
+        <span>IoT</span>
+      </div>
+      <Icon name="mdi:monitor-cellphone" class="hero-float-item icon-devices" />
+      <div class="hero-float-item hero-square sq-1" />
+      <div class="hero-float-item hero-square sq-2" />
+      <div class="hero-float-item hero-square sq-3" />
+      <div class="hero-float-item hero-square sq-4" />
+    </div>
+    <div class="hero-content">
+      <slot />
+    </div>
+  </section>
+
 </template>
 
 <style scoped>
@@ -174,9 +160,14 @@
   right: 4%;
   animation-delay: 2.7s;
 }
+
 /* =========================================
    1. Hero Section
 ========================================= */
+.hero-wrapper {
+  position: relative;
+}
+
 .hero-section {
   position: relative;
   text-align: center;
@@ -200,10 +191,6 @@
   margin-bottom: 20px;
 }
 
-.hero-content p {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
 
 .hero-floating-elements {
   position: absolute;

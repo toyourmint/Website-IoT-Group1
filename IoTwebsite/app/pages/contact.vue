@@ -1,8 +1,12 @@
 <template>
   <div class="contact-page">
-    <div class="hero-section">
-      <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
-    </div>
+    <Background>
+      <div class="title-container">
+        <div class="hero-section">
+          <h1 class="main-title">{{ $t('pages.contact.title') }}</h1>
+        </div>
+      </div>
+    </Background>
 
     <div class="content-section">
       <div class="container">
@@ -242,36 +246,30 @@
 
 /* ================== Hero Section ================== */
 .hero-section {
-  height: 100vh;
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .main-title {
-  font-size: 4rem;
+  font-size: var(--fs-h1);
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
-  transition: color 0.3s ease;
-}
-
-.main-title p {
-  font-size: 1.5rem;
-  font-weight: 500;
-
-}
-
-.title-container {
-  position: relative;
+  color: var(--text-main);
   text-align: center;
-  padding: 150px 20px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  transition: color 0.3s ease;
 }
 
 /* ================== Content Section ================== */

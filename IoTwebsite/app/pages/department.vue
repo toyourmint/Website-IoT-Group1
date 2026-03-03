@@ -1,11 +1,13 @@
 <template>
   <div class="department-page">
     <div class="hero-fullscreen">
-      <div class="title-container">
+      <Background>
+        <div class="title-container">
         <h1 class="main-title">
           {{ $t('pages.department.title') }}
         </h1>
-      </div>
+        </div>
+      </Background>
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
@@ -45,16 +47,18 @@
           </div>
 
           <div class="member-grid">
-            <div v-for="member in iotFaculty" :key="member.id" class="member-card clickable-card" @click="openModal(member)">
-              <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
-              </div>
+            <div v-for="member in iotFaculty" :key="member.id" class="member-card clickable-card"
+              @click="openModal(member)">
               <div class="member-info">
-                <h4 class="member-name-th">{{ member.nameTh }}</h4>
-                <p class="member-name-en">{{ member.nameEn }}</p>
-                <p v-if="member.position" class="member-position">
-                  {{ member.position }}
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
                 </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img">
               </div>
             </div>
           </div>
@@ -70,16 +74,16 @@
 
           <div class="staff-grid">
             <div v-for="staff in iotStaff" :key="staff.id" class="member-card clickable-card" @click="openModal(staff)">
-              
-              <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
-              </div>
               <div class="member-info">
-                <h4 class="member-name-th">{{ staff.nameTh }}</h4>
-                <p class="member-name-en">{{ staff.nameEn }}</p>
-                <p v-if="staff.position" class="member-position">
-                  {{ staff.position }}
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
                 </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img">
               </div>
             </div>
           </div>
@@ -99,17 +103,18 @@
           </div>
 
           <div class="member-grid">
-            <div v-for="member in physicsFaculty" :key="member.id" class="member-card clickable-card" @click="openModal(member)">
-              
-              <div class="member-img-wrapper">
-                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img" />
-              </div>
+            <div v-for="member in physicsFaculty" :key="member.id" class="member-card clickable-card"
+              @click="openModal(member)">
               <div class="member-info">
-                <h4 class="member-name-th">{{ member.nameTh }}</h4>
-                <p class="member-name-en">{{ member.nameEn }}</p>
-                <p v-if="member.position" class="member-position">
-                  {{ member.position }}
+                <h4 class="member-name-th">
+                  {{ member.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ member.nameEn }}
                 </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img v-if="member.image" :src="member.image" :alt="member.nameTh" class="member-img">
               </div>
             </div>
           </div>
@@ -124,17 +129,18 @@
           </div>
 
           <div class="staff-grid">
-            <div v-for="staff in physicsStaff" :key="staff.id" class="member-card clickable-card" @click="openModal(staff)">
-              
-              <div class="member-img-wrapper">
-                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img" />
-              </div>
+            <div v-for="staff in physicsStaff" :key="staff.id" class="member-card clickable-card"
+              @click="openModal(staff)">
               <div class="member-info">
-                <h4 class="member-name-th">{{ staff.nameTh }}</h4>
-                <p class="member-name-en">{{ staff.nameEn }}</p>
-                <p v-if="staff.position" class="member-position">
-                  {{ staff.position }}
+                <h4 class="member-name-th">
+                  {{ staff.nameTh }}
+                </h4>
+                <p class="member-name-en">
+                  {{ staff.nameEn }}
                 </p>
+              </div>
+              <div class="member-img-wrapper">
+                <img v-if="staff.image" :src="staff.image" :alt="staff.nameTh" class="member-img">
               </div>
             </div>
           </div>
@@ -195,64 +201,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeTab = ref('iot')
-
-const { data } = await useFetch(
-  'http://localhost:1337/api/professors?populate=*&pagination[pageSize]=100'
-)
-
-// ฟังก์ชันแปลง Strapi 5 Blocks (Rich Text) → array of strings
-const parseBlocks = (blocks) => {
-  if (!blocks || !Array.isArray(blocks)) return []
-  const result = []
-  for (const block of blocks) {
-    if (block.type === 'list' && Array.isArray(block.children)) {
-      for (const listItem of block.children) {
-        const text = listItem.children?.map(c => c.text).join('') ?? ''
-        if (text) result.push(text)
-      }
-    } else if (block.children) {
-      const text = block.children.map(c => c.text).join('')
-      if (text) result.push(text)
-    }
-  }
-  return result
-}
-
-const professors = computed(() =>
-  data.value?.data.map(item => ({
-    id: item.id,
-    nameTh: item.name_th,
-    nameEn: item.name_en,
-    department: item.department,   // "IoT" | "Physics"
-    role: item.role,               // "Faculty" | "Staff"
-    email: item.email,
-    position: item.position,
-    education: parseBlocks(item.education),
-    expertise: parseBlocks(item.expertise),
-    image: item.image?.url
-      ? `http://localhost:1337${item.image.url}`
-      : null
-  })) || []
-)
-
-const iotFaculty = computed(() =>
-  professors.value.filter(p => p.department === 'IoT' && p.role === 'Faculty')
-)
-const iotStaff = computed(() =>
-  professors.value.filter(p => p.department === 'IoT' && p.role === 'Staff')
-)
-const physicsFaculty = computed(() =>
-  professors.value.filter(p => p.department === 'Physics' && p.role === 'Faculty')
-)
-const physicsStaff = computed(() =>
-  professors.value.filter(p => p.department === 'Physics' && p.role === 'Staff')
-)
-
 const contentSection = ref(null)
 const showScrollTop = ref(false)
+
 const selectedMember = ref(null)
 
 const openModal = (member) => {
@@ -269,14 +223,21 @@ const handleScroll = () => {
   showScrollTop.value = window.scrollY > 300
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
-onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const selectTab = (tab) => {
   activeTab.value = tab
   setTimeout(() => {
     if (contentSection.value) {
-      const y = contentSection.value.getBoundingClientRect().top + window.pageYOffset - 80
+      const yOffset = -80
+      const element = contentSection.value
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
   }, 100)
@@ -285,6 +246,66 @@ const selectTab = (tab) => {
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+// ฐานข้อมูล (ข้อมูลเดิมของคุณ)
+const iotFaculty = ref([
+  { id: 1, nameTh: 'ผศ.ดร.พิกุลแก้ว ตังติสานนท์', nameEn: 'Asst.Prof.Dr.Pikulkaew Tangtisanon\nหัวหน้าภาควิชา', image: '/img/profIoT/ajkaew.jpg', position: 'อาจารย์ประจำหลักสูตร', email: 'pikulkaew.ta@kmitl.ac.th', education: ['- วศ.บ. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง', '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง', '- D.Eng. (Science and Technology) Tokai University, JAPAN'], expertise: ['- Web Application', '- Mobile Application', '- Information Security'] },
+  { id: 2, nameTh: 'รศ.ดร.บุณย์ชนะ ภู่ระหงษ์', nameEn: 'Assoc.Prof.Dr.Boonchana Purahong\nประธานหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ', image: '/img/profIoT/ajboon.jpg', position: 'ผู้ประสานงานสาขาวิชาวิศวกรรมสารสนเทศ', email: 'boonchana.pu@kmitl.ac.th', education: ['- อส.บ. (เทคโนโลยีอิเล็กทรอนิกส์)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง', '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง'], expertise: ['- Microprocessor Application', '- Microcontroller', '- Robotic', '- Internet of Things and Smart System'] },
+  { id: 3, nameTh: 'ศ.ดร. อภิรัฐ ศิริธราธิวัตร', nameEn: 'Prof. Dr. Apirat Siritaratiwat\nรองหัวหน้าภาควิชา (ฝ่ายวิจัยและนวัตกรรม)', image: '/img/profIoT/ajapirat.jpg' },
+  { id: 4, nameTh: 'ผศ.ดร.วันวิสา ชัชวงษ์', nameEn: 'Asst.Prof.Dr.Vanvisa Chutchavong\nรองหัวหน้าภาควิชา (ฝ่ายการเงิน)', image: '/img/profIoT/ajkai.jpg', position: 'อาจารย์ประจำหลักสูตร', email: 'vanvisa.ch@kmitl.ac.th', education: ['- อส.บ. เกียรตินิยมอันดับ 2 (เทคโนโลยีอิเล็กทรอนิกส์)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง', '- วศ.ม. (วิศวกรรมสารสนเทศ)\nสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง', '- วศ.ด. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง'], expertise: ['- Electronic', '- Bernstein Filter', '- Railway Signaling and Operation', '- Pattern recognition', '- Railway Communications'] },
+  { id: 5, nameTh: 'ผศ.ดร.นัชนัยน์ รุ่งเหมือนฟ้า', nameEn: 'Asst.Prof.Dr.Natchanai Roongmuanpha\nรองหัวหน้าภาควิชา (ฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajohm.jpg', position: 'อาจารย์ประจำหลักสูตร', email: 'natchanai.ro@kmitl.ac.th', education: ['- B.Eng.(Electronics Engineering) KMITL', '- M.Eng.(Control Engineering) KMITL', '- D.Eng.(Electrical Engineering) KMITL'], expertise: ['- immittance function simulators', '- active analog filters', '- oscillator design', '- chaotic circuit realization'] },
+  { id: 6, nameTh: 'ผศ.ดร.เกล็ดดาว สัตย์เจริญ', nameEn: 'Asst.Prof.Dr.Kleddao Satcharoen\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายต่างประเทศและกิจกรรมคณะ)', image: '/img/profIoT/ajfon.jpg' },
+  { id: 7, nameTh: 'ผศ.นิจจารีย์ สัตยารักษ์', nameEn: 'Asst.Prof.Nitjaree Satayarak\nรองหัวหน้าภาควิชา (ฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajnit.jpg' },
+  { id: 8, nameTh: 'ผศ.ดร.ธนวิชญ์ อนุวงศ์พินิจ', nameEn: 'Asst.Prof.Dr.Thanavit Anuwongpinit\nรองหัวหน้าภาควิชา (ฝ่ายวิชาการ)', image: '/img/profIoT/ajneng.jpg' },
+  { id: 9, nameTh: 'ดร.สุวิไล พุ่มโพธิ์', nameEn: 'Dr.Suwilai Phumpho\nรองหัวหน้าภาควิชา (ฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajjeng.jpg' },
+  { id: 10, nameTh: 'ผศ.ดร.อรรถพล ป้อมสถิตย์', nameEn: 'Asst.Prof.Dr.Auttapon Pomsathit\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajped.jpg' },
+  { id: 11, nameTh: 'ผศ.ดร.พนารัตน์ เชิญถนอมวงศ์', nameEn: 'Asst.Prof.Dr.Panarat Cherntanomwong\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', image: '/img/profIoT/ajpanarat.png' },
+  { id: 12, nameTh: 'ผศ.สรพงษ์ วชิรรัตนพรกุล', nameEn: 'Asst.Prof.Sorapong Wachirarattanapornkul\nอาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการนักศึกษา)', image: '/img/profIoT/ajtee.jpg' },
+  { id: 13, nameTh: 'ผศ.ไพศาล สิทธิโยภาสกุล', nameEn: 'Asst.Prof.Paisan Sithiyopasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajpaisan.jpg' },
+  { id: 14, nameTh: 'รศ.ดร.อรรถสิทธิ์ หล่าสกุล', nameEn: 'Assoc.Prof.Dr.Attasit Lasakul\nอาจารย์พิเศษ', image: '/img/profIoT/ajattasit.jpg' }
+])
+
+const iotStaff = ref([
+  { id: 1, nameTh: 'นายธนาตย์ จอมใจเอกชน', nameEn: 'Mr. Thanat Chomjaiakchan', image: '/img/profIoT/pchai.jpg' },
+  { id: 2, nameTh: 'นายธีรสิทธิ์ โท้ทอง', nameEn: 'Mr. Theerasit Toongtong', image: '/img/profIoT/pkhai.jpg' }
+])
+
+const physicsFaculty = ref([
+  { id: 1, nameTh: 'รศ.ดร.ภัทรียา ดำรงศักดิ์', nameEn: 'Assoc. Prof. Dr. Pattareeya Damrongsak\n(หัวหน้าภาควิชาฟิสิกส์)', image: '/img/profPhy/pattareeya.png' },
+  { id: 2, nameTh: 'รศ.ดร.สาหร่าย เล็กชะอุ่ม', nameEn: 'Assoc. Prof. Dr. Sarai Lekchaum\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/sarai.png' },
+  { id: 3, nameTh: 'รศ.ดร.รัชนก สมพรเสน่ห์', nameEn: 'Assoc. Prof. Dr. Ratchanok Sompornsane\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/ratchanok.png' },
+  { id: 4, nameTh: 'ผศ.ดร.ศ.ทิพวรรณ คล้ายบุญมี', nameEn: 'Asst. Prof. Dr. S.Tipawan Khlayboonme\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/tipawan.png' },
+  { id: 5, nameTh: 'รศ.ดร.อาภาภรณ์ สกุลการะเวก', nameEn: 'Assoc. Prof. Dr. Aparporn Sakulkalavek\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/aparporn.png' },
+  { id: 6, nameTh: 'ดร.พิชชานันท์ ธีเศรษฐ์โศภน', nameEn: 'Dr. Pichanan Teesetsopon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/pichanan.png' },
+  { id: 7, nameTh: 'ผศ.ดร.เมตยา กิติวรรณ', nameEn: 'Asst. Prof. Dr. Metaya Kittiwan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/mettaya.png' },
+  { id: 8, nameTh: 'ผศ.ธนภรณ์ ลีลาวัฒนานนท์', nameEn: 'Asst. Prof. Thanaporn Leelawattananon\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/thanaporn.png' },
+  { id: 9, nameTh: 'ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์', nameEn: 'Asst. Prof. Surasak Phiphatsart\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/surasak.png' },
+  { id: 10, nameTh: 'ผศ.ดร.ประธาน บุรณศิริ', nameEn: 'Asst. Prof. Dr. Prathan Buranasiri\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/prathan.png' },
+  { id: 11, nameTh: 'อ.ธรรมรัตน์ แต่งตั้ง', nameEn: 'Mr. Thammarat Tangtang\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/thammarat.png' },
+  { id: 12, nameTh: 'อ.สุรชาติ กมลดิลก', nameEn: 'Mr. Surachat Kamol-dilok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/surachart.png' },
+  { id: 13, nameTh: 'ผศ.ดร.ณัฐพร พรหมรส', nameEn: 'Asst. Prof. Dr. Nattaporn Promros\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/nathaporn.png' },
+  { id: 14, nameTh: 'ศ.ดร.เชรษฐา รัตนพันธ์', nameEn: 'Prof. Dr. Chettra Rattanaphan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chesta.png' },
+  { id: 15, nameTh: 'รศ.ดร.กฤษกร โล้เจริญรัตน์', nameEn: 'Assoc. Prof. Dr. Kitsakorn Locharoenrat\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/kitsakorn.png' },
+  { id: 16, nameTh: 'ผศ.ดร.ภาณุพล โขลนกระโทก', nameEn: 'Asst. Prof. Dr. Panupol Khlonkratok\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/bhanupol.png' },
+  { id: 17, nameTh: 'ผศ.ดร.พิศาล ศรีราช', nameEn: 'Asst. Prof. Dr. Phisan Srirach\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/pisan.png' },
+  { id: 18, nameTh: 'ดร.ชินพรรธน์ รัตนศิรวิทย์', nameEn: 'Dr.Chinnapat Ruttanasirawit\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chinnapat.png' },
+  { id: 19, nameTh: 'ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์', nameEn: 'Asst. Prof. Dr. Keerayoot Srinuanjan\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/keerayoot.png' },
+  { id: 20, nameTh: 'ดร.วิฑูรย์ ยินดีสุข', nameEn: 'Dr.Witoon Yindeesuk\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/witoon.png' },
+  { id: 21, nameTh: 'ดร.ณัฏกฤษ สมดอก', nameEn: 'Dr.Nuttakrit Somdock\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/nuttakrit.png' },
+  { id: 22, nameTh: 'ผศ.ดร.ลัญจกร ตันนุกิจ', nameEn: 'Asst. Prof. Dr. Lanchakorn Tannukij\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/lunchakurn.png' },
+  { id: 23, nameTh: 'ดร.เฉลิมพล รุจรดาวงศ์', nameEn: 'Dr. Chalermpol Rudradawong\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/chalermpol.png' },
+  { id: 24, nameTh: 'ดร.ยงยุทธ แก้วจำรัส', nameEn: 'Dr. Yongyut Kaewjumras\n(อาจารย์ผู้รับผิดชอบหลักสูตร)', image: '/img/profPhy/yongyut.png' }
+])
+
+const physicsStaff = ref([
+  { id: 1, nameTh: 'นางสาวสายสุดาวัลย์ สุทธิญาณ', nameEn: 'Ms.Saisudawan Suttiyan\nนักวิทยาศาสตร์', image: '/img/profPhy/saisudawan.png' },
+  { id: 2, nameTh: 'นางพิมพร อ่อนละออ', nameEn: 'Mrs.Pimporn Onlaor\nนักวิทยาศาสตร์', image: '/img/profPhy/pimporn.png' },
+  { id: 3, nameTh: 'นางสาวนลิตา สว่างจิตต์', nameEn: 'Ms.Nalita Sawangjit\nนักวิทยาศาสตร์', image: '/img/profPhy/nalita.png' },
+  { id: 4, nameTh: 'นางสาวเกศณี เกตุนวม', nameEn: 'Ms.Kesanee Ketnuam\nเจ้าหน้าที่บริหารงานทั่วไป', image: '/img/profPhy/kesanee.png' },
+  { id: 5, nameTh: 'นายวีระพันธ์ ทิพาพงศ์', nameEn: 'Mr.Weraphan Tipaphong\nนักวิทยาศาสตร์', image: '/img/profPhy/weraphan.png' },
+  { id: 6, nameTh: 'นายชวนนท์ มะโน', nameEn: 'Mr.Chawanon Mano\nนักวิทยาศาสตร์', image: '/img/profPhy/chawanon.png' },
+  { id: 7, nameTh: 'นายสาโรจน์ ชูอำไพ', nameEn: 'Mr.Saroj Chooampai\nผู้ปฏิบัติงานวิทยาศาสตร์', image: '/img/profPhy/saroj.png' }
+])
 </script>
 
 <style scoped>
@@ -294,40 +315,25 @@ const scrollToTop = () => {
 }
 
 /* ================== Hero Section ================== */
-.hero-fullscreen {
-  height: 100vh;
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
-  position: relative;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .main-title {
-  font-size: 4rem;
+  font-size: var(--fs-h1);
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  color: var(--text-main);
+  text-align: center;
   transition: color 0.3s ease;
 }
-
-.main-title p {
-  font-size: 1.5rem;
-  font-weight: 500;
-
-}
-
-.title-container {
-  position: relative;
-  text-align: center;
-  padding: 150px 20px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
   width: 100%;

@@ -1,11 +1,12 @@
 <template>
   <div class="performance-page">
-    
+
     <div class="hero-fullscreen">
+      <background>
       <div class="title-container">
         <h1 class="main-title">{{ $t('pages.performance.title') }}</h1>
       </div>
-
+      </background>
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
           <button :class="{ active: activeTab === 'cyber' }" @click="selectTab('cyber')">
@@ -23,14 +24,14 @@
 
     <div class="content-wrapper" ref="contentArea">
       <transition name="fade" mode="out-in">
-        
+
         <div v-if="activeTab === 'cyber'" key="cyber" class="tab-content">
-          
+
           <div class="lab-header-box">
             <div class="lab-logo-container">
               <img :src="'/img/cybersecurity/logo_cyber.png'" alt="Cyber Security Lab Logo" class="lab-logo">
             </div>
-            
+
             <div class="lab-desc-container">
               <h2 class="text-navy" style="margin-top: 0;">
                 Cyber Security Laboratory
@@ -50,7 +51,7 @@
                 </div>
               </div>
             </div>
-            </div>
+          </div>
 
           <div class="team-section">
             <h2 class="section-title">Researcher</h2>
@@ -70,7 +71,7 @@
 
           <div class="team-section" style="margin-top: 60px;">
             <h2 class="section-title">Researcher Assistant</h2>
-            
+
             <h3 class="sub-team-title">AI Data analytics</h3>
             <div class="profile-flex">
               <div class="profile-card" v-for="member in teamData.ai" :key="member.id">
@@ -146,22 +147,22 @@ const selectTab = (tabName) => {
   }, 100)
 }
 
-// ฐานข้อมูลรายชื่อและรูปภาพทีม (แก้ไขข้อมูลจริงตรงนี้ได้เลย)
+// ฐานข้อมูลรายชื่อและรูปภาพทีม
 const teamData = ref({
   head: [
-    { 
-      id: 1, 
-      nameTh: 'ผศ.ดร.อรรถพล ป้อมสถิตย์', 
-      nameEn: 'Asst.Prof.Dr.Auttapon Pomsathit', 
-      role: 'อาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)', // เพิ่ม Role ตามรูปภาพ
-      img: '/img/cybersecurity/Asst.Prof.Dr.Auttapon Pomsathit.webp' 
-    } 
+    {
+      id: 1,
+      nameTh: 'ผศ.ดร.อรรถพล ป้อมสถิตย์',
+      nameEn: 'Asst.Prof.Dr.Auttapon Pomsathit',
+      role: 'อาจารย์ประจำภาควิชา (ผู้ช่วยฝ่ายกิจการภายนอก)',
+      img: '/img/cybersecurity/Asst.Prof.Dr.Auttapon Pomsathit.webp'
+    }
   ],
   ai: [
     { id: 1, nameTh: 'ชินวัตร ศิลาธนสาร', nameEn: 'Chinnawat Silathanasan', img: '/img/cybersecurity/Chinnawat Silathanasan.webp' },
     { id: 2, nameTh: 'ฐิติพันต์ สอนโคตร', nameEn: 'thitipan Sornkot', img: '/img/cybersecurity/thitipan Sornkot.webp' },
     { id: 3, nameTh: 'โกเมศ ประกอบผล', nameEn: 'Komet Prakopphon', img: '/img/cybersecurity/Komet Prakopphon.webp' },
-    { id: 4, nameTh: 'จตุภัทร ขจรชัยกุล', nameEn: 'Jatupat Kajornchaikul', img: '/img/cybersecurity/Jatupat Kajornchaikul.webp'},
+    { id: 4, nameTh: 'จตุภัทร ขจรชัยกุล', nameEn: 'Jatupat Kajornchaikul', img: '/img/cybersecurity/Jatupat Kajornchaikul.webp' },
     { id: 5, nameTh: 'ณัชกานต์ อุ่นทรัพย์', nameEn: 'Natchakan Unsap', img: '/img/cybersecurity/Natchakan Unsap.webp' },
     { id: 6, nameTh: 'อภิสรา สมมุติ', nameEn: 'Apitsara Sommut', img: '/img/cybersecurity/Apitsara Sommut.webp' },
     { id: 7, nameTh: 'อภิรัก จีนทั่ง', nameEn: 'Apilak Jeentang', img: '/img/cybersecurity/Apilak Jeentang.webp' }
@@ -186,8 +187,10 @@ const teamData = ref({
 <style scoped>
 /* ================== Global & Layout ================== */
 .performance-page {
+  position: relative;
   min-height: 100vh;
 }
+
 .hero-fullscreen {
   height: 100vh;
   display: flex;
@@ -195,94 +198,133 @@ const teamData = ref({
   justify-content: space-between;
   box-sizing: border-box;
 }
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .main-title {
-  font-size: 4rem;
+  font-size: var(--fs-h1);
   margin: 0;
   font-weight: 800;
   letter-spacing: 3px;
+  color: var(--text-main);
+  text-align: center;
   transition: color 0.3s ease;
 }
-
-.main-title p {
-  font-size: 1.5rem;
-  font-weight: 500;
-
-}
-
-.title-container {
-  position: relative;
-  text-align: center;
-  padding: 150px 20px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  background-color: transparent; 
+  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
+  background-color: transparent;
   padding: 20px 30px;
+  
+  border-radius: 20px 20px 0 0;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem; /* เพิ่มระยะห่างจากขอบล่างให้เหมือนหน้า Department */
 }
+
 .tab-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
+  width: 100%;
+  max-width: 950px; /* คงความกว้างปุ่มให้เท่ากับกล่องเนื้อหาด้านล่าง */
 }
+
 .tab-buttons button {
   flex: 1;
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
-  background: linear-gradient(to bottom, #ffe4cc, #ffcc99);
-  color: #333;
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-
+  box-shadow: 0 4px 6px var(--card-shadow);
+  
+  /* ปรับความสูงและการจัดข้อความในปุ่มให้เหมือนหน้า Department */
   min-height: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 .tab-buttons button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 10px var(--card-shadow);
+  border-color: #ff9800;
+  color: #ff9800;
 }
+
 .tab-buttons button.active {
-  background: linear-gradient(to bottom, #ffcc99, #ffb366);
+  background: #ff9800;
   border: 1px solid #e68a00;
-  color: #000;
+  color: #fff;
 }
+
+.scroll-hint {
+  margin-top: 2rem;
+  color: var(--text-muted);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 
 /* ================== Content Area ================== */
 .content-wrapper {
-  max-width: 1100px; 
-  margin: 40px auto; 
+  max-width: 1100px;
+  margin: 40px auto;
   padding: 0 20px 60px;
 }
+
+/* จัดการสีข้อความด้วยตัวแปร */
 .text-navy {
-  color: #1e3a8a;
+  color: var(--heading-color);
 }
+
+.section-title {
+  color: var(--heading-color);
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.sub-team-title {
+  color: var(--text-main);
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
 .desc-text {
-  font-size: 1rem;
-  color: #333;
+  color: var(--text-muted);
   line-height: 1.6;
 }
-.custom-list {
-  padding-left: 20px;
+
+.highlight-text {
+  color: var(--text-main);
 }
-.custom-list li {
-  margin-bottom: 8px;
-}
+
 .text-center-box {
   text-align: center;
 }
@@ -290,24 +332,44 @@ const teamData = ref({
 /* ================== Lab Header Box ================== */
 .lab-header-box {
   display: flex;
-  background-color: #e5e7eb; 
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
   border-radius: 20px;
   padding: 40px;
   gap: 40px;
   align-items: center;
   margin-bottom: 60px;
+
+  /* เอฟเฟกต์กระจก */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
 }
+
+.lab-header-box:hover {
+  border-color: rgba(255, 152, 0, 0.5);
+  box-shadow: var(--card-shadow), var(--glow-accent);
+  transform: translateY(-5px);
+}
+
 .lab-logo-container {
   flex: 0 0 250px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .lab-logo {
   width: 100%;
   height: auto;
   object-fit: contain;
 }
+
 .lab-desc-container {
   flex: 1;
 }
@@ -317,18 +379,7 @@ const teamData = ref({
   text-align: center;
   margin-bottom: 50px;
 }
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-.sub-team-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
 
-/* Flexbox จัดเรียงการ์ดให้อยู่ตรงกลางอัตโนมัติ */
 .profile-flex {
   display: flex;
   flex-wrap: wrap;
@@ -338,60 +389,71 @@ const teamData = ref({
 
 /* ดีไซน์กล่องรูปคน */
 .profile-card {
-  background-color: #ffffff; 
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 15px; 
-  width: 190px; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  padding: 15px;
+  width: 190px;
+  box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
-}
-.profile-card:hover {
-  transform: translateY(-5px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
 }
 
-/* กล่อง Head Researcher ให้ใหญ่กว่าปกตินิดนึง */
-.head-card {
-  width: 300px; /* ขยายความกว้างขึ้นนิดหน่อยเพื่อรองรับข้อความตำแหน่งที่ยาว */
-  padding: 20px; 
+.profile-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 152, 0, 0.5);
+  box-shadow: var(--card-shadow), var(--glow-accent);
 }
+
+/* กล่อง Head Researcher */
+.head-card {
+  width: 300px;
+  padding: 20px;
+}
+
 .head-card .name-th {
   font-size: 1.2rem;
 }
+
 .head-card .name-en {
   font-size: 1rem;
 }
 
-/* ข้อมูลชื่อ (อยู่ด้านบนรูปภาพ) */
+/* ข้อมูลชื่อ */
 .profile-info {
   margin-bottom: 12px;
-  min-height: 40px; 
+  min-height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+  text-align: center;
 }
+
 .name-th {
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--text-main);
   font-size: 0.95rem;
   line-height: 1.3;
 }
+
 .name-en {
   font-size: 0.75rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
   margin-top: 3px;
   line-height: 1.2;
 }
 
-/* CSS สำหรับตำแหน่ง (Role) */
 .role {
   font-size: 0.8rem;
-  color: #475569;
+  color: #ff9800;
+  /* ไฮไลท์ตำแหน่งด้วยสีส้ม */
   margin-top: 6px;
   line-height: 1.3;
 }
+
 .head-card .role {
   font-size: 0.9rem;
   font-weight: 500;
@@ -400,18 +462,21 @@ const teamData = ref({
 /* รูปภาพ */
 .profile-img-wrapper {
   width: 100%;
-  aspect-ratio: 3 / 4; 
-  border-radius: 12px; 
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
   overflow: hidden;
-  background-color: #f1f3f5;
+  background-color: var(--bg-main);
+  border: 4px solid var(--border-color);
   display: flex;
 }
+
 .profile-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top; 
-  border-radius: 12px;
+  object-position: top;
+  border-radius: 8px;
+  /* ปรับให้เข้ากับขอบใน */
 }
 
 /* ================== Transitions ================== */
@@ -419,6 +484,7 @@ const teamData = ref({
 .fade-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -426,26 +492,35 @@ const teamData = ref({
 
 /* ================== Responsive ================== */
 @media (max-width: 768px) {
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+  }
+
   .lab-header-box {
     flex-direction: column;
     padding: 25px;
     text-align: center;
   }
+
   .lab-logo-container {
     flex: 0 0 auto;
     width: 200px;
   }
-  .custom-list {
-    text-align: left;
-  }
+
   .profile-flex {
     gap: 15px;
   }
+
   .profile-card {
-    width: calc(50% - 10px); 
+    width: calc(50% - 10px);
   }
+
   .head-card {
-    width: 100%; /* ในมือถือให้กล่องหัวหน้ากว้างเต็มจอ */
+    width: 100%;
     max-width: 300px;
   }
 }

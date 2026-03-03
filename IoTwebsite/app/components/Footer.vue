@@ -195,8 +195,9 @@ const colorMode = useColorMode()
   min-width: 250px;
 }
 
-.footer-heading {
+.ing {
   margin-bottom: 25px;
+
 }
 
 .footer-links {
