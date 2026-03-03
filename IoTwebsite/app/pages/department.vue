@@ -166,7 +166,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const activeTab = ref('iot')
 
 const { data } = await useFetch(
-  'http://localhost:1337/api/professors?populate=*'
+  'http://localhost:1337/api/professors?populate=*&pagination[pageSize]=100'
 )
 
 // ฟังก์ชันแปลง Strapi 5 Blocks (Rich Text) → array of strings

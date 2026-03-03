@@ -129,9 +129,16 @@
           >
             <div class="news-image-container">
               <img
+                v-if="news.image"
                 :src="news.image"
-                alt="News Image"
+                :alt="news.title"
+              />
+              <div
+                v-else
+                class="placeholder-image"
               >
+                News
+              </div>
             </div>
             <div class="news-text-content">
               <h3>{{ news.title }}</h3>
@@ -223,7 +230,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 // --- ข้อมูล Curriculum ---
 const features = ref([
@@ -253,27 +260,41 @@ const infoCards = ref([
 ])
 
 // --- ข้อมูล News & Announcements ---
-const newsItems = ref([
-  {
-    title: 'IoT Workshop 2025',
-    summary: 'Join us for an exciting IoT workshop where we will explore the latest trends and technologies in the Internet of Things.',
-    image: '/images/news1.jpg', // เพิ่มรูปสำหรับข่าว
-    link: '/information' // ลิงก์ไปหน้า Information
-  },
-  {
-    title: 'New Research Publication',
-    summary: 'Our department has published a new research paper on AI and IoT integration. Check it out for cutting-edge insights!',
-    image: '/images/news2.jpg',
-    link: '/information'
-  },
-  {
-    title: 'Student Achievements',
-    summary: 'Congratulations to our students for winning the national IoT competition! Their innovative projects have been recognized at the highest level.',
-    image: '/images/news3.jpg',
-    link: '/information'
-  }
-])
 
+// ดึงข่าวจาก Strapi (เรียงล่าสุดก่อน)
+const { data } = await useFetch(
+  'http://localhost:1337/api/informations?populate=*&sort=date:desc'
+)
+
+// แปลง Rich Text Blocks → plain text
+const parseBlocks = (blocks) => {
+  if (!blocks || !Array.isArray(blocks)) return ''
+  const lines = []
+
+  for (const block of blocks) {
+    if (block.type === 'paragraph') {
+      const text = block.children?.map(c => c.text).join('') ?? ''
+      if (text) lines.push(text)
+    }
+  }
+
+  return lines.join('\n\n')
+}
+
+// เอาแค่ 3 ข่าวล่าสุด
+const newsItems = computed(() => {
+  const items = data.value?.data || []
+
+  return items.slice(0, 3).map(item => ({
+    id: item.id,
+    title: item.title,
+    summary: item.excerpt,
+    link: '/information',
+    image: item.image?.[0]?.url
+      ? `http://localhost:1337${item.image[0].url}`
+      : null
+  }))
+})
 // --- ข้อมูล Hall of Fame ---
 const fameCards = ref([
   { id: 1, image: '/images/fame1.jpg', description: 'Thailand Cyber Security Product and Service Awards 2025', link: '/fame/1' },
