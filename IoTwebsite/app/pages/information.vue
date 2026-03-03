@@ -279,6 +279,11 @@ const newsList = computed(() =>
   color: #555;
   line-height: 1.6;
 }
+.news-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3c72;
+}
 
 /* ===== ปุ่ม ===== */
 .btn-more {
@@ -343,7 +348,7 @@ const newsList = computed(() =>
   border: 2px solid #F59E0B;
   border-radius: 999px;
   background: transparent;
-
+  color:#1e3c72;
   font-weight: 600;
   cursor: pointer;
   transition: .25s;
@@ -351,7 +356,7 @@ const newsList = computed(() =>
   width: fit-content;   /* ⭐ สำคัญ: ให้กรอบพอดีเนื้อหา */
 }
 .read-more-btn:hover {
-  background: rgba(245,158,11,0.12);
+  background: rgba(250, 187, 71, 0.332);
 }
 
 .read-more-btn:hover .icon-circle {
