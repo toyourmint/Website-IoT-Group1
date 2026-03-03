@@ -9,7 +9,6 @@
           <Background>
           <div class="title-container">
             <h1 class="main-title">{{ $t('pages.information.title') }}</h1>
-            <p class="section-desc">ข่าวสารและกิจกรรมล่าสุดจากภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</p>
           </div>
         </Background>
 
