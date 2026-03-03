@@ -319,6 +319,7 @@ const quotaPages = ref([
   font-size: 5rem; /* เพิ่มขนาดเพื่อให้เด่นชัดเวลาอยู่เดี่ยวๆ กลางจอ */
   margin: 0;
   font-weight: bold;
+  margin-top: -20%;
 }
 
 .tab-buttons-wrapper {
