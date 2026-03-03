@@ -121,8 +121,10 @@ const closeDetail = () => {
 }
 
 // ดึงข้อมูลจาก Strapi
+const config = useRuntimeConfig()
+
 const { data } = await useFetch(
-  'http://localhost:1337/api/informations?populate=*&sort=date:desc'
+  `${config.public.apiBase}/api/informations?populate=*&sort=date:desc`
 )
 
 // แปลง Rich Text Blocks → plain text (สำหรับ fullContent)
@@ -160,8 +162,8 @@ const newsList = computed(() =>
         })
       : '',
     image: item.image?.[0]?.url
-      ? `http://localhost:1337${item.image[0].url}`
-      : null
+    ? `${config.public.apiBase}${item.image[0].url}`
+    : null
   })) || []
 )
 </script>

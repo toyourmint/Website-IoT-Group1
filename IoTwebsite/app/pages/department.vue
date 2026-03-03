@@ -226,9 +226,9 @@ const closeModal = () => {
 /* =============================
    🔥 Fetch แบบเดียวกับหน้า News
 ============================= */
-
+const config = useRuntimeConfig()
 const { data, pending } = useFetch(
-  'http://localhost:1337/api/professors?populate=*&pagination[limit]=100',
+  `${config.public.apiBase}/api/professors?populate=*&pagination[limit]=100`,
   { server: false }
 )
 
@@ -273,8 +273,8 @@ const professorList = computed(() =>
     education: parseBlocks(item.education),
     expertise: parseBlocks(item.expertise),
     image: item.image?.url
-      ? `http://localhost:1337${item.image.url}`
-      : null
+    ? `http://localhost:1337${item.image.url}`
+    : null
   })) || []
 )
 

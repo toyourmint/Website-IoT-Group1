@@ -9,7 +9,13 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
-  
+
+  runtimeConfig: {
+    public: {
+      apiBase: ''
+    }
+  },
+
   imports: {
     dirs: ['composables']
   },
@@ -30,6 +36,7 @@ export default defineNuxtConfig({
       }
     }
   },
+
   i18n: {
     defaultLocale: 'th',
     locales: [
