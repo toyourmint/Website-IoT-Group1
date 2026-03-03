@@ -264,7 +264,7 @@ onMounted(() => {
 
 // --- ข้อมูล Info ---
 const infoCards = ref([
-  { title: 'What is IoTE?', description: '" วิศวกรรมไอโอทีและสารสนเทศ " มุ่งเน้นการบูรณาการความรู้แบบสหวิทยาการอย่างครบวงจร ทั้งด้าน ฮาร์ดแวร์ , ซอฟต์แวร์ , ระบบเครือข่าย, และปัญญาประดิษฐ์โดยมีเป้าหมายให้ผู้เรียนสามารถประยุกต์ความรู้ เพื่อสร้างสรรค์นวัตกรรมใหม่ๆ และต่อยอดไปสู่การเป็นผู้ประกอบการสตาร์ทอัพได้ด้วยตนเอง', Image: '/images/image3.jpg', link: '/academics' }
+  { title: $t("pages.home.infotitle"), description: $t("pages.home.infodesc"), Image: '/images/image3.jpg', link: '/academics' }
 ])
 
 // --- ข้อมูล News & Announcements ---
