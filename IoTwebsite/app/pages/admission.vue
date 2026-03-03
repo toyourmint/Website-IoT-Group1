@@ -5,30 +5,8 @@
       <div class="title-container">
         <h1 class="main-title">Admission</h1>
       </div>
-
-      <div class="tab-buttons-wrapper">
-        <div class="tab-buttons">
-          <button 
-            :class="{ active: activeSection === 'portfolio' }" 
-            @click="selectTab('portfolio')"
-          >
-            PORTFOLIO
-          </button>
-          <button 
-            :class="{ active: activeSection === 'quota' }" 
-            @click="selectTab('quota')"
-          >
-            QUOTA
-          </button>
-          <button 
-            :class="{ active: activeSection === 'admission' }" 
-            @click="selectTab('admission')"
-          >
-            ADMISSION
-          </button>
-        </div>
-      </div>
     </div>
+
     <section class="section" ref="contentArea">
       <h2 class="section-title">
         รายละเอียดหลักสูตร
@@ -55,6 +33,29 @@
         <p>25,000 บาท / ภาคการศึกษา</p>
       </div>
     </section>
+
+    <div class="tab-buttons-wrapper" ref="tabArea">
+      <div class="tab-buttons">
+        <button 
+          :class="{ active: activeSection === 'portfolio' }" 
+          @click="selectTab('portfolio')"
+        >
+          PORTFOLIO
+        </button>
+        <button 
+          :class="{ active: activeSection === 'quota' }" 
+          @click="selectTab('quota')"
+        >
+          QUOTA
+        </button>
+        <button 
+          :class="{ active: activeSection === 'admission' }" 
+          @click="selectTab('admission')"
+        >
+          ADMISSION
+        </button>
+      </div>
+    </div>
 
     <transition name="fade" mode="out-in">
       
@@ -154,19 +155,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Carousel from '../components/Carousel.vue'
+import { useRoute } from 'vue-router'
 
 const showScroll = ref(false)
 const activeSection = ref('portfolio') 
 const contentArea = ref(null)
+const tabArea = ref(null) 
+const route = useRoute()
 
 const selectTab = (tabName) => {
   activeSection.value = tabName
   
   setTimeout(() => {
-    if (contentArea.value) {
-      contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (tabArea.value) {
+      tabArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, 100)
 }
@@ -178,6 +182,16 @@ const scrollToTop = () => {
 const handleScroll = () => {
   showScroll.value = window.scrollY > 300
 }
+
+watch(
+  () => route.query.tab,
+  (tab) => {
+    if (tab && ['portfolio', 'quota', 'admission'].includes(tab)) {
+      selectTab(tab)
+    }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
@@ -288,27 +302,22 @@ const quotaPages = ref([
   position: relative;
 }
 
-/* ================== ส่วน CSS ของ Hero และปุ่มแบบใหม่ ================== */
+/* ================== เปลี่ยนเป็นเต็มจอ (100vh) ================== */
 .hero-fullscreen {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
 .title-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 .main-title {
-  /* ใช้ขนาด 4rem เพื่อให้มันขยายตามระบบ A+ ได้ */
-  font-size: 4rem; 
+  font-size: 5rem; /* เพิ่มขนาดเพื่อให้เด่นชัดเวลาอยู่เดี่ยวๆ กลางจอ */
   margin: 0;
-  margin-top: -50px;
   font-weight: bold;
 }
 
@@ -331,7 +340,6 @@ const quotaPages = ref([
   flex: 1;
   padding: 12px 20px;
   border-radius: 8px;
-  /* ปุ่มปกติให้ดึงสีจากตีม เพื่อความสะอาดตาใน Dark Mode */
   background: var(--bg-main);
   color: var(--text-main);
   border: 1px solid var(--border-color);
@@ -350,7 +358,6 @@ const quotaPages = ref([
 }
 
 .tab-buttons button.active {
-  /* ปุ่มที่กำลังเลือก (Active) ใช้สีส้มเพื่อให้เด่นชัดเสมอ */
   background: #ff9800;
   border: 1px solid #e68a00;
   color: #fff;
@@ -369,8 +376,8 @@ const quotaPages = ref([
 /* ========================================================= */
 
 .section{
-  min-height:100vh;
-  padding:100px 20px;
+  min-height: auto;
+  padding: 60px 20px 20px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -380,20 +387,18 @@ const quotaPages = ref([
 
 .tab-section {
   min-height: auto;
-  padding: 60px 20px 100px;
+  padding: 40px 20px 100px;
 }
 
 .section-title{
-  margin-top:-40px;
-  /* ลบ font-size:36px; ทิ้ง ปล่อยให้แท็ก h2 ใน main.css จัดการ */
+  margin-bottom: 30px;
 }
 
 .admission-title{
-  margin-top:-40px;
+  margin-top:-20px;
 }
 
 .info-box{
-  /* เปลี่ยนไปใช้ตัวแปรการ์ด แทนสีเทาที่ถูก fix ไว้ */
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   padding:25px;
@@ -411,13 +416,11 @@ const quotaPages = ref([
 }
 
 .info-box h3 {
-  /* สีหัวข้อใช้ตัวแปร */
   color: var(--heading-color);
   margin-bottom: 10px;
 }
 
 .info-box p {
-  /* สีเนื้อหาใช้ตัวแปร */
   color: var(--text-muted);
   margin: 0;
 }
@@ -432,7 +435,6 @@ const quotaPages = ref([
 .card{
   width: 100%;
   min-height: 400px; 
-  /* ดึงสีการ์ดมาใช้ */
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 20px;
@@ -442,8 +444,8 @@ const quotaPages = ref([
 }
 
 .card-header{
-  background: linear-gradient(135deg,#ffb36b,#ff8c00); /* ไล่สีส้ม */
-  color: white; /* ตัวหนังสือในหัวการ์ดสีส้มต้องเป็นสีขาวเสมอ */
+  background: linear-gradient(135deg,#ffb36b,#ff8c00); 
+  color: white; 
   padding: 20px;
   text-align: center;
   font-weight: bold;
@@ -452,7 +454,7 @@ const quotaPages = ref([
 
 .card-body{
   padding: 30px;
-  color: var(--text-muted); /* สีตัวหนังสือเนื้อหาในกล่อง */
+  color: var(--text-muted);
 }
 
 .card-body ul {
@@ -466,12 +468,11 @@ const quotaPages = ref([
 }
 
 .card-body strong {
-  color: var(--text-main); /* ทำตัวหนาให้สว่างขึ้นในโหมดมืด */
+  color: var(--text-main);
   display: inline-block;
   margin-top: 10px;
 }
 
-/* จัดให้ปุ่มอยู่ชิดขวาของกล่อง */
 .action-btn-container {
   display: flex;
   justify-content: flex-end;
@@ -483,7 +484,6 @@ const quotaPages = ref([
   align-items: center;
   background-color: transparent;
   border: 2px solid #ff9800;
-  /* สีข้อความในปุ่ม */
   color: var(--text-main);
   padding: 6px 6px 6px 24px;
   border-radius: 50px;
@@ -495,7 +495,7 @@ const quotaPages = ref([
 }
 
 .outline-btn:hover {
-  background-color: var(--border-color); /* เปลี่ยนเป็นสีพื้นหลังอ่อนๆ ของธีมตอน hover */
+  background-color: var(--border-color); 
   color: #ff9800;
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(255, 152, 0, 0.2);
@@ -529,7 +529,6 @@ const quotaPages = ref([
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  /* ปรับสีปุ่มให้กลืนไปกับ Theme ปัจจุบัน */
   background-color: var(--card-bg);
   color: var(--text-main);
   border: 1px solid var(--border-color);
@@ -569,7 +568,7 @@ const quotaPages = ref([
 /* ================== Responsive สำหรับมือถือ ================== */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 3rem;
+    font-size: 3.5rem; /* ลดขนาดลงหน่อยในจอมือถือ */
   }
   .tab-buttons {
     flex-direction: column;

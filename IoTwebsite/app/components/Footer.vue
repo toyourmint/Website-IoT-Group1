@@ -16,37 +16,62 @@ const colorMode = useColorMode()
         >
 
         <div class="contact-list">
-          <div class="contact-item">
+          <a href="tel:+6623298000" class="contact-item">
             <UIcon name="i-heroicons-phone" class="icon" />
             <span>+662 329 8000</span>
-          </div>
+          </a>
 
-          <div class="contact-item">
+          <a
+            href="https://maps.google.com/maps?q=Faculty+of+Engineering+KMITL"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
             <UIcon name="i-heroicons-map-pin" class="icon" />
             <div class="contact-text">
               {{ $t('footer.address') }}
             </div>
-          </div>
+          </a>
 
-          <div class="contact-item">
+          <a href="mailto:iote@kmitl.ac.th" class="contact-item">
             <UIcon name="i-heroicons-envelope" class="icon" />
             <span>iote@kmitl.ac.th</span>
-          </div>
+          </a>
 
-          <div class="contact-item">
+          <a
+            href="https://line.me/R/ti/p/@iotekmitl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
             <UIcon name="i-simple-icons-line" class="icon" />
             <span>@iotekmitl</span>
-          </div>
+          </a>
         </div>
 
         <div class="social-icons">
-          <a href="#" aria-label="Facebook">
+          <a
+            href="https://www.facebook.com/IoTEKMITL"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
             <UIcon name="i-simple-icons-facebook" />
           </a>
-          <a href="#" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/kmitl.iote.official"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
             <UIcon name="i-simple-icons-instagram" />
           </a>
-          <a href="#" aria-label="TikTok">
+          <a
+            href="https://www.tiktok.com/@kmitl.iote"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
             <UIcon name="i-simple-icons-tiktok" />
           </a>
         </div>
@@ -57,9 +82,9 @@ const colorMode = useColorMode()
           {{ $t('footer.admissionTitle') }}
         </h3>
         <ul class="footer-links">
-          <li><NuxtLink to="/admission">{{ $t('footer.round1') }}</NuxtLink></li>
-          <li><NuxtLink to="/admission">{{ $t('footer.round2') }}</NuxtLink></li>
-          <li><NuxtLink to="/admission">{{ $t('footer.round3') }}</NuxtLink></li>
+          <li><NuxtLink to="/admission?tab=portfolio">{{ $t('footer.round1') }}</NuxtLink></li>
+          <li><NuxtLink to="/admission?tab=quota">{{ $t('footer.round2') }}</NuxtLink></li>
+          <li><NuxtLink to="/admission?tab=admission">{{ $t('footer.round3') }}</NuxtLink></li>
         </ul>
       </div>
     </div>
@@ -120,6 +145,13 @@ const colorMode = useColorMode()
   align-items: flex-start;
   gap: 15px;
   font-size: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.contact-item:hover {
+  color: #f26522;
 }
 
 .contact-text {
@@ -144,6 +176,9 @@ const colorMode = useColorMode()
   font-size: 20px;
   display: flex;
   align-items: center;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .social-icons a :deep(svg) {
