@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
   public: {
-    apiBase: "http://119.59.127.230:6000"
+    apiBase: "http://119.59.127.230:6000/api"
   }
 },
 

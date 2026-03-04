@@ -228,7 +228,7 @@ const closeModal = () => {
 ============================= */
 const config = useRuntimeConfig()
 const { data, pending } = useFetch(
-  `${config.public.apiBase}/api/professors?populate=*&pagination[limit]=100`,
+  `${config.public.apiBase}/professors?populate=*&pagination[limit]=100`,
   { server: false }
 )
 
@@ -273,7 +273,7 @@ const professorList = computed(() =>
     education: parseBlocks(item.education),
     expertise: parseBlocks(item.expertise),
     image: item.image?.url
-    ? `${config.public.apiBase}${item.image.url}`
+    ? `${config.public.apiBase.replace('/api','')}${item.image.url}`
     : null
   })) || []
 )

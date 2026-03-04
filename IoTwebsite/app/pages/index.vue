@@ -217,10 +217,9 @@ const infoCards = ref([
 // --- ข้อมูล News & Announcements ---
 
 // ดึงข่าวจาก Strapi (เรียงล่าสุดก่อน)
-const { data } = await useFetch(
-  'http://localhost:1337/api/informations?populate=*&sort=date:desc'
+const { data } = useFetch(
+  `${config.public.apiBase}/informations?populate=*&sort=date:desc`
 )
-
 // แปลง Rich Text Blocks → plain text
 const parseBlocks = (blocks) => {
   if (!blocks || !Array.isArray(blocks)) return ''
@@ -246,8 +245,8 @@ const newsItems = computed(() => {
     summary: item.excerpt,
     link: '/information',
     image: item.image?.[0]?.url
-      ? `http://localhost:1337${item.image[0].url}`
-      : null
+    ? `${config.public.apiBase.replace('/api','')}${item.image[0].url}`
+    : null
   }))
 })
 // --- ข้อมูล Hall of Fame ---

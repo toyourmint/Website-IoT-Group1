@@ -124,7 +124,7 @@ const closeDetail = () => {
 const config = useRuntimeConfig()
 
 const { data } = await useFetch(
-  `${config.public.apiBase}/api/informations?populate=*&sort=date:desc`
+  `${config.public.apiBase}/informations?populate=*&sort=date:desc`
 )
 
 // แปลง Rich Text Blocks → plain text (สำหรับ fullContent)
@@ -162,7 +162,7 @@ const newsList = computed(() =>
         })
       : '',
     image: item.image?.[0]?.url
-    ? `${config.public.apiBase}${item.image[0].url}`
+    ? `${config.public.apiBase.replace('/api','')}${item.image[0].url}`
     : null
   })) || []
 )
