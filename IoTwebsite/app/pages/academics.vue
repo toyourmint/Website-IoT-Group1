@@ -127,7 +127,7 @@
             <div class="img-area">
               <div class="placeholder-img">
                 <img
-                  :src="'/img/logo/Why_IoT.jpg'"
+                  :src="'/img/logo/why_IoT.jpg'"
                   alt="Why IoTE"
                 >
                 <h3>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h3>
