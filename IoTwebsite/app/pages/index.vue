@@ -283,7 +283,7 @@ const activities = ref([
     description: 'กิจกรรมพัฒนาโครงงาน IoT'
   },
   {
-    image: '/img/activities/connectthings3.jpg',
+    image: '/img/activities/connectthings3.JPG',
     title: 'Connect Things',
     description: 'Workshop การเชื่อมต่ออุปกรณ์อัจฉริยะ'
   },
