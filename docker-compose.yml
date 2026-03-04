@@ -37,12 +37,21 @@ services:
     volumes:
       - ./cms/public/uploads:/app/public/uploads
 
+  nuxt:
+    build: ./IoTwebsite
+    container_name: nuxt
+    restart: always
+    expose:
+      - "3000"
+    depends_on:
+      - strapi
+
   nginx:
     image: nginx:latest
     container_name: nginx
     restart: always
     ports:
-      - "8080:80"
+      - "6000:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
