@@ -49,6 +49,9 @@ services:
     restart: always
     expose:
       - "3000"
+    environment:
+      - HOST=0.0.0.0    # ⭐ เพิ่มบรรทัดนี้
+      - PORT=3000       # ⭐ เพิ่มบรรทัดนี้
     depends_on:
       - strapi
 
