@@ -273,7 +273,7 @@ const professorList = computed(() =>
     education: parseBlocks(item.education),
     expertise: parseBlocks(item.expertise),
     image: item.image?.url
-    ? `http://localhost:1337${item.image.url}`
+    ? `${config.public.apiBase}${item.image.url}`
     : null
   })) || []
 )

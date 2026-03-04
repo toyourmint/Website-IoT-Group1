@@ -10,17 +10,17 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  runtimeConfig: {
-    public: {
-      apiBase: ''
-    }
-  },
-
   imports: {
     dirs: ['composables']
   },
 
   css: ['~/assets/css/main.css'],
+
+  runtimeConfig: {
+  public: {
+    apiBase: "http://119.59.127.230:8080"
+  }
+},
 
   routeRules: {
     '/': { prerender: true }
