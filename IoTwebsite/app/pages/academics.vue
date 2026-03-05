@@ -10,26 +10,20 @@
 
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
-          <button
-            :class="{ active: activeTab === 'iot' }"
-            @click="selectTab('iot')"
-          >
+          <button :class="{ active: activeTab === 'iot' }" @click="selectTab('iot')">
             {{ $t('pages.academics.tabs.iot') }}
           </button>
-          <button
-            :class="{ active: activeTab === 'dual' }"
-            @click="selectTab('dual')"
-          >
+          <button :class="{ active: activeTab === 'dual' }" @click="selectTab('dual')">
             {{ $t('pages.academics.tabs.dual') }}
           </button>
-          <button
-            :class="{ active: activeTab === 'ceiot' }"
-            @click="selectTab('ceiot')"
-          >
+          <button :class="{ active: activeTab === 'ceiot' }" @click="selectTab('ceiot')">
             {{ $t('pages.academics.tabs.ceiot') }}
           </button>
+          <button :class="{ active: activeTab === 'graduate' }" @click="selectTab('graduate')">
+            {{ $t('pages.academics.tabs.graduate') }}
+          </button>
         </div>
-        <div class="scroll-hint">
+        <div class="scroll-hint" @click="scrollToDetails" style="cursor: pointer;" title="เลื่อนลงเพื่อดูรายละเอียด">
           <Icon name="mdi:chevron-down" style="width: 2rem; height: 2rem;" />
         </div>
       </div>
@@ -48,6 +42,7 @@
           key="iot"
           class="tab-content"
         >
+        
           <div class="content-box">
             <h2 class="box-title">
               {{ $t('pages.academics.iot.whatIsTitle') }}
@@ -66,6 +61,11 @@
                 {{ $t('pages.academics.iot.a3') }}
               </li>
             </ul>
+          </div>
+          <div class="fee-box">
+            <span>{{ $t('pages.academics.feeTitle') }}:</span>
+            <span class="fee-amount">25,000</span>
+            <span>{{ $t('pages.academics.feeUnit') }}</span>
           </div>
 
           <div class="content-box">
@@ -212,6 +212,12 @@
             </p>
           </div>
 
+          <div class="fee-box">
+            <span>{{ $t('pages.academics.feeTitle') }}:</span>
+            <span class="fee-amount">40,000</span>
+            <span>{{ $t('pages.academics.feeUnit') }}</span>
+          </div>
+
           <div class="content-box">
             <h2 class="box-title text-navy">
               {{ $t('pages.academics.dual.careerTitle') }}
@@ -322,6 +328,12 @@
             </ul>
           </div>
 
+          <div class="fee-box">
+            <span>{{ $t('pages.academics.feeTitle') }}:</span>
+            <span class="fee-amount">35,000</span>
+            <span>{{ $t('pages.academics.feeUnit') }}</span>
+          </div>
+
           <div class="content-box">
             <h2 class="box-title text-navy">
               {{ $t('pages.academics.ceiot.careerTitle') }}
@@ -374,12 +386,62 @@
             style="text-align: center; margin-top: 30px;"
           >
             <a
-              href="#"
+              href="https://www.reg.kmitl.ac.th/curriculum/file/bachelor/01/ce_con_c2564new.pdf?curr=575"
               target="_blank"
               class="outline-btn"
             >
               {{ $t('pages.academics.ceiot.btnCourse') }} <span class="arrow-icon">➔</span>
             </a>
+          </div>
+        </div>
+
+        <div v-else-if="activeTab === 'graduate'" key="graduate" class="tab-content">
+          <div class="text-center-box">
+            <h2>{{ $t('pages.academics.graduate.title') }}</h2>
+          </div>
+
+          <div class="grid-2-col">
+            <div class="content-box text-center-box" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; margin-bottom: 0;">
+              <div>
+                <h2 class="box-title text-navy" style="font-size: 1.5rem;">
+                  {{ $t('pages.academics.graduate.masterTitle') }}
+                </h2>
+                <p class="desc-text mb-4" style="font-size: 1.1rem;">
+                  {{ $t('pages.academics.graduate.masterDesc') }}
+                </p>
+                <div class="fee-badge-small">
+                  <span>{{ $t('pages.academics.feeTitle') }}:</span>
+                  <span class="fee-amount">27,000</span>
+                  <span>{{ $t('pages.academics.feeUnit') }}</span>
+                </div>
+              </div>
+              <div class="action-btn-container" style="text-align: center; margin-top: auto;">
+                <a href="https://drive.google.com/file/d/17Cr1Pr2UA5CFrj59IzT3AmSAj3aKSIFm/view" target="_blank" class="outline-btn">
+                  {{ $t('pages.academics.graduate.btnInfo') }} <span class="arrow-icon">➔</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="content-box text-center-box" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; margin-bottom: 0;">
+              <div>
+                <h2 class="box-title text-navy" style="font-size: 1.5rem;">
+                  {{ $t('pages.academics.graduate.phdTitle') }}
+                </h2>
+                <p class="desc-text mb-4" style="font-size: 1.1rem;">
+                  {{ $t('pages.academics.graduate.phdDesc') }}
+                </p>
+                <div class="fee-badge-small">
+                  <span>{{ $t('pages.academics.feeTitle') }}:</span>
+                  <span class="fee-amount">32,000</span>
+                  <span>{{ $t('pages.academics.feeUnit') }}</span>
+                </div>
+              </div>
+              <div class="action-btn-container" style="text-align: center; margin-top: auto;">
+                <a href="https://drive.google.com/file/d/16r4SkgENrTD4TjJB5EYgHcaTzqGkHYHr/view" target="_blank" class="outline-btn">
+                  {{ $t('pages.academics.graduate.btnInfo') }} <span class="arrow-icon">➔</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </transition>
@@ -454,6 +516,13 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const activeTab = ref('iot')
 const contentArea = ref(null)
+
+const scrollToDetails = () => {
+  if (contentArea.value) {
+    contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 // =========================================
 //  Scroll to Top Logic
 // =========================================
@@ -618,9 +687,9 @@ const historyData = computed(() => [
 .tab-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px; /* ลดระยะห่างลงนิดหน่อยให้ 4 ปุ่มวางพอดี */
   width: 100%;
-  max-width: 950px;
+  max-width: 1200px; /* ขยายความกว้างกล่องรองรับ 4 ปุ่ม */
 }
 
 .tab-buttons button {
@@ -1099,6 +1168,49 @@ const historyData = computed(() => [
   margin: 0 0 5px 0;
 }
 
+/* ================== Tuition Fee Boxes ================== */
+.fee-box {
+  background-color: rgba(255, 152, 0, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-left: 6px solid #ff9800;
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 500;
+  box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.fee-box .fee-amount {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.fee-badge-small {
+  display: inline-block;
+  background-color: rgba(255, 152, 0, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  padding: 8px 18px;
+  border-radius: 50px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.fee-badge-small .fee-amount {
+  color: var(--heading-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 6px;
+}
+
 /* ================== Responsive ================== */
 @media (max-width: 768px) {
   .grid-2-col, .course-cards-grid, .year-grid {
@@ -1134,6 +1246,38 @@ const historyData = computed(() => [
     width: 100%;
     margin-left: 0;
     padding-left: 50px;
+  }
+
+  .title-container {
+    top: -150px; /* ปรับจาก -100px เป็น -150px เพื่อขยับขึ้น */
+  }
+
+  /* 2. ลดพื้นที่ว่างด้านล่างของกรอบปุ่ม */
+  .tab-buttons-wrapper {
+    padding-bottom: 1.5rem; 
+  }
+
+  /* 3. เรียงปุ่มจากบนลงล่าง พร้อมลดช่องว่าง */
+  .tab-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+  }
+
+  /* 4. ปรับขนาดปุ่มให้กะทัดรัดขึ้น */
+  .tab-buttons button {
+    width: 100%;
+    min-height: 55px; /* ลดความสูงลงจาก 75px */
+    padding: 10px 15px;
+    font-size: 0.95rem; /* ปรับฟอนต์ให้เล็กลงนิดหน่อย */
+  }
+  .fee-box {
+    flex-direction: column;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .fee-box .fee-amount {
+    margin: 5px 0;
   }
 }
 /* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */

@@ -2,11 +2,10 @@
   <div class="performance-page">
 
     <div class="hero-fullscreen">
-      <background>
       <div class="title-container">
         <h1 class="main-title">{{ $t('pages.performance.title') }}</h1>
       </div>
-      </background>
+      <Background />
       <div class="tab-buttons-wrapper">
         <div class="tab-buttons">
           <button :class="{ active: activeTab === 'cyber' }" @click="selectTab('cyber')">
@@ -18,6 +17,9 @@
           <button :class="{ active: activeTab === 'aiot' }" @click="selectTab('aiot')">
             AIoT
           </button>
+        </div>
+        <div class="scroll-hint" @click="scrollToDetails" style="cursor: pointer;" title="เลื่อนลงเพื่อดูรายละเอียด">
+          <Icon name="mdi:chevron-down" style="width: 2rem; height: 2rem;" />
         </div>
       </div>
     </div>
@@ -151,6 +153,12 @@ const activeTab = ref('cyber')
 const contentArea = ref(null)
 
 const selectedNews = ref(null)
+
+const scrollToDetails = () => {
+  if (contentArea.value) {
+    contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
 // =========================================
 //  Scroll to Top Logic
 // =========================================
@@ -231,17 +239,22 @@ const teamData = ref({
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
+  padding: 0 1rem;
+  position: relative;
+  overflow: hidden;
 }
 /* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
 .title-container {
-  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
+  position: absolute;
+  top: -100px; /* ขยับตัวหนังสือ Laboratories ขึ้นหรือลงได้ที่นี่ */
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .main-title {
@@ -255,16 +268,14 @@ const teamData = ref({
 }
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
-  /* เปลี่ยนจากการฟิกซ์พื้นหลังสีเทา เป็นการใช้พื้นหลังของการ์ด */
-  background-color: transparent;
-  padding: 20px 30px;
-  
-  border-radius: 20px 20px 0 0;
+  position: absolute;
+  bottom: 5rem; /* 💡 ปรับเลขตรงนี้! ยิ่งเลขเยอะ ปุ่มยิ่งลอยสูงขึ้น (เช่น 6rem, 8rem) */
+  left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3rem; /* เพิ่มระยะห่างจากขอบล่างให้เหมือนหน้า Department */
+  z-index: 10;
 }
 
 .tab-buttons {
@@ -272,7 +283,7 @@ const teamData = ref({
   justify-content: center;
   gap: 15px;
   width: 100%;
-  max-width: 950px; /* คงความกว้างปุ่มให้เท่ากับกล่องเนื้อหาด้านล่าง */
+  max-width: 950px;
 }
 
 .tab-buttons button {
@@ -532,8 +543,27 @@ const teamData = ref({
     font-size: 3.5rem;
   }
 
+  /* 1. ดันหัวข้อ Laboratories ขึ้นไปข้างบน ไม่ให้โดนทับ */
+  .title-container {
+    top: -180px; 
+  }
+
+  /* 2. ขยับกลุ่มปุ่มลงมาด้านล่างนิดหน่อย */
+  .tab-buttons-wrapper {
+    bottom: 3rem; 
+  }
+
+  /* 3. ลดช่องว่างระหว่างปุ่ม */
   .tab-buttons {
     flex-direction: column;
+    gap: 8px; 
+  }
+
+  /* 4. ปรับขนาดปุ่มให้กะทัดรัดขึ้น */
+  .tab-buttons button {
+    min-height: 55px; /* ลดความสูงปุ่มลง */
+    padding: 10px 15px;
+    font-size: 1rem; /* ลดฟอนต์ลงนิดนึง */
   }
 
   .lab-header-box {

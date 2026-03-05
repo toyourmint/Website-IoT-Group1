@@ -25,10 +25,13 @@
     },
     "academics": {
       "title": "Academics",
+      "feeTitle": "Tuition Fee",
+      "feeUnit": "THB / Semester",
       "tabs": {
         "iot": "IoT and Information Engineering (1 Degree)",
         "dual": "IoTE + Industrial Physics (Dual Degree)",
-        "ceiot": "Computer Engineering and IoT (Continuing Program)"
+        "ceiot": "Computer Engineering and IoT (Continuing Program)",
+        "graduate": "Graduate Programs (Master's & Ph.D.)"
       },
       "iot": {
         "whatIsTitle": "What is IoT and Information ?",
@@ -137,6 +140,14 @@
         "plo6": "PLO 6: Work effectively with others as both leaders and followers. Communicate technically and present professional work appropriately in both Thai and English.",
         "plo7": "PLO 7: Adhere to morality, ethics, and social and environmental responsibility in the computer engineering and IoT profession.",
         "btnCourse": "CE & IoT Curriculum"
+      },
+      "graduate": {
+        "title": "Graduate Programs",
+        "masterTitle": "Master's Degree",
+        "masterDesc": "Master of Engineering in IoT and Information Engineering",
+        "phdTitle": "Doctoral Degree",
+        "phdDesc": "Doctor of Philosophy in IoT and Information Engineering",
+        "btnInfo": "Program Details"
       },
       "history": {
         "title": "History of IoTE KMITL",

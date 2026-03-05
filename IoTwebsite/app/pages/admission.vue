@@ -1,11 +1,18 @@
 <template>
   <div class="wrapper">
     
-    <Background>
+    <div class="hero-fullscreen">
       <div class="title-container">
         <h1 class="main-title">{{ $t('pages.admission.title') }}</h1>
       </div>
-    </Background>
+      <Background />
+
+      <div class="scroll-hint-wrapper" @click="scrollToDetails" title="เลื่อนลงเพื่อดูรายละเอียด">
+        <div class="scroll-hint">
+          <Icon name="mdi:chevron-down" style="width: 3rem; height: 3rem;" />
+        </div>
+      </div>
+    </div>
 
     <section class="section" ref="contentArea">
       <h2 class="section-title">
@@ -168,6 +175,12 @@ const contentArea = ref(null)
 const tabArea = ref(null) 
 const route = useRoute()
 
+const scrollToDetails = () => {
+  if (contentArea.value) {
+    contentArea.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 const selectTab = (tabName) => {
   activeSection.value = tabName
   
@@ -308,14 +321,27 @@ const quotaPages = computed(() => [
 
 /* ================== เปลี่ยนเป็นเต็มจอ (100vh) ================== */
 
-/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
-.title-container {
-  /* ทำให้กล่อง title มีพื้นที่พอเหมาะ */
+.hero-fullscreen {
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ตั้งค่าให้ title ลอยอยู่ตรงกลางจอทับ Background */
+.title-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  z-index: 10;
+  pointer-events: none; /* เพื่อให้คลิกทะลุไปโดนพื้นหลังได้ */
 }
 
 .main-title {
@@ -326,6 +352,7 @@ const quotaPages = computed(() => [
   color: var(--text-main);
   text-align: center;
   transition: color 0.3s ease;
+  margin-top: -100px; /* ขยับหัวข้อขึ้นนิดหน่อยให้สมดุล */
 }
 
 .tab-buttons-wrapper {
@@ -571,6 +598,51 @@ const quotaPages = computed(() => [
   opacity: 0;
   transform: translateY(12px);
 }
+
+/* ================== Scroll Hint (ลูกศรเลื่อนหน้าจอ) ================== */
+.scroll-hint-container {
+  position: absolute;
+  bottom: 2rem; /* ให้อยู่ชิดขอบล่างของหน้าจอแรก */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.scroll-hint {
+  color: var(--text-muted);
+  animation: bounce 1.5s infinite;
+  transition: color 0.3s ease;
+}
+
+.scroll-hint-wrapper {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.scroll-hint-container:hover .scroll-hint {
+  color: #ff9800; /* เปลี่ยนเป็นสีส้มเมื่อเอาเมาส์ชี้ */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+/* ========================================================= */
 
 /* ================== Responsive สำหรับมือถือ ================== */
 @media (max-width: 768px) {

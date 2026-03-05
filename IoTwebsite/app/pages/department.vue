@@ -19,7 +19,7 @@
           </button>
         </div>
 
-        <div class="scroll-hint">
+        <div class="scroll-hint" @click="scrollToDetails" style="cursor: pointer;" title="เลื่อนลงเพื่อดูรายละเอียด">
           <Icon name="mdi:chevron-down" style="width: 2rem; height: 2rem;" />
         </div>
       </div>
@@ -207,6 +207,14 @@ import { ref, computed, onMounted, onUnmounted } from 'vue' // เพิ่ม o
 const activeTab = ref('iot')
 const selectedMember = ref(null)
 const savedScrollPosition = ref(0)
+
+const contentSection = ref(null)
+
+const scrollToDetails = () => {
+  if (contentSection.value) {
+    contentSection.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
 
 const openModal = (member) => {
   savedScrollPosition.value = window.scrollY   // จำตำแหน่งไว้
