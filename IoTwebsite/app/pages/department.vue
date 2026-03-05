@@ -3,9 +3,9 @@
     <div class="hero-fullscreen">
       <Background>
         <div class="title-container">
-        <h1 class="main-title">
-          {{ $t('pages.department.title') }}
-        </h1>
+          <h1 class="main-title">
+            {{ $t('pages.department.title') }}
+          </h1>
         </div>
       </Background>
 
@@ -26,11 +26,12 @@
     </div>
 
     <transition name="slide-up">
-      <button v-if="showScrollTop" class="scroll-top-btn" aria-label="Scroll to top" @click="scrollToTop">
-        <Icon name="mdi:arrow-up" />
+      <button v-if="showScroll" class="scroll-top-btn" @click="scrollToTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
       </button>
     </transition>
-
     <div ref="contentSection" class="content-wrapper">
       <transition name="fade" mode="out-in">
         <div v-if="activeTab === 'iot'" key="iot" class="tab-content">
@@ -201,7 +202,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue' // เพิ่ม onMounted, onUnmounted
 
 const activeTab = ref('iot')
 const selectedMember = ref(null)
@@ -231,7 +232,32 @@ const { data, pending } = useFetch(
   `${config.public.apiBase}/professors?populate=*&pagination[limit]=100`,
   { server: false }
 )
+// =========================================
+//  Scroll to Top Logic
+// =========================================
+const showScroll = ref(false)
 
+const handleScroll = () => {
+  // แสดงปุ่มเมื่อเลื่อนหน้าจอลงมามากกว่า 300px
+  showScroll.value = window.scrollY > 300
+}
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // ทำให้เลื่อนขึ้นแบบนุ่มนวล
+  })
+}
+
+onMounted(() => {
+  // เพิ่ม Event Listener สำหรับ Scroll อย่างเดียวพอครับ
+  window.addEventListener('scroll', handleScroll)
+})
+
+// ลบ Event Listener ออกเมื่อทำลาย Component เพื่อป้องกัน Memory Leak
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 /* =============================
    🔥 แปลง Rich Text → Array
 ============================= */
@@ -273,8 +299,8 @@ const professorList = computed(() =>
     education: parseBlocks(item.education),
     expertise: parseBlocks(item.expertise),
     image: item.image?.url
-    ? `${config.public.apiBase.replace('/api','')}${item.image.url}`
-    : null
+      ? `${config.public.apiBase.replace('/api', '')}${item.image.url}`
+      : null
   })) || []
 )
 
@@ -343,6 +369,7 @@ const selectTab = (tab) => {
   text-align: center;
   transition: color 0.3s ease;
 }
+
 /* ================== Tab Buttons ================== */
 .tab-buttons-wrapper {
   width: 100%;
@@ -673,7 +700,7 @@ const selectTab = (tab) => {
   opacity: 0;
 }
 
-/* ================== Scroll To Top Button ================== */
+/* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */
 .scroll-top-btn {
   position: fixed;
   bottom: 2rem;
@@ -690,19 +717,33 @@ const selectTab = (tab) => {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px var(--card-shadow);
-  transition: transform 0.2s ease, border-color 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
 }
 
 .scroll-top-btn:hover {
   transform: scale(1.1);
   border-color: #ff9800;
   color: #ff9800;
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.2);
 }
 
 .scroll-top-btn svg {
   width: 1.25rem;
   height: 1.25rem;
   color: inherit;
+}
+
+/* ================== Transition ปุ่มเลื่อนขึ้นบนสุด ================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+  /* ให้ปุ่มเลื่อนลงไปซ่อนด้านล่างตอนหายไป */
 }
 
 /* ================== Responsive ================== */

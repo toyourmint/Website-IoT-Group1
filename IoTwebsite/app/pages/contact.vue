@@ -230,9 +230,45 @@
       </div>
     </div>
   </div>
+             <transition name="slide-up">
+      <button 
+        v-if="showScroll" 
+        class="scroll-top-btn" 
+        @click="scrollToTop" 
+        aria-label="Scroll to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+    </transition>
 </template>
 
 <script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue' // เพิ่ม onMounted, onUnmounted
+// =========================================
+//  Scroll to Top Logic
+// =========================================
+const showScroll = ref(false)
+
+const handleScroll = () => {
+  // แสดงปุ่มเมื่อเลื่อนหน้าจอลงมามากกว่า 300px
+  showScroll.value = window.scrollY > 300
+}
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // ทำให้เลื่อนขึ้นแบบนุ่มนวล
+  })
+}
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
 // ปรับ Icon เป็นการเรียกผ่าน component Icon ของ Nuxt แทน SVG สดเพื่อให้โค้ดคลีนขึ้น
 </script>
 
@@ -495,5 +531,48 @@
   .contact-grid {
     grid-template-columns: 1fr;
   }
+}
+/* ================== ปุ่มเลื่อนขึ้นบนสุด ================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+  border-color: #ff9800;
+  color: #ff9800;
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.2);
+}
+
+.scroll-top-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: inherit;
+}
+/* ================== Transition ปุ่มเลื่อนขึ้นบนสุด ================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(20px); /* ให้ปุ่มเลื่อนลงไปซ่อนด้านล่างตอนหายไป */
 }
 </style>
