@@ -22,8 +22,7 @@
             <p>ยังไม่มีข่าวสาร</p>
           </div>
           <div v-else class="news-grid">
-            <div v-for="news in newsList" :key="news.id" class="news-card">
-              <div class="news-image-wrapper">
+<div v-for="news in newsList" :key="news.id" class="news-card" @click="openDetail(news)">              <div class="news-image-wrapper">
                 <img v-if="news.image" :src="news.image" :alt="news.title" />
                 <div v-else class="placeholder-image">
                   <span class="placeholder-text">News Image</span>
@@ -271,6 +270,7 @@ const newsList = computed(() =>
   overflow: hidden;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
   transition: all 0.35s ease;
+  cursor: pointer;
 }
 
 .news-card:hover {
