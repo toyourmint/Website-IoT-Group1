@@ -93,7 +93,7 @@
         <div v-else-if="activeTab === 'physics'" key="physics" class="tab-content">
           <div class="section-header">
             <h2 class="section-title">
-              IoT and Information Engineering
+              Industrial Physics
             </h2>
             <h3 class="section-subtitle">
               Faculty Members
@@ -125,7 +125,7 @@
               Department Staff
             </h3>
             <p class="section-desc">
-              บุคลากรสายสนับสนุนภาควิชาฟิสิกส์อุตสาหกรรม
+              บุคลากรสายสนับสนุนสาขาวิชาฟิสิกส์อุตสาหกรรม
             </p>
           </div>
 
