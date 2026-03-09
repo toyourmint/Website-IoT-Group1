@@ -13,12 +13,12 @@
 
 ## SERVER 
 ### หลัก
-frontend : https://67011430.consolutechcloud.com/th
-backend + database : https://67011430.consolutechcloud.com/admin
+- frontend : https://67011430.consolutechcloud.com/th
+- backend + database : https://67011430.consolutechcloud.com/admin
 
 ### สำรอง
-vercle (frontend) : https://website-iot-group1.vercel.app/th
-railway (backend + database) : https://website-iot-group1-production.up.railway.app/admin
+- vercle (frontend) : https://website-iot-group1.vercel.app/th
+- railway (backend + database) : https://website-iot-group1-production.up.railway.app/admin
 
 ## 🛠️ เทคโนโลยีที่ใช้พัฒนา
 
